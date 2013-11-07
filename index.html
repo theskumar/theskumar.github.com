@@ -1,8 +1,5 @@
 <!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" itemscope itemtype="http://schema.org/Person"> <!--<![endif]-->
+<html itemscope itemtype="http://schema.org/Person">
     <head>
         <meta charset="utf-8">
         
@@ -30,19 +27,31 @@
 
         
         <style>
-            body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:#333}.hero-unit{position:absolute;top:50%;left:50%;height:200px;width:286px;margin-top:-100px;margin-left:-143px}.hero-unit h1{font-size:60px;line-height:1;letter-spacing:-1px;margin:0;padding:0}.hero-unit ul{list-style:none;padding:0;margin:0;text-align:right}.hero-unit ul li{display:inline-block;font-size:12px}.hero-unit ul li:after{content:" /"}.hero-unit ul li:last-child:after{content:""}.browsehappy{margin:.2em 0;background:#ccc;color:#000;padding:.2em 0}
+            body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:#333;background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAUCAYAAADLP76nAAAA0UlEQVR42u2VSQqFMBBE6/5n6LN9ccDZqCjOwk8FPEEWyaIXRUL6daBpisLzPEIty4Ku65DnOdI0lbqupe97GccR53niui5KYuNxHAe2bcMwGJRliaIopG1bWJBv/ER4kmNjbDzsVLYwUJzQFed5FsoY4+rf5FRsPKqqIiT7vn9TcYVuRfZN1nUl6JrtGqPjkWUZp3Xw+76u4b5vNvDOdco0TWiaBr8kiY6Hn5nC855mCs/Dz0zheU8zhec9zRSe1yTWJNYk1iTWJNYk1iQOyf8BD7JVhlKAJvgAAAAASUVORK5CYII=');}
+           .hero-unit{position:absolute;top:50%;left:50%;height:200px;width:286px;margin-top:-100px;margin-left:-143px}
+           .hero-unit h1{font-size:50px;line-height:1;letter-spacing:-1px;margin:0;padding:0;text-shadow: 0 1px 2px #ccc;}
+           .hero-unit ul{list-style:none;padding:0;margin:0;text-align:right}
+           .hero-unit ul li{display:inline-block;font-size:12px}
+           .hero-unit ul li:after{content:" /"}
+           .hero-unit ul li:last-child:after{content:""}
+           .hero-unit ul li a {text-decoration: none;}
+           .hero-unit ul li a:active,
+           .hero-unit ul li a:focus,
+           .hero-unit ul li a:hover {border-bottom: 3px solid;outline: none;font-weight: bold;}
         </style>
     </head>
     <body>
         <div class="container">
             <div class="hero-unit">
                 <h1>theskumar</h1>
-                <ul>
-                    <li><a href="./blog" title="Blog">thoughts</a></li>
-                    <li><a href="http://twitter.com/thes_kumar" title="Twitter">updates</a></li>
-                    <li><a href="http://in.linkedin.com/in/saurabhkumar0" title="LinkedIn">profile</a></li>
-                    <li><a href="http://github.com/theskumar" title="Github">work</a></li>
-                </ul>
+                <nav>
+                    <ul>
+                        <li><a href="./blog" title="Blog">thoughts</a></li>
+                        <li><a rel="me" href="http://twitter.com/thes_kumar" title="Twitter">updates</a></li>
+                        <li><a rel="me" href="http://in.linkedin.com/in/saurabhkumar0" title="LinkedIn">profile</a></li>
+                        <li><a rel="me" href="http://github.com/theskumar" title="Github">work</a></li>
+                    </ul>
+                </nav>
             </div>
         </div>
 
