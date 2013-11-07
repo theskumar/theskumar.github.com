@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+<url>
+  <loc>http://saurabh-kumar.com/</loc>
+  <lastmod>2013-11-06T21:57:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://saurabh-kumar.com/blog/</loc>
+  <lastmod>2013-10-24T18:50:06+00:00</lastmod>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://saurabh-kumar.com/blog/archives.html</loc>
+  <lastmod>2013-10-24T18:50:06+00:00</lastmod>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://saurabh-kumar.com/blog/hash-dos-in-python.html</loc>
+  <lastmod>2013-10-24T18:50:06+00:00</lastmod>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://saurabh-kumar.com/blog/django.html</loc>
+  <lastmod>2013-10-24T18:50:06+00:00</lastmod>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://saurabh-kumar.com/blog/working-on-open-source-project.html</loc>
+  <lastmod>2013-10-24T18:50:06+00:00</lastmod>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://saurabh-kumar.com/blog/category/programming.html</loc>
+  <lastmod>2013-10-24T18:50:06+00:00</lastmod>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://saurabh-kumar.com/blog/tag/python.html</loc>
+  <lastmod>2013-10-24T18:50:06+00:00</lastmod>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://saurabh-kumar.com/blog/tag/security.html</loc>
+  <lastmod>2013-10-24T18:50:06+00:00</lastmod>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://saurabh-kumar.com/blog/tag/django.html</loc>
+  <lastmod>2013-10-24T18:50:06+00:00</lastmod>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://saurabh-kumar.com/blog/tag/programming.html</loc>
+  <lastmod>2013-10-24T18:50:06+00:00</lastmod>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://saurabh-kumar.com/blog/tag/open-source.html</loc>
+  <lastmod>2013-10-24T18:50:06+00:00</lastmod>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://saurabh-kumar.com/blog/tag/community.html</loc>
+  <lastmod>2013-10-24T18:50:06+00:00</lastmod>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://saurabh-kumar.com/blog/tag/social.html</loc>
+  <lastmod>2013-10-24T18:50:06+00:00</lastmod>
+  <changefreq>daily</changefreq>
+</url>
+</urlset>
