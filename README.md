@@ -1,5 +1,5 @@
-theskumar.github.com
-====================
+My Website
+==========
 
 Handcrafted landing page of Saurabh Kumar's website.
 
@@ -8,4 +8,5 @@ Handcrafted landing page of Saurabh Kumar's website.
 
 * Simplicity
 * Performance
-* DRY!
+* [DRY](http://en.wikipedia.org/wiki/Don't_repeat_yourself)!
+* Adaptability
