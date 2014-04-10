@@ -1,0 +1,65 @@
+==================================================================
+https://keybase.io/theskumar
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://saurabh-kumar.com
+  * I am theskumar (https://keybase.io/theskumar) on keybase.
+  * I have a public key with fingerprint 01C6 FD56 20FD 3FB4 C76E  0F8E 5AF3 6615 5E77 1692
+
+To claim this, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "fingerprint": "01c6fd5620fd3fb4c76e0f8e5af366155e771692",
+            "host": "keybase.io",
+            "key_id": "5af366155e771692",
+            "uid": "7bcd075c0583e524467b321ee7362b00",
+            "username": "theskumar"
+        },
+        "service": {
+            "hostname": "saurabh-kumar.com",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1397109292,
+    "expire_in": 157680000,
+    "prev": "1c8112b8a74d52c1d48795ec44501c873cd72adfa4bb3838f26bb7951534904d",
+    "seqno": 5,
+    "tag": "signature"
+}
+
+with the aforementioned key, yielding the PGP signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v0.1.5
+Comment: https://keybase.io/crypto
+
+yMH8AnicbZF/SBRpGMd3PRUVOtO0KwOVQQhttfn1zsyuInZpp5eHSVCg0jY/3tkd
+1J1tdtZfq8aBeJ7g6UnEih6ip4Z6CR11KRpZCGXW0p3WP0XWYeFSV0SdYn+o7yz2
+X+8/w/t9Ps/3+z7zzO36yhRjXjYn/1zMNeebF2bXvaaTx0iLDxNUqR6z+bBKGPrI
+issBNbemuHTMhuGEyMgSYEhclihZoEWWgbjMQcDLFMMQAECWJRgriVkwp+oxOpCN
+wHtglqIiDV3sioTUL/DeUIEVRAlngYgDjoKApGmGFSiSgJClGFLAcQP0QM3FV0NE
+607oqfRW8xrWZMGQXKOISPaFsncQD+/VeMGZGcKyRLUaObg1VVdFtQqVnbruthnd
+er3bwGuhYN8xsguKS0LTo4YaqHkU1YXZCESKumI4E5SVJXAraSUtGKxzKxq0KwYB
+WIbD0TFiYA2yJESOIEiB41laAqRISDTHWgEUaRqg38mxlCixJC/JPC0IFEdxMskI
+AiIIQNFWnJZQvgeec6mYDaBn8g5jKMXh4nWvBrGm27MV4SZzjCkyIszYnykmevfn
+rWZURJkG3xWeGn00MJV+JS34MSrratzo/kTvg58Kzk54+x+m/Bf2XmwNFFUtT/2v
+PG0QV5euBVvKQHrv+Fpy/XP/UEQxlzC9MjmRGtj6rfteSV1m/J9L2b0rcY6BsQtt
+ozljuTlJd/Kx77oKib7+V124v3Sk401iafPwXXIruuHW3sly/7eLN2KVX+c3wYnW
+y0+WlI3u9dePO4Z+nE8qu7jwNpjXXvqh6Mw/x0s690UcDL/kTmghC2ZB2t+/tzfO
+NJYP94986nn5Cx55Uw5+E9tyJF6IfDb4/Q+H8fG/Xtzfcz2wNpfZ9u9i3vmM1QOx
+2XzqofjNgK+n7+jXG3/kppzunJuZrmjz124DxnYS/g==
+=Tap9
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/theskumar
+
+==================================================================
