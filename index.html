@@ -118,6 +118,108 @@
               display: block;
               margin: 0.8em auto;
            }
+           [data-tooltip],
+           .tooltip {
+             position: relative;
+             cursor: pointer;
+             text-align: center;
+           }
+           /* Base styles for the entire tooltip */
+           [data-tooltip]:before,
+           [data-tooltip]:after,
+           .tooltip:before,
+           .tooltip:after {
+             position: absolute;
+             visibility: hidden;
+             -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+             filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+             opacity: 0;
+             -webkit-transition:
+              opacity 0.2s ease-in-out,
+              visibility 0.2s ease-in-out,
+              -webkit-transform 0.2s cubic-bezier(0.71, 1.7, 0.77, 1.24);
+            -moz-transition:
+              opacity 0.2s ease-in-out,
+              visibility 0.2s ease-in-out,
+              -moz-transform 0.2s cubic-bezier(0.71, 1.7, 0.77, 1.24);
+            transition:
+              opacity 0.2s ease-in-out,
+              visibility 0.2s ease-in-out,
+              transform 0.2s cubic-bezier(0.71, 1.7, 0.77, 1.24);
+             -webkit-transform: translate3d(0, 0, 0);
+             -moz-transform:    translate3d(0, 0, 0);
+             transform:         translate3d(0, 0, 0);
+             pointer-events: none;
+           }
+
+           /* Show the entire tooltip on hover and focus */
+           [data-tooltip]:hover:before,
+           [data-tooltip]:hover:after,
+           [data-tooltip]:focus:before,
+           [data-tooltip]:focus:after,
+           .tooltip:hover:before,
+           .tooltip:hover:after,
+           .tooltip:focus:before,
+           .tooltip:focus:after {
+             visibility: visible;
+             -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+             filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+             opacity: 1;
+           }
+
+           /* Base styles for the tooltip's directional arrow */
+           .tooltip:before,
+           [data-tooltip]:before {
+             z-index: 1001;
+             border: 6px solid transparent;
+             background: transparent;
+             content: "";
+           }
+
+           /* Base styles for the tooltip's content area */
+           .tooltip:after,
+           [data-tooltip]:after {
+             z-index: 1000;
+             padding: 8px;
+             width: 160px;
+             background-color: #000;
+             background-color: hsla(0, 0%, 20%, 0.9);
+             color: #fff;
+             content: attr(data-title);
+             text-align: center;
+             font-size: 14px;
+             line-height: 1.2;
+           }
+
+           [data-tooltip]:after, .tooltip:after, .tooltip-top:after {
+              margin-left: -80px;
+           }
+
+           /* Bottom */
+           .tooltip-bottom:before,
+           .tooltip-bottom:after {
+             top: 100%;
+             bottom: auto;
+             left: 50%;
+           }
+
+           .tooltip-bottom:before {
+             margin-top: -12px;
+             margin-bottom: 0;
+             border-top-color: transparent;
+             border-bottom-color: #000;
+             border-bottom-color: hsla(0, 0%, 20%, 0.9);
+           }
+
+           .tooltip-bottom:hover:before,
+           .tooltip-bottom:hover:after,
+           .tooltip-bottom:focus:before,
+           .tooltip-bottom:focus:after {
+             -webkit-transform: translateY(12px);
+             -moz-transform:    translateY(12px);
+             transform:         translateY(12px);
+           }
+
            @media screen and (max-width: 730px) {
               .main {
                 width: 100%;
@@ -170,11 +272,29 @@
 
           --><nav>
               <ul>
-                  <li><a href="./blog" title="Read Saurabh's Blog">thoughts</a></li>
-                  <li><a rel="me" href="http://twitter.com/_theskumar" title="Catch up with Saurabh on twitter" target='blank'>updates</a></li>
-                  <li><a rel="me" href="http://in.linkedin.com/in/saurabhkumar0" title="Connect with Saurabh on LinkedIn" target='blank'>profile</a></li>
-                  <li><a rel="me" href="http://github.com/theskumar" title="View Saurabh's work on Github" target='blank'>work</a></li>
-                  <li><a rel="me" href="https://www.flickr.com/photos/theskumar/" title="Photograph's by Saurabh on Flickr" target='blank'>photos</a></li>
+                  <li><a href="./blog"
+                       class="tooltip tooltip-bottom"
+                       data-title="Read Saurabh's Blog">thoughts</a></li>
+                  <li><a rel="me"
+                         class="tooltip tooltip-bottom"
+                         href="http://twitter.com/_theskumar"
+                         data-title="Catch up with Saurabh on twitter"
+                         target='blank'>updates</a></li>
+                  <li><a rel="me"
+                         class="tooltip tooltip-bottom"
+                         href="http://in.linkedin.com/in/saurabhkumar0"
+                         data-title="Connect with Saurabh on LinkedIn"
+                         target='blank'>profile</a></li>
+                  <li><a rel="me"
+                         class="tooltip tooltip-bottom"
+                         href="http://github.com/theskumar"
+                         data-title="View Saurabh's work on Github"
+                         target='blank'>work</a></li>
+                  <li><a rel="me"
+                         class="tooltip tooltip-bottom"
+                         href="https://www.flickr.com/photos/theskumar/"
+                         data-title="Photographs by Saurabh on Flickr"
+                         target='blank'>photos</a></li>
               </ul>
           </nav>
         </section>
