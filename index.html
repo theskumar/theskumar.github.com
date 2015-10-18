@@ -1,5 +1,5 @@
 <!doctype html>
-<html itemscope itemtype="http://schema.org/Person" lang="en">
+<html itemscope itemtype="http://schema.org/Person" lang="en" class='no-js'>
     <head>
         <meta charset="utf-8">
 
@@ -28,11 +28,12 @@
             var host = "saurabh-kumar.com";
             if ((host == window.location.host) && (window.location.protocol != "https:"))
             window.location.protocol = "https";
+            document.getElementsByTagName('html')[0].className='';
         </script>
 
         <link rel="stylesheet" href="styles/main.css">
     </head>
-    <body>
+    <body><script>document.getElementsByTagName('body')[0].className='theme-'+Math.floor(Math.random()*5);</script>
         <div class="profile--image">
           <!-- <img src="http://www.gravatar.com/avatar/fc974e2829eac6e3512a9d7f82e04723.png?size=200" alt="Saurabh Kumar"> -->
         </div>
