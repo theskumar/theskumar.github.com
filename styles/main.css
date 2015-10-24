@@ -174,7 +174,7 @@ transition:
  color: #fff;
  content: attr(data-title);
  text-align: center;
- font-size: 14px;
+ font-size: 11px;
  line-height: 1.2;
 }
 
@@ -331,6 +331,12 @@ transition:
 .theme-1 .profile--image {
   background-image: url(https://fbcdn-sphotos-c-a.akamaihd.net/hphotos-ak-xta1/v/t1.0-9/11350677_10153622870416057_5143967890525543522_n.jpg?oh=c2601c1e6cbcfc1fc32c0a5b455ac3d5&oe=56C37343&__gda__=1455826702_1787a01a213c3a6ee07d0f54258fad73);
 }
+@media screen and (min-width: 730px) {
+  .theme-1 nav ul li a,
+  .theme-3 nav ul li a
+    {color: #fff; font-size: 11px; font-family: Helvetica; font-weight: 100; text-transform: uppercase;}
+}
+
 .theme-2 .profile--image {
   background-image: url(https://scontent-sin1-1.xx.fbcdn.net/hphotos-xpf1/t31.0-8/11000823_10153282149291057_5560939026638196731_o.jpg);
 }
