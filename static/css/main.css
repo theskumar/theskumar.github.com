@@ -324,17 +324,16 @@ transition:
 }
 
 .no-js .profile--image {
-  background-image: url(https://scontent-sin1-1.xx.fbcdn.net/hphotos-xpf1/t31.0-8/11000823_10153282149291057_5560939026638196731_o.jpg);
+  background-image: url(../img/bg/2.jpg);
 }
 .theme-0 .profile--image {
-  background-image: url(https://scontent-sin1-1.xx.fbcdn.net/hphotos-xfa1/t31.0-8/p960x960/11174254_10153308871761057_9117748182217503228_o.jpg);
+  background-image: url(../img/bg/3.jpg);
 }
 .theme-1 .profile--image {
-  background-image: url(https://fbcdn-sphotos-e-a.akamaihd.net/hphotos-ak-xaf1/t31.0-8/11133906_10153249860866057_3063589390013078544_o.jpg);
+  background-image: url(../img/bg/1.jpg);
 }
 @media screen and (min-width: 730px) {
   .theme-0 nav ul li a {
     color: #fff; font-size: 11px; font-family: Helvetica; font-weight: 100; text-transform: uppercase;
   }
 }
-
