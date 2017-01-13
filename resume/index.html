@@ -6,13 +6,21 @@
         <meta name="author" content="Saurabh Kumar">
         <meta description="Resume of Saurabh Kumar">
         <style>
-            body{min-width: 775px;}
+            body, html{ margin: 0; padding: 0; height: 100%; overflow: hidden; }
+            #content { position:absolute; left: 0; right: 0; bottom: 0; top: 0px; }
+            iframe {
+              width: 100%;
+              height: 100vh;
+              border: 0;
+            }
+
         </style>
   </head>
   <body>
-      <div style="text-align:center; width=100%; height=100%;">
-        <iframe src="https://docs.google.com/document/d/1MUXe9VMF-fmY0MhpkKmKUtydKG2vZa4VO2fR3qSaJXk/pub?embedded=true" style="height: 1050px; margin: 0 auto;" align="middle" frameborder="0" width="100%" height="100%" scrolling="no"></iframe>
-    </div>
-
+      <div id="content">
+          <iframe width="100%" height="100%" frameborder="0"
+                  src="https://docs.google.com/document/d/1MUXe9VMF-fmY0MhpkKmKUtydKG2vZa4VO2fR3qSaJXk/pub?embedded=true" >
+          </iframe>
+      </div>
   </body>
 </html>
