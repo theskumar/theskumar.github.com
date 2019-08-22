@@ -74,9 +74,7 @@ nav ul li a:hover {border-bottom: 1px solid;outline: none;}
 .about {
   color: #fff;
   font-weight: lighter;
-}
-.about__description {
-  text-shadow: 0 0 40px #ccc;
+  text-shadow: 1px 1px 1px #000;
 }
 .avatar__img {
   width: 150px;
@@ -298,4 +296,3 @@ transition:
       padding-top: 0;
     }
 }
-
