@@ -77,8 +77,6 @@ nav ul li a:hover {border-bottom: 1px solid;outline: none;}
   text-shadow: 1px 1px 1px #000;
 }
 .avatar__img {
-  width: 150px;
-  height: 150px;
   border-radius: 50%;
 }
 .btn {
