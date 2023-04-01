@@ -11,6 +11,13 @@ body{
   color:#333;
   margin: 0;
 }
+
+body {
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+}
+
 .profile--image {
   background-color: #37383a;
   background-image: url(../img/bg/bg-img.jpg);
@@ -41,7 +48,7 @@ nav ul li a:hover {border-bottom: 1px solid;outline: none;}
   /*background: url(https://fbcdn-sphotos-c-a.akamaihd.net/hphotos-ak-xpa1/t31.0-8/10293837_10152636550771057_3130874144105770551_o.jpg);*/
   background-size: cover;
   background-position: bottom right;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -68,7 +75,7 @@ nav ul li a:hover {border-bottom: 1px solid;outline: none;}
   max-width: 600px;
   text-align: center;
   margin: 0 auto;
-  padding: 8em 2em 1em 1em;
+  padding: 1em 2em;
 }
 .main strong {
   border-bottom: 1px solid rgba(90, 10, 80, 0.5);
