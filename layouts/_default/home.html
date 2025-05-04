@@ -1,0 +1,23 @@
+{{ define "main" }}
+    <div class="home-content">
+        {{ .Content }}
+    </div>
+
+    {{ $blogPages := where .Site.RegularPages "Section" "blog" }}
+    {{ $sortedBlogPages := $blogPages.ByDate.Reverse }}
+    {{ if $sortedBlogPages }}
+        <p>I recently wrote about:</p>
+
+        <ul>
+            {{ range $sortedBlogPages }}
+            <li>
+            <a href="{{ .Permalink }}">{{ .Title }}</a>
+            (<time datetime='{{ .Date.Format "2006-01-02" }}'>
+                {{ .Date.Format (default "02 Jan, 2006" .Site.Params.dateFormat) }}
+            </time>)
+            </li>
+            {{ end }}
+        </ul>
+    {{ end }}
+
+{{ end }}

@@ -1,0 +1,153 @@
+/* Generated using: hugo gen chromastyles --style=catppuccin-frappe */
+
+.chroma .cpf,
+.chroma .gs,
+.chroma .nd,
+.chroma .o,
+.chroma .ow {
+    font-weight: 700;
+}
+.bg,
+.chroma {
+    color: #c6d0f5;
+    background-color: #303446;
+}
+.chroma .err,
+.chroma .gr,
+.chroma .gt,
+.chroma .kd,
+.chroma .kt,
+.chroma .sa {
+    color: #e78284;
+}
+.chroma .lnlinks {
+    outline: 0;
+    text-decoration: none;
+    color: inherit;
+}
+.chroma .lntd {
+    vertical-align: top;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+.chroma .lntable {
+    border-spacing: 0;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+.chroma .hl {
+    background-color: #51576d;
+}
+.chroma .gd,
+.chroma .gi {
+    background-color: #414559;
+}
+.chroma .ln,
+.chroma .lnt {
+    white-space: pre;
+    -webkit-user-select: none;
+    user-select: none;
+    margin-right: 0.4em;
+    padding: 0 0.4em;
+    color: #838ba7;
+}
+.chroma .line {
+    display: flex;
+}
+.chroma .k,
+.chroma .kp,
+.chroma .kr,
+.chroma .nt {
+    color: #ca9ee6;
+}
+.chroma .il,
+.chroma .kc,
+.chroma .m,
+.chroma .mb,
+.chroma .mf,
+.chroma .mh,
+.chroma .mi,
+.chroma .mo,
+.chroma .ne,
+.chroma .nn,
+.chroma .py {
+    color: #ef9f76;
+}
+.chroma .kn,
+.chroma .ni,
+.chroma .sr {
+    color: #81c8be;
+}
+.chroma .dl,
+.chroma .fm,
+.chroma .na,
+.chroma .nf,
+.chroma .se {
+    color: #8caaee;
+}
+.chroma .nc,
+.chroma .no {
+    color: #e5c890;
+}
+.chroma .nd {
+    color: #8caaee;
+}
+.chroma .bp,
+.chroma .nb,
+.chroma .nl {
+    color: #99d1db;
+}
+.chroma .nv,
+.chroma .vc,
+.chroma .vg,
+.chroma .vi,
+.chroma .vm {
+    color: #f2d5cf;
+}
+.chroma .s,
+.chroma .s1,
+.chroma .s2,
+.chroma .sb,
+.chroma .sc,
+.chroma .si,
+.chroma .ss,
+.chroma .sx {
+    color: #a6d189;
+}
+.chroma .sd,
+.chroma .sh {
+    color: #737994;
+}
+.chroma .o,
+.chroma .ow {
+    color: #99d1db;
+}
+.chroma .c,
+.chroma .c1,
+.chroma .ch,
+.chroma .cm,
+.chroma .cp,
+.chroma .cpf,
+.chroma .cs {
+    color: #737994;
+    font-style: italic;
+}
+.chroma .gd {
+    color: #e78284;
+}
+.chroma .ge {
+    font-style: italic;
+}
+.chroma .gh,
+.chroma .gu {
+    color: #ef9f76;
+    font-weight: 700;
+}
+.chroma .gi {
+    color: #a6d189;
+}
+.chroma .gl {
+    text-decoration: underline;
+}
