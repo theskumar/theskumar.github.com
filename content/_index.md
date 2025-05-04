@@ -5,6 +5,6 @@
 title = "Saurabh Kumar"
 +++
 
-Hello there! I'm Saurabh, a full-stack developer with over 13+ yrs of experience building digital solutions that emphasize meaningful, calm, and user-focused experiences.
+Greetings! I'm Saurabh, a seasoned full-stack developer with over 13 years of experience crafting digital solutions that prioritize meaningful, calm, and user-centered experiences. I currently serve as the Director of Engineering, Web Services at Fueled.
 
-Currently living in outskirts of Delhi with my wife, son and my pet dog – Hachi 🐶.
+I currently reside on the peaceful outskirts of Delhi with my family—my wife, son, and our beloved dog Hachi 🐶.
