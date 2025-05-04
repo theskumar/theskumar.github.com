@@ -9,7 +9,7 @@ _updated May 2nd, 2025, from my home in Ghaziabad, India._
 
 leading team and technologies at [Fueled](https://fueled.com) as Director of Engineering, Web Services.
 
-I contribute to [Hypha](https://docs.hypha.app) and other open-source projects.
+i contribute to [Hypha](https://docs.hypha.app) and other open-source projects.
 
 Fatherhood: I've recently become a father, and enjoying this new chapter of my life!
 
