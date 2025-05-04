@@ -53,9 +53,9 @@
     padding: 0 0.4em;
     color: #838ba7;
 }
-.chroma .line {
+/* .chroma .line {
     display: flex;
-}
+} */
 .chroma .k,
 .chroma .kp,
 .chroma .kr,
