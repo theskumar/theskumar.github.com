@@ -3,7 +3,7 @@
         {{ .Content }}
     </div>
 
-    {{ $blogPages := where .Site.RegularPages "Section" "articles" }}
+    {{ $blogPages := where .Site.RegularPages "Section" "blog" }}
     {{ $sortedBlogPages := $blogPages.ByDate.Reverse }}
     {{ if $sortedBlogPages }}
         <p>I recently wrote about:</p>

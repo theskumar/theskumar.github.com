@@ -1,4 +1,4 @@
 +++
-title = "Articles"
+title = "Blog"
 menu = "main"
 +++
