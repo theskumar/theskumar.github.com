@@ -5,6 +5,10 @@
 title = "Saurabh Kumar"
 +++
 
-Hi! I'm Saurabh, Director of Engineering at Fueled and a full-stack developer with 13+ years crafting meaningful digital solutions.
+<!-- Hi! I'm Saurabh, Director of Engineering at Fueled and a full-stack developer with 13+ years crafting meaningful digital solutions. -->
 
-I currently reside on the peaceful outskirts of Delhi with my family—my wife, son, and our beloved dog Hachi 🐶.
+Hi! I'm Saurabh, a full-stack engineering leader who's spent 13+ years solving complex technical challenges for startups and enterprises including The Montley Fool, Tony Robbins and NationsBenefits. My expertise spans Golang, Python, and Node.js—both writing code and leading teams of up to 14 engineers.
+
+Outside work, I cherish time with my family on the outskirts of Delhi, where my wife, son, and our dog [Hachi] keep me grounded 🐶.
+
+[Hachi]: https://instagram.com/hachi.softysingh
