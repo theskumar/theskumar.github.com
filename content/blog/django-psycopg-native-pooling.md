@@ -4,8 +4,10 @@ date = "2025-06-18"
 description = "Deploy Django 5.1's native connection pooling in 10 minutes to cut database latency by 50-70ms, reduce connection overhead by 60-80%, and improve response times by 10-30% with zero external dependencies."
 tags = [
     "django",
-    "database",
-    "web-development"
+    "postgresql",
+    "web-performance",
+    "devops",
+    "python"
 ]
 +++
 
