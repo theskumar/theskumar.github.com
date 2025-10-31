@@ -5,13 +5,11 @@ menu = "main"
 
 # Now
 
-_updated May 2nd, 2025, from my home in Ghaziabad, India._
+_updated Oct 31st, 2025, from my home in Ghaziabad, India._
 
-leading team and technologies at [Fueled](https://fueled.com) as Director of Engineering, Web Services.
+leading team and technologies at [Fueled](https://fueled.com) as Director of Engineering, Web Services. Working on projects involving a lot of AI features, on the sides i'm learning data warehousing and lakes.
 
-i contribute to [Hypha](https://docs.hypha.app) and other open-source projects.
-
-Fatherhood: I've recently become a father, and enjoying this new chapter of my life!
+Fatherhood: If not working I spent time with Hachi and my 9th old kid, how just learnt to stand and crawl! This new phase of life is the best I could have asked for.
 
 ### // open source
 
@@ -19,5 +17,4 @@ __[python-dotenv](https://github.com/theskumar/python-dotenv)__: With over 8000+
 
 __[hypha](https://github.com/hyphapp/hypha)__: Added 300+ features in last couple of years to a powerful and flexible software that helps organizations manage their open calls and applications.
 
-__[pythonindia/junction](https://github.com/pythonindia/junction)__: Core dev for a web application that helps manage proposals for conferences like PyConIndia and PyDelhi. It allows users to create talk and workshop proposals, review them, finalize the schedule, and gather feedback. 
-
+__[pythonindia/junction](https://github.com/pythonindia/junction)__: Core dev for a web application that helps manage proposals for conferences like PyConIndia and PyDelhi. It allows users to create talk and workshop proposals, review them, finalize the schedule, and gather feedback.
