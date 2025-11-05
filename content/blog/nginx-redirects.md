@@ -5,8 +5,7 @@ description = "Learn how to implement and manage hundreds of URL redirections ef
 tags = [
     "devops",
     "nginx",
-    "url redirection",
-    "server configuration"
+    "configuration"
 ]
 +++
 

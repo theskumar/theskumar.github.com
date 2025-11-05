@@ -5,9 +5,7 @@ description = "A clean solution for handling Django authentication redirects in 
 tags = [
     "django",
     "htmx",
-    "authentication",
-    "middleware",
-    "web-development"
+    "authentication"
 ]
 +++
 

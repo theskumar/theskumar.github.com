@@ -5,8 +5,7 @@ description = "Deploy Django 5.1's native connection pooling in 10 minutes to cu
 tags = [
     "django",
     "postgresql",
-    "web-performance",
-    "devops",
+    "performance",
     "python"
 ]
 +++

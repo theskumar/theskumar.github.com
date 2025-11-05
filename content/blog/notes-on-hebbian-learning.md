@@ -1,10 +1,9 @@
 ---
-title: "Notes: Understanding Hebbian Learning"
+title: "Notes on Understanding Hebbian Learning"
 date: 2025-11-05
 draft: false
 description: "A beginner-friendly exploration of one of neuroscience's most elegant principles - how neurons that fire together, wire together."
-tags: ["neuroscience", "psychology", "#AI"]
-categories: ["Science", "Learning"]
+tags: ["neuroscience", "ai-ml"]
 author: "Saurabh Kumar"
 summary: "Dive into Hebbian learning, the fundamental principle of how our brains learn and form memories. From Pavlov's dogs to your morning coffee ritual, discover how neurons wire together through repetition."
 keywords: ["hebbian learning", "neuroscience", "neuroplasticity", "brain learning", "neural networks", "synaptic plasticity"]
@@ -18,8 +17,6 @@ The entire concept boils down to one beautiful phrase:
 
 That's it. That's the whole thing.
 
----
-
 ## Breaking It Down
 
 When two neurons in your brain activate at the same time, the connection between them gets stronger. Do this repeatedly? The connection becomes even stronger.
@@ -29,7 +26,6 @@ Think of it like this:
 - Fifth time: "Okay, these definitely seem related"
 - Hundredth time: "These are basically the same signal now"
 
----
 
 ## Real Examples That Make It Click
 
@@ -49,8 +45,6 @@ Why does the smell of coffee make you feel more awake even before you drink it? 
 
 Now they're all wired together into one mega-circuit.
 
----
-
 ## The Actual Mechanism (Simplified)
 
 What's physically happening:
@@ -63,7 +57,6 @@ What's physically happening:
 
 It's literally changing the structure of your brain. Learning is physical.
 
----
 
 ## Why This Matters
 
@@ -78,7 +71,6 @@ Hebbian learning inspired artificial neural networks. Modern AI doesn't use pure
 
 The basic idea - connections that prove useful should get stronger - is still foundational.
 
----
 
 ## The Flip Side: "Use It or Lose It"
 
@@ -92,7 +84,6 @@ This is why:
 - Memories fade
 - Bad habits can actually be broken
 
----
 
 ## The Math (Optional)
 
@@ -108,7 +99,6 @@ Where:
 
 If both are active (positive values), the connection strengthens. Simple, elegant, powerful.
 
----
 
 ## Practical Takeaways
 
@@ -128,8 +118,6 @@ If both are active (positive values), the connection strengthens. Simple, elegan
 - Feedback loops help strengthen the right connections
 - Muscle memory is real - it's Hebbian learning in motor cortex
 
----
-
 ## Cool Extensions of This Idea
 
 **Spike-timing-dependent plasticity (STDP):** Turns out the ORDER matters too. If neuron A fires THEN neuron B fires (within ~20ms), the connection strengthens. Reverse order? It can actually weaken. Mind-blowing.
@@ -137,8 +125,6 @@ If both are active (positive values), the connection strengthens. Simple, elegan
 **Competitive learning:** When neurons wire together, they can also suppress other connections. This is how your brain specializes - certain neuron clusters become experts at specific patterns.
 
 **Associative memory:** This is literally how you remember faces, names, songs, and basically everything. It's all Hebbian associations.
-
----
 
 ## The Big Picture
 
@@ -161,6 +147,8 @@ Every time you practice something, read something, experience something - your b
 You are literally not the same person you were when you started reading this.
 
 Pretty wild when you think about it.
+
+---
 
 If you want to dive deeper:
 

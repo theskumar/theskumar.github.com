@@ -5,10 +5,7 @@ description = "An overview of Ty, Astral's blazingly fast Python type checker th
 tags = [
     "python",
     "type-checking",
-    "ty",
-    "developer-tools",
-    "ruff",
-    "uv"
+    "tools"
 ]
 +++
 
