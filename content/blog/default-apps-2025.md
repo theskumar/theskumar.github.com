@@ -38,22 +38,22 @@ Catalogued by Robb Knight’s [App Defaults](https://defaults.rknight.me/)
 ### Bonus Items
 Important enough to include here, ordered roughly by how often I rely on each.
 
-- 🚀 Launcher: [Raycast](raycast.com)
-- 🚫 Ad Blocking: [AdGuard]
-- 🐚 Terminal: iTerm 2 with ZSH
-- 🔎 Search Engine: DuckDuckGo and Google
-- 🗂️ Version Control: [lazygit](https://github.com/jesseduffield/lazygit)
-- 🖼️ Screenshots: CleanShot X (also trying out Xnapper)
-- 🐘 Mastodon Client: [Mastonaut](https://www.mastonaut.app/)
-- 🗄️ Code Repositories: GitHub
-- 📖 Reading: Kindle
-- ✍️ Writing: [Obsidian], [Zed]
-- 👨‍🎨 Design: Figma, Gimp
-- 🩺 App + Server Monitoring: Sentry
-- 🧠 Brainstorming: [Obsidian]
-- ☎️ Video Calls: Meet,  Zoom
-- 📋 Snippet Sharing: Github Gist
-- 🍱 Project Management: Linear, Jira
+- Launcher: [Raycast](raycast.com)
+- Ad Blocking: [AdGuard]
+- Terminal: iTerm 2 with ZSH
+- Search Engine: DuckDuckGo and Google
+- Version Control: [lazygit](https://github.com/jesseduffield/lazygit)
+- Screenshots: CleanShot X (also trying out Xnapper)
+- Mastodon Client: [Mastonaut](https://www.mastonaut.app/)
+- Code Repositories: GitHub
+- Reading: Kindle
+- Writing: [Obsidian], [Zed]
+- Design: Figma, Gimp
+- App + Server Monitoring: Sentry
+- Brainstorming: [Obsidian]
+- Video Calls: Meet,  Zoom
+- Snippet Sharing: Github Gist
+- Project Management: Linear, Jira
 
 
 [Obsidian]: https://obsidian.md
