@@ -22,6 +22,16 @@ ignoreErrors = ["error-disable-taxonomy"]
 blog = "/articles/:year/:month/:slug/"
 tags = "/articles/:slug"
 
+[[menus.main]]
+name = "Home"
+url = "/"
+weight = 1
+
+[[menus.main]]
+name = "Blog"
+url = "/blog/"
+weight = 2
+
 [params]
 # The "description" of your website. This is used in the meta data of your generated html.
 description = "Personal site of Saurabh Kumar :heart:"
