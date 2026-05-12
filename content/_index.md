@@ -5,16 +5,25 @@
 title = "Saurabh Kumar"
 +++
 
-Hi! I'm Saurabh, a full-stack engineering leader who's spent 14+ years solving
-complex technical challenges for startups and enterprises including The Montley
-Fool, Tony Robbins and NationsBenefits. My expertise spans Python,
-Node.js, and GoLang -- both writing code and leading teams of up to 14 engineers.
+### Who I am
+
+I'm a full-stack engineering leader with over 14 years of experience in solving
+complex technical challenges for startups and enterprises including The Motley
+Fool, Revzilla, Tony Robbins, and NationsBenefits.
+
+My primary expertise lies in building scalable and distributed backend systems
+using Python, Node.js, and GoLang -- both writing code and leading teams of engineers.
 
 Outside work, I cherish time with my family on the outskirts of Delhi, where my
 wife, son, and our dog [Hachi] keep me grounded 🐶.
 
-Currently available for new contracting opportunities and agency partnerships.
-Let's connect to discuss how my technical and leadership experience can benefit
-your organization.
-
 [Hachi]: https://instagram.com/hachi.softysingh
+
+### What I offer
+
+- Pro-bono mentoring of young entrepreneurs on their tech journey
+- Independent consulting on compelling projects
+
+Pricing is tailored to meet individual or organizational needs.
+
+### Get in touch
