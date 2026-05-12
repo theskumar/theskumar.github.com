@@ -16,7 +16,7 @@
   {{ partial "syntax-light.css" . | safeCSS }}
 
   @media (prefers-color-scheme: dark) {
-      :root {
+      :root:not([data-theme="light"]) {
           --background-color: #01242e;
           --heading-color: #eee;
           --text-color: #ddd;
@@ -26,6 +26,22 @@
           --code-color: #ddd;
           --blockquote-color: #ccc;
       }
+      {{ partial "syntax-dark.css" . | safeCSS }}
+  }
+
+  [data-theme="dark"] {
+      --background-color: #01242e;
+      --heading-color: #eee;
+      --text-color: #ddd;
+      --link-color: #8cc2dd;
+      --visited-color:  #8b6fcb;
+      --code-background-color: #021c23;
+      --code-color: #ddd;
+      --blockquote-color: #ccc;
+  }
+
+  [data-theme="dark"] .highlight pre,
+  [data-theme="dark"] .code {
       {{ partial "syntax-dark.css" . | safeCSS }}
   }
 
@@ -111,6 +127,29 @@
 
   footer {
     margin-top: 1em;
+  }
+
+  .header-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+  }
+
+  .theme-toggle {
+      background: none;
+      border: none;
+      padding: 4px;
+      color: var(--text-color);
+      opacity: 0.7;
+      transition: opacity 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+  }
+
+  .theme-toggle:hover {
+      opacity: 1;
   }
 
   .title:hover {
