@@ -1,0 +1,151 @@
+/* Combined Chroma syntax theme.
+ * Light = emacs            (hugo gen chromastyles --style=emacs)
+ * Dark  = catppuccin-frappe (hugo gen chromastyles --style=catppuccin-frappe)
+ * Colors switch via CSS color-scheme + light-dark().
+ * Font-weight / font-style deltas are handled in the override block below. */
+
+/* ---------- Base ---------- */
+
+.bg,
+.chroma {
+    color: var(--code-color);
+    background-color: var(--code-background-color);
+}
+
+.chroma .lnlinks { outline: 0; text-decoration: none; color: inherit; }
+.chroma .lntd    { vertical-align: top; padding: 0; margin: 0; border: 0; }
+.chroma .lntable { border-spacing: 0; padding: 0; margin: 0; border: 0; }
+
+.chroma .ln,
+.chroma .lnt {
+    white-space: pre;
+    -webkit-user-select: none;
+    user-select: none;
+    margin-right: 0.4em;
+    padding: 0 0.4em;
+    color: light-dark(#7f7f7f, #838ba7);
+}
+
+.chroma .hl { background-color: light-dark(#dfdfdf, #51576d); }
+
+/* ---------- Keywords ---------- */
+
+.chroma .k   { color: light-dark(#a2f,    #ca9ee6); font-weight: 700; }
+.chroma .kc  { color: light-dark(#a2f,    #ef9f76); font-weight: 700; }
+.chroma .kd  { color: light-dark(#a2f,    #e78284); font-weight: 700; }
+.chroma .kn  { color: light-dark(#a2f,    #81c8be); font-weight: 700; }
+.chroma .kp  { color: light-dark(#a2f,    #ca9ee6); }
+.chroma .kr  { color: light-dark(#a2f,    #ca9ee6); font-weight: 700; }
+.chroma .kt  { color: light-dark(#0b0,    #e78284); font-weight: 700; }
+
+/* ---------- Names ---------- */
+
+.chroma .bp  { color: light-dark(#a2f,    #99d1db); }
+.chroma .nb  { color: light-dark(#a2f,    #99d1db); }
+.chroma .nc  { color: light-dark(#00f,    #e5c890); }
+.chroma .no  { color: light-dark(#800,    #e5c890); }
+.chroma .nd  { color: light-dark(#a2f,    #8caaee); }
+.chroma .ne  { color: light-dark(#d2413a, #ef9f76); font-weight: 700; }
+.chroma .nf  { color: light-dark(#00a000, #8caaee); }
+.chroma .fm  { color: light-dark(#00a000, #8caaee); }
+.chroma .ni  { color: light-dark(#999,    #81c8be); font-weight: 700; }
+.chroma .nl  { color: light-dark(#a0a000, #99d1db); }
+.chroma .nn  { color: light-dark(#00f,    #ef9f76); font-weight: 700; }
+.chroma .nt  { color: light-dark(green,   #ca9ee6); font-weight: 700; }
+.chroma .na  { color: light-dark(#b44,    #8caaee); }
+.chroma .py  { color: light-dark(currentColor, #ef9f76); }
+.chroma .nv,
+.chroma .vc,
+.chroma .vg,
+.chroma .vi,
+.chroma .vm  { color: light-dark(#b8860b, #f2d5cf); }
+
+/* ---------- Numbers ---------- */
+
+.chroma .il,
+.chroma .m,
+.chroma .mb,
+.chroma .mf,
+.chroma .mh,
+.chroma .mi,
+.chroma .mo  { color: light-dark(#666, #ef9f76); }
+
+/* ---------- Operators ---------- */
+
+.chroma .o   { color: light-dark(#666, #99d1db); }
+.chroma .ow  { color: light-dark(#a2f, #99d1db); font-weight: 700; }
+
+/* ---------- Strings ---------- */
+
+.chroma .dl  { color: light-dark(#b44,    #8caaee); }
+.chroma .s,
+.chroma .s1,
+.chroma .s2,
+.chroma .sb,
+.chroma .sc  { color: light-dark(#b44,    #a6d189); }
+.chroma .sa  { color: light-dark(#b44,    #e78284); }
+.chroma .sd  { color: light-dark(#b44,    #737994); font-style: italic; }
+.chroma .se  { color: light-dark(#b62,    #8caaee); font-weight: 700; }
+.chroma .sh  { color: light-dark(#b44,    #737994); }
+.chroma .si  { color: light-dark(#b68,    #a6d189); font-weight: 700; }
+.chroma .ss  { color: light-dark(#b8860b, #a6d189); }
+.chroma .sx  { color: light-dark(green,   #a6d189); }
+.chroma .sr  { color: light-dark(#b68,    #81c8be); }
+
+/* ---------- Comments ---------- */
+
+.chroma .c,
+.chroma .c1,
+.chroma .ch,
+.chroma .cm  { color: light-dark(#080, #737994); font-style: italic; }
+.chroma .cp,
+.chroma .cpf { color: light-dark(#080, #737994); }
+.chroma .cs  { color: light-dark(#080, #737994); font-weight: 700; }
+
+/* ---------- Generic (diff / output) ---------- */
+
+.chroma .gd  { color: light-dark(#a00000, #e78284);
+               background-color: light-dark(transparent, #414559); }
+.chroma .gi  { color: light-dark(#00a000, #a6d189);
+               background-color: light-dark(transparent, #414559); }
+.chroma .ge  { font-style: italic; }
+.chroma .gh  { color: light-dark(navy,    #ef9f76); font-weight: 700; }
+.chroma .gp  { color: light-dark(navy,    currentColor); font-weight: 700; }
+.chroma .go  { color: light-dark(#888,    currentColor); }
+.chroma .gr  { color: light-dark(red,     #e78284); }
+.chroma .gs  { font-weight: 700; }
+.chroma .gt  { color: light-dark(#04d,    #e78284); }
+.chroma .gu  { color: light-dark(purple,  #ef9f76); font-weight: 700; }
+.chroma .gl  { text-decoration: underline; }
+
+.chroma .err { color: light-dark(currentColor, #e78284); }
+.chroma .w   { color: light-dark(#bbb, currentColor); }
+
+/* ---------- Dark theme weight / style deltas ----------
+ * light-dark() handles colors, but font-weight/font-style aren't <color>
+ * values, so the small set of classes whose emphasis differs between
+ * emacs and catppuccin-frappe is overridden here. */
+
+@media (prefers-color-scheme: dark) {
+    html:not([data-theme="light"]) {
+        .chroma .k,  .chroma .kc, .chroma .kd, .chroma .kn, .chroma .kr,
+        .chroma .kt, .chroma .ne, .chroma .ni, .chroma .nn, .chroma .nt,
+        .chroma .se, .chroma .si, .chroma .gp, .chroma .cs { font-weight: normal; }
+
+        .chroma .cpf, .chroma .nd, .chroma .o { font-weight: 700; }
+
+        .chroma .sd { font-style: normal; }
+        .chroma .cp, .chroma .cpf, .chroma .cs { font-style: italic; }
+    }
+}
+
+html[data-theme="dark"] {
+    .chroma .k,  .chroma .kc, .chroma .kd, .chroma .kn, .chroma .kr,
+    .chroma .kt, .chroma .ne, .chroma .ni, .chroma .nn, .chroma .nt,
+    .chroma .se, .chroma .si, .chroma .gp, .chroma .cs { font-weight: normal; }
+
+    .chroma .cpf, .chroma .nd, .chroma .o { font-weight: 700; }
+
+    .chroma .sd { font-style: normal; }
+    .chroma .cp, .chroma .cpf, .chroma .cs { font-style: italic; }
+}

@@ -20,16 +20,7 @@
   [data-theme="light"] { color-scheme: light; }
   [data-theme="dark"]  { color-scheme: dark; }
 
-  {{ partial "syntax-light.css" . | safeCSS }}
-
-  @media (prefers-color-scheme: dark) {
-      html:not([data-theme="light"]) {
-          {{ partial "syntax-dark.css" . | safeCSS }}
-      }
-  }
-  html[data-theme="dark"] {
-      {{ partial "syntax-dark.css" . | safeCSS }}
-  }
+  {{ partial "syntax.css" . | safeCSS }}
 
   body {
       font-family: var(--font-secondary);
