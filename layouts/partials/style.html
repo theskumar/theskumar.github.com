@@ -22,8 +22,8 @@
           --text-color: #ddd;
           --link-color: #8cc2dd;
           --visited-color:  #8b6fcb;
-          --code-background-color: #021c23;
-          --code-color: #ddd;
+          --code-background-color: #303446;
+          --code-color: #c6d0f5;
           --blockquote-color: #ccc;
       }
       {{ partial "syntax-dark.css" . | safeCSS }}
@@ -35,8 +35,8 @@
       --text-color: #ddd;
       --link-color: #8cc2dd;
       --visited-color:  #8b6fcb;
-      --code-background-color: #021c23;
-      --code-color: #ddd;
+      --code-background-color: #303446;
+      --code-color: #c6d0f5;
       --blockquote-color: #ccc;
   }
 
@@ -123,6 +123,7 @@
       color: var(--code-color);
       padding-left: 20px;
       font-style: italic;
+      margin-left: 0;
   }
 
   footer {
@@ -188,5 +189,14 @@
 
   ul.blog-posts li a:visited {
       color: var(--visited-color);
+  }
+  .footnotes {
+    font-size: calc(var(--font-scale) * 0.8);
+  }
+  .footnotes ol {
+    padding-inline-start: 25px;
+  }
+  .footnotes ol p {
+  margin-block: 0.2em;
   }
 </style>
