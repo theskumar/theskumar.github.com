@@ -19,6 +19,12 @@ wife, son, and our dog [Hachi] keep me grounded 🐶.
 
 [Hachi]: https://instagram.com/hachi.softysingh
 
+### My most recent posts
+
+- [Django ORM: From sync_to_async Threads to Native psycopg3](./blog/django-async-orm-deep-dive.md)
+- [How I Optimized My Zsh Startup Time](./blog/optimizing-zsh-startup-time.md)
+- [The Great Fork: How Redis Lost Its Soul and Valkey Found It](./blog/the-great-fork-of-2024-valkey.md)
+
 ### What I offer
 
 - Pro-bono mentoring of young entrepreneurs on their tech journey

@@ -1,0 +1,29 @@
+{{- /*
+  Markdown link render hook.
+
+  Resolves internal links like `[text](./blog/foo.md)` or `[text](foo.md)`
+  to the page's real permalink using Hugo's GetPage. Falls back to the raw
+  Destination for absolute URLs, anchors, and external links.
+
+  Behavior:
+  - External (http/https/mailto/tel/#anchor): passthrough.
+  - `.md` / `.markdown` destinations: looked up with .Page.GetPage; if found,
+    we emit the resolved RelPermalink. If not found, we warn at build time
+    and fall back to the raw destination so the build still succeeds.
+*/ -}}
+{{- $u := .Destination -}}
+{{- $isExternal := or (hasPrefix $u "http://") (hasPrefix $u "https://") -}}
+{{- $isAnchor := or (hasPrefix $u "#") (hasPrefix $u "mailto:") (hasPrefix $u "tel:") -}}
+{{- $isMd := or (strings.HasSuffix $u ".md") (strings.HasSuffix $u ".markdown") -}}
+
+{{- if and $isMd (not $isExternal) -}}
+  {{- $target := .Page.GetPage $u -}}
+  {{- if $target -}}
+    <a href="{{ $target.RelPermalink }}"{{ with .Title }} title="{{ . }}"{{ end }}>{{ .Text | safeHTML }}</a>
+  {{- else -}}
+    {{- warnf "render-link: could not resolve %q from %q" $u .Page.Path -}}
+    <a href="{{ $u | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }}>{{ .Text | safeHTML }}</a>
+  {{- end -}}
+{{- else -}}
+  <a href="{{ $u | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if $isExternal }} rel="noopener external"{{ end }}>{{ .Text | safeHTML }}</a>
+{{- end -}}

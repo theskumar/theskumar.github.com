@@ -185,7 +185,7 @@ against native pooling with ASGI — use PgBouncer or similar external poolers
 instead. This changed in Django 6.0, which ships an async-aware
 `AsyncConnectionPool` that works correctly under ASGI. I cover how that fits
 together with the truly-async ORM in [How Django's ORM Went From sync_to_async
-Threads to Native psycopg3](/articles/2026/06/django-async-orm-deep-dive/).
+Threads to Native psycopg3](/articles/2026/06/django-orm-from-sync_to_async-threads-to-native-psycopg3/).
 
 **Serverless deployments**: Connection pools don't persist across serverless
 invocations. Skip this optimization for Lambda/Cloud Functions.

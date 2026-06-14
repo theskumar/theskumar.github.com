@@ -1,6 +1,7 @@
 +++
 title = "Django ORM: From sync_to_async Threads to Native psycopg3"
 date = "2026-06-13"
+slug = "django-orm-from-sync_to_async-threads-to-native-psycopg3"
 description = "A deep dive into how Django's ORM became truly async — why the old thread-pool trick was never real async, what changed in Django 6.0 with psycopg3 and ContextVar, and why asyncpg was left out."
 tags = [
     "django",
@@ -341,7 +342,7 @@ ecosystem.
 
 ## Related reading
 
-- [Cut Django Database Latency by 50-70ms With Native Connection Pooling](/articles/2025/06/django-psycopg-native-pooling/) — the sync side of the same story: configuring the psycopg3 pool, sizing `min_size`/`max_size`, and avoiding the `CONN_MAX_AGE` foot-gun.
+- [Cut Django Database Latency by 50-70ms With Native Connection Pooling](./django-psycopg-native-pooling.md) — the sync side of the same story: configuring the psycopg3 pool, sizing `min_size`/`max_size`, and avoiding the `CONN_MAX_AGE` foot-gun.
 
 [^1]: [PEP 249 — Python Database API Specification v2.0](https://peps.python.org/pep-0249/) — The DB-API2 spec that Django's ORM is built on top of; asyncpg deliberately does not implement it.
 [^2]: [psycopg3 — Async operations](https://www.psycopg.org/psycopg3/docs/advanced/async.html) — Official psycopg documentation on the async connection and cursor API.
