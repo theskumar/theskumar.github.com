@@ -1,47 +1,32 @@
 <style>
   :root {
+      color-scheme: light dark;
+
       --width: 720px;
       --font-main: Verdana, sans-serif;
       --font-secondary: Verdana, sans-serif;
       --font-scale: 1em;
-      --background-color: #fff;
-      --heading-color: #222;
-      --text-color: #444;
-      --link-color: #3273dc;
-      --visited-color:  #8b6fcb;
-      --code-background-color: #f2f2f2;
-      --code-color: #222;
-      --blockquote-color: #222;
+
+      --background-color:      light-dark(#fff,     #01242e);
+      --heading-color:         light-dark(#222,     #eee);
+      --text-color:            light-dark(#444,     #ddd);
+      --link-color:            light-dark(#3273dc,  #8cc2dd);
+      --visited-color:         #8b6fcb;
+      --code-background-color: light-dark(#f2f2f2,  #303446);
+      --code-color:            light-dark(#222,     #c6d0f5);
+      --blockquote-color:      light-dark(#222,     #ccc);
   }
+
+  [data-theme="light"] { color-scheme: light; }
+  [data-theme="dark"]  { color-scheme: dark; }
+
   {{ partial "syntax-light.css" . | safeCSS }}
 
   @media (prefers-color-scheme: dark) {
-      :root:not([data-theme="light"]) {
-          --background-color: #01242e;
-          --heading-color: #eee;
-          --text-color: #ddd;
-          --link-color: #8cc2dd;
-          --visited-color:  #8b6fcb;
-          --code-background-color: #303446;
-          --code-color: #c6d0f5;
-          --blockquote-color: #ccc;
-      }
       html:not([data-theme="light"]) {
           {{ partial "syntax-dark.css" . | safeCSS }}
       }
   }
-
-  [data-theme="dark"] {
-      --background-color: #01242e;
-      --heading-color: #eee;
-      --text-color: #ddd;
-      --link-color: #8cc2dd;
-      --visited-color:  #8b6fcb;
-      --code-background-color: #303446;
-      --code-color: #c6d0f5;
-      --blockquote-color: #ccc;
-  }
-
   html[data-theme="dark"] {
       {{ partial "syntax-dark.css" . | safeCSS }}
   }
