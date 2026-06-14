@@ -26,7 +26,9 @@
           --code-color: #c6d0f5;
           --blockquote-color: #ccc;
       }
-      {{ partial "syntax-dark.css" . | safeCSS }}
+      html:not([data-theme="light"]) {
+          {{ partial "syntax-dark.css" . | safeCSS }}
+      }
   }
 
   [data-theme="dark"] {
@@ -40,8 +42,7 @@
       --blockquote-color: #ccc;
   }
 
-  [data-theme="dark"] .highlight pre,
-  [data-theme="dark"] .code {
+  html[data-theme="dark"] {
       {{ partial "syntax-dark.css" . | safeCSS }}
   }
 
