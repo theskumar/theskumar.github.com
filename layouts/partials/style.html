@@ -151,12 +151,27 @@
       width: auto !important;
   }
 
-  .code, .highlight pre {
+  .code, .highlight pre, pre:has(> code) {
       border-radius: 3px;
       margin-block-start: 1em;
       margin-block-end: 1em;
       overflow-x: auto;
+      max-width: 100%;
       padding: 15px;
+  }
+
+  /* Prevent any <pre> from forcing horizontal page scroll on mobile.
+     Long unbroken lines (ASCII trees, log output) get their own scrollbar
+     instead of stretching the viewport. */
+  pre {
+      max-width: 100%;
+      overflow-x: auto;
+  }
+
+  pre > code {
+      /* Let the <pre> scroll; don't let <code> impose its own min-width
+         on a flex/grid ancestor. */
+      min-width: 0;
   }
 
   /* blog post list */
