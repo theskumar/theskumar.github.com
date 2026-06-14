@@ -62,3 +62,6 @@ title = "Saurabh Kumar's Personal Site"
 [markup]
 [markup.highlight]
 noClasses = false
+
+[markup.goldmark.renderer]
+unsafe = true
