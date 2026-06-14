@@ -20,6 +20,10 @@ connection pooling[^1]. Deploy the fix in under 10 minutes and watch your
 database connection overhead drop by 60-80% while your response times improve by
 10-30%.
 
+> If you're on Django 6+ and running async/ASGI, also see the async pool notes in [How Django's ORM Went From
+> sync_to_async Threads to Native
+> psycopg3](./django-async-orm-deep-dive.md).
+
 ## Why This Beats Every Previous Solution
 
 Before Django 5.1, developers suffered through complex workarounds:
@@ -136,8 +140,12 @@ traffic spikes.
 
 ## Critical Fix for Threading and Celery Applications
 
-**Essential for background processing**: Django's pooling creates connection
-leaks in threaded code[^5]. Add explicit cleanup:
+**Essential for background processing**: This isn't a pooling bug — it's expected
+Django behavior that pooling simply makes painful. Any connection opened outside
+Django's request-response cycle (for example, in a thread you spawn yourself)
+stays open until you explicitly close it. Without a pool you might not notice;
+with one, those un-returned connections exhaust `max_size` and you start seeing
+`PoolTimeout` errors[^5]. Add explicit cleanup:
 
 ```python
 from django.db import connection
@@ -148,17 +156,36 @@ class DataProcessingThread(Thread):
         # Your database operations here
         User.objects.filter(active=True).update(last_seen=timezone.now())
 
-        # Critical: prevents connection leaks
+        # Critical: returns the connection to the pool
         connection.close()
 ```
 
-Without explicit cleanup, each background thread permanently holds a connection
-from your pool.
+For code that may touch multiple database aliases, Django's documented helper
+`django.db.close_old_connections()` is the more robust choice — it closes all
+old or unusable connections across every configured database:
+
+```python
+from django.db import close_old_connections
+
+class DataProcessingThread(Thread):
+    def run(self):
+        try:
+            User.objects.filter(active=True).update(last_seen=timezone.now())
+        finally:
+            close_old_connections()
+```
+
+Without this cleanup, each background thread permanently holds a connection from
+your pool.
 
 ## Deployment Scenarios That Require Different Approaches
 
-**ASGI applications**: Django's documentation recommends against native pooling
-with ASGI. Use PgBouncer or similar external poolers instead.
+**ASGI applications**: On Django 5.1–5.2, Django's documentation recommends
+against native pooling with ASGI — use PgBouncer or similar external poolers
+instead. This changed in Django 6.0, which ships an async-aware
+`AsyncConnectionPool` that works correctly under ASGI. I cover how that fits
+together with the truly-async ORM in [How Django's ORM Went From sync_to_async
+Threads to Native psycopg3](/articles/2026/06/django-async-orm-deep-dive/).
 
 **Serverless deployments**: Connection pools don't persist across serverless
 invocations. Skip this optimization for Lambda/Cloud Functions.
@@ -191,4 +218,4 @@ your users will feel the faster response times immediately.
 [^2]: [Django Database Configuration](https://docs.djangoproject.com/en/5.2/ref/databases/) - Complete guide to Django database settings including pooling requirements
 [^3]: [psycopg Installation Guide](https://www.psycopg.org/psycopg3/docs/basic/install.html) - Official psycopg documentation for package installation and pool dependencies
 [^4]: [Stack Overflow: Django Pooling Configuration Error](https://stackoverflow.com/questions/78879329/django-improperlyconfigured-pooling-doesnt-support-persistent-connections) - Community discussion of the CONN_MAX_AGE requirement
-[^5]: [Django Issue #35672](https://code.djangoproject.com/ticket/35672) - Official Django ticket documenting threading connection leaks with pooling
+[^5]: [Django Ticket #35672](https://code.djangoproject.com/ticket/35672) - Closed as *invalid*: connections opened in threads must be returned manually. See also the [Databases → Caveats](https://docs.djangoproject.com/en/stable/ref/databases/#caveats) docs, which recommend `django.db.close_old_connections()` for connections created outside the request-response cycle.
