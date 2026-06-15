@@ -1,0 +1,111 @@
+{{- /*
+  Notion-style floating table of contents.
+
+  A thin "rail" of dashes sits pinned to the right edge; hovering (or
+  focusing into) the area crossfades it into a full text panel. Visible on
+  wide screens only — see .toc-float in style.html.
+
+  The rail is decorative: it carries aria-hidden + inert so assistive tech
+  and keyboard tabbing ignore its duplicate links. The panel is the real
+  navigation landmark. The first entry is the page title and jumps to the
+  top of the document.
+*/ -}}
+{{- $headings := .Fragments.Headings -}}
+{{- /* Only inject a "jump to top" title entry when the layout renders the
+       title as an <h1> outside the content (blog posts). Other pages carry
+       their own top-level heading in the body, so injecting one duplicates it. */ -}}
+{{- $showTitle := and (eq .Type "blog") (not .Params.menu) -}}
+{{- /* Only worth showing once a page has a few sections. */ -}}
+{{- if and $headings (ge (len .Fragments.Identifiers) 4) }}
+<aside class="toc-float">
+  <div class="toc-rail" aria-hidden="true" inert>
+    <nav class="toc-nav toc-nav--rail">
+      {{ if $showTitle }}<ul><li><a href="#" class="toc-top">{{ .Title }}</a></li></ul>{{ end }}
+      {{ partial "toc-nodes.html" $headings }}
+    </nav>
+  </div>
+  <div class="toc-panel">
+    <nav class="toc-nav" aria-label="On this page">
+      {{ if $showTitle }}<ul><li><a href="#" class="toc-top">{{ .Title }}</a></li></ul>{{ end }}
+      {{ partial "toc-nodes.html" $headings }}
+    </nav>
+  </div>
+</aside>
+<script>
+(function () {
+  function init() {
+    var toc = document.querySelector('.toc-float');
+    if (!toc) return;
+    var links = Array.prototype.slice.call(toc.querySelectorAll('a'));
+    var map = {}, targets = [], seen = {}, TOP = '\u0000top';
+    links.forEach(function (a) {
+      var raw = a.getAttribute('href') || '';
+      // Title / "jump to top" links.
+      if (raw === '#' || raw === '') {
+        (map[TOP] = map[TOP] || []).push(a);
+        if (!seen[TOP]) { seen[TOP] = 1; targets.push({ id: TOP, el: document.body, top: 0 }); }
+        a.addEventListener('click', function (e) {
+          e.preventDefault();
+          var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+        });
+        return;
+      }
+      var id = decodeURIComponent(raw.replace(/^#/, ''));
+      var el = id && document.getElementById(id);
+      if (!el) return;
+      (map[id] = map[id] || []).push(a);
+      if (!seen[id]) { seen[id] = 1; targets.push({ id: id, el: el, top: 0 }); }
+    });
+    if (!targets.length) return;
+
+    var currentId = null, ticking = false;
+
+    // Cache absolute offsets so the scroll handler never reads layout.
+    function measure() {
+      var y = window.scrollY || window.pageYOffset;
+      targets.forEach(function (t) {
+        t.top = t.el === document.body ? 0 : t.el.getBoundingClientRect().top + y;
+      });
+    }
+    function setActive(id) {
+      if (id === currentId) return;
+      if (currentId && map[currentId]) map[currentId].forEach(function (a) {
+        a.classList.remove('active');
+        a.removeAttribute('aria-current');
+      });
+      currentId = id;
+      if (id && map[id]) map[id].forEach(function (a) {
+        a.classList.add('active');
+        a.setAttribute('aria-current', 'true');
+      });
+    }
+    function update() {
+      ticking = false;
+      var pos = (window.scrollY || window.pageYOffset) + 130, active = null;
+      for (var i = 0; i < targets.length; i++) {
+        if (targets[i].top <= pos) active = targets[i];
+      }
+      setActive(active ? active.id : null);
+    }
+    function onScroll() {
+      if (!ticking) { ticking = true; requestAnimationFrame(update); }
+    }
+
+    measure();
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', function () { measure(); onScroll(); }, { passive: true });
+    // Re-measure after late layout shifts (images, fonts).
+    window.addEventListener('load', function () { measure(); update(); });
+  }
+
+  // The partial renders before <content>, so wait for the DOM (headings).
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+{{- end }}

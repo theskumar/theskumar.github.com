@@ -15,10 +15,16 @@
       --code-background-color: light-dark(#f2f2f2,  #303446);
       --code-color:            light-dark(#222,     #c6d0f5);
       --blockquote-color:      light-dark(#222,     #ccc);
+      --toc-dash:              light-dark(#c8c8c8, #3c4c55);
+      --toc-dash-active:       light-dark(#3273dc, #8cc2dd);
+      --toc-panel-bg:          light-dark(#fff,     #04303a);
+      --toc-panel-border:      light-dark(#ececec, #16424d);
   }
 
   [data-theme="light"] { color-scheme: light; }
   [data-theme="dark"]  { color-scheme: dark; }
+
+  html { scroll-behavior: smooth; }
 
   {{ partial "syntax.css" . | safeCSS }}
 
@@ -100,7 +106,7 @@
       color: var(--code-color);
       padding-left: 20px;
       font-style: italic;
-      margin-left: 0;
+      margin-left: 20px;
   }
 
   footer {
@@ -182,6 +188,125 @@
   ul.blog-posts li a:visited {
       color: var(--visited-color);
   }
+  /* Notion-style floating table of contents (large screens only) */
+  .toc-float { display: none; }
+
+  @media (min-width: 820px) {
+    .toc-float {
+        display: block;
+        position: fixed;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        z-index: 50;
+    }
+    .toc-float .toc-nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* both views crossfade with a simple opacity transition */
+    .toc-rail,
+    .toc-panel {
+        transition: opacity 0.3s ease;
+    }
+
+    /* dash rail: always present, fades out on reveal */
+    .toc-rail {
+        padding: 10px 14px 10px 10px;
+        opacity: 1;
+    }
+    .toc-rail .toc-nav li {
+        display: flex;
+        justify-content: flex-end;
+    }
+    .toc-rail .toc-nav a {
+        display: block;
+        height: 2px;
+        width: 18px;
+        margin: 9px 0;
+        background: var(--toc-dash);
+        border-radius: 2px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-indent: 200%;
+        transition: background-color 0.2s ease, width 0.2s ease;
+    }
+    .toc-rail .toc-nav ul ul a { width: 11px; }
+    .toc-rail .toc-nav a.active {
+        background: var(--toc-dash-active);
+        width: 26px;
+    }
+
+    /* text panel: overlays the rail, fades in on reveal.
+       opacity (not visibility:hidden) keeps links focusable so keyboard
+       users can tab in and trigger :focus-within below. */
+    .toc-panel {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        width: 280px;
+        max-height: 80vh;
+        overflow-y: auto;
+        padding: 8px 6px;
+        background: var(--toc-panel-bg);
+        border: 1px solid var(--toc-panel-border);
+        border-radius: 10px;
+        box-shadow: 0 10px 34px rgba(0, 0, 0, 0.18);
+        opacity: 0;
+        pointer-events: none;
+    }
+    .toc-panel .toc-nav ul ul { padding-left: 14px; }
+    .toc-panel .toc-nav a {
+        display: block;
+        margin: 1px 0;
+        padding: 4px 9px;
+        border-radius: 6px;
+        font-size: 0.82em;
+        line-height: 1.35;
+        color: var(--text-color);
+    }
+    .toc-panel .toc-nav a:hover {
+        background: var(--code-background-color);
+        text-decoration: none;
+    }
+    .toc-panel .toc-nav a.active {
+        color: var(--heading-color);
+        background: var(--code-background-color);
+        font-weight: bold;
+    }
+    /* page title / jump-to-top entry (bolds only when active, like the rest) */
+    .toc-panel .toc-nav a.toc-top {
+        color: var(--heading-color);
+        margin-bottom: 4px;
+    }
+    /* keyboard focus ring inside the panel */
+    .toc-panel .toc-nav a:focus-visible {
+        outline: 2px solid var(--toc-dash-active);
+        outline-offset: 1px;
+    }
+
+    /* reveal on hover OR keyboard focus within the region */
+    .toc-float:hover .toc-rail,
+    .toc-float:focus-within .toc-rail { opacity: 0; }
+    .toc-float:hover .toc-panel,
+    .toc-float:focus-within .toc-panel {
+        opacity: 1;
+        pointer-events: auto;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .toc-rail,
+    .toc-panel,
+    .toc-rail .toc-nav a {
+        transition: none;
+    }
+  }
+
   .footnotes {
     font-size: calc(var(--font-scale) * 0.8);
   }

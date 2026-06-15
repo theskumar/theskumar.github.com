@@ -21,6 +21,7 @@ wife, son, and our dog [Hachi] keep me grounded 🐶.
 
 ### My most recent posts
 
+- [My Local LLM On A 32 GB M1 Pro](./blog/local-llm-on-an-m1-pro.md)
 - [Django ORM: From sync_to_async Threads to Native psycopg3](./blog/django-async-orm-deep-dive.md)
 - [How I Optimized My Zsh Startup Time](./blog/optimizing-zsh-startup-time.md)
 - [The Great Fork: How Redis Lost Its Soul and Valkey Found It](./blog/the-great-fork-of-2024-valkey.md)

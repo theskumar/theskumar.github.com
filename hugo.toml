@@ -39,7 +39,13 @@ weight = 3
 
 [params]
 # The "description" of your website. This is used in the meta data of your generated html.
-description = "Personal site of Saurabh Kumar :heart:"
+description = "Personal site and blog of Saurabh Kumar :heart:"
+enablePostNavigator = true
+
+# Show the floating table of contents by default on pages that have headings.
+# Individual pages can opt out with `toc = false` in their front matter.
+# (The TOC partial itself only renders when the page actually has headings.)
+toc = true
 
 
 # These "images" are used for the structured data templates. This will show up, when

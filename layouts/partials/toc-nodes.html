@@ -1,0 +1,15 @@
+{{- /*
+  Recursive renderer for a Hugo headings tree (.Fragments.Headings).
+  Receives a slice of headings and emits a nested <ul>. Building the
+  markup ourselves (instead of .TableOfContents) lets us render the tree
+  twice — once for the rail, once for the panel — without duplicating the
+  `id="TableOfContents"` that Hugo's built-in TOC hard-codes.
+*/ -}}
+<ul>
+  {{- range . }}
+  <li>
+    {{- with .ID -}}<a href="#{{ . }}">{{ end }}{{ .Title | safeHTML }}{{ with .ID }}</a>{{ end -}}
+    {{- with .Headings }}{{ partial "toc-nodes.html" . }}{{ end -}}
+  </li>
+  {{- end }}
+</ul>
