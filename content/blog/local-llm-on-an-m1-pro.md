@@ -95,6 +95,8 @@ tmux new-session -d -s llama -c "$PWD" \\
     -hfd unsloth/gemma-4-26B-A4B-it-GGUF:Q8_0-MTP \\
     --spec-type draft-mtp --spec-draft-n-max 3 \\
     -ngl 999 -fa on -c 32768 --parallel 1 \\
+    --reasoning off --reasoning-budget 0 \\
+    --temp 0.7 --repeat-penalty 1.1 --repeat-last-n 256 \\
     --host 127.0.0.1 --port 8082 \\
     2>&1 | tee -a logs/llama-server.log"
 """
@@ -135,7 +137,7 @@ lcl stop     # free the ~22 GB of RAM
       "models": [{
         "id": "gemma-4-26B-A4B-it-UD-Q4_K_XL.gguf",
         "name": "Gemma 4 26B-A4B Q4 + MTP",
-        "reasoning": true,
+        "reasoning": false,
         "input": ["text"],
         "contextWindow": 32768,
         "maxTokens": 8192,
@@ -146,7 +148,34 @@ lcl stop     # free the ~22 GB of RAM
 }
 ```
 
-And a `local` mode in `modes.json` pointing at it. Set `"reasoning": true`. Gemma 4 IT thinks by default and returns its working in `reasoning_content`, leaving `content` empty if you cap `max_tokens` before it finishes thinking. That one caught me out on the first benchmark: a tiny token budget produced an empty answer because the model had spent the whole budget reasoning.
+And a `local` mode in `modes.json` pointing at it. The benchmark answers came back clean, so I gave it real work, and that is where it broke.
+
+## The Thinking Spiral
+
+The first real task I handed Gemma was trivial: rewrite a Hugo template so a list of tags renders as "tagged A, B and C" instead of "A B C". A ten-line edit. Haiku does it in one tool call. Gemma read the file, started thinking, and never stopped. The session export shows a single reasoning block of **32,000 characters**: it derived the correct off-by-one logic, then re-derived it, then second-guessed the whitespace, then re-read its own conclusion and started over. It never emitted the edit. I aborted it. I told it "you are going in loop." It thought about that, too, and aborted again.
+
+This is the failure mode the chat-window benchmarks hide. Gemma 4 IT ships with thinking on, and llama.cpp's default reasoning budget is unlimited (`-1`). In a chat that is fine; the model thinks, then answers. Inside an agent loop, where the next move is supposed to be a tool call, an unbounded thinking budget on a small model is a trap. There is nothing forcing the transition from reasoning to acting, and a 4B-active MoE is not big enough to find the exit on its own. The default sampling makes it worse: `--repeat-penalty` defaults to `1.0`, which is to say off, so nothing discourages the model from looping on its own reasoning.
+
+My first instinct was the biggest hammer: turn thinking off entirely. It worked. But "it worked" is where most debugging stops and most of the understanding gets lost, so I made the model prove which flag was actually doing the work. I had pi reconstruct the exact failing scenario from the session export, same system prompt, same tools, same file, same prompt, and replay it against two server configs:
+
+```
+--reasoning off  --reasoning-budget 0                      # A: no thinking
+--reasoning auto --reasoning-budget 1024 --repeat-penalty 1.1  # B: bounded thinking
+```
+
+Same prompt, same machine, here is what came back:
+
+| Config | Reasoning emitted | Outcome |
+| --- | --- | --- |
+| Original (unbounded, no repeat penalty) | **32,000 chars** | spiral, aborted, no edit |
+| A — reasoning off | 0 chars | clean `read` → `edit` |
+| B — bounded to 1024 | **518 chars** | clean `read` → `edit` |
+
+The lesson is in the third row. Capping the budget alone stopped the spiral: the model thought for 518 characters, decided, and acted. So the bug was never "thinking is bad." It was "*unbounded* thinking is bad," and `--reasoning off` is just the most aggressive way to bound it to zero. Both configs produced the same edit, the same slightly-clumsy Hugo logic. The extra reasoning in config B bought nothing on this task; that is a 4B-active model hitting its ceiling, not a budget I can tune my way around.
+
+Two more things I only learned by testing. `--repeat-penalty` is an orthogonal fix and worth keeping regardless: at `1.0` it is off, and it guards the *content* against loops, not just the thinking. And `--reasoning off` does not lobotomise the model the way the name suggests. I gave it a reasoning trap with thinking off, and it still worked the problem out, step by step, *in its visible answer*, and got it right. What the flag removes is the separate, hidden, budget-less thinking phase, not the model's ability to reason. For an agent loop that is the right trade: when reasoning happens it is visible in the content and bounded by the task, instead of a hidden phase that can run away.
+
+So for the *fast* slot I keep it off. The whole point of the slot is a quick, direct tool call; the test showed bounded thinking adds latency with no quality gain here, and if I want real reasoning I switch to a cloud mode. That is also why `"reasoning"` is `false` in the model config above, with thinking disabled at the server there is nothing for pi to render. The middle ground is real and now proven, though: if I ever stand up a `local-deep` mode for harder offline work, `--reasoning auto --reasoning-budget 1024` is a configuration I have watched stay out of the ditch. It just wants its own server on its own port, because `--reasoning off` is a hard gate you cannot toggle back on per request.
 
 **What it actually does**, measured on the M1 Pro:
 
@@ -171,7 +200,7 @@ In my setup, that means:
 
 None of these need a frontier model. They need something that responds now and gets the structure right. That is the bar Gemma 4 has to clear to take the slot from Haiku.
 
-So I gave it the slot. I went back and forth here. The cautious move was to add a separate `local` mode, keep `fast` on Haiku, and switch into the local one when I felt like testing it. I know how that goes: I would never remember to switch, and a week later I would have no data. So `fast` now points at Gemma 4 and the Haiku mode moved to `lcl`, there if I want to compare. Local models can be brilliant in a chat window and brittle inside an agent loop, and the only way I learn which one Gemma 4 is here is by living with it in the slot that fires twenty times a day. If it holds up, on tool calling, on diff quality, on the ten-line edits that fill my day, it stays. If it does not, the rollback is one line in `modes.json`.
+So I gave it the slot. I went back and forth here. The cautious move was to add a separate `local` mode, keep `fast` on Haiku, and switch into the local one when I felt like testing it. I know how that goes: I would never remember to switch, and a week later I would have no data. So `fast` now points at Gemma 4 and the Haiku mode moved to `lcl`, there if I want to compare. Local models can be brilliant in a chat window and brittle inside an agent loop, as the thinking spiral already showed, and the only way I learn which one Gemma 4 is here is by living with it in the slot that fires twenty times a day. If it holds up, on tool calling, on diff quality, on the ten-line edits that fill my day, it stays. If it does not, the rollback is one line in `modes.json`.
 
 ## What I Am Not Doing Yet
 
