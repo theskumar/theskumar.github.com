@@ -34,3 +34,6 @@ wife, son, and our dog [Hachi] keep me grounded 🐶.
 Pricing is tailored to meet individual or organizational needs.
 
 ### Get in touch
+
+- Email me at `hello@<this domain>`, I'll get back to you as asap.
+- I'm also on [Mastodon](https://mastodon.social/@theskumar), [GitHub](https://github.com/theskumar) & [LinkedIn](https://www.linkedin.com/in/theskumar/)

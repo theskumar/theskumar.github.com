@@ -48,7 +48,7 @@ weight = 4
 [params]
 # The "description" of your website. This is used in the meta data of your generated html.
 description = "Personal site and blog of Saurabh Kumar :heart:"
-enablePostNavigator = true
+enablePostNavigator = false
 
 # Show the floating table of contents by default on pages that have headings.
 # Individual pages can opt out with `toc = false` in their front matter.
