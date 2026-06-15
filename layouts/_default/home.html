@@ -1,5 +1,6 @@
 {{ define "main" }}
 <section class="hero reveal">
+  <canvas class="fx-hero" id="fx-hero" aria-hidden="true"></canvas>
   {{ with .Params.eyebrow }}<div class="eyebrow">{{ . }}</div>{{ end }}
   {{ with .Params.tagline }}<h1>{{ . }}</h1>{{ end }}
   <div class="hero-lead">{{ .Content }}</div>

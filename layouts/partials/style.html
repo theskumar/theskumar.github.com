@@ -62,15 +62,33 @@
       text-rendering: optimizeLegibility;
   }
 
-  /* Soft ambient warmth behind everything. No harsh flat fields. */
+  /* Soft ambient warmth behind everything. A single slow-drifting radial blob. */
   body::before {
+      content: "";
+      position: fixed;
+      inset: -20%;
+      z-index: -2;
+      pointer-events: none;
+      background:
+        radial-gradient(50% 42% at 50% 0%, light-dark(rgba(154,59,46,0.05), rgba(224,135,106,0.06)), transparent 70%);
+      animation: fx-drift 36s ease-in-out infinite alternate;
+      will-change: transform;
+  }
+  @keyframes fx-drift {
+      0%   { transform: translate3d(-3%, -2%, 0) scale(1); }
+      100% { transform: translate3d(4%, 3%, 0) scale(1.14); }
+  }
+
+  /* Procedural film grain for editorial depth. Static, tiled, zero runtime cost. */
+  body::after {
       content: "";
       position: fixed;
       inset: 0;
       z-index: -1;
       pointer-events: none;
-      background:
-        radial-gradient(60% 50% at 50% -5%, light-dark(rgba(154,59,46,0.04), rgba(224,135,106,0.05)), transparent 70%);
+      opacity: light-dark(0.03, 0.014);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 160px 160px;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -224,7 +242,25 @@
   main { line-height: 1.7; }
 
   /* ---- Home: hero ---- */
-  .hero { padding: 1.5rem 0 2.5rem; }
+  .hero { padding: 1.5rem 0 2.5rem; position: relative; }
+  .hero > *:not(.fx-hero) { position: relative; z-index: 1; }
+  /* Generative dot-wave canvas. `color` resolves the theme accent for the JS to read. */
+  .fx-hero {
+      position: absolute;
+      top: -8px;
+      right: -12px;
+      width: min(440px, 52%);
+      height: 100%;
+      z-index: 0;
+      opacity: 0.75;
+      pointer-events: none;
+      color: light-dark(#9A3B2E, #E0876A);
+      -webkit-mask-image: linear-gradient(to left, #000 35%, transparent 96%);
+      mask-image: linear-gradient(to left, #000 35%, transparent 96%);
+  }
+  @media (max-width: 720px) {
+      .fx-hero { width: 66%; opacity: 0.5; }
+  }
   .eyebrow {
       font-family: var(--font-mono);
       font-size: 0.74rem;
@@ -465,6 +501,7 @@
       html { scroll-behavior: auto; }
       .js .reveal { opacity: 1; transform: none; transition: none; }
       .toc-rail, .toc-panel, .toc-rail .toc-nav a { transition: none; }
+      body::before { animation: none; }
   }
 
   /* ---- Notion-style floating TOC (large screens only) ---- */
