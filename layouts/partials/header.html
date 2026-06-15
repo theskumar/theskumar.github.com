@@ -30,8 +30,9 @@
   (function() {
     var stored = localStorage.getItem('theme');
     var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    var isDark = stored === 'dark' || (!stored && prefersDark);
-    if (isDark) document.documentElement.setAttribute('data-theme', 'dark');
+    // Resolve to an explicit theme so toggling is deterministic regardless of OS setting.
+    var theme = (stored === 'dark' || stored === 'light') ? stored : (prefersDark ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
 
     document.addEventListener('DOMContentLoaded', function() {
       var btn = document.getElementById('theme-toggle');
@@ -43,13 +44,9 @@
       updateIcon();
       btn.addEventListener('click', function() {
         var dark = document.documentElement.getAttribute('data-theme') === 'dark';
-        if (dark) {
-          document.documentElement.removeAttribute('data-theme');
-          localStorage.setItem('theme', 'light');
-        } else {
-          document.documentElement.setAttribute('data-theme', 'dark');
-          localStorage.setItem('theme', 'dark');
-        }
+        var next = dark ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
         updateIcon();
       });
     });

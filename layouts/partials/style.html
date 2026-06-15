@@ -378,10 +378,33 @@
   }
   .post-meta { display: flex; gap: 14px; align-items: center; color: var(--muted); font-size: 0.88rem; }
   content { display: block; }
+  /* Standalone pages (now, projects) carry their title as an in-content h1 — make it editorial. */
+  content > h1:first-child {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: clamp(2rem, 4.5vw, 2.6rem);
+      letter-spacing: -0.025em;
+      margin: 0.4rem 0 1.4rem;
+  }
   content h2 { font-family: var(--font-sans); }
   content ul, content ol { padding-left: 1.3em; }
   content li { margin: 0.3em 0; }
   content li::marker { color: var(--faint); }
+
+  content details {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.5em 1em;
+      margin: 0 0 1.4em;
+      background: var(--surface);
+  }
+  content details summary {
+      cursor: pointer;
+      color: var(--muted);
+      font-size: 0.92rem;
+  }
+  content details summary:hover { color: var(--heading); }
+  content details > *:not(summary) { margin-top: 0.8em; }
 
   .article-tags {
       margin-top: 3rem;
