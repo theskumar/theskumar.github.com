@@ -53,10 +53,6 @@
   ::view-transition-new(root) {
       animation: vt-fade-in 0.5s cubic-bezier(0.4, 0, 0.2, 1) both;
   }
-  ::view-transition-group(site-header) {
-      animation-duration: 0.5s;
-      animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  }
 
   {{ partial "syntax.css" . | safeCSS }}
 
@@ -204,7 +200,7 @@
   }
 
   /* ---- Header ---- */
-  header { margin-bottom: 2.5rem; view-transition-name: site-header; }
+  header { margin-bottom: 2.5rem; }
   .header-wrap {
       display: flex;
       align-items: center;
