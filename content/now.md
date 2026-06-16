@@ -1,7 +1,5 @@
 +++
 title = "Now"
-menu = "main"
-weight = 4
 +++
 
 # What I'm doing right now

@@ -9,7 +9,7 @@
 .bg,
 .chroma {
     color: var(--code-color);
-    background-color: var(--code-background-color);
+    background-color: var(--code-bg);
 }
 
 .chroma .lnlinks { outline: 0; text-decoration: none; color: inherit; }

@@ -1,0 +1,19 @@
+{{ define "main" }}
+<div class="page-head reveal">
+  {{ if .Data.Singular }}
+    <h1>#{{ .Title }}</h1>
+    <p class="sub"><a href="{{ "blog" | relURL }}">All writing</a></p>
+  {{ else }}
+    <h1>{{ if eq .Section "blog" }}Writing{{ else }}{{ .Title }}{{ end }}</h1>
+    <p class="sub">Notes on backend systems, performance, and the tools I lean on.</p>
+  {{ end }}
+</div>
+
+<ul class="blog-posts reveal">
+  {{ range .Pages.ByDate.Reverse }}
+  {{ partial "post-entry.html" . }}
+  {{ else }}
+  <li class="entry">No posts yet.</li>
+  {{ end }}
+</ul>
+{{ end }}

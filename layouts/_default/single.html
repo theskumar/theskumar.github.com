@@ -1,45 +1,33 @@
 {{ define "main" }}
-{{ if eq .Type "blog" }}{{ if not .Params.menu }}
-<h1>{{ .Title }}</h1>
-<p>
-  <i>
-    <time datetime='{{ .Date.Format "2006-01-02" }}'>
-      {{ .Date.Format (default "02 Jan, 2006" .Site.Params.dateFormat) }}
-    </time>
-  </i>
-</p>
-{{ end }}{{ end }}
+<article class="post">
+{{ if eq .Type "blog" }}
+<header class="post-header reveal">
+  <div class="eyebrow">Writing</div>
+  <h1>{{ .Title }}</h1>
+  <div class="post-meta">
+    <time datetime='{{ .Date.Format "2006-01-02" }}'>{{ .Date.Format "02 Jan, 2006" }}</time>
+    <span>·</span>
+    <span>{{ .ReadingTime }} min read</span>
+  </div>
+</header>
+{{ end }}
 
 {{ if .Param "toc" }}{{ partial "toc.html" . }}{{ end }}
 
-<content>
+<content{{ if ne .Type "blog" }} class="reveal"{{ end }}>
   {{ .Content }}
-
 </content>
+
 {{ $tags := .GetTerms "tags" }}
 {{ if $tags }}
   <p class="article-tags">
-    {{ $n := len $tags }}
-    This entry was tagged
-    {{ if eq $n 1 }}
-      {{ range $tags }}<a href="{{ .Permalink }}">{{ .Data.Term }}</a>{{ end }}
-    {{ else }}
-      {{ range $i, $t := $tags }}
-        {{ if eq $i (sub $n 1) -}}
-          and <a href="{{ $t.Permalink }}">{{ $t.Data.Term }}</a>
-        {{- else if eq $i (sub $n 2) -}}
-          <a href="{{ $t.Permalink }}">{{ $t.Data.Term }}</a>
-        {{- else -}}
-          <a href="{{ $t.Permalink }}">{{ $t.Data.Term }}</a>,
-        {{- end }}
-      {{ end }}
-    {{ end }}
+    Tagged
+    {{ range $tags }}<a href="{{ .Permalink }}">{{ .Data.Term }}</a>{{ end }}
   </p>
 {{ end }}
 
-
-{{ if eq .Type "blog" }}{{ if (.Param "enablePostNavigator")}}
+{{ if eq .Type "blog" }}{{ if (.Param "enablePostNavigator") }}
 {{- partial "post_navigator.html" . -}}
 {{ end }}{{ end }}
-
-  {{ end }}
+</article>
+{{ end }}

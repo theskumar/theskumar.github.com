@@ -1,29 +1,14 @@
 {{ define "main" }}
-    <div class="home-content">
-        {{ .Content }}
-    </div>
+<div class="page-head reveal">
+  <h1>Writing</h1>
+  {{ with .Content }}<div class="sub">{{ . }}</div>{{ end }}
+</div>
 
-    {{/*
-    {{ $blogPages := where .Site.RegularPages "Section" "blog" }}
-    {{ $sortedBlogPages := $blogPages.ByDate.Reverse }}
-    {{ if $sortedBlogPages }}
-        <p>I recently wrote about:</p>
-
-        <ul class="blog-posts">
-            {{ range $sortedBlogPages }}
-            <li>
-              <span>
-                <i>
-                  <time datetime='{{ .Date.Format "2006-01-02" }}'>
-                    {{ .Date.Format (default "02 Jan, 2006" .Site.Params.dateFormat) }}
-                  </time>
-                </i>
-              </span>
-              <a href="{{ .Permalink }}">{{ .Title }}</a>
-            </li>
-            {{ end }}
-        </ul>
-    {{ end }}
-    */}}
-
+<ul class="blog-posts reveal">
+  {{ range (where .Site.RegularPages "Section" "blog").ByDate.Reverse }}
+  {{ partial "post-entry.html" . }}
+  {{ else }}
+  <li class="entry">No posts yet.</li>
+  {{ end }}
+</ul>
 {{ end }}
