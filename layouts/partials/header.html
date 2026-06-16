@@ -43,6 +43,8 @@
       }
       el.setAttribute('data-theme', next);
       localStorage.setItem('theme', next);
+      var m = document.querySelector('meta[name="theme-color"]');
+      if (m) m.setAttribute('content', next === 'dark' ? '#1A1917' : '#FBFBFA');
     });
   });
 </script>

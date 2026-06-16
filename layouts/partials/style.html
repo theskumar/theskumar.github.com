@@ -38,7 +38,9 @@
 
   *, *::before, *::after { box-sizing: border-box; }
 
-  html { scroll-behavior: smooth; }
+  /* Background on html (not just the centered body) so side gutters and the iOS
+     overscroll/rubber-band area match the theme instead of showing white. */
+  html { scroll-behavior: smooth; background-color: var(--bg); }
 
   /* Smooth cross-document navigation (progressive enhancement; no-op where unsupported). */
   @view-transition { navigation: auto; }

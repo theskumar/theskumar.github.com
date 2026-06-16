@@ -1,3 +1,5 @@
+<!-- Browser UI (mobile Safari address bar) tint. Values match --bg; updated on toggle. -->
+<meta name="theme-color" content="#FBFBFA">
 <script>
   (function () {
     var el = document.documentElement;
@@ -5,7 +7,10 @@
     // Resolve theme before first paint so colors and the toggle icon never flash.
     var stored = localStorage.getItem('theme');
     var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    el.setAttribute('data-theme', (stored === 'dark' || stored === 'light') ? stored : (prefersDark ? 'dark' : 'light'));
+    var theme = (stored === 'dark' || stored === 'light') ? stored : (prefersDark ? 'dark' : 'light');
+    el.setAttribute('data-theme', theme);
+    var m = document.querySelector('meta[name="theme-color"]');
+    if (m) m.setAttribute('content', theme === 'dark' ? '#1A1917' : '#FBFBFA');
 
     // When arriving via a cross-document view transition, let the page cross-fade be the
     // only entrance animation. Otherwise pages with .reveal content (home/about/list) would
