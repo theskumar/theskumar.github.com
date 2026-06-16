@@ -161,9 +161,12 @@ Hard-won, ranked by how easily they bite again. Honor these.
 
 7. **View Transitions.** `@view-transition { navigation: auto }` enables cross-document transitions
    (progressive enhancement; no-op where unsupported). Two traps:
-   - Naming a single persistent element (we tried `view-transition-name: site-header`) makes the
-     transition read **differently across pages of different heights**. Prefer a uniform root cross-fade
-     unless every page shares geometry.
+   - `view-transition-name: site-header` makes the header its own group: it holds position and its
+     contents cross-fade (synced via `::view-transition-group(site-header)`). This is safe ONLY because
+     the header geometry is identical on every page (verified `x18 y22 w394 h85`). Naming an element
+     whose box differs between pages would make it morph/slide — name persistent elements only when
+     their geometry is stable across routes. (A perceived "header inconsistency" earlier was actually
+     the `.reveal` collision below, not the header.)
    - Easing: `cubic-bezier(0.16,1,0.3,1)` is ease-*out* (fast start) and felt abrupt. Use ease-in-out
      (`cubic-bezier(0.4,0,0.2,1)`) with explicit overlapping fade-in/out keyframes.
    - **VT + `.reveal` interaction:** pages with `.reveal` content (home/about/list) double-animated on
