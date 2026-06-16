@@ -193,6 +193,10 @@
       line-height: 1.5;
       margin: 1.6em 0;
   }
+  /* Collapse the outer margins of the blockquote's first/last child (p, list, etc.)
+     so its inner padding is even regardless of how many paragraphs it holds. */
+  blockquote > :first-child { margin-top: 0; }
+  blockquote > :last-child  { margin-bottom: 0; }
 
   kbd {
       font-family: var(--font-mono);
