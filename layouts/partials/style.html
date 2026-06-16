@@ -3,7 +3,6 @@
       color-scheme: light dark;
 
       --width: 720px;
-      --width-wide: 940px;
 
       /* Editorial type system. Serif for display, geometric sans for UI, mono for meta. */
       --font-serif: 'Newsreader', 'Lyon Text', Georgia, 'Times New Roman', serif;
@@ -25,7 +24,6 @@
       --faint:            light-dark(#9B9A96,            #6F6C66);
 
       --accent:           light-dark(#9A3B2E,            #E0876A);
-      --accent-soft:      light-dark(#FDEBEC,            #2E211D);
 
       --code-bg:          light-dark(#F4F3F1,            #242220);
       --code-color:       light-dark(#1A1A1A,            #E7E4DE);
@@ -87,8 +85,8 @@
       will-change: transform;
   }
   @keyframes fx-drift {
-      0%   { transform: translate3d(-3%, -2%, 0) scale(1); }
-      100% { transform: translate3d(4%, 3%, 0) scale(1.14); }
+      0%   { transform: translate3d(-3%, -2%, 0); }
+      100% { transform: translate3d(4%, 4%, 0); }
   }
 
   /* Procedural film grain for editorial depth. Static, tiled, zero runtime cost. */
@@ -208,7 +206,6 @@
       gap: 12px;
   }
   .title { text-decoration: none; }
-  .title:hover { text-decoration: none; }
   .title .brand {
       font-family: var(--font-serif);
       font-size: 1.35rem;
@@ -235,7 +232,6 @@
   }
   nav.site-nav a:hover { color: var(--heading); }
   nav.site-nav a.active { color: var(--heading); }
-  nav.site-nav .nav-spacer { flex: 1; }
 
   .theme-toggle {
       position: relative;
@@ -271,7 +267,7 @@
   html.theme-anim *::before,
   html.theme-anim *::after {
       transition: background-color 0.45s ease, color 0.45s ease,
-                  border-color 0.45s ease, fill 0.45s ease, opacity 0.45s ease !important;
+                  border-color 0.45s ease !important;
   }
 
   main { line-height: 1.7; }

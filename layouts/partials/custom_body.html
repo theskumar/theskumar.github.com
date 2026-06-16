@@ -26,13 +26,14 @@
     var color = 'rgb(154,59,46)';
     var W = 0, H = 0, dots = [], rafId = null, visible = false;
 
-    function readColor() { color = getComputedStyle(canvas).color || color; }
+    function readColor() { color = getComputedStyle(canvas).color || color; ctx.fillStyle = color; }
 
     function layout() {
       var r = canvas.getBoundingClientRect();
       W = Math.max(1, r.width); H = Math.max(1, r.height);
       canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.fillStyle = color; // re-apply: assigning canvas.width resets all 2D context state
       var spacing = W < 360 ? 34 : 30;
       var cols = Math.ceil(W / spacing) + 1, rows = Math.ceil(H / spacing) + 1;
       while (cols * rows > 700) { spacing += 4; cols = Math.ceil(W / spacing) + 1; rows = Math.ceil(H / spacing) + 1; }
@@ -42,7 +43,6 @@
 
     function draw(t) {
       ctx.clearRect(0, 0, W, H);
-      ctx.fillStyle = color;
       for (var i = 0; i < dots.length; i++) {
         var dx = dots[i][0], dy = dots[i][1];
         var w = Math.sin(dx * 0.045 + dy * 0.05 + t * 0.0009);
@@ -55,7 +55,7 @@
       ctx.globalAlpha = 1;
     }
 
-    function frame(ts) { draw(ts); if (visible && !reduce) rafId = requestAnimationFrame(frame); }
+    function frame(ts) { draw(ts); if (visible) rafId = requestAnimationFrame(frame); }
     function start() { if (reduce) { draw(0); return; } if (rafId == null) rafId = requestAnimationFrame(frame); }
     function stop() { if (rafId != null) { cancelAnimationFrame(rafId); rafId = null; } }
 

@@ -1,6 +1,6 @@
 {{ define "main" }}
 <article class="post">
-{{ if eq .Type "blog" }}{{ if not .Params.menu }}
+{{ if eq .Type "blog" }}
 <header class="post-header reveal">
   <div class="eyebrow">Writing</div>
   <h1>{{ .Title }}</h1>
@@ -10,7 +10,7 @@
     <span>{{ .ReadingTime }} min read</span>
   </div>
 </header>
-{{ end }}{{ end }}
+{{ end }}
 
 {{ if .Param "toc" }}{{ partial "toc.html" . }}{{ end }}
 

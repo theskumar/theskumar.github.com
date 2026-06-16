@@ -6,16 +6,7 @@
 
 <ul class="blog-posts reveal">
   {{ range (where .Site.RegularPages "Section" "blog").ByDate.Reverse }}
-  <li class="entry">
-    <a href="{{ .Permalink }}">
-      <div class="entry-meta">
-        <time datetime='{{ .Date.Format "2006-01-02" }}'>{{ .Date.Format "02 Jan, 2006" }}</time>
-        · {{ .ReadingTime }} min
-      </div>
-      <span class="entry-title">{{ .Title }}</span>
-    </a>
-    {{ with .Description }}<p class="entry-desc">{{ . }}</p>{{ else }}{{ with .Summary }}<p class="entry-desc">{{ . | plainify | truncate 150 }}</p>{{ end }}{{ end }}
-  </li>
+  {{ partial "post-entry.html" . }}
   {{ else }}
   <li class="entry">No posts yet.</li>
   {{ end }}
