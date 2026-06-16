@@ -1,4 +1,13 @@
-<script>document.documentElement.classList.add('js');</script>
+<script>
+  (function () {
+    var el = document.documentElement;
+    el.classList.add('js');
+    // Resolve theme before first paint so colors and the toggle icon never flash.
+    var stored = localStorage.getItem('theme');
+    var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    el.setAttribute('data-theme', (stored === 'dark' || stored === 'light') ? stored : (prefersDark ? 'dark' : 'light'));
+  })();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">

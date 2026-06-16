@@ -27,28 +27,22 @@
 </nav>
 
 <script>
-  (function() {
-    var stored = localStorage.getItem('theme');
-    var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    // Resolve to an explicit theme so toggling is deterministic regardless of OS setting.
-    var theme = (stored === 'dark' || stored === 'light') ? stored : (prefersDark ? 'dark' : 'light');
-    document.documentElement.setAttribute('data-theme', theme);
-
-    document.addEventListener('DOMContentLoaded', function() {
-      var btn = document.getElementById('theme-toggle');
-      function updateIcon() {
-        var dark = document.documentElement.getAttribute('data-theme') === 'dark';
-        btn.querySelector('.sun-icon').style.display = dark ? 'none' : 'block';
-        btn.querySelector('.moon-icon').style.display = dark ? 'block' : 'none';
+  // Theme is initialised in <head> (custom_head.html) before paint. Here we only
+  // handle the click: flip data-theme + persist, and briefly enable a colour cross-fade.
+  document.addEventListener('DOMContentLoaded', function () {
+    var el = document.documentElement;
+    var btn = document.getElementById('theme-toggle');
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var timer;
+    btn.addEventListener('click', function () {
+      var next = el.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      if (!reduce) {
+        el.classList.add('theme-anim');
+        clearTimeout(timer);
+        timer = window.setTimeout(function () { el.classList.remove('theme-anim'); }, 500);
       }
-      updateIcon();
-      btn.addEventListener('click', function() {
-        var dark = document.documentElement.getAttribute('data-theme') === 'dark';
-        var next = dark ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-theme', next);
-        localStorage.setItem('theme', next);
-        updateIcon();
-      });
+      el.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
     });
-  })();
+  });
 </script>

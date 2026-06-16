@@ -226,19 +226,41 @@
   nav.site-nav .nav-spacer { flex: 1; }
 
   .theme-toggle {
+      position: relative;
+      width: 32px;
+      height: 32px;
       background: none;
       border: 1px solid var(--border);
       border-radius: 6px;
-      padding: 6px;
       color: var(--muted);
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       flex-shrink: 0;
       transition: color 0.18s ease, border-color 0.18s ease;
   }
   .theme-toggle:hover { color: var(--heading); border-color: var(--border-strong); }
+  /* Both icons stacked; cross-fade + rotate between them, driven entirely by data-theme
+     so the correct one is painted on first load (no flicker). */
+  .theme-toggle svg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 17px;
+      height: 17px;
+      transition: opacity 0.3s ease, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .theme-toggle .sun-icon  { opacity: 1; transform: translate(-50%, -50%) rotate(0deg) scale(1); }
+  .theme-toggle .moon-icon { opacity: 0; transform: translate(-50%, -50%) rotate(-90deg) scale(0.5); }
+  [data-theme="dark"] .theme-toggle .sun-icon  { opacity: 0; transform: translate(-50%, -50%) rotate(90deg) scale(0.5); }
+  [data-theme="dark"] .theme-toggle .moon-icon { opacity: 1; transform: translate(-50%, -50%) rotate(0deg) scale(1); }
+
+  /* Smooth colour cross-fade, applied only during the toggle window. */
+  html.theme-anim,
+  html.theme-anim *,
+  html.theme-anim *::before,
+  html.theme-anim *::after {
+      transition: background-color 0.45s ease, color 0.45s ease,
+                  border-color 0.45s ease, fill 0.45s ease, opacity 0.45s ease !important;
+  }
 
   main { line-height: 1.7; }
 
@@ -503,6 +525,9 @@
       .js .reveal { opacity: 1; transform: none; transition: none; }
       .toc-rail, .toc-panel, .toc-rail .toc-nav a { transition: none; }
       body::before { animation: none; }
+      .theme-toggle svg { transition: opacity 0.01ms; }
+      html.theme-anim, html.theme-anim *,
+      html.theme-anim *::before, html.theme-anim *::after { transition: none !important; }
   }
 
   /* ---- Notion-style floating TOC (large screens only) ---- */
