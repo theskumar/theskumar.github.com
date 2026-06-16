@@ -6,14 +6,34 @@ title = "Projects"
 
 ### Ongoing
 
-- [python-dotenv](https://github.com/theskumar/python-dotenv) — Feature-rich library for managing environment variables in Python. 8.6k+ stars.
-- AI-Assisted Q&A with source citations and grounding at [south-pole](https://www.southpole.com/), part of their Quality Management Framework.
+- [python-dotenv - Environment variables in Python, done simply](https://github.com/theskumar/python-dotenv) (8.6k+ stars)
+- [South Pole - AI-assisted Q&A with citations, inside their QMS](https://www.southpole.com/)
 
-### Past projects and work
+### Past client work
 
-- [2NDFLOOR](https://www.2ndfloor.org) — Rebuilt the backend and APIs for their Flutter mobile app for this youth mental health community platform, resulting in a 6× surge in community engagement post-launch (2024).
-- [hypha](https://github.com/hyphapp/hypha) — Powerful and flexible software that helps organizations manage their open calls and applications.
-- [Tony Robbins Breakthrough](https://www.tonyrobbins.com/breakthrough-app) — Built the backend services powering this mobile app.
-- [pythonindia/junction](https://github.com/pythonindia/junction) — Web app for managing proposals for conferences like PyCon India and PyDelhi [closed].
-- [pydelhi.org](https://pydelhi.org) — Local Python meetup group in Delhi; helped revive and run it from 2014–2018.
-- [rawmango.com](https://rawmango.com) — Fashion e-commerce website for this brand, since then it's been replaced [closed]
+- [The Motley Fool - Premium subscription platform and the Jester design system](https://www.fool.com/)
+- [Goosehead Insurance - Digital Agent 2.0, the platform their agents live in](https://www.goosehead.com)
+- [Christianity Today - Backend-for-frontend powering their mobile apps](https://www.christianitytoday.com/)
+- [Victoria's Secret Community - Community feed inside their mobile app](https://www.victoriassecret.com/)
+- [2NDFLOOR - Mobile community for youth mental health](https://www.2ndfloor.org)
+- [Urgent Action Fund - Customised grants management platform, built on a private fork of hypha](https://urgentactionfund.org/)
+- [EverFi - Backend for compliance and social impact courses](https://everfi.com)
+- [Beacon Health System - Patient portal for appointments and video visits, HIPAA-compliant](https://www.beaconhealthsystem.org/)
+- [Alpas Wellness Centers - Django backend for a mental health and addiction recovery network](https://alpaswellnesscenters.org/)
+- [Tony Robbins RPM Planner - Web and iOS planner with built-in AI voice coaching](https://rpmplanner.com/)
+- [Tony Robbins Breakthrough - Backend for the mobile app](https://www.tonyrobbins.com/breakthrough-app)
+- [Omstars - Web portal for yoga courses, classes, and subscriptions](https://omstars.com/)
+- [IrisMD - Virtual care platform connecting patients with doctors](https://www.irismd.com/)
+- [Public.com - Initial architecture and build of the investing platform](https://public.com/)
+- [rawmango.com - Fashion e-commerce site](https://rawmango.com) [replaced]
+
+### Open source
+
+- [hypha - Manage open calls and applications for nonprofits](https://github.com/hyphapp/hypha)
+- [pythonindia/junction - Conference proposal management for PyCon India and PyDelhi](https://github.com/pythonindia/junction) [closed]
+
+### Community, teaching & writing
+
+- [Tech Lead on Spoken Tutorials at IIT Bombay - Django platform for an open-source tech literacy initiative by the Govt. of India](https://github.com/Spoken-tutorial/spoken-website) (2017–2018)
+- [pydelhi.org - Delhi Python meetup](https://pydelhi.org) (revived and ran, 2014–2018)
+- [Technical reviewer for Two Scoops of Django](https://www.feldroy.com/products/two-scoops-of-django-3-x) (the book)
