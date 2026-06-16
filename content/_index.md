@@ -3,6 +3,7 @@
 # opengraph structured data template on the home page.
 # See https://ogp.me/ and https://gohugo.io/templates/internal#open-graph.
 title = "Saurabh Kumar"
+aliases = ["/blog/"]
 +++
 
 Notes on backend systems, performance, and the tools I lean on.
