@@ -166,6 +166,12 @@ Hard-won, ranked by how easily they bite again. Honor these.
      unless every page shares geometry.
    - Easing: `cubic-bezier(0.16,1,0.3,1)` is ease-*out* (fast start) and felt abrupt. Use ease-in-out
      (`cubic-bezier(0.4,0,0.2,1)`) with explicit overlapping fade-in/out keyframes.
+   - **VT + `.reveal` interaction:** pages with `.reveal` content (home/about/list) double-animated on
+     arrival — the VT cross-fade captured the new page while reveals were still `opacity:0`, then they
+     faded in again, looking different from pages without reveals (now/projects). Fix: a `pagereveal`
+     listener (`custom_head.html`) adds `html.vt-nav` when `e.viewTransition` is set, and
+     `html.vt-nav .reveal` forces content visible so the cross-fade is the single, uniform entrance.
+     Direct loads (no VT) still get the scroll reveal.
 
 8. **`getComputedStyle` on a custom property returns the unresolved `light-dark(...)` string**, not an
    rgb. To read a theme-resolved color in JS, read a real property — the canvas uses its own `color`

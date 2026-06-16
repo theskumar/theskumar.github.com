@@ -520,6 +520,9 @@
       transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
       transition-delay: calc(var(--index, 0) * 70ms);
   }
+  /* Arrived via a view transition: show reveal content immediately so the cross-fade
+     is the single, uniform entrance on every page (see custom_head.html). */
+  html.vt-nav .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
 
   /* ---- Responsive ---- */
   @media (max-width: 720px) {

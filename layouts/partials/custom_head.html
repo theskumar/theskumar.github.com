@@ -6,6 +6,13 @@
     var stored = localStorage.getItem('theme');
     var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     el.setAttribute('data-theme', (stored === 'dark' || stored === 'light') ? stored : (prefersDark ? 'dark' : 'light'));
+
+    // When arriving via a cross-document view transition, let the page cross-fade be the
+    // only entrance animation. Otherwise pages with .reveal content (home/about/list) would
+    // fade in twice and look different from pages without it (now/projects).
+    window.addEventListener('pagereveal', function (e) {
+      if (e && e.viewTransition) el.classList.add('vt-nav');
+    });
   })();
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
