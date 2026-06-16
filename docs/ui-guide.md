@@ -188,7 +188,9 @@ Hard-won, ranked by how easily they bite again. Honor these.
 10. **Performance: animate `transform`/`opacity` only.** `scale()` in a keyframe forces per-frame
     rasterization of a `fixed` gradient — use translate-only. The global theme cross-fade transitions
     **only paint-only color props** (`background-color,color,border-color`); adding `opacity`/`transform`
-    there promotes every element to a layer and can stutter.
+    there promotes every element to a layer and can stutter. Do include every paint-only color that
+    changes with the theme: `text-decoration-color` was missing, so underlined prose links cross-faded
+    their text but snapped their underline.
 
 11. **Menus are defined once in `hugo.toml`.** Don't also set `menu = "main"` in page front matter —
     it produces "duplicate menu entry" warnings.
