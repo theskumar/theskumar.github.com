@@ -14,7 +14,7 @@
 
 {{ if .Param "toc" }}{{ partial "toc.html" . }}{{ end }}
 
-<content>
+<content{{ if ne .Type "blog" }} class="reveal"{{ end }}>
   {{ .Content }}
 </content>
 
