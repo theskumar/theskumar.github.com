@@ -10,13 +10,21 @@
     <span>{{ .ReadingTime }} min read</span>
   </div>
 </header>
+{{ else if .Params.eyebrow }}
+<section class="hero reveal">
+  <div class="eyebrow">{{ .Params.eyebrow }}</div>
+  {{ with .Params.tagline }}<h1>{{ . }}</h1>{{ end }}
+  <div class="hero-lead">{{ .Content }}</div>
+</section>
 {{ end }}
 
 {{ if .Param "toc" }}{{ partial "toc.html" . }}{{ end }}
 
+{{ if not .Params.eyebrow }}
 <content{{ if ne .Type "blog" }} class="reveal"{{ end }}>
   {{ .Content }}
 </content>
+{{ end }}
 
 {{ $tags := .GetTerms "tags" }}
 {{ if $tags }}

@@ -470,20 +470,29 @@
   content li { margin: 0.3em 0; }
   content li::marker { color: var(--faint); }
 
-  content details {
+  content details,
+  .hero-lead details {
       border: 1px solid var(--border);
       border-radius: 8px;
       padding: 0.5em 1em;
       margin: 0 0 1.4em;
       background: var(--surface);
   }
-  content details summary {
+  content details summary,
+  .hero-lead details summary {
       cursor: pointer;
       color: var(--muted);
       font-size: 0.92rem;
   }
-  content details summary:hover { color: var(--heading); }
-  content details > *:not(summary) { margin-top: 0.8em; }
+  content details summary:hover,
+  .hero-lead details summary:hover { color: var(--heading); }
+  content details > *:not(summary),
+  .hero-lead details > *:not(summary) { margin-top: 0.8em; }
+
+  details[open] > :first-child  { margin-bottom: 0; }
+  details[open] > :last-child  { margin-bottom: 0; }
+  details p {font-size: initial;}
+
 
   .article-tags {
       margin-top: 3rem;

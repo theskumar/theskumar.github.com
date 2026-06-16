@@ -3,10 +3,10 @@ title = "About"
 layout = "about"
 
 [params]
-eyebrow = "Principal Engineer, Web Services · Fueled"
-tagline = "I build backend systems that stay fast under load, and lead the teams that keep them that way."
+eyebrow = "Principal Engineer, Fueled"
+tagline = "I spend most of my time on the unglamorous parts of backend systems, and lead the teams that keep them running."
 +++
 
-Fourteen years of writing and shipping distributed backends in Python, Node, and Go, for teams like Apple, The Motley Fool, Victoria's Secret, Tony Robbins, Revzilla, NationsBenefits, 2NDFLOOR, Goosehead Insurance, and EverFi. I care about the unglamorous parts: connection pools, async boundaries, startup time, the cost of a bad abstraction.
+Fourteen years writing and shipping distributed backends in Python, Node, and Go, across healthcare, media, fintech, edtech, and consumer apps, lately with LLMs somewhere in the loop. I care about the unglamorous parts: connection pools, async boundaries, startup time, the cost of a bad abstraction. Most of the real work is there.
 
 Off the clock, I'm on the outskirts of Delhi with my wife, my son Amay, and our dog [Hachi](https://instagram.com/hachi.softysingh), who all do a fine job of keeping me away from the keyboard.

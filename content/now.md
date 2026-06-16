@@ -1,20 +1,23 @@
 +++
 title = "Now"
+eyebrow = "Updated 16 Jun 2026 · Ghaziabad"
+tagline = "What I'm up to right now."
 +++
-
-# What I'm doing right now
 
 <details>
 
 <summary>What is this?</summary>
 
-Here I keep an up-to-date list of the things I'm focusing on and what I'm doing. Think of it as a more relevant and interesting "About" page. Inspired by [nownownow.com](nownownow.com).
+A snapshot of what's on my plate right now: work, learning, life. Inspired by [nownownow.com](https://nownownow.com).
 
 </details>
 
+**Work:** Leading Web Services at [Fueled](https://fueled.com) as Principal Engineer. Currently shipping AI-assisted Q&A with source citations for [South Pole](https://www.southpole.com/)'s Quality Management Framework, and helping the team push more grounded LLM patterns into client work.
 
-_Last updated Jun 14, 2026, from my apartment in Ghaziabad, India._
+**Side / learning:** Maintaining [python-dotenv](https://github.com/theskumar/python-dotenv) on the slow burn. Reorganized my [dotfiles](https://github.com/theskumar/dotfiles) and [pi setup](https://github.com/theskumar/agent-stuff), going deep on agentic workflows and context engineering. Tinkering with local LLMs on Apple Silicon.
 
-leading team and technologies at [Fueled](https://fueled.com) as Principal Engineer, Web Services. Working on projects with AI, Blockchain as key components.
+**Available for:** Contracting on backend systems and AI / agentic platforms. [Drop a line.](mailto:hello@saurabh-kumar.com)
 
-Fatherhood: if not working i spent time with Hachi and my year old kid, Amay, who just don't know to stop playing! This new phase of life is the best I could have asked for.
+**Life:** Outskirts of Delhi with my wife, our son Amay, and our dog [Hachi](https://instagram.com/hachi.softysingh). Most off-hours go to keeping up with a toddler who refuses to stop playing, and learning to parent him as we go. Heading to Singapore in late August.
+
+**Not doing:** New side projects beyond [python-dotenv](https://github.com/theskumar/python-dotenv). Conference talks or meetups; the blog is where I'm putting that energy instead.
