@@ -23,24 +23,23 @@ blog = "/articles/:year/:month/:slug/"
 tags = "/articles/:slug"
 
 [[menus.main]]
-name = "Home"
+name = "Writing"
 url = "/"
 weight = 1
 
 [[menus.main]]
+name = "About"
+url = "/about/"
+weight = 2
+
+[[menus.main]]
 name = "Projects"
 url = "/projects/"
-weight = 2
+weight = 3
 
 [[menus.main]]
 name = "Now"
 url = "/now/"
-weight = 3
-
-
-[[menus.main]]
-name = "Blog"
-url = "/blog/"
 weight = 4
 
 

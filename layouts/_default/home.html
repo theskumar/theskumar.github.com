@@ -1,70 +1,23 @@
 {{ define "main" }}
-<section class="hero reveal">
-  <canvas class="fx-hero" id="fx-hero" aria-hidden="true"></canvas>
-  {{ with .Params.eyebrow }}<div class="eyebrow">{{ . }}</div>{{ end }}
-  {{ with .Params.tagline }}<h1>{{ . }}</h1>{{ end }}
-  <div class="hero-lead">{{ .Content }}</div>
-  <div class="hero-actions">
-    <a class="btn btn-primary" href="{{ "blog/" | relURL }}">Read the writing</a>
-    <a class="btn btn-ghost" href="#contact">Get in touch</a>
-  </div>
-</section>
+<div class="page-head reveal">
+  <h1>Writing</h1>
+  {{ with .Content }}<div class="sub">{{ . }}</div>{{ end }}
+</div>
 
-{{ $recent := first 4 (where .Site.RegularPages "Section" "blog").ByDate.Reverse }}
-
-<section class="bento reveal">
-  <a class="card col-4 card-link" href="https://github.com/theskumar/python-dotenv">
-    <span class="card-label">Open source</span>
-    <div class="metric">8.6k <small>stars on GitHub</small></div>
-    <h3 style="margin-top:0.7rem">python-dotenv</h3>
-    <p>The library Python developers reach for to read configuration from <code>.env</code> files. Maintained by me since the early days.</p>
-  </a>
-
-  <a class="card col-2 card-link" href="{{ "now/" | relURL }}">
-    <span class="card-label">Now</span>
-    <h3>Leading Web Services at Fueled</h3>
-    <p>Building products with AI and blockchain at their core. And learning to keep up with a toddler.</p>
-  </a>
-
-  <div class="card col-4">
-    <span class="card-label">Recent writing</span>
-    <ul class="post-list">
-      {{ range $recent }}
-      <li>
-        <a href="{{ .Permalink }}">
-          <span class="post-title">{{ .Title }}</span>
-          <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2006" }}</time>
-        </a>
-      </li>
-      {{ end }}
-    </ul>
-  </div>
-
-  <div class="card col-2">
-    <span class="card-label">Worked with</span>
-    <div class="chip-row">
-      <span class="chip">The Motley Fool</span>
-      <span class="chip">Revzilla</span>
-      <span class="chip">Tony Robbins</span>
-      <span class="chip">NationsBenefits</span>
-      <span class="chip">South Pole</span>
-    </div>
-  </div>
-
-  <div class="card col-3">
-    <span class="card-label">Working together</span>
-    <h3>Mentoring &amp; consulting</h3>
-    <p>Pro-bono mentoring for early founders, and independent consulting on problems worth the time. Terms tailored to the work.</p>
-  </div>
-
-  <div class="card col-3" id="contact">
-    <span class="card-label">Get in touch</span>
-    <h3>hello@saurabh-kumar.com</h3>
-    <div class="social-row" style="margin-top:0.9rem">
-      <a href="https://github.com/theskumar">GitHub</a>
-      <a href="https://www.linkedin.com/in/theskumar/">LinkedIn</a>
-      <a href="https://mastodon.social/@theskumar" rel="me">Mastodon</a>
-    </div>
-  </div>
-</section>
+<ul class="blog-posts reveal">
+  {{ range (where .Site.RegularPages "Section" "blog").ByDate.Reverse }}
+  <li class="entry">
+    <a href="{{ .Permalink }}">
+      <div class="entry-meta">
+        <time datetime='{{ .Date.Format "2006-01-02" }}'>{{ .Date.Format "02 Jan, 2006" }}</time>
+        · {{ .ReadingTime }} min
+      </div>
+      <span class="entry-title">{{ .Title }}</span>
+    </a>
+    {{ with .Description }}<p class="entry-desc">{{ . }}</p>{{ else }}{{ with .Summary }}<p class="entry-desc">{{ . | plainify | truncate 150 }}</p>{{ end }}{{ end }}
+  </li>
+  {{ else }}
+  <li class="entry">No posts yet.</li>
+  {{ end }}
+</ul>
 {{ end }}
