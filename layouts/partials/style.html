@@ -42,6 +42,14 @@
 
   html { scroll-behavior: smooth; }
 
+  /* Smooth cross-document navigation (progressive enhancement; no-op where unsupported). */
+  @view-transition { navigation: auto; }
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+      animation-duration: 0.32s;
+      animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
   {{ partial "syntax.css" . | safeCSS }}
 
   body {
@@ -188,7 +196,7 @@
   }
 
   /* ---- Header ---- */
-  header { margin-bottom: 2.5rem; }
+  header { margin-bottom: 2.5rem; view-transition-name: site-header; }
   .header-wrap {
       display: flex;
       align-items: center;
@@ -528,6 +536,9 @@
       .theme-toggle svg { transition: opacity 0.01ms; }
       html.theme-anim, html.theme-anim *,
       html.theme-anim *::before, html.theme-anim *::after { transition: none !important; }
+      ::view-transition-group(*),
+      ::view-transition-old(*),
+      ::view-transition-new(*) { animation: none !important; }
   }
 
   /* ---- Notion-style floating TOC (large screens only) ---- */
