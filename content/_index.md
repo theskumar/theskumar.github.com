@@ -4,6 +4,7 @@
 # See https://ogp.me/ and https://gohugo.io/templates/internal#open-graph.
 title = "Saurabh Kumar"
 layout = "about"
+aliases = ["/about/", "/about"]
 
 [params]
 eyebrow = "Principal Engineer, Fueled"
