@@ -5,17 +5,26 @@
   {{ with .Params.tagline }}<h1>{{ . }}</h1>{{ end }}
   <div class="hero-lead">{{ .Content }}</div>
   <div class="hero-actions">
-    <a class="btn btn-primary" href="{{ "" | relURL }}">Read the writing</a>
+    <a class="btn btn-primary" href="{{ "articles/" | relURL }}">Read the writing</a>
     <a class="btn btn-ghost" href="#contact">Get in touch</a>
   </div>
 </section>
 
 {{ $recent := first 4 (where .Site.RegularPages "Section" "blog").ByDate.Reverse }}
 
+{{ $stars := "8.8k" }}
+{{ with try (resources.GetRemote "https://api.github.com/repos/theskumar/python-dotenv") }}
+  {{ with .Err }}
+    {{ warnf "python-dotenv stars fetch failed: %s" . }}
+  {{ else with .Value }}
+    {{ $stars = printf "%.1fk" (div (index (. | transform.Unmarshal) "stargazers_count") 1000.0) }}
+  {{ end }}
+{{ end }}
+
 <section class="bento reveal">
   <a class="card col-4 card-link" href="https://github.com/theskumar/python-dotenv">
     <span class="card-label">Open source</span>
-    <div class="metric">8.6k <small>stars on GitHub</small></div>
+    <div class="metric">{{ $stars }} <small>stars on GitHub</small></div>
     <h3 style="margin-top:0.7rem">python-dotenv</h3>
     <p>The library Python developers reach for to read configuration from <code>.env</code> files. Maintained by me since the early days.</p>
   </a>
