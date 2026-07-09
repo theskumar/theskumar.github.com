@@ -14,7 +14,7 @@
   {{- partial "style.html" . -}}
   {{- partial "custom_head.html" . -}}
 </head>
-<body>
+<body class="page-{{ .Type }}{{ if .IsHome }} page-home{{ end }}">
   <header>{{- partial "header.html" . -}}</header>
   <main>{{- block "main" . }}{{- end }}</main>
   <footer class="site-footer">{{- partial "footer.html" . -}}</footer>

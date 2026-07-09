@@ -1,30 +1,29 @@
 {{ define "main" }}
-<article class="post">
+<article class="post{{ if ne .Type "blog" }} page-prose{{ end }}">
 {{ if eq .Type "blog" }}
 <header class="post-header reveal">
   <div class="eyebrow">Writing</div>
   <h1>{{ .Title }}</h1>
+  {{ with .Description }}<p class="post-lede">{{ . }}</p>{{ end }}
   <div class="post-meta">
-    <time datetime='{{ .Date.Format "2006-01-02" }}'>{{ .Date.Format "02 Jan, 2006" }}</time>
+    <time datetime='{{ .Date.Format "2006-01-02" }}'>{{ .Date.Format "02 Jan 2006" }}</time>
     <span>·</span>
     <span>{{ .ReadingTime }} min read</span>
   </div>
 </header>
 {{ else if .Params.eyebrow }}
-<section class="hero reveal">
+<header class="page-head reveal">
+  <span class="crosshair" aria-hidden="true"></span>
   <div class="eyebrow">{{ .Params.eyebrow }}</div>
   {{ with .Params.tagline }}<h1>{{ . }}</h1>{{ end }}
-  <div class="hero-lead">{{ .Content }}</div>
-</section>
+</header>
 {{ end }}
 
 {{ if .Param "toc" }}{{ partial "toc.html" . }}{{ end }}
 
-{{ if not .Params.eyebrow }}
-<content{{ if ne .Type "blog" }} class="reveal"{{ end }}>
+<content{{ if eq .Type "blog" }} data-prose{{ else }} class="reveal"{{ end }}>
   {{ .Content }}
 </content>
-{{ end }}
 
 {{ $tags := .GetTerms "tags" }}
 {{ if $tags }}
@@ -33,9 +32,5 @@
     {{ range $tags }}<a href="{{ .Permalink }}">{{ .Data.Term }}</a>{{ end }}
   </p>
 {{ end }}
-
-{{ if eq .Type "blog" }}{{ if (.Param "enablePostNavigator") }}
-{{- partial "post_navigator.html" . -}}
-{{ end }}{{ end }}
 </article>
 {{ end }}

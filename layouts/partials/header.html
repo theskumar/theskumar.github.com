@@ -1,9 +1,18 @@
 <div class="header-wrap">
   <a href="{{ "" | relURL }}" class="title">
+    {{/* The node-graph "K" — see docs/brand/BRAND.md */}}
+    <svg class="logo-mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+      <path d="M9 5v22M9 16 23 6M9 16l14 10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <circle cx="9" cy="5" r="2.4" fill="currentColor"/>
+      <circle cx="9" cy="27" r="2.4" fill="currentColor"/>
+      <circle cx="23" cy="6" r="2.4" fill="currentColor"/>
+      <circle cx="23" cy="26" r="2.4" fill="currentColor"/>
+      <circle class="mark-node" cx="9" cy="16" r="2.9"/>
+    </svg>
     <span class="brand">Saurabh Kumar</span>
   </a>
   <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
-    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <circle cx="12" cy="12" r="5"/>
       <line x1="12" y1="1" x2="12" y2="3"/>
       <line x1="12" y1="21" x2="12" y2="23"/>
@@ -14,7 +23,7 @@
       <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
       <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
     </svg>
-    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
     </svg>
   </button>
@@ -44,7 +53,7 @@
       el.setAttribute('data-theme', next);
       localStorage.setItem('theme', next);
       var m = document.querySelector('meta[name="theme-color"]');
-      if (m) m.setAttribute('content', next === 'dark' ? '#1A1917' : '#FBFBFA');
+      if (m) m.setAttribute('content', next === 'dark' ? '#171411' : '#F7F4ED');
     });
   });
 </script>

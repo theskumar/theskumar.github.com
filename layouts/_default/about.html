@@ -1,13 +1,49 @@
 {{ define "main" }}
-<section class="hero reveal">
-  <canvas class="fx-hero" id="fx-hero" aria-hidden="true"></canvas>
-  {{ with .Params.eyebrow }}<div class="eyebrow">{{ . }}</div>{{ end }}
-  {{ with .Params.tagline }}<h1>{{ . }}</h1>{{ end }}
-  <div class="hero-lead">{{ .Content }}</div>
-  <div class="hero-actions">
-    <a class="btn btn-primary" href="{{ "articles/" | relURL }}">Read the writing</a>
-    <a class="btn btn-ghost" href="#contact">Get in touch</a>
+<section class="hero">
+  <span class="crosshair" aria-hidden="true"></span>
+  <div class="hero-copy reveal">
+    {{ with .Params.eyebrow }}<div class="eyebrow">{{ . }}</div>{{ end }}
+    {{ with .Params.tagline }}<h1>{{ . }}</h1>{{ end }}
+    <div class="hero-lead">{{ .Content }}</div>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="{{ "articles/" | relURL }}">Read the writing</a>
+      <a class="btn btn-ghost" href="#contact">Get in touch</a>
+    </div>
   </div>
+
+  {{/* fig. 01 — the request path. Edges draw on load; signals travel the wires. */}}
+  <figure class="schematic" aria-hidden="true">
+    <svg viewBox="0 16 300 284" xmlns="http://www.w3.org/2000/svg">
+      <path class="edge" style="--i:0" d="M13,45 H42"/>
+      <path class="edge" style="--i:1" d="M98,45 H152"/>
+      <path class="edge" style="--i:2" d="M180,60 V125"/>
+      <path class="edge" style="--i:4" d="M180,155 V225"/>
+      <path class="edge" style="--i:5" d="M208,140 H280"/>
+      <path class="edge edge--dashed" d="M152,140 H98"/>
+
+      <circle class="port" style="--i:0" cx="8" cy="45" r="5"/>
+      <rect class="node" style="--i:1" x="42" y="30" width="56" height="30" rx="3"/>
+      <rect class="node" style="--i:2" x="152" y="30" width="56" height="30" rx="3"/>
+      <rect class="node" style="--i:3" x="152" y="125" width="56" height="30" rx="3"/>
+      <rect class="node" style="--i:4" x="42" y="125" width="56" height="30" rx="3"/>
+      <rect class="node" style="--i:5" x="152" y="225" width="56" height="34" rx="3"/>
+      <path class="edge edge--dashed" style="--i:5" d="M152,233 Q180,241 208,233"/>
+      <circle class="junction" style="--i:6" cx="285" cy="140" r="5"/>
+
+      <text style="--i:1" x="70" y="49" text-anchor="middle">api</text>
+      <text style="--i:2" x="180" y="49" text-anchor="middle">queue</text>
+      <text style="--i:3" x="180" y="144" text-anchor="middle">worker</text>
+      <text style="--i:4" x="70" y="144" text-anchor="middle">llm</text>
+      <text style="--i:5" x="180" y="252" text-anchor="middle">db</text>
+      <text style="--i:0" x="8" y="66" text-anchor="middle">in</text>
+      <text style="--i:6" x="285" y="161" text-anchor="middle">out</text>
+      <text class="fig-label" style="--i:7" x="8" y="292">fig. 01 — request path, simplified</text>
+
+      <circle class="signal" r="2.4" style="offset-path: path('M13,45 H152'); --dur: 5.5s"/>
+      <circle class="signal" r="2.4" style="offset-path: path('M180,60 V225'); --dur: 4.5s"/>
+      <circle class="signal" r="2.4" style="offset-path: path('M208,140 H280'); --dur: 3.2s"/>
+    </svg>
+  </figure>
 </section>
 
 {{ $recent := first 4 (where .Site.RegularPages "Section" "blog").ByDate.Reverse }}
@@ -21,22 +57,22 @@
   {{ end }}
 {{ end }}
 
-<section class="bento reveal">
-  <a class="card col-4 card-link" href="https://github.com/theskumar/python-dotenv">
-    <span class="card-label">Open source</span>
+<section class="sheet reveal" data-stagger>
+  <a class="panel col-4" href="https://github.com/theskumar/python-dotenv">
+    <span class="anno"><span class="idx">01</span> open source</span>
     <div class="metric">{{ $stars }} <small>stars on GitHub</small></div>
     <h3 style="margin-top:0.7rem">python-dotenv</h3>
     <p>The library Python developers reach for to read configuration from <code>.env</code> files. Maintained by me since the early days.</p>
   </a>
 
-  <a class="card col-2 card-link" href="{{ "now/" | relURL }}">
-    <span class="card-label">Now</span>
+  <a class="panel col-2" href="{{ "now/" | relURL }}">
+    <span class="anno"><span class="idx">02</span> now</span>
     <h3>Leading Web Services at Fueled</h3>
-    <p>Building products with AI and blockchain at their core. And learning to keep up with a toddler.</p>
+    <p>Building products with AI at their core. And learning to keep up with a toddler.</p>
   </a>
 
-  <div class="card col-4">
-    <span class="card-label">Recent writing</span>
+  <div class="panel col-4">
+    <span class="anno"><span class="idx">03</span> recent writing</span>
     <ul class="post-list">
       {{ range $recent }}
       <li>
@@ -49,8 +85,8 @@
     </ul>
   </div>
 
-  <div class="card col-2">
-    <span class="card-label">Worked with</span>
+  <div class="panel col-2">
+    <span class="anno"><span class="idx">04</span> worked with</span>
     <div class="chip-row">
       <span class="chip">The Motley Fool</span>
       <span class="chip">Apple</span>
@@ -64,14 +100,14 @@
     </div>
   </div>
 
-  <div class="card col-3">
-    <span class="card-label">Working together</span>
+  <div class="panel col-3">
+    <span class="anno"><span class="idx">05</span> working together</span>
     <h3>Mentoring &amp; consulting</h3>
     <p>Pro-bono mentoring for early founders, and independent consulting on problems worth the time. Terms tailored to the work.</p>
   </div>
 
-  <div class="card col-3" id="contact">
-    <span class="card-label">Get in touch</span>
+  <div class="panel col-3" id="contact">
+    <span class="anno"><span class="idx">06</span> get in touch</span>
     <h3>hello@saurabh-kumar.com</h3>
     <div class="social-row" style="margin-top:0.9rem">
       <a href="https://github.com/theskumar">GitHub</a>

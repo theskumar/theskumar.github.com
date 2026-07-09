@@ -1,5 +1,5 @@
 <!-- Browser UI (mobile Safari address bar) tint. Values match --bg; updated on toggle. -->
-<meta name="theme-color" content="#FBFBFA">
+<meta name="theme-color" content="#F7F4ED">
 <script>
   (function () {
     var el = document.documentElement;
@@ -10,7 +10,7 @@
     var theme = (stored === 'dark' || stored === 'light') ? stored : (prefersDark ? 'dark' : 'light');
     el.setAttribute('data-theme', theme);
     var m = document.querySelector('meta[name="theme-color"]');
-    if (m) m.setAttribute('content', theme === 'dark' ? '#1A1917' : '#FBFBFA');
+    if (m) m.setAttribute('content', theme === 'dark' ? '#171411' : '#F7F4ED');
 
     // When arriving via a cross-document view transition, let the page cross-fade be the
     // only entrance animation. Otherwise pages with .reveal content (home/about/list) would
@@ -22,4 +22,4 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400&family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..500&display=swap" rel="stylesheet">

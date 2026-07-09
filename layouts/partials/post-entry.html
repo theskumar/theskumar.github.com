@@ -1,11 +1,13 @@
 {{/* A single editorial blog-index entry. Context: a blog page. */}}
 <li class="entry">
   <a href="{{ .Permalink }}">
-    <div class="entry-meta">
-      <time datetime='{{ .Date.Format "2006-01-02" }}'>{{ .Date.Format "02 Jan, 2006" }}</time>
-      · {{ .ReadingTime }} min
+    <div class="entry-row">
+      <span class="entry-title">{{ .Title }}</span>
+      <span class="entry-meta">
+        <time datetime='{{ .Date.Format "2006-01-02" }}'>{{ .Date.Format "Jan 02" }}</time>
+        · {{ .ReadingTime }} min
+      </span>
     </div>
-    <span class="entry-title">{{ .Title }}</span>
+    {{ with .Description }}<p class="entry-desc">{{ . }}</p>{{ else }}{{ with .Summary }}<p class="entry-desc">{{ . | plainify | truncate 150 }}</p>{{ end }}{{ end }}
   </a>
-  {{ with .Description }}<p class="entry-desc">{{ . }}</p>{{ else }}{{ with .Summary }}<p class="entry-desc">{{ . | plainify | truncate 150 }}</p>{{ end }}{{ end }}
 </li>

@@ -1,14 +1,24 @@
 {{ define "main" }}
 <div class="page-head reveal">
+  <span class="crosshair" aria-hidden="true"></span>
+  <div class="eyebrow">Index of articles</div>
   <h1>Writing</h1>
   {{ with .Content }}<div class="sub">{{ . }}</div>{{ end }}
 </div>
 
-<ul class="blog-posts reveal">
-  {{ range (where .Site.RegularPages "Section" "blog").ByDate.Reverse }}
-  {{ partial "post-entry.html" . }}
+<div class="index">
+  {{ $posts := (where .Site.RegularPages "Section" "blog").ByDate.Reverse }}
+  {{ range $posts.GroupByDate "2006" }}
+  <section class="index-year reveal">
+    <div class="year">{{ .Key }}</div>
+    <ul class="blog-posts">
+      {{ range .Pages }}
+      {{ partial "post-entry.html" . }}
+      {{ end }}
+    </ul>
+  </section>
   {{ else }}
-  <li class="entry">No posts yet.</li>
+  <p>No posts yet.</p>
   {{ end }}
-</ul>
+</div>
 {{ end }}
