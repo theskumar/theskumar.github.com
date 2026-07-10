@@ -99,9 +99,9 @@
         linear-gradient(var(--border) 1px, transparent 1px),
         linear-gradient(90deg, var(--border) 1px, transparent 1px);
       background-size: 72px 72px;
-      opacity: 0.28;
-      mask-image: radial-gradient(120% 60% at 50% 0%, black 0%, transparent 78%);
-      -webkit-mask-image: radial-gradient(120% 60% at 50% 0%, black 0%, transparent 78%);
+      opacity: 0.15;
+      mask-image: radial-gradient(120% 60% at 50% 0%, black 0%, transparent 58%);
+      -webkit-mask-image: radial-gradient(120% 60% at 50% 0%, black 0%, transparent 58%);
   }
 
   /* Procedural film grain. Static, tiled, zero runtime cost. */
@@ -196,7 +196,7 @@
       display: flex;
       gap: 1.5rem;
       margin: 0.9rem 0 0;
-      padding-bottom: 0.85rem;
+      /*padding-bottom: 0.85rem;*/
       border-bottom: 1px solid var(--hairline);
       font-family: var(--font-mono);
       font-size: 0.75rem;
@@ -389,9 +389,9 @@
       color: var(--faint);
       padding-top: 0.9rem;
   }
+  /* One hairline per year group; whitespace separates entries. */
   ul.blog-posts { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--hairline); }
-  .entry { border-bottom: 1px solid var(--border); }
-  .entry > a { display: block; padding: 0.95rem 0 1rem; text-decoration: none; transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1); }
+  .entry > a { display: block; padding: 1.1rem 0 1.15rem; text-decoration: none; transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1); }
   .entry > a:hover { transform: translateX(6px); }
   .entry-row { display: flex; align-items: baseline; justify-content: space-between; gap: 1.4rem; }
   .entry-title {
@@ -567,11 +567,12 @@
       margin: 2.6em 0 0.6em;
   }
   .page-prose content h3::after { content: ""; flex: 1; height: 1px; background: var(--hairline); }
-  .page-prose content ul { list-style: none; padding: 0; margin: 0 0 1.4em; }
-  .page-prose content ul li { border-bottom: 1px solid var(--border); padding: 0.55em 0; margin: 0; font-size: 0.96rem; }
-  .page-prose content ul li:last-child { border-bottom: 0; }
-  .page-prose content ul li a { text-decoration: none; border-bottom: 1px solid var(--border-strong); }
-  .page-prose content ul li a:hover { border-color: var(--accent); }
+  /* Link lists read as quiet rows: no rules, no resting underlines — the
+     section hairline and whitespace carry the structure. */
+  .page-prose content ul { list-style: none; padding: 0; margin: 0 0 1.6em; }
+  .page-prose content ul li { padding: 0.5em 0; margin: 0; font-size: 0.96rem; }
+  .page-prose content ul li a { text-decoration: none; }
+  .page-prose content ul li a:hover { text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px; }
 
   /* ---- Footer ---- */
   footer.site-footer {
