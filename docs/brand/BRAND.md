@@ -80,7 +80,10 @@ everywhere; uppercase is reserved for mono annotations.
   transformation itself. All canvas-drawn in `--faint` ink with paper-fill
   occlusion, one ember walker on the front ridge and one buoy on the swell.
   These must read as drawings, not effects: line alpha ≤0.55 for bands,
-  ≤0.08 for the field.
+  ≤0.08 for the field. **Ink never crosses type**: the hills own the top
+  ~90px (page content starts below the frieze via body padding), the sea owns
+  the last ~100px (footer bottom padding is open water). Only the full-page
+  field may pass behind text, and only at ≤0.08 alpha.
 - Blueprint grid (72px) at ≤ 0.3 × hairline opacity, faded with a radial mask; film grain ≤ 3%.
 
 ## 5. Motion
