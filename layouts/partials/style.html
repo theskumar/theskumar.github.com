@@ -79,7 +79,12 @@
       overflow-wrap: break-word;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
+      /* Sticky footer: on short pages the sea still meets the bottom edge. */
+      display: flex;
+      flex-direction: column;
+      min-height: 100dvh;
   }
+  body > header, body > footer { flex-shrink: 0; }
   /* Reading pages keep a book-width column inside the wider chrome. */
   article.post { max-width: var(--measure); }
 
@@ -222,7 +227,7 @@
       transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, fill 0.4s ease, stroke 0.4s ease !important;
   }
 
-  main { min-height: 55vh; }
+  main { flex: 1 0 auto; width: 100%; }
 
   /* ---- Full-bleed organic ink: the tattoo, hills into ocean ----
      Hills crest against the very top of the browser; swells lap against the
