@@ -8,7 +8,8 @@
   :root {
       color-scheme: light dark;
 
-      --width: 720px;
+      --width: 880px;          /* page chrome: header, nav rule, footer */
+      --measure: 720px;        /* long-form reading column */
 
       /* Type: serif for display & prose, sans for UI, mono for annotations. */
       --font-serif: 'Newsreader', 'Lyon Text', Georgia, 'Times New Roman', serif;
@@ -79,8 +80,8 @@
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
   }
-  /* The home page is a drafting sheet; give it more paper. */
-  .page-home { --width: 880px; }
+  /* Reading pages keep a book-width column inside the wider chrome. */
+  article.post { max-width: var(--measure); }
 
   /* Faint blueprint grid pinned to the page background. */
   body::before {
