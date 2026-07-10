@@ -1,3 +1,6 @@
+{{/* Full-bleed hills cresting at the very top of the browser — the start of
+     the tattoo: hills up here, ocean at the footer. */}}
+<canvas class="fx-hills" id="fx-hills" aria-hidden="true"></canvas>
 <div class="header-wrap">
   <a href="{{ "" | relURL }}" class="title">
     {{/* The node-graph "K" — see docs/brand/BRAND.md */}}
@@ -33,9 +36,6 @@
   {{ range .Site.Menus.main }}
     <a href="{{ .URL }}"{{ if or (eq $current .URL) (and (ne .URL "/") (hasPrefix $current .URL)) }} class="active"{{ end }}>{{ .Name }}</a>
   {{ end }}
-  {{/* The header rule is alive: a slow-breathing contour line drawn on canvas.
-       The static border-bottom remains as the no-JS fallback. */}}
-  <canvas class="fx-nav" id="fx-nav" aria-hidden="true"></canvas>
 </nav>
 
 <script>

@@ -19,16 +19,19 @@ Full brand spec: `docs/brand/BRAND.md`. Writing voice: `docs/STYLE-GUIDE.md`.
 ## Information architecture
 
 - `/` → About/home (`layouts/_default/about.html`, content `content/_index.md`)
-  Hero (eyebrow + tagline + lede + animated route-map SVG: contours, dated
-  waypoints '12→now, ember ping, compass) then a 6-column “drafting sheet” of
-  numbered panels 01–07 (open source, now, recent writing, worked with,
-  working together, off the clock — travel/photography on pause, contact
-  `#contact`).
+  Hero (eyebrow + tagline + lede, single column) over `#fx-field` — a fixed
+  full-viewport canvas of faint lines that morph from hill folds to ocean
+  swells with scroll (the tattoo: hills into waves). Then a 6-column
+  “drafting sheet” of numbered panels 01–07 (open source, now, recent
+  writing, worked with, working together, off the clock — travel/photography
+  on pause, contact `#contact`).
 - `/til/` → separate repo (`~/work/pr/til`, `build-site.js`) deployed to the
-  same domain; carries the same tokens, mark, living nav line, and ridgescape.
-- Organic canvases: `#fx-nav` (breathing contour under the nav, replaces the
-  static rule when JS runs) and `#fx-ridge` (five-ridge horizon above the
-  footer). Module lives in `layouts/partials/custom_body.html`.
+  same domain; carries the same tokens, mark, hills and waves.
+- Organic canvases (all sites): `#fx-hills` — full-bleed (100vw) ridgelines
+  touching the top of the browser, behind the header; `#fx-waves` — full-bleed
+  swells touching the bottom, behind the footer; `#fx-field` — home only.
+  Module: `<script type="module">` in `layouts/partials/custom_body.html`,
+  simplex-noise from jsDelivr with an inline value-noise fallback.
 - `/articles/` → Writing index (`layouts/_default/writing.html`, content
   `content/articles.md`), grouped by year, entries via
   `layouts/partials/post-entry.html`.

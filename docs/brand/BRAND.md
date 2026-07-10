@@ -69,17 +69,18 @@ everywhere; uppercase is reserved for mono annotations.
 - **Mono annotations**: `01 — open source`, `fig. 01 — request path`. Index in ember, label muted, trailing hairline.
 - **Corner ticks** on panels (9px L-marks, top-left + bottom-right), ember on hover.
 - **Registration crosshairs** as ornaments, one per page head.
-- **Schematics**: node-and-edge / survey-map figures with mono labels. The hero
-  figure is the flagship: *fig. 01 — the route so far* — contour terrain, a
-  route that draws itself through dated waypoints ('12 → now), an ember "you
-  are here" ping, and a compass N. It plots the traveller + engineer in one
-  drawing; photography and trails are part of the brand story (currently on
-  pause — see the "off the clock" panel), so terrain imagery is native, not
-  decorative.
-- **Organic ink** (living elements): the header rule is a slow-breathing
-  contour line and the footer is a five-ridge horizon, both canvas-drawn in
-  `--faint` ink with a lone ember signal walking them. Amplitudes stay small
-  (≤5px header, ≤20px footer); they must read as drawings, not effects.
+- **Schematics**: node-and-edge / survey-map figures with mono labels remain
+  available language for article figures and diagrams.
+- **Hills into ocean** (the signature): Saurabh's tattoo — hills transforming
+  into ocean waves (his hills, her beaches) — is the site's organic motif.
+  Full-bleed hill ridgelines crest against the very top of the browser
+  (`#fx-hills`); full-bleed swells lap against the very bottom (`#fx-waves`);
+  on the home page a fixed full-viewport field (`#fx-field`) draws ~13 faint
+  lines that morph from ridge folds to rollers with scroll — the
+  transformation itself. All canvas-drawn in `--faint` ink with paper-fill
+  occlusion, one ember walker on the front ridge and one buoy on the swell.
+  These must read as drawings, not effects: line alpha ≤0.55 for bands,
+  ≤0.08 for the field.
 - Blueprint grid (72px) at ≤ 0.3 × hairline opacity, faded with a radial mask; film grain ≤ 3%.
 
 ## 5. Motion
@@ -90,7 +91,8 @@ Drafting motion: things are *drawn*, not bounced.
 - Content reveals: 14px rise + fade, 0.65s `cubic-bezier(0.16,1,0.3,1)`, 70ms stagger.
 - Signals: small ember dots on `offset-path`, 3–7s linear loops.
 - Hovers 150–250ms; presses `scale(0.98)`. Page navigation: 0.45s cross-fade (View Transitions).
-- Organic canvases (`#fx-nav`, `#fx-ridge`): 30fps cap, paused offscreen/hidden, theme-aware ink.
+- Organic canvases (`#fx-hills`, `#fx-waves`, `#fx-field`): simplex-noise (CDN,
+  value-noise fallback), 30fps cap, paused offscreen/hidden, theme-aware ink.
 - Everything respects `prefers-reduced-motion` — static, fully drawn.
 
 ## 6. Voice

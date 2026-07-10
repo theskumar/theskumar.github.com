@@ -198,14 +198,6 @@
   nav.site-nav a { color: var(--muted); text-decoration: none; padding-bottom: 0.85rem; margin-bottom: -1px; border-bottom: 1px solid transparent; transition: color 0.18s ease, border-color 0.18s ease; }
   nav.site-nav a:hover { color: var(--heading); border-bottom-color: var(--border-strong); }
   nav.site-nav a.active { color: var(--accent); border-bottom-color: var(--accent); }
-  /* The living contour replaces the static rule when JS is around. */
-  .js nav.site-nav { border-bottom-color: transparent; }
-  .fx-nav {
-      position: absolute; left: 0; right: 0; bottom: -10px;
-      width: 100%; height: 20px;
-      pointer-events: none;
-      color: var(--faint);
-  }
 
   .theme-toggle {
       appearance: none;
@@ -229,16 +221,31 @@
 
   main { min-height: 55vh; }
 
+  /* ---- Full-bleed organic ink: the tattoo, hills into ocean ----
+     Hills crest against the very top of the browser; swells lap against the
+     very bottom. On the home page a fixed field morphs one into the other
+     as you scroll. All are faint ink, behind everything. */
+  .fx-hills, .fx-waves, .fx-field { pointer-events: none; color: var(--faint); }
+  .fx-hills {
+      position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+      width: 100vw; height: 130px; z-index: -1;
+      mask-image: linear-gradient(to bottom, black 35%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, black 35%, transparent 100%);
+  }
+  .fx-waves {
+      position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 100vw; height: 150px; z-index: -1;
+      mask-image: linear-gradient(to top, black 55%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to top, black 55%, transparent 100%);
+  }
+  .fx-field { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: -1; }
+
   /* ---- Home: hero ---- */
   .hero {
       position: relative;
-      padding: 3rem 0 3.2rem;
-      display: grid;
-      grid-template-columns: minmax(0, 13fr) minmax(0, 9fr);
-      gap: 3rem;
-      align-items: center;
+      padding: 3.4rem 0 3.2rem;
   }
-  .hero-copy { position: relative; z-index: 1; }
+  .hero-copy { max-width: 40rem; }
   .hero h1 {
       font-size: clamp(1.95rem, 4.4vw, 2.55rem);
       font-weight: 500;
@@ -263,65 +270,6 @@
       border: 1px solid currentColor; border-radius: 50%;
   }
   .hero .crosshair { top: 0.6rem; right: 0; }
-
-  /* ---- Home: schematic figure ---- */
-  .schematic { position: relative; min-width: 0; }
-  .schematic svg { display: block; width: 100%; height: auto; overflow: visible; }
-  .schematic .edge {
-      stroke: var(--border-strong); stroke-width: 1.2; fill: none;
-      stroke-linecap: round;
-  }
-  .schematic .edge--dashed { stroke-dasharray: 3 5; }
-  .schematic .contour { stroke: var(--border); }
-  .schematic .route { stroke: var(--muted); stroke-width: 1.5; }
-  .schematic .compass-line { stroke: var(--faint); stroke-width: 1; }
-  .schematic .compass text { fill: var(--faint); }
-  .schematic .ping {
-      fill: none; stroke: var(--accent); stroke-width: 1;
-      transform-box: fill-box; transform-origin: center;
-      animation: fx-ping 3s cubic-bezier(0, 0, 0.2, 1) infinite;
-  }
-  @keyframes fx-ping {
-      0% { transform: scale(0.5); opacity: 0.9; }
-      75%, 100% { transform: scale(2.6); opacity: 0; }
-  }
-  .schematic .node {
-      fill: var(--surface); stroke: var(--border-strong); stroke-width: 1.2;
-  }
-  .schematic .port { fill: var(--bg); stroke: var(--muted); stroke-width: 1.2; }
-  .schematic .junction { fill: var(--accent); stroke: none; }
-  .schematic text {
-      font-family: var(--font-mono); font-size: 9.5px;
-      letter-spacing: 0.08em; fill: var(--muted);
-  }
-  .schematic .fig-label { fill: var(--faint); font-size: 8.5px; }
-  .schematic .signal { fill: var(--accent); }
-  @supports (offset-path: path('M0,0 L1,1')) {
-      .schematic .signal { animation: signal-travel var(--dur, 7s) linear infinite; offset-rotate: 0deg; }
-      @keyframes signal-travel {
-          0% { offset-distance: 0%; opacity: 0; }
-          6% { opacity: 1; }
-          88% { opacity: 1; }
-          100% { offset-distance: 100%; opacity: 0; }
-      }
-  }
-  /* Draw-on: JS measures path length and sets --len; CSS animates the wipe. */
-  .js .schematic .edge {
-      stroke-dasharray: var(--len, 200);
-      stroke-dashoffset: var(--len, 200);
-      transition: stroke-dashoffset 1.1s cubic-bezier(0.6, 0, 0.3, 1);
-      transition-delay: calc(var(--i, 0) * 140ms + 250ms);
-  }
-  .js .schematic.is-drawn .edge { stroke-dashoffset: 0; }
-  .js .schematic .edge--dashed { stroke-dasharray: 3 5; stroke-dashoffset: 0; opacity: 0; transition: opacity 0.8s ease 1.4s; }
-  .js .schematic.is-drawn .edge--dashed { opacity: 1; }
-  .js .schematic .node, .js .schematic .port, .js .schematic text, .js .schematic .junction, .js .schematic .signal {
-      opacity: 0; transition: opacity 0.7s ease;
-      transition-delay: calc(var(--i, 0) * 120ms + 200ms);
-  }
-  .js .schematic.is-drawn .node, .js .schematic.is-drawn .port,
-  .js .schematic.is-drawn text, .js .schematic.is-drawn .junction { opacity: 1; }
-  .js .schematic.is-drawn .signal { opacity: 1; transition-delay: 1.6s; }
 
   /* ---- Buttons ---- */
   .btn {
@@ -634,12 +582,6 @@
       color: var(--faint);
   }
   .js footer.site-footer { border-top-color: transparent; }
-  .fx-ridge {
-      position: absolute; left: 0; right: 0; top: -92px;
-      width: 100%; height: 92px;
-      pointer-events: none;
-      color: var(--faint);
-  }
   footer.site-footer a { color: var(--muted); text-decoration: none; }
   footer.site-footer a:hover { color: var(--accent); }
 
@@ -676,8 +618,7 @@
 
   /* ---- Responsive ---- */
   @media (max-width: 860px) {
-      .hero { grid-template-columns: 1fr; gap: 1rem; padding-top: 2rem; }
-      .schematic { max-width: 380px; opacity: 0.85; }
+      .hero { padding-top: 2.2rem; }
   }
   @media (max-width: 720px) {
       .sheet { grid-template-columns: 1fr 1fr; }
@@ -692,11 +633,6 @@
   @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .js .reveal { opacity: 1; transform: none; transition: none; }
-      .js .schematic .edge { stroke-dashoffset: 0; transition: none; }
-      .js .schematic .node, .js .schematic .port, .js .schematic text,
-      .js .schematic .junction, .js .schematic .signal { opacity: 1; transition: none; }
-      .schematic .signal { animation: none; }
-      .schematic .ping { animation: none; opacity: 0 !important; }
       .entry > a:hover { transform: none; }
       .toc-rail, .toc-panel, .toc-rail .toc-nav a { transition: none; }
       .theme-toggle svg { transition: opacity 0.01ms; }
