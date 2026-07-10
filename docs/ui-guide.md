@@ -19,9 +19,16 @@ Full brand spec: `docs/brand/BRAND.md`. Writing voice: `docs/STYLE-GUIDE.md`.
 ## Information architecture
 
 - `/` → About/home (`layouts/_default/about.html`, content `content/_index.md`)
-  Hero (eyebrow + tagline + lede + animated schematic SVG) then a 6-column
-  “drafting sheet” of numbered panels (open source, now, recent writing,
-  worked with, working together, contact `#contact`).
+  Hero (eyebrow + tagline + lede + animated route-map SVG: contours, dated
+  waypoints '12→now, ember ping, compass) then a 6-column “drafting sheet” of
+  numbered panels 01–07 (open source, now, recent writing, worked with,
+  working together, off the clock — travel/photography on pause, contact
+  `#contact`).
+- `/til/` → separate repo (`~/work/pr/til`, `build-site.js`) deployed to the
+  same domain; carries the same tokens, mark, living nav line, and ridgescape.
+- Organic canvases: `#fx-nav` (breathing contour under the nav, replaces the
+  static rule when JS runs) and `#fx-ridge` (five-ridge horizon above the
+  footer). Module lives in `layouts/partials/custom_body.html`.
 - `/articles/` → Writing index (`layouts/_default/writing.html`, content
   `content/articles.md`), grouped by year, entries via
   `layouts/partials/post-entry.html`.

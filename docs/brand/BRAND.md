@@ -69,7 +69,17 @@ everywhere; uppercase is reserved for mono annotations.
 - **Mono annotations**: `01 — open source`, `fig. 01 — request path`. Index in ember, label muted, trailing hairline.
 - **Corner ticks** on panels (9px L-marks, top-left + bottom-right), ember on hover.
 - **Registration crosshairs** as ornaments, one per page head.
-- **Schematics**: node-and-edge diagrams with mono labels; the hero figure is the flagship (api → queue → worker → db, signals traveling the wires).
+- **Schematics**: node-and-edge / survey-map figures with mono labels. The hero
+  figure is the flagship: *fig. 01 — the route so far* — contour terrain, a
+  route that draws itself through dated waypoints ('12 → now), an ember "you
+  are here" ping, and a compass N. It plots the traveller + engineer in one
+  drawing; photography and trails are part of the brand story (currently on
+  pause — see the "off the clock" panel), so terrain imagery is native, not
+  decorative.
+- **Organic ink** (living elements): the header rule is a slow-breathing
+  contour line and the footer is a five-ridge horizon, both canvas-drawn in
+  `--faint` ink with a lone ember signal walking them. Amplitudes stay small
+  (≤5px header, ≤20px footer); they must read as drawings, not effects.
 - Blueprint grid (72px) at ≤ 0.3 × hairline opacity, faded with a radial mask; film grain ≤ 3%.
 
 ## 5. Motion
@@ -80,6 +90,7 @@ Drafting motion: things are *drawn*, not bounced.
 - Content reveals: 14px rise + fade, 0.65s `cubic-bezier(0.16,1,0.3,1)`, 70ms stagger.
 - Signals: small ember dots on `offset-path`, 3–7s linear loops.
 - Hovers 150–250ms; presses `scale(0.98)`. Page navigation: 0.45s cross-fade (View Transitions).
+- Organic canvases (`#fx-nav`, `#fx-ridge`): 30fps cap, paused offscreen/hidden, theme-aware ink.
 - Everything respects `prefers-reduced-motion` — static, fully drawn.
 
 ## 6. Voice
@@ -99,6 +110,7 @@ Plain, specific, first-person. The judgment is the product; state it.
 | Favicon PNGs / ICO / touch icons | `static/favicon-*.png`, `static/favicon.ico`, `static/apple-touch-icon.png`, `static/android-chrome-*.png` |
 | Social / OG card (1200×630) | `static/images/og.png` |
 | Live design system | `layouts/partials/style.html` (tokens at top) |
+| Sibling site: TIL | `~/work/pr/til` (`build-site.js` carries the same tokens, mark, nav line, ridgescape) → saurabh-kumar.com/til/ |
 
 Regenerate icons: `rsvg-convert -w <size> -h <size> static/images/favicon.svg > out.png`;
 ICO: `magick favicon-32x32.png favicon-16x16.png favicon.ico`.

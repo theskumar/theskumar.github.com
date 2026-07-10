@@ -184,6 +184,7 @@
   a.title:hover .brand { color: var(--accent); }
 
   nav.site-nav {
+      position: relative;
       display: flex;
       gap: 1.5rem;
       margin: 0.9rem 0 0;
@@ -197,6 +198,14 @@
   nav.site-nav a { color: var(--muted); text-decoration: none; padding-bottom: 0.85rem; margin-bottom: -1px; border-bottom: 1px solid transparent; transition: color 0.18s ease, border-color 0.18s ease; }
   nav.site-nav a:hover { color: var(--heading); border-bottom-color: var(--border-strong); }
   nav.site-nav a.active { color: var(--accent); border-bottom-color: var(--accent); }
+  /* The living contour replaces the static rule when JS is around. */
+  .js nav.site-nav { border-bottom-color: transparent; }
+  .fx-nav {
+      position: absolute; left: 0; right: 0; bottom: -10px;
+      width: 100%; height: 20px;
+      pointer-events: none;
+      color: var(--faint);
+  }
 
   .theme-toggle {
       appearance: none;
@@ -263,6 +272,19 @@
       stroke-linecap: round;
   }
   .schematic .edge--dashed { stroke-dasharray: 3 5; }
+  .schematic .contour { stroke: var(--border); }
+  .schematic .route { stroke: var(--muted); stroke-width: 1.5; }
+  .schematic .compass-line { stroke: var(--faint); stroke-width: 1; }
+  .schematic .compass text { fill: var(--faint); }
+  .schematic .ping {
+      fill: none; stroke: var(--accent); stroke-width: 1;
+      transform-box: fill-box; transform-origin: center;
+      animation: fx-ping 3s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+  @keyframes fx-ping {
+      0% { transform: scale(0.5); opacity: 0.9; }
+      75%, 100% { transform: scale(2.6); opacity: 0; }
+  }
   .schematic .node {
       fill: var(--surface); stroke: var(--border-strong); stroke-width: 1.2;
   }
@@ -597,7 +619,8 @@
 
   /* ---- Footer ---- */
   footer.site-footer {
-      margin-top: 4rem;
+      position: relative;
+      margin-top: calc(3rem + 92px);
       padding: 1.3rem 0 2.2rem;
       border-top: 1px solid var(--hairline);
       display: flex;
@@ -608,6 +631,13 @@
       font-family: var(--font-mono);
       font-size: 0.72rem;
       letter-spacing: 0.07em;
+      color: var(--faint);
+  }
+  .js footer.site-footer { border-top-color: transparent; }
+  .fx-ridge {
+      position: absolute; left: 0; right: 0; top: -92px;
+      width: 100%; height: 92px;
+      pointer-events: none;
       color: var(--faint);
   }
   footer.site-footer a { color: var(--muted); text-decoration: none; }
@@ -666,6 +696,7 @@
       .js .schematic .node, .js .schematic .port, .js .schematic text,
       .js .schematic .junction, .js .schematic .signal { opacity: 1; transition: none; }
       .schematic .signal { animation: none; }
+      .schematic .ping { animation: none; opacity: 0 !important; }
       .entry > a:hover { transform: none; }
       .toc-rail, .toc-panel, .toc-rail .toc-nav a { transition: none; }
       .theme-toggle svg { transition: opacity 0.01ms; }

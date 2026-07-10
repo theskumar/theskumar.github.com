@@ -33,6 +33,11 @@ url = "/projects/"
 weight = 2
 
 [[menus.main]]
+name = "TIL"
+url = "/til/"
+weight = 3
+
+[[menus.main]]
 name = "Now"
 url = "/now/"
 weight = 4

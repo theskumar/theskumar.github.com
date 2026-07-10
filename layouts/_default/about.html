@@ -11,37 +11,37 @@
     </div>
   </div>
 
-  {{/* fig. 01 — the request path. Edges draw on load; signals travel the wires. */}}
+  {{/* fig. 01 — the route so far. A journey plotted like a survey map: contour
+       terrain, a route that draws itself, dated waypoints, an ember "you are
+       here". Systems language for a life spent moving through terrain. */}}
   <figure class="schematic" aria-hidden="true">
-    <svg viewBox="0 16 300 284" xmlns="http://www.w3.org/2000/svg">
-      <path class="edge" style="--i:0" d="M13,45 H42"/>
-      <path class="edge" style="--i:1" d="M98,45 H152"/>
-      <path class="edge" style="--i:2" d="M180,60 V125"/>
-      <path class="edge" style="--i:4" d="M180,155 V225"/>
-      <path class="edge" style="--i:5" d="M208,140 H280"/>
-      <path class="edge edge--dashed" d="M152,140 H98"/>
+    <svg viewBox="0 24 300 280" xmlns="http://www.w3.org/2000/svg">
+      <path class="edge contour" style="--i:0" d="M170,95 C168,60 200,35 235,38 C270,41 292,62 288,90 C284,116 250,130 220,124 C192,119 172,116 170,95 Z"/>
+      <path class="edge contour" style="--i:1" d="M195,90 C195,65 212,52 236,54 C260,56 274,70 271,88 C268,105 244,112 224,108 C206,104 195,103 195,90 Z"/>
+      <path class="edge contour" style="--i:2" d="M218,84 C220,70 230,66 240,68 C252,71 257,79 254,88 C251,96 238,99 229,95 C221,92 217,91 218,84 Z"/>
+      <path class="edge contour" style="--i:1" d="M18,262 C14,240 30,226 52,228 C74,230 88,242 84,258 C80,272 58,280 40,276 C26,273 20,272 18,262 Z"/>
+      <path class="edge contour" style="--i:2" d="M36,256 C35,244 44,238 55,240 C67,242 74,250 71,258 C68,265 54,268 46,264 C40,261 37,261 36,256 Z"/>
 
-      <circle class="port" style="--i:0" cx="8" cy="45" r="5"/>
-      <rect class="node" style="--i:1" x="42" y="30" width="56" height="30" rx="3"/>
-      <rect class="node" style="--i:2" x="152" y="30" width="56" height="30" rx="3"/>
-      <rect class="node" style="--i:3" x="152" y="125" width="56" height="30" rx="3"/>
-      <rect class="node" style="--i:4" x="42" y="125" width="56" height="30" rx="3"/>
-      <rect class="node" style="--i:5" x="152" y="225" width="56" height="34" rx="3"/>
-      <path class="edge edge--dashed" style="--i:5" d="M152,233 Q180,241 208,233"/>
-      <circle class="junction" style="--i:6" cx="285" cy="140" r="5"/>
+      <path class="edge route" style="--i:3" d="M26,254 C60,246 74,224 92,206 C112,186 118,170 138,158 C160,145 172,132 182,118 C194,101 214,92 240,86"/>
 
-      <text style="--i:1" x="70" y="49" text-anchor="middle">api</text>
-      <text style="--i:2" x="180" y="49" text-anchor="middle">queue</text>
-      <text style="--i:3" x="180" y="144" text-anchor="middle">worker</text>
-      <text style="--i:4" x="70" y="144" text-anchor="middle">llm</text>
-      <text style="--i:5" x="180" y="252" text-anchor="middle">db</text>
-      <text style="--i:0" x="8" y="66" text-anchor="middle">in</text>
-      <text style="--i:6" x="285" y="161" text-anchor="middle">out</text>
-      <text class="fig-label" style="--i:7" x="8" y="292">fig. 01 — request path, simplified</text>
+      <circle class="port" style="--i:3" cx="26" cy="254" r="4"/>
+      <circle class="port" style="--i:4" cx="92" cy="206" r="4"/>
+      <circle class="port" style="--i:5" cx="182" cy="118" r="4"/>
+      <circle class="ping" style="--i:6" cx="240" cy="86" r="5"/>
+      <circle class="junction" style="--i:6" cx="240" cy="86" r="4.5"/>
 
-      <circle class="signal" r="2.4" style="offset-path: path('M13,45 H152'); --dur: 5.5s"/>
-      <circle class="signal" r="2.4" style="offset-path: path('M180,60 V225'); --dur: 4.5s"/>
-      <circle class="signal" r="2.4" style="offset-path: path('M208,140 H280'); --dur: 3.2s"/>
+      <text style="--i:3" x="40" y="271" text-anchor="middle">'12</text>
+      <text style="--i:4" x="78" y="196" text-anchor="middle">'16</text>
+      <text style="--i:5" x="168" y="108" text-anchor="middle">'20</text>
+      <text style="--i:6" x="256" y="106" text-anchor="middle">now</text>
+
+      <g class="compass" style="--i:7">
+        <path class="edge compass-line" d="M284,282 V266 M280,270 L284,266 L288,270"/>
+        <text x="284" y="296" text-anchor="middle">N</text>
+      </g>
+      <text class="fig-label" style="--i:7" x="18" y="296">fig. 01 — the route so far, '12 → now</text>
+
+      <circle class="signal" r="2.4" style="offset-path: path('M26,254 C60,246 74,224 92,206 C112,186 118,170 138,158 C160,145 172,132 182,118 C194,101 214,92 240,86'); --dur: 9s"/>
     </svg>
   </figure>
 </section>
@@ -100,14 +100,20 @@
     </div>
   </div>
 
-  <div class="panel col-3">
+  <div class="panel col-2">
     <span class="anno"><span class="idx">05</span> working together</span>
     <h3>Mentoring &amp; consulting</h3>
     <p>Pro-bono mentoring for early founders, and independent consulting on problems worth the time. Terms tailored to the work.</p>
   </div>
 
-  <div class="panel col-3" id="contact">
-    <span class="anno"><span class="idx">06</span> get in touch</span>
+  <div class="panel col-2">
+    <span class="anno"><span class="idx">06</span> off the clock</span>
+    <h3>Travel &amp; photographs</h3>
+    <p>Years of trails and a full camera bag. Photography's on pause while Amay is small; the mountains aren't going anywhere.</p>
+  </div>
+
+  <div class="panel col-2" id="contact">
+    <span class="anno"><span class="idx">07</span> get in touch</span>
     <h3>hello@saurabh-kumar.com</h3>
     <div class="social-row" style="margin-top:0.9rem">
       <a href="https://github.com/theskumar">GitHub</a>

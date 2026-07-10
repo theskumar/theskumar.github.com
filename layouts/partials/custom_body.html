@@ -38,6 +38,124 @@
     });
   })();
 
+  /* Organic ink: the living header contour and the footer ridgescape.
+     One shared value-noise field; theme-aware; 30fps cap; paused when
+     offscreen or hidden; a single static frame under reduced motion. */
+  (function () {
+    var navC = document.getElementById('fx-nav');
+    var ridgeC = document.getElementById('fx-ridge');
+    if (!navC && !ridgeC) return;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    function hash(i) { var s = Math.sin(i * 127.1) * 43758.5453; return s - Math.floor(s); }
+    function noise(x) {
+      var i = Math.floor(x), f = x - i, u = f * f * (3 - 2 * f);
+      return hash(i) * (1 - u) + hash(i + 1) * u; /* 0..1 */
+    }
+
+    function accent() {
+      return document.documentElement.getAttribute('data-theme') === 'dark' ? '#E08B54' : '#B4491F';
+    }
+
+    function makeScene(canvas, draw) {
+      var ctx = canvas.getContext('2d');
+      var W = 0, H = 0, ink = '#A59C87', rafId = null, visible = false, last = 0;
+      function layout() {
+        var r = canvas.getBoundingClientRect();
+        W = Math.max(1, r.width); H = Math.max(1, r.height);
+        canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        ink = getComputedStyle(canvas).color || ink;
+      }
+      function frame(ts) {
+        rafId = null;
+        if (ts - last >= 33) { last = ts; draw(ctx, W, H, ts, ink); }
+        if (visible && !reduce) rafId = requestAnimationFrame(frame);
+      }
+      function start() {
+        if (reduce) { draw(ctx, W, H, 0, ink); return; }
+        if (rafId == null) rafId = requestAnimationFrame(frame);
+      }
+      function stop() { if (rafId != null) { cancelAnimationFrame(rafId); rafId = null; } }
+      new IntersectionObserver(function (entries) {
+        visible = entries[0].isIntersecting;
+        if (visible && !document.hidden) start(); else stop();
+      }).observe(canvas);
+      document.addEventListener('visibilitychange', function () {
+        if (document.hidden) stop(); else if (visible) start();
+      });
+      window.addEventListener('resize', function () { layout(); if (reduce) draw(ctx, W, H, 0, ink); });
+      new MutationObserver(function () {
+        ink = getComputedStyle(canvas).color || ink;
+        if (reduce) draw(ctx, W, H, 0, ink);
+      }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+      layout();
+      draw(ctx, W, H, 0, ink); /* first frame synchronously; rAF may lag or be throttled */
+    }
+
+    /* Header: one breathing contour line where the rule used to be, with a
+       lone ember signal walking it. */
+    if (navC) makeScene(navC, function (ctx, W, H, t, ink) {
+      ctx.clearRect(0, 0, W, H);
+      var mid = H / 2, tt = t * 0.00012;
+      ctx.strokeStyle = ink; ctx.globalAlpha = 0.9; ctx.lineWidth = 1;
+      ctx.beginPath();
+      for (var x = 0; x <= W; x += 3) {
+        var y = mid
+          + (noise(x * 0.012 + tt * 3) - 0.5) * 5
+          + (noise(x * 0.045 + 90 - tt * 5) - 0.5) * 2;
+        x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+      var sx = ((t * 0.018) % (W + 60)) - 30;
+      if (sx >= 0 && sx <= W) {
+        var sy = mid
+          + (noise(sx * 0.012 + tt * 3) - 0.5) * 5
+          + (noise(sx * 0.045 + 90 - tt * 5) - 0.5) * 2;
+        ctx.globalAlpha = 1; ctx.fillStyle = accent();
+        ctx.beginPath(); ctx.arc(sx, sy, 1.6, 0, 6.2832); ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+    });
+
+    /* Footer: five drifting ridgelines — the horizon before the colophon.
+       Each ridge fills below itself with paper so nearer ridges occlude
+       farther ones, back to front. */
+    function ridgeY(x, i, tt, H) {
+      var base = H * (0.34 + i * 0.15);
+      var amp = 6 + i * 3.5;
+      var f = 0.007 - i * 0.0008;
+      return base
+        - Math.abs(noise(x * f + i * 37 + tt * (1.5 + i * 0.6)) - 0.5) * 2 * amp
+        + (noise(x * 0.02 + i * 91 - tt) - 0.5) * 3;
+    }
+    if (ridgeC) makeScene(ridgeC, function (ctx, W, H, t, ink) {
+      ctx.clearRect(0, 0, W, H);
+      var tt = t * 0.00005, lines = 5;
+      var paper = getComputedStyle(document.documentElement).backgroundColor;
+      for (var i = 0; i < lines; i++) {
+        ctx.beginPath();
+        for (var x = 0; x <= W; x += 4) {
+          var y = ridgeY(x, i, tt, H);
+          x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+        }
+        ctx.lineTo(W, H); ctx.lineTo(0, H); ctx.closePath();
+        ctx.globalAlpha = 1; ctx.fillStyle = paper; ctx.fill();
+        ctx.globalAlpha = 0.3 + i * 0.15;
+        ctx.strokeStyle = ink; ctx.lineWidth = 1;
+        ctx.stroke();
+      }
+      var sx = W - (((t * 0.012) % (W + 80)) - 40);
+      if (sx >= 0 && sx <= W) {
+        var sy = ridgeY(sx, lines - 1, tt, H);
+        ctx.globalAlpha = 1; ctx.fillStyle = accent();
+        ctx.beginPath(); ctx.arc(sx, sy - 2.5, 1.8, 0, 6.2832); ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+    });
+  })();
+
   /* Reading progress hairline on long-form posts. */
   (function () {
     var prose = document.querySelector('article.post content[data-prose]');
