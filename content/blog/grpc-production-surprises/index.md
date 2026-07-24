@@ -1,6 +1,6 @@
 +++
 title = "Three Things That Bite You When You Ship gRPC to Production"
-date = "2026-07-25"
+date = "2026-07-24"
 description = "Three things about gRPC that look fine in tutorials and bite you in production: load balancer imbalance, browser incompatibility, and silent schema corruption."
 tags = [
     "api-design",
