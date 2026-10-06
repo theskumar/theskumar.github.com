@@ -4,7 +4,16 @@ title = "Projects"
 
 # Projects
 
-### Ongoing
+Client work, open source, and tools I build for my own workflow. Some are maintained libraries; others are personal setups and experiments, not finished products.
+
+### Personal tools and learning
+
+- **[python-dotenv](https://github.com/theskumar/python-dotenv)** — A Python library for loading environment variables from `.env` files. I co-maintain it as time allows.
+- **[Agent Stuff](https://github.com/theskumar/agent-stuff)** — My extensions, skills, and prompts for Pi and Claude Code. Includes review and handoff workflows, notifications, and tools for managing agent sessions. A mix of my own work and adaptations, with sources credited in the repository.
+- **[Dotfiles](https://github.com/theskumar/dotfiles)** — My working environment and configuration. An ongoing place to adjust the tools I use every day, including the [shell-startup audit](/articles/2026/05/how-i-optimized-my-zsh-startup-time/).
+- **[TIL](https://github.com/theskumar/til)** — Short learning notes and deeper references, published at [/til/](/til/). A record of discoveries, experiments, and references I want to return to.
+
+### Ongoing work
 
 - **AI enablement and automation at [Fueled](https://fueled.com)** — Leading agentic transformation for Fueled's teams and clients, including work on [Rosey](https://meetrosey.ai).
 - **C. S. Lewis (unreleased)** — Technical lead for backend and infrastructure, building a CMS and an interactive mobile app around his writing, not an e-book reader. Main implementation complete; ongoing technical oversight ahead of release.
