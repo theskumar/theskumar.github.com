@@ -7,7 +7,7 @@ tags = [
 ]
 +++
 
-__"Apps I’ve been using regularly this year.”__ Heavily inspired by [Jeff
+Apps I’ve been using regularly this year. Heavily inspired by [Jeff
 Triplett](https://micro.webology.dev/2025/10/29/default-apps-here-are-my/).
 Catalogued by Robb Knight’s [App Defaults](https://defaults.rknight.me/)
 

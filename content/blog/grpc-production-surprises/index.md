@@ -14,8 +14,6 @@ I recently spent some time going deeper into gRPC, past the quickstart and into 
 
 I also came away with a list of things I wish the quickstart had made harder to miss. They are not obscure bugs, and they are not arguments against gRPC. They are direct consequences of the choices that make it good.
 
-That is what makes them dangerous.
-
 ## Connections Are Not Requests
 
 For a long time I carried a simple model of load balancing: a request arrives, the load balancer picks a backend, and the backend handles it. That model is often close enough for HTTP/1.1 systems, even though the machinery underneath is balancing TCP connections rather than individual requests.
@@ -106,8 +104,8 @@ These three problems looked unrelated to me at first. One was about Kubernetes, 
 
 A TCP load balancer does not understand HTTP/2 streams. Browser JavaScript does not control the browser's HTTP/2 implementation. Protobuf understands field numbers and wire types, but it does not understand that some bytes used to mean an email address and now mean an avatar hash.
 
-Put those boundaries together and gRPC becomes less forgiving than its clean interface suggests. The generated method call may look like a local function, but it still crosses a network, a load balancer, a runtime, and a schema history. Every one of those layers gets a vote.
+Put those boundaries together and gRPC becomes less forgiving than its clean interface suggests. The generated method call may look like a local function, but it still crosses a network, a load balancer, a runtime, and a schema history. Each layer has constraints the service design needs to account for.
 
 I still like gRPC, especially for internal communication across services written in different languages. The contract is real, the tooling is mature, and native streaming is valuable. I do not want to give those things up merely because the surrounding system needs care.
 
-But I also do not want the elegance of the method call to hide the machinery underneath it. The abstraction is useful only while I remember where it ends.
+I need to account for those boundaries when choosing clients, load balancers, and schema changes.

@@ -5,21 +5,21 @@ draft: false
 description: "A beginner-friendly exploration of one of neuroscience's most elegant principles - how neurons that fire together, wire together."
 tags: ["neuroscience", "ai-ml"]
 author: "Saurabh Kumar"
-summary: "Dive into Hebbian learning, the fundamental principle of how our brains learn and form memories. From Pavlov's dogs to your morning coffee ritual, discover how neurons wire together through repetition."
+summary: "Dive into Hebbian learning, a principle of how neural connections strengthen through correlated activity. From Pavlov's dogs to your morning coffee ritual, discover how neurons wire together through repetition."
 keywords: ["hebbian learning", "neuroscience", "neuroplasticity", "brain learning", "neural networks", "synaptic plasticity"]
 ---
 
-Hebbian learning is basically THE fundamental rule for how our brains learn stuff. Named after psychologist Donald Hebb who proposed it back in 1949.
+Hebbian learning describes how correlated neural activity can strengthen connections. It is named after psychologist Donald Hebb, who proposed it in 1949.
 
 The entire concept boils down to one beautiful phrase:
 
 **"Neurons that fire together, wire together."**
 
-That's it. That's the whole thing.
+That is a useful shorthand, not a complete account of learning. Timing and the synapses involved matter.
 
 ## Breaking It Down
 
-When two neurons in your brain activate at the same time, the connection between them gets stronger. Do this repeatedly? The connection becomes even stronger.
+Repeated, correlated activity can strengthen the connection between two neurons. The effect depends on timing and the synapse, rather than simultaneous activity always producing the same change.
 
 Think of it like this:
 - First time: "Oh, these two things happened together"
@@ -120,33 +120,11 @@ If both are active (positive values), the connection strengthens. Simple, elegan
 
 ## Cool Extensions of This Idea
 
-**Spike-timing-dependent plasticity (STDP):** Turns out the ORDER matters too. If neuron A fires THEN neuron B fires (within ~20ms), the connection strengthens. Reverse order? It can actually weaken. Mind-blowing.
+**Spike-timing-dependent plasticity (STDP):** Order matters too. In this simplified account, neuron A firing before neuron B (within ~20ms) can strengthen the connection, while the reverse order can weaken it. The timing and effect depend on the synapse.
 
 **Competitive learning:** When neurons wire together, they can also suppress other connections. This is how your brain specializes - certain neuron clusters become experts at specific patterns.
 
-**Associative memory:** This is literally how you remember faces, names, songs, and basically everything. It's all Hebbian associations.
-
-## The Big Picture
-
-Hebbian learning isn't just a theory - it's been confirmed at every level:
-- Molecular (synaptic changes)
-- Cellular (neuron behavior)
-- Systems (brain region interactions)
-- Behavioral (how we actually learn)
-
-It's one of those rare scientific principles that's both:
-1. Incredibly simple to understand
-2. Enormously powerful in explaining complex phenomena
-
----
-
-## Final Thought
-
-Every time you practice something, read something, experience something - your brain is physically changing. Neurons are wiring together. Connections are strengthening.
-
-You are literally not the same person you were when you started reading this.
-
-Pretty wild when you think about it.
+**Associative memory:** Hebbian associations offer a way to think about connections between faces, names, and songs. They are not a complete explanation of memory.
 
 ---
 

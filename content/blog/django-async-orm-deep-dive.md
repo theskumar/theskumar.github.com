@@ -2,7 +2,7 @@
 title = "Django ORM: From sync_to_async Threads to Native psycopg3"
 date = "2026-06-13"
 slug = "django-orm-from-sync_to_async-threads-to-native-psycopg3"
-description = "A deep dive into how Django's ORM became truly async — why the old thread-pool trick was never real async, what changed in Django 6.0 with psycopg3 and ContextVar, and why asyncpg was left out."
+description = "A deep dive into how Django's ORM became truly async — how the old thread-pool approach worked, what changed in Django 6.0 with psycopg3 and ContextVar, and why asyncpg was left out."
 tags = [
     "django",
     "python",
@@ -12,20 +12,19 @@ tags = [
 ]
 +++
 
-Django shipped async ORM methods back in 3.1, and for years I told people they
-were not really async. `aget()`, `afilter()`, `acreate()`, the whole `a`-prefixed
-surface — the docs called it async support, and in the sense that mattered it was
-not. Every one of those calls still blocked a real OS thread. You got coroutine
-syntax without coroutine performance.
+Django shipped async ORM methods back in 3.1. The `a`-prefixed methods, including
+`aget()`, `afilter()`, and `acreate()`, let calling code use coroutines, but the
+database work still blocked an OS thread. I want to explain that distinction
+and how the execution path changed.
 
 Django 6.0 fixed it for real in December 2025. I want to walk through the path
-from "fake async via threads" to "native async via psycopg3," because it is not
+from "async via threads" to "native async via psycopg3," because it is not
 a story about a feature landing. It is a story about three constraints that
 boxed Django in for five years: `psycopg2` blocks, connection state lived in
 thread-locals, and the entire ORM assumed DB-API2. Once you see those three, every
 design decision Django made falls out of them almost mechanically.
 
-## The Old Trick Was Threads Pretending To Be Coroutines
+## The Thread-Based Async Path
 
 When async views arrived in 3.1, the ORM underneath them was entirely synchronous.
 `psycopg2` — the default PostgreSQL driver for most of Django's life — wraps
@@ -60,11 +59,11 @@ Without `thread_sensitive=True`, two consecutive `sync_to_async` calls from the 
 request might land on different threads, see different thread-locals, and tear your
 transaction state in half. The flag pins every call within the same coroutine
 context to one dedicated thread, so the connection still looks like a single
-connection per request. It is a clever illusion. It is still an illusion.
+connection per request. This preserves the connection’s thread affinity.
 
 Put it together and the cost is obvious. Five hundred concurrent async requests, each
 touching the database, need five hundred threads. That is the thread-per-connection
-model that async was supposed to retire, wearing a coroutine costume.
+model, even though the calling code uses coroutines.
 
 ## Why psycopg2 Was a Dead End
 
@@ -246,8 +245,7 @@ DATABASES = {
 }
 ```
 
-This is the same `pool` option I covered in [Cut Django Database Latency by 50-70ms With
-Native Connection Pooling](/articles/2025/06/django-psycopg-native-pooling/), with one
+This is the same `pool` option I covered in [Django Native PostgreSQL Connection Pooling](/articles/2025/06/django-psycopg-native-pooling/), with one
 difference that matters. In that post I warned against native pooling under ASGI —
 Django's own docs recommended PgBouncer instead — because the sync pool and the event
 loop did not cooperate. Django 6.0's `AsyncConnectionPool` is what closes that gap. The
@@ -287,8 +285,8 @@ structural, not political, and I think Django is right.
 - **A different transaction model.** asyncpg handles transactions differently from the
   DB-API2 autocommit and explicit model Django manages internally.
 
-A faster driver that does not speak your ORM's contract is not a faster ORM. It is a
-rewrite wearing a benchmark. If you genuinely need asyncpg throughput with a Django-like
+Using asyncpg would require changes to the ORM, not just a driver swap.
+A driver benchmark alone does not measure that work. If you genuinely need asyncpg throughput with a Django-like
 ORM, look at SQLAlchemy 2.0 with its async session support and asyncpg backend, running
 under Starlette or FastAPI. For Django, psycopg3 is the correct answer.
 
@@ -324,7 +322,7 @@ contexts, which is a fine thing to do while you wait.
 
 ## Why It Took Five Years
 
-Django's async ORM story ran from "fake async with threads" in 3.1 in 2020 to "native
+Django's async ORM story ran from "async with threads" in 3.1 in 2020 to "native
 async with psycopg3" in 6.0 in 2025. Five years sounds slow until you look at what had
 to be true first:
 
@@ -342,7 +340,7 @@ ecosystem.
 
 ## Related reading
 
-- [Cut Django Database Latency by 50-70ms With Native Connection Pooling](./django-psycopg-native-pooling.md) — the sync side of the same story: configuring the psycopg3 pool, sizing `min_size`/`max_size`, and avoiding the `CONN_MAX_AGE` foot-gun.
+- [Django Native PostgreSQL Connection Pooling](./django-psycopg-native-pooling.md) — the sync side of the same story: configuring the psycopg3 pool, sizing `min_size`/`max_size`, and avoiding the `CONN_MAX_AGE` foot-gun.
 
 [^1]: [PEP 249 — Python Database API Specification v2.0](https://peps.python.org/pep-0249/) — The DB-API2 spec that Django's ORM is built on top of; asyncpg deliberately does not implement it.
 [^2]: [psycopg3 — Async operations](https://www.psycopg.org/psycopg3/docs/advanced/async.html) — Official psycopg documentation on the async connection and cursor API.

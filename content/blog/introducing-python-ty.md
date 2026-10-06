@@ -11,7 +11,7 @@ tags = [
 
 Anyone who has run `mypy` on a real codebase knows the workarounds. You enable the daemon, you keep the incremental cache warm, you scope the check to the files you touched, and you still wait a few seconds for the editor to catch up after a rename. In CI it is worse, because the cache is cold and the full run can stretch into the minutes. None of this is broken, exactly. It is just the cost you learn to pay. So when a new checker says the wait can mostly go away, I pay attention, but I also want to know what it costs.
 
-That checker is `ty` ([gh:astral-sh/ty](https://github.com/astral-sh/ty)), from Astral, the same people who built the Ruff linter and the `uv` package manager. It is pre-alpha, version `0.0.0a6`, and not something you should put in production. But it is already worth talking about, partly for what it does and partly for what it deliberately leaves out.
+That checker is `ty` ([gh:astral-sh/ty](https://github.com/astral-sh/ty)), from Astral, the same people who built the Ruff linter and the `uv` package manager. As of May 2025, it is pre-alpha, version `0.0.0a6`, and not something you should put in production. But it is already worth talking about, partly for what it does and partly for what it deliberately leaves out.
 
 ## Speed Is The Headline
 
@@ -61,6 +61,6 @@ Or without installing anything:
 uvx ty check
 ```
 
-Keep in mind that it is pre-alpha. Expect rough edges, and do not trust a red diagnostic until you have checked it by hand.
+These notes describe the pre-alpha release in May 2025. Expect rough edges, and do not trust a red diagnostic until you have checked it by hand.
 
-I do not know yet whether `ty` becomes the type checker people reach for. The speed is real, the missing plugin system is a deliberate stance and not an oversight, and the accuracy is not there yet. What I want from it is the thing Ruff already delivered: a tool fast enough to disappear into the edit loop, honest enough to trust, and open enough that adopting it does not quietly hand someone a lever over my workflow. The first of those is here. The other two are still being written.
+I do not know yet whether `ty` becomes the type checker people reach for. The speed is real, the missing plugin system is a deliberate stance and not an oversight, and the accuracy is not there yet. What I want from it is the thing Ruff already delivered: a tool fast enough to disappear into the edit loop, honest enough to trust, and available under open source terms I can rely on. The first of those is here. The other two are still being written.

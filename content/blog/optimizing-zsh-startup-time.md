@@ -215,4 +215,4 @@ These are estimates, not measurements. Your actual numbers depend on your hardwa
 
 My dotfiles, with all of this applied, are at [github.com/theskumar/dotfiles](https://github.com/theskumar/dotfiles). The `zsh/OPTIMIZATION.md` file there is the running log of what is done and what is still open.
 
-None of this stays fixed. A shell config grows the way mine did, one `eval` and one plugin at a time, each addition reasonable on its own, until a fresh terminal takes a second and nobody remembers why. The fix was never a cleverer `.zshrc`. It is going back through the thing every so often and asking, line by line, what still earns its place.
+I plan to repeat the audit as the config changes.

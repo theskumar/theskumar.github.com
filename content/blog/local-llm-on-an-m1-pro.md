@@ -11,7 +11,7 @@ tags = [
 toc = true
 +++
 
-My pi setup has a `fast` mode: a slot I wired into my own config for the small, high-volume questions, pointed at Bedrock's Haiku 4.5. It is a good model. Cheap, responsive, and it answers the kind of small, contained question I throw at it twenty times a day without complaining. It is also not mine. It runs on hardware I do not own, it can be deprecated or quietly swapped the week I have come to lean on it, and every one of those small questions hands a slice of my code to a third party.
+My pi setup has a `fast` mode: a slot I wired into my own config for the small, high-volume questions, pointed at Bedrock's Haiku 4.5. It is a good model. Cheap, responsive, and it answers the kind of small, contained question I throw at it twenty times a day without complaining. It runs on third-party hardware, and those questions send code to a third party. I wanted to try running that slot locally.
 
 None of that is a crisis. Bedrock is fast and it works. But the machine that could do the same job is sitting on my desk, and when Kyle Howells [got Gemma 4 26B-A4B running locally on an M1 Max at 72 tokens per second](https://ikyle.me/blog/2026/how-to-setup-a-local-coding-agent-on-macos) and the [Hacker News thread](https://news.ycombinator.com/item?id=48507020) filled up with people on smaller Macs reporting the same setup was workable, I wanted to know whether my own laptop could host that slot.
 
@@ -208,8 +208,8 @@ I am not putting the server behind launchd. At ~22 GB resident on a 32 GB machin
 
 I am not running a second model on a second port. Maybe Qwen 3.6 35B-A3B earns a slot for the cases where Gemma is too weak. Maybe one model is enough. I will know in a week.
 
-## The Smaller Lesson
+## What the Planning Helped With
 
-The bigger story is bandwidth and quantisation and what fits in 32 GB. The smaller one, which I think is more useful, is about the planning. I have spent two years watching people, myself included, let agents do work the agent should not be doing, because asking felt cheaper than thinking. Handing a guide to a model and making it interrogate my plan is the opposite move: the legwork moved to the model, the agency stayed with me.
+The model researched the options; I chose the setup. The conversation made me write down why I chose each part, so I can refer back to it later.
 
-The local agent might work or it might not. I will know in a week. The transcript is useful regardless, because it forced me to write down why I made each choice, in a form I can read later when I have forgotten.
+I still need to see how the local model handles everyday work. If it does not hold up, I can switch the slot back.

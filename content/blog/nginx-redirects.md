@@ -1,7 +1,7 @@
 +++
 title = "Efficiently Managing Mass URL Redirects with Nginx"
 date = "2017-09-25"
-description = "Learn how to implement and manage hundreds of URL redirections efficiently using Nginx's map module and hash maps for optimal server performance"
+description = "Manage URL redirects with Nginx's map directive and a separate configuration file"
 tags = [
     "devops",
     "nginx",
@@ -9,7 +9,7 @@ tags = [
 ]
 +++
 
-In this post, I'll show you how to efficiently implement hundreds or even thousands of URL redirects on your server without sacrificing performance. We'll use Nginx's powerful `map` module which creates optimized hash tables for fast lookups.
+I use Nginx's `map` directive to keep URL redirects in a separate configuration file. It creates hash tables for fast lookups.
 
 ## Creating Your Redirect Configuration
 
