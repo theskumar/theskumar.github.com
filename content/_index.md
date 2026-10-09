@@ -9,6 +9,9 @@ aliases = ["/about/", "/about"]
 [params]
 eyebrow = "Principal Engineer, Fueled"
 tagline = "I build backend systems and help teams put AI agents to work."
+
+[params.portrait]
+src = "images/portrait.webp"
 +++
 
 I'm a Principal Engineer at Fueled. Over the past fourteen years, I've built backends for products ranging from patient portals and investing platforms to educational apps. Most of my work has been in backend architecture, infrastructure, and technical leadership.

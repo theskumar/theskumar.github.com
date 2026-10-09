@@ -2,12 +2,39 @@
 {{/* Seamless full-page field: faint ridgelines that relax into ocean swells
      as you scroll — hills into waves, like the tattoo. */}}
 <canvas class="fx-field" id="fx-field" aria-hidden="true"></canvas>
-<section class="hero">
+<section class="hero{{ with .Params.portrait }} hero--portrait{{ end }}">
   <span class="crosshair" aria-hidden="true"></span>
   <div class="hero-copy reveal">
     {{ with .Params.eyebrow }}<div class="eyebrow">{{ . }}</div>{{ end }}
     {{ with .Params.tagline }}<h1>{{ . }}</h1>{{ end }}
-    <div class="hero-lead">{{ .Content }}</div>
+    <div class="hero-lead">
+    {{ with .Params.portrait }}
+    <figure class="hero-portrait">
+      <div class="blob">
+        <svg class="blob-outline" viewBox="0 0 1 1" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0.471,0.000 C0.583,0.003 0.741,0.062 0.811,0.131 C0.882,0.199 0.865,0.321 0.896,0.410 C0.927,0.498 1.018,0.578 0.997,0.663 C0.976,0.748 0.861,0.868 0.769,0.918 C0.677,0.968 0.550,0.952 0.443,0.962 C0.335,0.973 0.198,1.028 0.124,0.981 C0.050,0.934 0.010,0.778 0.001,0.679 C-0.008,0.581 0.045,0.484 0.068,0.389 C0.091,0.295 0.071,0.177 0.138,0.112 C0.205,0.047 0.359,-0.003 0.471,0.000Z" vector-effect="non-scaling-stroke">
+            <animate attributeName="d" dur="34s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.33;0.66;1" keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1" values="M0.471,0.000 C0.583,0.003 0.741,0.062 0.811,0.131 C0.882,0.199 0.865,0.321 0.896,0.410 C0.927,0.498 1.018,0.578 0.997,0.663 C0.976,0.748 0.861,0.868 0.769,0.918 C0.677,0.968 0.550,0.952 0.443,0.962 C0.335,0.973 0.198,1.028 0.124,0.981 C0.050,0.934 0.010,0.778 0.001,0.679 C-0.008,0.581 0.045,0.484 0.068,0.389 C0.091,0.295 0.071,0.177 0.138,0.112 C0.205,0.047 0.359,-0.003 0.471,0.000Z;M0.512,0.000 C0.597,-0.001 0.690,0.104 0.771,0.170 C0.851,0.236 0.976,0.317 0.997,0.396 C1.018,0.475 0.924,0.556 0.896,0.646 C0.868,0.737 0.887,0.882 0.829,0.939 C0.770,0.997 0.641,1.010 0.543,0.993 C0.445,0.976 0.329,0.890 0.240,0.838 C0.151,0.787 0.039,0.757 0.010,0.682 C-0.019,0.608 0.022,0.475 0.063,0.392 C0.105,0.308 0.185,0.244 0.259,0.179 C0.334,0.114 0.427,0.001 0.512,0.000Z;M0.474,0.000 C0.575,0.001 0.698,0.072 0.772,0.140 C0.847,0.208 0.885,0.321 0.921,0.408 C0.957,0.496 1.026,0.593 0.990,0.664 C0.953,0.736 0.789,0.784 0.703,0.839 C0.617,0.894 0.562,0.977 0.474,0.994 C0.386,1.010 0.243,0.997 0.177,0.936 C0.112,0.876 0.108,0.723 0.079,0.629 C0.050,0.535 -0.013,0.456 0.002,0.373 C0.017,0.291 0.090,0.194 0.169,0.132 C0.248,0.069 0.373,-0.001 0.474,0.000Z;M0.471,0.000 C0.583,0.003 0.741,0.062 0.811,0.131 C0.882,0.199 0.865,0.321 0.896,0.410 C0.927,0.498 1.018,0.578 0.997,0.663 C0.976,0.748 0.861,0.868 0.769,0.918 C0.677,0.968 0.550,0.952 0.443,0.962 C0.335,0.973 0.198,1.028 0.124,0.981 C0.050,0.934 0.010,0.778 0.001,0.679 C-0.008,0.581 0.045,0.484 0.068,0.389 C0.091,0.295 0.071,0.177 0.138,0.112 C0.205,0.047 0.359,-0.003 0.471,0.000Z"/>
+          </path>
+        </svg>
+        <svg class="blob-photo" viewBox="0 0 300 318" role="img" aria-label="Portrait of Saurabh Kumar">
+          <clipPath id="portrait-blob" clipPathUnits="objectBoundingBox">
+            <path d="M0.474,0.000 C0.575,0.001 0.698,0.072 0.772,0.140 C0.847,0.208 0.885,0.321 0.921,0.408 C0.957,0.496 1.026,0.593 0.990,0.664 C0.953,0.736 0.789,0.784 0.703,0.839 C0.617,0.894 0.562,0.977 0.474,0.994 C0.386,1.010 0.243,0.997 0.177,0.936 C0.112,0.876 0.108,0.723 0.079,0.629 C0.050,0.535 -0.013,0.456 0.002,0.373 C0.017,0.291 0.090,0.194 0.169,0.132 C0.248,0.069 0.373,-0.001 0.474,0.000Z">
+              <animate attributeName="d" dur="27s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.33;0.66;1" keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1" values="M0.474,0.000 C0.575,0.001 0.698,0.072 0.772,0.140 C0.847,0.208 0.885,0.321 0.921,0.408 C0.957,0.496 1.026,0.593 0.990,0.664 C0.953,0.736 0.789,0.784 0.703,0.839 C0.617,0.894 0.562,0.977 0.474,0.994 C0.386,1.010 0.243,0.997 0.177,0.936 C0.112,0.876 0.108,0.723 0.079,0.629 C0.050,0.535 -0.013,0.456 0.002,0.373 C0.017,0.291 0.090,0.194 0.169,0.132 C0.248,0.069 0.373,-0.001 0.474,0.000Z;M0.471,0.000 C0.583,0.003 0.741,0.062 0.811,0.131 C0.882,0.199 0.865,0.321 0.896,0.410 C0.927,0.498 1.018,0.578 0.997,0.663 C0.976,0.748 0.861,0.868 0.769,0.918 C0.677,0.968 0.550,0.952 0.443,0.962 C0.335,0.973 0.198,1.028 0.124,0.981 C0.050,0.934 0.010,0.778 0.001,0.679 C-0.008,0.581 0.045,0.484 0.068,0.389 C0.091,0.295 0.071,0.177 0.138,0.112 C0.205,0.047 0.359,-0.003 0.471,0.000Z;M0.512,0.000 C0.597,-0.001 0.690,0.104 0.771,0.170 C0.851,0.236 0.976,0.317 0.997,0.396 C1.018,0.475 0.924,0.556 0.896,0.646 C0.868,0.737 0.887,0.882 0.829,0.939 C0.770,0.997 0.641,1.010 0.543,0.993 C0.445,0.976 0.329,0.890 0.240,0.838 C0.151,0.787 0.039,0.757 0.010,0.682 C-0.019,0.608 0.022,0.475 0.063,0.392 C0.105,0.308 0.185,0.244 0.259,0.179 C0.334,0.114 0.427,0.001 0.512,0.000Z;M0.474,0.000 C0.575,0.001 0.698,0.072 0.772,0.140 C0.847,0.208 0.885,0.321 0.921,0.408 C0.957,0.496 1.026,0.593 0.990,0.664 C0.953,0.736 0.789,0.784 0.703,0.839 C0.617,0.894 0.562,0.977 0.474,0.994 C0.386,1.010 0.243,0.997 0.177,0.936 C0.112,0.876 0.108,0.723 0.079,0.629 C0.050,0.535 -0.013,0.456 0.002,0.373 C0.017,0.291 0.090,0.194 0.169,0.132 C0.248,0.069 0.373,-0.001 0.474,0.000Z"/>
+            </path>
+          </clipPath>
+          <image href="{{ .src | relURL }}" width="300" height="318" preserveAspectRatio="xMidYMid slice" clip-path="url(#portrait-blob)"/>
+        </svg>
+      </div>
+      <script>
+        /* Hold the mask still for visitors who ask for less motion. */
+        if (matchMedia('(prefers-reduced-motion: reduce)').matches)
+          document.querySelectorAll('.hero-portrait svg').forEach(function (s) { s.pauseAnimations(); });
+      </script>
+      {{ with .caption }}<figcaption class="anno anno--plain">{{ . }}</figcaption>{{ end }}
+    </figure>
+    {{ end }}
+      {{ .Content }}
+    </div>
     <div class="hero-actions">
       <a class="btn btn-primary" href="{{ "articles/" | relURL }}">Read the writing</a>
       <a class="btn btn-ghost" href="#contact">Get in touch</a>
@@ -29,20 +56,20 @@
 
 <section class="sheet reveal" data-stagger>
   <a class="panel col-4" href="https://github.com/theskumar/python-dotenv">
-    <span class="anno anno--plain"><span class="idx">01</span> open source</span>
+    <span class="anno anno--plain"><span class="idx" aria-hidden="true"></span>open source</span>
     <div class="metric">{{ $stars }} <small>stars on GitHub</small></div>
     <h3 style="margin-top:0.7rem">python-dotenv</h3>
     <p>A Python library for loading environment variables from <code>.env</code> files. I co-maintain it.</p>
   </a>
 
   <a class="panel col-2" href="{{ "now/" | relURL }}">
-    <span class="anno anno--plain"><span class="idx">02</span> now</span>
+    <span class="anno anno--plain"><span class="idx" aria-hidden="true"></span>now</span>
     <h3>Leading agentic transformation at Fueled</h3>
     <p>Helping Fueled’s teams and clients use AI agents, including work on Rosey. And learning to keep up with a toddler.</p>
   </a>
 
   <div class="panel col-4">
-    <span class="anno anno--plain"><span class="idx">03</span> recent writing</span>
+    <span class="anno anno--plain"><span class="idx" aria-hidden="true"></span>recent writing</span>
     <ul class="post-list">
       {{ range $recent }}
       <li>
@@ -56,7 +83,7 @@
   </div>
 
   <div class="panel col-2">
-    <span class="anno anno--plain"><span class="idx">04</span> worked with</span>
+    <span class="anno anno--plain"><span class="idx" aria-hidden="true"></span>worked with</span>
     <div class="chip-row">
       <span class="chip">The Motley Fool</span>
       <span class="chip">Apple</span>
@@ -71,19 +98,19 @@
   </div>
 
   <div class="panel col-2">
-    <span class="anno anno--plain"><span class="idx">05</span> working together</span>
+    <span class="anno anno--plain"><span class="idx" aria-hidden="true"></span>working together</span>
     <h3>Mentoring &amp; consulting</h3>
     <p>Pro bono mentoring for early founders, and independent consulting on backend systems and AI.</p>
   </div>
 
   <a class="panel col-2" href="{{ "til/" | relURL }}">
-    <span class="anno anno--plain"><span class="idx">06</span> learning notes</span>
+    <span class="anno anno--plain"><span class="idx" aria-hidden="true"></span>learning notes</span>
     <h3>Things I’m working through</h3>
     <p>Short notes on systems, tools, and agents: what caught my attention, what I’m trying, and what changes how I work.</p>
   </a>
 
   <div class="panel col-2" id="contact">
-    <span class="anno anno--plain"><span class="idx">07</span> get in touch</span>
+    <span class="anno anno--plain"><span class="idx" aria-hidden="true"></span>get in touch</span>
     <h3>hello@saurabh-kumar.com</h3>
     <div class="social-row" style="margin-top:0.9rem">
       <a href="https://github.com/theskumar">GitHub</a>

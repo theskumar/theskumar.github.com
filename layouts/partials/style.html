@@ -158,7 +158,13 @@
       align-items: center;
       gap: 0.7em;
   }
-  .anno .idx { color: var(--accent); }
+  /* Panel marker: a small registration cross in the accent, echoing the hero crosshair. */
+  .anno .idx {
+      flex: none; width: 9px; height: 9px; color: var(--accent);
+      background:
+        linear-gradient(currentColor, currentColor) center/1px 100% no-repeat,
+        linear-gradient(currentColor, currentColor) center/100% 1px no-repeat;
+  }
   .anno::after { content: ""; flex: 1; height: 1px; background: var(--hairline); }
   .anno--plain::after { content: none; }
 
@@ -264,6 +270,52 @@
   .hero-lead { color: var(--muted); font-size: 0.99rem; line-height: 1.68; max-width: 34rem; }
   .hero-lead p { margin-bottom: 0.9em; }
   .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-top: 1.6rem; }
+
+  /* Portrait: warm-mono photo in a soft amoeba mask (SVG clipPath).
+     The mask and its traced outline morph slowly, out of step (SMIL in about.html).
+     The lead text wraps the mask through shape-outside. The polygon encloses all
+     three morph shapes plus the outline, so text never meets the moving edge. */
+  .hero--portrait .hero-copy { max-width: 44rem; }
+  .hero--portrait .hero-lead { max-width: none; }
+  .hero--portrait .hero-copy { display: flow-root; }
+  .hero-portrait {
+      /* --s scales the photo, its margins and the wrap polygon together. */
+      --s: 1;
+      float: right;
+      width: calc(280px * var(--s));
+      /* Tall bottom margin holds the diagonal tail of the shape:
+         lines below the photo step out along a slant, not all at once. */
+      margin: 0.3rem 0 calc(190px * var(--s)) calc(18px * var(--s));
+      shape-outside: polygon(calc(312px * var(--s)) calc(171px * var(--s)), calc(309px * var(--s)) calc(196px * var(--s)), calc(300px * var(--s)) calc(220px * var(--s)), calc(298px * var(--s)) calc(224px * var(--s)), calc(279px * var(--s)) calc(264px * var(--s)), calc(266px * var(--s)) calc(283px * var(--s)), calc(238px * var(--s)) calc(297px * var(--s)), calc(298px * var(--s)) calc(300px * var(--s)), calc(298px * var(--s)) calc(520px * var(--s)), calc(150px * var(--s)) calc(520px * var(--s)), calc(70px * var(--s)) calc(320px * var(--s)), calc(70px * var(--s)) calc(313px * var(--s)), calc(78px * var(--s)) calc(297px * var(--s)), calc(40px * var(--s)) calc(293px * var(--s)), calc(27px * var(--s)) calc(275px * var(--s)), calc(18px * var(--s)) calc(250px * var(--s)), calc(13px * var(--s)) calc(222px * var(--s)), calc(11px * var(--s)) calc(196px * var(--s)), calc(13px * var(--s)) calc(167px * var(--s)), calc(11px * var(--s)) calc(129px * var(--s)), calc(12px * var(--s)) calc(117px * var(--s)), calc(23px * var(--s)) calc(85px * var(--s)), calc(33px * var(--s)) calc(58px * var(--s)), calc(43px * var(--s)) calc(40px * var(--s)), calc(46px * var(--s)) calc(36px * var(--s)), calc(70px * var(--s)) calc(16px * var(--s)), calc(88px * var(--s)) calc(7px * var(--s)), calc(114px * var(--s)) calc(-2px * var(--s)), calc(137px * var(--s)) calc(-6px * var(--s)), calc(158px * var(--s)) calc(-7px * var(--s)), calc(183px * var(--s)) calc(-4px * var(--s)), calc(206px * var(--s)) calc(5px * var(--s)), calc(227px * var(--s)) calc(16px * var(--s)), calc(246px * var(--s)) calc(28px * var(--s)), calc(263px * var(--s)) calc(45px * var(--s)), calc(287px * var(--s)) calc(80px * var(--s)), calc(302px * var(--s)) calc(100px * var(--s)), calc(308px * var(--s)) calc(124px * var(--s)), calc(309px * var(--s)) calc(128px * var(--s)));
+      shape-margin: 10px;
+  }
+  /* Wide screens: hang the portrait into the empty right gutter so it lines up
+     nearer the crosshair, without widening the text column. */
+  @media (min-width: 960px) {
+      .hero-portrait { margin-right: -110px; }
+  }
+  /* Tablet: smaller photo so the wrapped text keeps a readable line length. */
+  @media (min-width: 721px) and (max-width: 959px) {
+      .hero-portrait { --s: 0.72; }
+  }
+  .hero-portrait .blob { position: relative; aspect-ratio: 300 / 318; }
+  .hero-portrait .blob-photo { position: relative; display: block; width: 100%; height: 100%; }
+  .hero-portrait .blob-outline {
+      position: absolute; inset: -6px -10px -10px -4px;
+      width: calc(100% + 14px); height: calc(100% + 16px);
+      overflow: visible;
+      transform: rotate(-7deg);
+      transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .hero-portrait .blob-outline path { fill: none; stroke: var(--border-strong); stroke-width: 1; }
+  .hero-portrait:hover .blob-outline { transform: rotate(4deg); }
+  .hero-portrait:hover .blob-outline path { stroke: var(--accent); }
+  .hero-portrait figcaption {
+      margin-top: 1.1rem;
+      justify-content: center;
+      color: var(--faint);
+      font-size: 0.66rem;
+  }
 
   /* Registration crosshair, drawn in CSS. */
   .crosshair {
@@ -632,6 +684,7 @@
   }
   @media (max-width: 720px) {
       .sheet { grid-template-columns: 1fr 1fr; }
+      .hero-portrait { float: none; shape-outside: none; width: 100%; max-width: 170px; margin: 0.2rem auto 1.6rem; }
       .col-2, .col-3, .col-4, .col-6 { grid-column: span 2; }
       .index-year { grid-template-columns: 1fr; gap: 0; }
       .index-year .year { padding: 0 0 0.5rem; }
@@ -647,6 +700,7 @@
       .entry > a:hover { transform: none; }
       .toc-rail, .toc-panel, .toc-rail .toc-nav a { transition: none; }
       .theme-toggle svg { transition: opacity 0.01ms; }
+      .hero-portrait .blob-outline { transition: none; }
       html.theme-anim, html.theme-anim *,
       html.theme-anim *::before, html.theme-anim *::after { transition: none !important; }
       ::view-transition-group(*),
