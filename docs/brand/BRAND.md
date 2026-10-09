@@ -10,25 +10,28 @@ Applies to: saurabh-kumar.com, social cards, slides, README headers.
 
 ---
 
-## 1. Logo — the node-graph K
+## 1. Logo: ridge to wave
 
-A letter **K** drawn as a system diagram: four terminal nodes, three edges, and
-an ember junction where the strokes meet. It reads as both a monogram and a
-node-and-edge graph.
+A single line that climbs two peaks and rolls into a breaking wave, with an
+ember sun above. It comes from Saurabh's tattoo (hills into ocean). The tattoo
+runs the other way, wave into hills; the mark keeps the idea, not the exact
+drawing. It is the same story the hill and sea canvases tell across the site.
 
 - Master: `static/images/brand/mark.svg` (ink on transparent)
 - Favicon: `static/images/favicon.svg` (mark on paper tile, dark-mode aware)
-- Construction: 32×32 grid; strokes 1.8, round caps; terminal nodes r 2.4; junction r 2.9 in ember.
+- Construction: 32x32 grid; one path, stroke 1.9 (2.3 in the favicon), round
+  caps and joins; ember sun r 2 at (8, 9.7).
 
 Rules:
 
-- The junction node is **always** ember; terminals always ink (or cream on dark).
+- The sun is **always** ember and is the only ember in the mark. The line is
+  always ink (or cream on dark).
 - Minimum size 16 px. Below 20 px, drop the wordmark.
-- Clear space: one terminal-node diameter on all sides.
+- Clear space: one sun diameter on all sides.
 - Don't rotate, outline, gradient-fill, or add shadows.
 
-Lockup: mark + wordmark “Saurabh Kumar” in Newsreader 500, mark cap-height
-aligned, gap ≈ 0.45× mark width.
+Lockup: mark + wordmark "Saurabh Kumar" in Newsreader 500, mark cap-height
+aligned, gap about 0.45x mark width.
 
 ## 2. Color
 
@@ -113,7 +116,7 @@ Plain, specific, first-person. The judgment is the product; state it.
 | Mark (SVG master) | `static/images/brand/mark.svg` |
 | Favicon (SVG, theme-aware) | `static/images/favicon.svg` |
 | Favicon PNGs / ICO / touch icons | `static/favicon-*.png`, `static/favicon.ico`, `static/apple-touch-icon.png`, `static/android-chrome-*.png` |
-| Social / OG card (1200×630) | `static/images/og.png` |
+| Social / OG card (1200×630) | `static/images/og.png` (source: `docs/brand/og-card.html`, screenshot at 1200×630) |
 | Live design system | `layouts/partials/style.html` (tokens at top) |
 | Sibling site: TIL | `~/work/pr/til` (`build-site.js` carries the same tokens, mark, nav line, ridgescape) → saurabh-kumar.com/til/ |
 

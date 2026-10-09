@@ -2,18 +2,12 @@
   <style>
     .paper { fill: #F7F4ED; }
     .ink { stroke: #1D1810; }
-    .ink-dot { fill: #1D1810; }
     @media (prefers-color-scheme: dark) {
       .paper { fill: #171411; }
       .ink { stroke: #F1EBDD; }
-      .ink-dot { fill: #F1EBDD; }
     }
   </style>
   <rect class="paper" width="32" height="32" rx="7"/>
-  <path class="ink" d="M11 8v16M11 16 21.5 8.5M11 16l10.5 7.5" fill="none" stroke-width="1.6" stroke-linecap="round"/>
-  <circle class="ink-dot" cx="11" cy="8" r="1.9"/>
-  <circle class="ink-dot" cx="11" cy="24" r="1.9"/>
-  <circle class="ink-dot" cx="21.5" cy="8.5" r="1.9"/>
-  <circle class="ink-dot" cx="21.5" cy="23.5" r="1.9"/>
-  <circle cx="11" cy="16" r="2.3" fill="#B4491F"/>
+  <path class="ink" d="M3 24.2 8 16.2l3 3 4-7 4.5 8c1.5 3 5.5 4 8 1 2-2.5 0-6-3-5-2 .7-1.5 3.5.7 3" fill="none" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="8" cy="9.7" r="2.2" fill="#B4491F"/>
 </svg>
