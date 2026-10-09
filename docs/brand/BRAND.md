@@ -10,17 +10,21 @@ Applies to: saurabh-kumar.com, social cards, slides, README headers.
 
 ---
 
-## 1. Logo: ridge to wave
+## 1. Logo: wave into hills
 
-A single line that climbs two peaks and rolls into a breaking wave, with an
-ember sun above. It comes from Saurabh's tattoo (hills into ocean). The tattoo
-runs the other way, wave into hills; the mark keeps the idea, not the exact
-drawing. It is the same story the hill and sea canvases tell across the site.
+A breaking wave, its lip turning over in a small curl, runs into a small hill
+with a taller hill behind it, and an ember sun over the sea. It comes from
+Saurabh's tattoo, which reads the same way: wave first, then hills. The mark
+keeps the idea, not the exact drawing.
 
 - Master: `static/images/brand/mark.svg` (ink on transparent)
 - Favicon: `static/images/favicon.svg` (mark on paper tile, dark-mode aware)
-- Construction: 32x32 grid; one path, stroke 1.9 (2.3 in the favicon), round
-  caps and joins; ember sun r 2 at (8, 9.7).
+- Construction: 32x32 grid; two paths (wave and front hill, then the back
+  hill), stroke 2.1 (2.4 in the favicon), round caps, mitered joins so the
+  summits stay pointed; ember sun r 2.1 at (8, 8.5).
+- Alignment: the wave start, the valley and the front hill's foot share one
+  baseline (y 23). The front peak touches the line from the wave's lip to the
+  back peak. The back hill starts 40% down the front hill's right slope.
 
 Rules:
 

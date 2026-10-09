@@ -3,10 +3,13 @@
 <canvas class="fx-hills" id="fx-hills" aria-hidden="true"></canvas>
 <div class="header-wrap">
   <a href="{{ "" | relURL }}" class="title">
-    {{/* Ridge to wave: hills that run into a breaking wave, after the tattoo. See docs/brand/BRAND.md */}}
+    {{/* Wave into hills, after the tattoo. See docs/brand/BRAND.md */}}
     <svg class="logo-mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-      <path d="M3 24.2 8 16.2l3 3 4-7 4.5 8c1.5 3 5.5 4 8 1 2-2.5 0-6-3-5-2 .7-1.5 3.5.7 3" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-      <circle class="mark-node" cx="8" cy="9.7" r="2"/>
+      <g stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="miter">
+        <path d="M2 23c4-.6 5-8 10.4-8C13.3 15 13.6 15.6 12.9 16 11.8 16.7 10.5 17.4 10.5 19c0 2.4 1 4 4 4L19.5 12.26 24.5 23"/>
+        <path d="M21.5 16.55 25.5 8.5 30.5 19.6"/>
+      </g>
+      <circle class="mark-node" cx="8" cy="8.5" r="2.1"/>
     </svg>
     <span class="brand">Saurabh Kumar</span>
   </a>
