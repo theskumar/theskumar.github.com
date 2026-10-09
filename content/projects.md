@@ -43,7 +43,7 @@ See [/now/](/now/) for more on what I'm currently working on.
 
 ### Open source work & Community
 
-- [hypha - Manage open calls and applications for nonprofits](https://github.com/hyphapp/hypha)
+- [hypha - Manage open calls and applications for nonprofits](https://github.com/HyphaApp/hypha)
 - [pydelhi.org - Delhi Python meetup](https://pydelhi.org) (revived and ran, 2014–2018)
 - [pythonindia/junction - Conference proposal management for PyCon India and PyDelhi](https://github.com/pythonindia/junction) [closed]
 - [Technical reviewer for Two Scoops of Django](https://www.feldroy.com/products/two-scoops-of-django-3-x) (the book)
