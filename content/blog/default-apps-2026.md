@@ -48,7 +48,7 @@ and catalogued by Robb Knight's [App Defaults](https://defaults.rknight.me/).
 - **Chat**: Signal, WhatsApp, Telegram
 - **Bookmarks**: none. My [TIL](/til/) and personal wiki replaced them
 - **Read It Later**: Safari Reading List
-- **Word Processing**: Apple Pages
+- **Word Processing**: Google Docs
 - **Spreadsheets**: Google Sheets
 - **Presentations**: Figma
 - **Shopping Lists**: Amazon
