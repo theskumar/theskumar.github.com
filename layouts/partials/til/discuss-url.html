@@ -1,0 +1,5 @@
+{{/* URL of a note's Mastodon thread, or "" if it was never tooted.
+     Context: the note. */}}
+{{ $url := "" }}
+{{ with .Params.mastodon }}{{ $url = printf "%s/%s" site.Params.mastodon . }}{{ end }}
+{{ return $url }}

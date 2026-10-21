@@ -2,7 +2,7 @@
      links to the note's own page. The id keeps old /til/weekly/…html#anchor
      links working. Context: dict "page" "exclude" (tag to leave out). */}}
 {{ $p := .page }}
-<li id="{{ $p.Params.anchor | default ($p.Date.Unix | string) }}">
+<li id="{{ $p.Params.anchor | default $p.File.ContentBaseName }}">
   <a href="{{ $p.RelPermalink }}" class="note-date">{{ $p.Date.Format "Jan 2, 2006" }}</a>
   {{ $p.Content }}
   {{ partial "til/note-tags.html" (dict "page" $p "exclude" .exclude) }}

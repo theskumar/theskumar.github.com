@@ -122,7 +122,7 @@ Plain, specific, first-person. The judgment is the product; state it.
 | Favicon PNGs / ICO / touch icons | `static/favicon-*.png`, `static/favicon.ico`, `static/apple-touch-icon.png`, `static/android-chrome-*.png` |
 | Social / OG card (1200×630) | `static/images/og.png` (source: `docs/brand/og-card.html`, screenshot at 1200×630) |
 | Live design system | `layouts/partials/style.html` (tokens at top) |
-| Sibling site: TIL | `~/work/pr/til` (`build-site.js` carries the same tokens, mark, nav line, ridgescape) → saurabh-kumar.com/til/ |
+| TIL | Part of this site since Oct 2026: `layouts/til/`, notes in `content/til/` → saurabh-kumar.com/til/ |
 
 Regenerate icons: `rsvg-convert -w <size> -h <size> static/images/favicon.svg > out.png`;
 ICO: `magick favicon-32x32.png favicon-16x16.png favicon.ico`.

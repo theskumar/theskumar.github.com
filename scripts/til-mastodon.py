@@ -13,11 +13,16 @@ Each note is a file, content/til/<unix-ts>.md, with TOML front matter:
     Note body in markdown.
 
 Run by .github/workflows/til-mastodon.yml from the repo root after a push.
-It looks at the note files changed by the last commit (HEAD~1..HEAD):
+It looks at the note files changed by the whole push, from TIL_BASE (the
+commit before the push) to HEAD; without TIL_BASE, from HEAD~1:
 
 - added, no `mastodon` ID, not a backfill: post, then write the status ID
   into the file's front matter (the workflow commits it);
-- modified, with a `mastodon` ID: edit that toot in place.
+- modified, with a `mastodon` ID, and the toot text changed: edit that toot;
+- anything else (an added note that already has an ID, an old note): skip.
+
+A note that fails doesn't stop the others; the script exits 1 at the end,
+after writing the IDs it did get.
 
 Usage:
     python3 scripts/til-mastodon.py            # needs MASTODON_ACCESS_TOKEN
@@ -45,10 +50,14 @@ NOTE_FILE = re.compile(r"^content/til/(\d+)\.md$")
 BACKFILL_DAYS = 14
 
 
-def read_note(path: Path) -> tuple[dict, str]:
-    """Return (front matter, body) of a note file."""
-    _, fm, body = path.read_text(encoding="utf-8").split("+++", 2)
+def parse_note(text: str) -> tuple[dict, str]:
+    """Return (front matter, body) of a note's text."""
+    _, fm, body = text.split("+++", 2)
     return tomllib.loads(fm), body.strip()
+
+
+def read_note(path: Path) -> tuple[dict, str]:
+    return parse_note(path.read_text(encoding="utf-8"))
 
 
 def note_url(path: Path) -> str:
@@ -69,12 +78,16 @@ def smart_truncate(text: str, limit: int) -> str:
     return (cut[:idx] if idx > 0 else cut).rstrip()
 
 
-def format_toot(path: Path) -> str:
-    fm, body = read_note(path)
+def hashtag(tag: str) -> str:
+    """Mastodon hashtags stop at "-", so "open-source" becomes #opensource."""
+    return "#" + tag.replace("-", "")
+
+
+def format_toot(path: Path, fm: dict, body: str) -> str:
     text = fm.get("toot") or body
     text = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r"\1 (\2)", text)  # [a](u) -> a (u)
     text = re.sub(r"<!--.*?-->", "", text, flags=re.S).strip()
-    suffix = "\n\n" + " ".join(f"#{t}" for t in ["TIL", *fm.get("tags", [])])
+    suffix = "\n\n" + " ".join(hashtag(t) for t in ["TIL", *fm.get("tags", [])])
     available = CHAR_LIMIT - len(suffix)
     if len(text) <= available:
         return text + suffix
@@ -103,13 +116,27 @@ def mastodon(method: str, api_path: str, token: str, data: dict) -> dict:
         return json.loads(resp.read())
 
 
-def changed_notes() -> list[tuple[str, Path]]:
-    """(status, path) for note files changed by the last commit; status is
-    "A" (added) or "M" (modified)."""
-    out = subprocess.run(
-        ["git", "diff", "--name-status", "--no-renames", "HEAD~1", "HEAD", "--", NOTES_DIR],
-        capture_output=True, text=True, check=True,
-    ).stdout
+def git(*args: str) -> str:
+    return subprocess.run(["git", *args], capture_output=True, text=True, check=True).stdout
+
+
+def push_base() -> str:
+    """The commit before the push, or HEAD~1 when that's unknown (a manual
+    run, or a new branch, where GitHub sends all zeros)."""
+    base = os.environ.get("TIL_BASE", "")
+    if base and set(base) != {"0"}:
+        try:
+            git("cat-file", "-e", f"{base}^{{commit}}")
+            return base
+        except subprocess.CalledProcessError:
+            pass
+    return "HEAD~1"
+
+
+def changed_notes(base: str) -> list[tuple[str, Path]]:
+    """(status, path) for note files changed between base and HEAD; status
+    is "A" (added) or "M" (modified)."""
+    out = git("diff", "--name-status", "--no-renames", base, "HEAD", "--", NOTES_DIR)
     notes = []
     for line in out.splitlines():
         status, name = line.split("\t", 1)
@@ -118,44 +145,68 @@ def changed_notes() -> list[tuple[str, Path]]:
     return notes
 
 
+def old_toot(base: str, path: Path) -> str:
+    """The toot text the note produced before this push."""
+    try:
+        fm, body = parse_note(git("show", f"{base}:{path.as_posix()}"))
+    except subprocess.CalledProcessError:
+        return ""
+    return format_toot(path, fm, body)
+
+
+def plan(status: str, path: Path, base: str, cutoff: datetime) -> str | None:
+    """What to do with one changed note: "post", "edit", or None (skip)."""
+    fm, body = read_note(path)
+    if fm["date"].tzinfo is None:
+        raise ValueError("date has no timezone; write it in UTC, ending in Z")
+    if status == "A" and not fm.get("mastodon"):
+        if fm["date"] < cutoff:
+            print(f"{path}: backfill dated {fm['date']:%Y-%m-%d}, not posting.")
+            return None
+        return "post"
+    if status == "M" and fm.get("mastodon"):
+        if format_toot(path, fm, body) == old_toot(base, path):
+            print(f"{path}: toot text unchanged, not editing.")
+            return None
+        return "edit"
+    return None  # added with an ID (moved or migrated), or never posted
+
+
 def main() -> int:
     dry_run = "--dry-run" in sys.argv
     paths = [Path(a) for a in sys.argv[1:] if not a.startswith("--")]
     token = os.environ.get("MASTODON_ACCESS_TOKEN", "")
-
-    notes = [("A", p) for p in paths] if paths else changed_notes()
+    base = push_base()
+    notes = [("A", p) for p in paths] if paths else changed_notes(base)
     if not notes:
         print("No changed TIL notes.")
         return 0
 
     cutoff = datetime.now(timezone.utc) - timedelta(days=BACKFILL_DAYS)
+    failed = 0
     for status, path in notes:
-        fm, _ = read_note(path)
-        status_id = fm.get("mastodon")
-        toot = format_toot(path)
-        if status == "A" and not status_id:
-            if fm["date"] < cutoff:
-                print(f"{path}: backfill dated {fm['date']:%Y-%m-%d}, not posting.")
+        try:
+            action = plan(status, path, base, cutoff)
+            if not action:
                 continue
-            action = "post"
-        elif status == "M" and status_id:
-            action = "edit"
-        else:
-            continue  # added with an ID (moved or migrated), or modified but never posted
-        print(f"--- {action} {path} ({len(toot)} chars) ---\n{toot}\n---")
-        if dry_run:
-            continue
-        if not token:
-            print("MASTODON_ACCESS_TOKEN not set", file=sys.stderr)
-            return 1
-        if action == "post":
-            result = mastodon("POST", "/api/v1/statuses", token, {"status": toot, "visibility": "public"})
-            set_status_id(path, result["id"])
-            print(f"Posted: {result.get('url', '')}")
-        else:
-            mastodon("PUT", f"/api/v1/statuses/{status_id}", token, {"status": toot})
-            print(f"Edited status {status_id}")
-    return 0
+            fm, body = read_note(path)
+            toot = format_toot(path, fm, body)
+            print(f"--- {action} {path} ({len(toot)} chars) ---\n{toot}\n---")
+            if dry_run:
+                continue
+            if not token:
+                raise RuntimeError("MASTODON_ACCESS_TOKEN not set")
+            if action == "post":
+                result = mastodon("POST", "/api/v1/statuses", token, {"status": toot, "visibility": "public"})
+                set_status_id(path, result["id"])
+                print(f"Posted: {result.get('url', '')}")
+            else:
+                mastodon("PUT", f"/api/v1/statuses/{fm['mastodon']}", token, {"status": toot})
+                print(f"Edited status {fm['mastodon']}")
+        except Exception as e:  # one bad note mustn't lose the others' IDs
+            failed += 1
+            print(f"{path}: FAILED: {e}", file=sys.stderr)
+    return 1 if failed else 0
 
 
 if __name__ == "__main__":

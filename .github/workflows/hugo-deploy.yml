@@ -5,14 +5,9 @@ on:
   push:
     branches: ["main"]
 
-  # Allows you to run this workflow manually from the Actions tab
+  # Manual runs, and the Mastodon job after it commits status IDs (its
+  # pushes use GITHUB_TOKEN, which doesn't trigger the push event).
   workflow_dispatch:
-
-  # Pushes made with GITHUB_TOKEN don't trigger workflows, so redeploy after
-  # the Mastodon job commits its discuss links to til/til.md.
-  workflow_run:
-    workflows: ["Post TIL to Mastodon"]
-    types: [completed]
 
 # Default to bash
 defaults:
@@ -39,15 +34,17 @@ jobs:
         with:
           submodules: recursive
           fetch-depth: 0
-          # After the Mastodon job, build the commit it pushed, not the one
-          # that triggered it.
-          ref: main
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3.2.1
         with:
-          hugo-version: "latest"
+          # Pinned: the site relies on content adapters and resources.Publish.
+          # Bump deliberately, after a local build with the new version.
+          hugo-version: "0.168.0"
           extended: true
+
+      - name: Check TIL notes and tags
+        run: python3 scripts/check-til.py
 
       - name: Build
         run: hugo --minify

@@ -1,31 +1,25 @@
 {{ define "main" }}
 {{/* One TIL note at /til/<unix-ts>/: the page to share. Header mirrors a
      Writing post; the body stays in TIL's sans. */}}
+{{ if ne (.Date.Unix | string) .File.ContentBaseName }}
+  {{ errorf "%s: date %s doesn't match the filename timestamp; run scripts/check-til.py" .File.Path .Date }}
+{{ end }}
 {{ $notes := partial "til/notes.html" . }}
 {{ $idx := -1 }}
-{{ range $i, $n := $notes }}{{ if eq $n.RelPermalink $.RelPermalink }}{{ $idx = $i }}{{ end }}{{ end }}
-{{ $newer := cond (gt $idx 0) (index $notes (sub $idx 1)) nil }}
-{{ $older := cond (lt (add $idx 1) (len $notes)) (index $notes (add $idx 1)) nil }}
-{{ $wk := partial "til/week-of.html" . }}
+{{ range $i, $n := $notes }}{{ if eq $n $ }}{{ $idx = $i }}{{ end }}{{ end }}
+{{ $newer := false }}{{ if gt $idx 0 }}{{ with index $notes (sub $idx 1) }}{{ $newer = dict "url" .RelPermalink "text" (.Title | truncate 48) }}{{ end }}{{ end }}
+{{ $older := false }}{{ with index $notes (add $idx 1) | default false }}{{ $older = dict "url" .RelPermalink "text" (.Title | truncate 48) }}{{ end }}
+{{ $meta := slice }}
+{{ with partial "til/week-of.html" . }}{{ $meta = $meta | append (printf `<a href="%s">Week of %s</a>` .RelPermalink ((time.AsTime .Params.week).Format "Jan 2")) }}{{ end }}
+{{ with partial "til/discuss-url.html" . }}{{ $meta = $meta | append (printf `<a href="%s">Discuss</a>` .) }}{{ end }}
 <article class="post til-note">
-<header class="post-header reveal">
-  <div class="eyebrow"><a href="/til/">TIL</a></div>
-  <h1>{{ .Title }}</h1>
-  <div class="post-meta">
-    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02 Jan 2006" }}</time>
-    <span>·</span><a href="/til/weekly/{{ $wk }}.html">Week of {{ (time.AsTime (printf "%sT12:00:00Z" $wk)).Format "Jan 2" }}</a>
-    {{ with .Params.mastodon }}<span>·</span><a href="{{ site.Params.mastodon }}/{{ . }}">Discuss</a>{{ end }}
-  </div>
-</header>
-<content class="note-body reveal">
+{{ partial "post-header.html" (dict "page" . "eyebrow" (`<a href="/til/">TIL</a>` | safeHTML) "meta" (apply $meta "safeHTML" ".")) }}
+<div class="note-body reveal">
   {{ .Content }}
-</content>
-{{ with .Params.tags }}
-<p class="article-tags">Tagged{{ range . }}<a href="{{ partial "til/tag-link.html" . }}" class="tag">{{ . }}</a>{{ end }}</p>
+</div>
+{{ with .GetTerms "tags" }}
+<p class="article-tags">Tagged{{ range . }}<a href="{{ .RelPermalink }}" class="tag">{{ .Data.Term }}</a>{{ end }}</p>
 {{ end }}
-<nav class="week-nav" aria-label="More notes">
-  {{ with $older }}<a href="{{ .RelPermalink }}" rel="prev">&larr; {{ .Title | truncate 48 }}</a>{{ else }}<span></span>{{ end }}
-  {{ with $newer }}<a href="{{ .RelPermalink }}" rel="next">{{ .Title | truncate 48 }} &rarr;</a>{{ else }}<span></span>{{ end }}
-</nav>
+{{ partial "pager.html" (dict "label" "More notes" "newer" $newer "older" $older) }}
 </article>
 {{ end }}

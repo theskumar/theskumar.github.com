@@ -1,4 +1,9 @@
 {{ define "main" }}
-{{- /* Hugo can pick either file for either kind; dispatch on .Kind. */ -}}
-{{ if eq .Kind "term" }}{{ partial "tags/term.html" . }}{{ else }}{{ partial "tags/index.html" . }}{{ end }}
+{{- /* /tags/ (kind taxonomy) and /tags/<tag>/ (kind term). */ -}}
+{{ if eq .Kind "term" }}
+  {{ partial "tags/term.html" . }}
+  {{ partial "tags/legacy-redirects.html" . }}
+{{ else }}
+  {{ partial "tags/index.html" . }}
+{{ end }}
 {{ end }}

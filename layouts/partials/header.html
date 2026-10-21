@@ -30,12 +30,12 @@
     </svg>
   </button>
 </div>
-<nav class="site-nav">
+<nav class="site-nav" aria-label="Main">
   {{ $current := .RelPermalink }}
-  {{ $isTag := in (slice "term" "taxonomy") .Kind }}
   {{ range .Site.Menus.main }}
-    {{/* Tag pages live under /articles/ but cover Writing and TIL alike. */}}
-    <a href="{{ .URL }}"{{ if and (not $isTag) (or (eq $current .URL) (and (ne .URL "/") (hasPrefix $current .URL))) }} class="active"{{ end }}>{{ .Name }}</a>
+    {{ $here := eq $current .URL }}
+    {{ $within := and (ne .URL "/") (hasPrefix $current .URL) }}
+    <a href="{{ .URL }}"{{ if or $here $within }} class="active"{{ end }}{{ if $here }} aria-current="page"{{ end }}>{{ .Name }}</a>
   {{ end }}
 </nav>
 

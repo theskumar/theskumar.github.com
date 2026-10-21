@@ -7,11 +7,10 @@
     {{ range $pager.Pages }}{{ partial "til/note.html" (dict "page" . "exclude" "") }}{{ end }}
   </ul>
   {{ if gt $pager.TotalPages 1 }}
-  <nav class="week-nav pager" aria-label="More notes">
-    {{ with $pager.Prev }}<a href="{{ .URL }}" rel="prev">&larr; Newer notes</a>{{ else }}<span></span>{{ end }}
-    <span class="pager-pos">{{ $pager.PageNumber }} / {{ $pager.TotalPages }}</span>
-    {{ with $pager.Next }}<a href="{{ .URL }}" rel="next">Older notes &rarr;</a>{{ else }}<span></span>{{ end }}
-  </nav>
+  {{ $newer := false }}{{ with $pager.Prev }}{{ $newer = dict "url" .URL "text" "Newer notes" }}{{ end }}
+  {{ $older := false }}{{ with $pager.Next }}{{ $older = dict "url" .URL "text" "Older notes" }}{{ end }}
+  {{ partial "pager.html" (dict "label" "More notes" "newer" $newer "older" $older
+      "pos" (printf "%d / %d" $pager.PageNumber $pager.TotalPages)) }}
   {{ end }}
 </div>
 {{ end }}

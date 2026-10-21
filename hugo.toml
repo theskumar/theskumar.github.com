@@ -21,12 +21,13 @@ capitalizeListTitles = false
 [taxonomies]
 tag = "tags"
 
-[permalinks]
+[permalinks.page]
 blog = "/articles/:year/:month/:slug/"
-tags = "/articles/:slug"
 
-[permalinks.taxonomy]
-tags = "/tags/"
+# Tag pages lived at /articles/<tag>/ until Oct 2026;
+# layouts/partials/tags/legacy-redirects.html keeps those URLs working.
+[permalinks.term]
+tags = "/tags/:slug/"
 
 # TIL's feed lives at /til/rss.xml, as before the move into Hugo.
 [outputFormats.tilrss]

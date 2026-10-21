@@ -1,13 +1,15 @@
 {{/* One tag across the site: Writing posts and TIL notes. */}}
 {{ $posts := where .Pages "Section" "blog" }}
 {{ $notes := (where .Pages "Section" "til").ByDate.Reverse }}
-{{ $about := (index (hugo.Data.tags | default dict) .Data.Term).description | default "" }}
+{{ $vocab := index hugo.Data.tags .Data.Term }}
+{{ if not $vocab }}{{ warnf "tag %q isn't in data/tags.json" .Data.Term }}{{ end }}
+{{ $about := $vocab.description | default "" }}
 {{ $counts := slice }}
 {{ with $posts }}{{ $counts = $counts | append (printf "%d post%s" (len .) (cond (eq (len .) 1) "" "s")) }}{{ end }}
 {{ with $notes }}{{ $counts = $counts | append (printf "%d note%s" (len .) (cond (eq (len .) 1) "" "s")) }}{{ end }}
 <header class="page-head reveal">
   <span class="crosshair" aria-hidden="true"></span>
-  <nav class="eyebrow sub-nav" aria-label="Breadcrumb"><a href="/tags/">Tags</a><span>{{ delimit $counts " · " }}</span></nav>
+  <nav class="eyebrow breadcrumb" aria-label="Breadcrumb"><a href="/tags/">Tags</a><span>{{ delimit $counts " · " }}</span></nav>
   <h1>#{{ .Data.Term }}</h1>
   {{ with $about }}<div class="sub"><p>{{ . }}</p></div>{{ end }}
 </header>

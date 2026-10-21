@@ -1,13 +1,13 @@
----
-title: "Notes on Understanding Hebbian Learning"
-date: 2025-11-05
-draft: false
-description: "A beginner-friendly exploration of one of neuroscience's most elegant principles - how neurons that fire together, wire together."
-tags : ["ai"]
-author: "Saurabh Kumar"
-summary: "Dive into Hebbian learning, a principle of how neural connections strengthen through correlated activity. From Pavlov's dogs to your morning coffee ritual, discover how neurons wire together through repetition."
-keywords: ["hebbian learning", "neuroscience", "neuroplasticity", "brain learning", "neural networks", "synaptic plasticity"]
----
++++
+title = "Notes on Understanding Hebbian Learning"
+date = "2025-11-05"
+draft = false
+description = "A beginner-friendly exploration of one of neuroscience's most elegant principles - how neurons that fire together, wire together."
+tags = ["ai"]
+author = "Saurabh Kumar"
+summary = "Dive into Hebbian learning, a principle of how neural connections strengthen through correlated activity. From Pavlov's dogs to your morning coffee ritual, discover how neurons wire together through repetition."
+keywords = ["hebbian learning", "neuroscience", "neuroplasticity", "brain learning", "neural networks", "synaptic plasticity"]
++++
 
 Hebbian learning describes how correlated neural activity can strengthen connections. It is named after psychologist Donald Hebb, who proposed it in 1949.
 

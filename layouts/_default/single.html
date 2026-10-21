@@ -9,23 +9,14 @@
 {{ end }}
 <article class="post{{ if ne .Type "blog" }} page-prose{{ end }}">
 {{ if eq .Type "blog" }}
-<header class="post-header reveal">
-  <div class="eyebrow">Writing</div>
-  <h1>{{ .Title }}</h1>
-  {{ with .Description }}<p class="post-lede">{{ . }}</p>{{ end }}
-  <div class="post-meta">
-    <time datetime='{{ .Date.Format "2006-01-02" }}'>{{ .Date.Format "02 Jan 2006" }}</time>
-    <span>·</span>
-    <span>{{ .ReadingTime }} min read</span>
-  </div>
-</header>
+{{ partial "post-header.html" (dict "page" . "eyebrow" "Writing" "meta" (slice (printf "<span>%d min read</span>" .ReadingTime | safeHTML))) }}
 {{ end }}
 
 {{ if .Param "toc" }}{{ partial "toc.html" . }}{{ end }}
 
-<content{{ if eq .Type "blog" }} data-prose{{ else }} class="reveal"{{ end }}>
+<div class="post-body{{ if ne .Type "blog" }} reveal{{ end }}"{{ if eq .Type "blog" }} data-prose{{ end }}>
   {{ .Content }}
-</content>
+</div>
 
 {{ $tags := .GetTerms "tags" }}
 {{ if $tags }}

@@ -1,13 +1,14 @@
 {{ define "main" }}
-{{ $notes := partial "til/week-notes.html" .Params.week }}
-{{ partial "til/head.html" (dict "active" "Archive" "title" .Title "lede" (printf "%d note%s this week" (len $notes) (cond (eq (len $notes) 1) "" "s"))) }}
+{{/* One week of TIL notes. Week pages back the feed and old toot links;
+     they aren't in the nav, so no section link is marked current. */}}
+{{ $notes := partial "til/week-notes.html" . }}
+{{ partial "til/head.html" (dict "active" "" "title" .Title "lede" (printf "%d note%s this week" (len $notes) (cond (eq (len $notes) 1) "" "s"))) }}
 <div class="list-body">
 <ul class="notes-list">
   {{ range $notes }}{{ partial "til/note.html" (dict "page" . "exclude" "") }}{{ end }}
 </ul>
-<nav class="week-nav">
-  {{ with .Params.prev }}<a href="/til/weekly/{{ . }}.html">&larr; Previous week</a>{{ else }}<span></span>{{ end }}
-  {{ with .Params.next }}<a href="/til/weekly/{{ . }}.html">Next week &rarr;</a>{{ else }}<span></span>{{ end }}
-</nav>
+{{ $newer := false }}{{ with .Params.newer }}{{ $newer = dict "url" (printf "/til/weekly/%s.html" .) "text" "Newer week" }}{{ end }}
+{{ $older := false }}{{ with .Params.older }}{{ $older = dict "url" (printf "/til/weekly/%s.html" .) "text" "Older week" }}{{ end }}
+{{ partial "pager.html" (dict "label" "More weeks" "newer" $newer "older" $older) }}
 </div>
 {{ end }}

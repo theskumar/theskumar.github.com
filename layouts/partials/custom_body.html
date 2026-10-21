@@ -27,7 +27,7 @@
 
   /* Reading progress hairline on long-form posts. */
   (function () {
-    var prose = document.querySelector('article.post content[data-prose]');
+    var prose = document.querySelector('article.post [data-prose]');
     if (!prose) return;
     var bar = document.createElement('div');
     bar.className = 'read-progress';

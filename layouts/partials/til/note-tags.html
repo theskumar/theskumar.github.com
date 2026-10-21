@@ -1,10 +1,11 @@
 {{/* Footer of a note in a list: tag chips, then the Mastodon thread.
      Context: dict "page" "exclude" (tag to leave out). */}}
 {{ $tags := slice }}
-{{ range .page.Params.tags }}{{ if ne . $.exclude }}{{ $tags = $tags | append . }}{{ end }}{{ end }}
-{{ if or $tags .page.Params.mastodon }}
+{{ range .page.GetTerms "tags" }}{{ if ne .Data.Term $.exclude }}{{ $tags = $tags | append . }}{{ end }}{{ end }}
+{{ $discuss := partial "til/discuss-url.html" .page }}
+{{ if or $tags $discuss }}
 <div class="note-tags">
-  {{- range $tags }}<a href="{{ partial "til/tag-link.html" . }}" class="tag">{{ . }}</a>{{ end -}}
-  {{- with .page.Params.mastodon }}<a href="{{ site.Params.mastodon }}/{{ . }}" class="note-discuss">Discuss</a>{{ end -}}
+  {{- range $tags }}<a href="{{ .RelPermalink }}" class="tag">{{ .Data.Term }}</a>{{ end -}}
+  {{- with $discuss }}<a href="{{ . }}" class="note-discuss">Discuss</a>{{ end -}}
 </div>
 {{ end }}

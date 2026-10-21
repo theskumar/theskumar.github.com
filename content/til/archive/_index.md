@@ -2,6 +2,6 @@
 title = "Archive"
 layout = "til-archive"
 outputs = ["html"]
-# /til/weekly/ used to list weeks; it now forwards here. Week pages remain.
-aliases = ["/til/weekly/"]
+# /til/weekly/ used to list weeks, and /weekly/ pointed there.
+aliases = ["/til/weekly/", "/weekly/"]
 +++

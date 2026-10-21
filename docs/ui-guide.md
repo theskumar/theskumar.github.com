@@ -25,8 +25,10 @@ Full brand spec: `docs/brand/BRAND.md`. Writing voice: `docs/STYLE-GUIDE.md`.
   “drafting sheet” of numbered panels 01–07 (open source, now, recent
   writing, worked with, working together, off the clock — travel/photography
   on pause, contact `#contact`).
-- `/til/` → separate repo (`~/work/pr/til`, `build-site.js`) deployed to the
-  same domain; carries the same tokens, mark, hills and waves.
+- `/til/` → TIL, built by this site (`layouts/til/`, notes in
+  `content/til/<unix-ts>.md`): Notes stream, Archive, note pages. See AGENTS.md.
+- `/tags/`, `/tags/<tag>/` → one tag index for Writing and TIL
+  (`layouts/_default/taxonomy.html`, `layouts/partials/tags/`).
 - Organic canvases (all sites): `#fx-hills` — full-bleed (100vw) ridgelines
   touching the top of the browser, behind the header; `#fx-waves` — full-bleed
   swells touching the bottom, behind the footer; `#fx-field` — home only.
@@ -36,7 +38,7 @@ Full brand spec: `docs/brand/BRAND.md`. Writing voice: `docs/STYLE-GUIDE.md`.
   `content/articles.md`), grouped by year, entries via
   `layouts/partials/post-entry.html`.
 - `/articles/YYYY/MM/slug/` → posts (`layouts/_default/single.html`, type `blog`).
-  Serif prose (`content[data-prose]`), italic lede from `description`,
+  Serif prose (`[data-prose]`, header from `layouts/partials/post-header.html`), italic lede from `description`,
   reading-progress hairline, floating TOC (`layouts/partials/toc.html`).
 - `/projects/`, `/now/` → markdown pages; `page-prose` styling turns `###`
   headings into mono annotations and `- [link] - desc` lists into ruled rows.

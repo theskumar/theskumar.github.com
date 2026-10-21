@@ -1,4 +1,0 @@
-{{ define "main" }}
-{{- /* Hugo can pick either file for either kind; dispatch on .Kind. */ -}}
-{{ if eq .Kind "term" }}{{ partial "tags/term.html" . }}{{ else }}{{ partial "tags/index.html" . }}{{ end }}
-{{ end }}

@@ -1,5 +1,4 @@
-{{/* Notes in one week, newest first. Context: week YYYY-MM-DD. */}}
-{{ $wk := . }}
+{{/* Notes on a week page, newest first. Context: the week page. */}}
 {{ $out := slice }}
-{{ range partial "til/notes.html" . }}{{ if eq (partialCached "til/week-of.html" . .RelPermalink) $wk }}{{ $out = $out | append . }}{{ end }}{{ end }}
+{{ range .Params.notes }}{{ with site.GetPage (printf "/til/%s" .) }}{{ $out = $out | append . }}{{ end }}{{ end }}
 {{ return $out }}

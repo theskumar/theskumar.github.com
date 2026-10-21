@@ -1,0 +1,10 @@
+{{/* Before Oct 2026 every tag page lived at /articles/<tag>/, and TIL had
+     its own at /til/tags/<tag>.html. Publish a redirect at both old URLs
+     for each tag, pointing at its current page. Renamed or merged tags keep
+     their old names as `aliases` in content/tags/<tag>/_index.md.
+     Context: a term page. */}}
+{{ $html := printf `<!doctype html><html lang="en"><head><title>%s</title><link rel="canonical" href="%s"><meta name="robots" content="noindex"><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=%s"></head></html>` .Permalink .Permalink .Permalink }}
+{{ $slug := path.Base .RelPermalink }}
+{{ range slice (printf "articles/%s/index.html" $slug) (printf "til/tags/%s.html" $slug) }}
+  {{ (resources.FromString . $html).Publish }}
+{{ end }}

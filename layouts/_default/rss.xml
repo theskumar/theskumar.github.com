@@ -1,5 +1,6 @@
-{{- /* Hugo's built-in RSS template, minus TIL pages: TIL notes have no page
-       of their own and are syndicated weekly at /til/rss.xml instead. */ -}}
+{{- /* Hugo's built-in RSS template. The site feed (/index.xml) leaves out
+       TIL notes, which have their own weekly feed at /til/rss.xml; tag
+       feeds (/tags/<tag>/index.xml) include them, like the tag pages. */ -}}
 {{- $pctx := . -}}
 {{- if .IsHome -}}{{ $pctx = .Site }}{{- end -}}
 {{- $pages := slice -}}
@@ -8,7 +9,7 @@
 {{- else -}}
 {{- $pages = $pctx.Pages -}}
 {{- end -}}
-{{- $pages = where $pages "Section" "!=" "til" -}}
+{{- if .IsHome }}{{ $pages = where $pages "Section" "!=" "til" }}{{ end -}}
 {{- $limit := .Site.Config.Services.RSS.Limit -}}
 {{- if ge $limit 1 -}}
 {{- $pages = $pages | first $limit -}}

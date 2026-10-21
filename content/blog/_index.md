@@ -1,8 +1,8 @@
 +++
 title = "Blog"
 
-# The writing index now lives at the site root (/). Don't render a separate
-# /blog/ list; the home page aliases /blog/ -> / as a redirect.
+# The Writing index is content/articles.md at /articles/ (it aliases /blog/).
+# Posts live in this section; don't render a separate section list.
 [build]
 render = "never"
 list = "never"

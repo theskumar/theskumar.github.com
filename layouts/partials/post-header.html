@@ -1,0 +1,11 @@
+{{/* Header of a Writing post or a TIL note: eyebrow, title, lede, meta row.
+     Context: dict "page" "eyebrow" (HTML) "meta" (slice of HTML items). */}}
+<header class="post-header reveal">
+  <div class="eyebrow">{{ .eyebrow }}</div>
+  <h1>{{ .page.Title }}</h1>
+  {{ with .page.Description }}<p class="post-lede">{{ . }}</p>{{ end }}
+  <div class="post-meta">
+    <time datetime="{{ .page.Date.Format "2006-01-02" }}">{{ .page.Date.Format "02 Jan 2006" }}</time>
+    {{ range .meta }}<span>·</span>{{ . }}{{ end }}
+  </div>
+</header>

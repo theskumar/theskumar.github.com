@@ -1,0 +1,9 @@
+{{/* Newer/older links, used by every TIL list and note page. Newer is on
+     the left, older on the right (rel="next" goes deeper into the archive).
+     Context: dict "label" (nav name) "newer" "older" (each: dict "url"
+     "text", or nil) "pos" (optional, e.g. "2 / 8"). */}}
+<nav class="pager-nav{{ if .pos }} pager-nav--pos{{ end }}" aria-label="{{ .label }}">
+  {{ with .newer }}<a href="{{ .url }}" rel="prev">&larr; {{ .text }}</a>{{ else }}<span></span>{{ end }}
+  {{ with .pos }}<span class="pager-pos">{{ . }}</span>{{ end }}
+  {{ with .older }}<a href="{{ .url }}" rel="next">{{ .text }} &rarr;</a>{{ else }}<span></span>{{ end }}
+</nav>
