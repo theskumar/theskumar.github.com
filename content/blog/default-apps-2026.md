@@ -42,7 +42,7 @@ and catalogued by Robb Knight's [App Defaults](https://defaults.rknight.me/).
 - **Photo Editing**: [darktable], GIMP
 - **Calendar**: [Notion Calendar](https://www.notion.com/product/calendar), Google Calendar on the web
 - **Cloud File Storage**: iCloud + Google Drive
-- **RSS**: [NetNewsWire]
+- **RSS**: [NetNewsWire], [Newsboat](https://newsboat.org/) in the terminal
 - **Contacts**: Apple Contacts & Google Contacts
 - **Browser**: [Zen] for work, Safari for personal
 - **Chat**: Signal, WhatsApp, Telegram
@@ -53,7 +53,7 @@ and catalogued by Robb Knight's [App Defaults](https://defaults.rknight.me/).
 - **Presentations**: Figma
 - **Shopping Lists**: Amazon
 - **Budgeting and Personal Finance**: [paisa](https://paisa.fyi/), with [ledger](https://ledger-cli.org/) underneath
-- **News**: Perplexity.ai, [NetNewsWire]
+- **News**: [NetNewsWire], Newsboat, [Hacker News](https://news.ycombinator.com/)
 - **Music**: YouTube Music on the web, not much
 - **Audiobooks**: Audible
 - **Password Management**: 1Password and Apple Passwords
