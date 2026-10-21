@@ -54,7 +54,10 @@
      very bottom, and on the home page #fx-field fills the viewport with
      ridgelines that relax into swells as you scroll. simplex-noise does the
      organic work; a value-noise shim covers offline builds. Everything is
-     theme-aware, 30fps-capped, paused offscreen, static under reduced motion. */
+     theme-aware, 30fps-capped, paused offscreen, static under reduced motion.
+     Continuity across pages: the noise seed is fixed and time is wall-clock
+     time, so every page draws the same frame at the same moment and a
+     navigation doesn't restart the scene. */
   let createNoise2D;
   try {
     ({ createNoise2D } = await import('https://cdn.jsdelivr.net/npm/simplex-noise@4.0.3/dist/esm/simplex-noise.min.js'));
@@ -69,7 +72,18 @@
       };
     };
   }
-  const n2 = createNoise2D();
+  /* Fixed seed (mulberry32) so every page gets the same landscape. */
+  let seed = 0x5a7e;
+  const seeded = () => {
+    seed = (seed + 0x6D2B79F5) | 0;
+    let r = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+    r = (r + Math.imul(r ^ (r >>> 7), 61 | r)) ^ r;
+    return ((r ^ (r >>> 14)) >>> 0) / 4294967296;
+  };
+  const n2 = createNoise2D(seeded);
+  /* Scene time in ms since a fixed epoch, from the wall clock. */
+  const EPOCH = Date.UTC(2026, 0, 1);
+  const now = (ts = performance.now()) => performance.timeOrigin + ts - EPOCH;
 
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -92,7 +106,7 @@
     }
     function frame(ts) {
       rafId = null;
-      if (ts - last >= 33) { last = ts; draw(ctx, W, H, ts, ink); }
+      if (ts - last >= 33) { last = ts; draw(ctx, W, H, now(ts), ink); }
       if (visible && !reduce) rafId = requestAnimationFrame(frame);
     }
     const start = () => {
@@ -113,7 +127,7 @@
       if (reduce) draw(ctx, W, H, 0, ink);
     }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
     layout();
-    draw(ctx, W, H, 0, ink); /* first frame synchronously; rAF may be throttled */
+    draw(ctx, W, H, reduce ? 0 : now(), ink); /* first frame synchronously; rAF may be throttled */
   }
 
   /* Ridge profile: folded noise, peaks up. Swell profile: smooth rollers. */

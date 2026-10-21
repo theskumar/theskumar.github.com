@@ -10,7 +10,7 @@ lede = "Things I've built for clients, the community, and myself."
 - **[python-dotenv](https://github.com/theskumar/python-dotenv)** — A Python library for loading environment variables from `.env` files. I co-maintain it as time allows.
 - **[Agent Stuff](https://github.com/theskumar/agent-stuff)** — My extensions, skills, and prompts for Pi and Claude Code. Includes review and handoff workflows, notifications, and tools for managing agent sessions. A mix of my own work and adaptations, with sources credited in the repository.
 - **[Dotfiles](https://github.com/theskumar/dotfiles)** — My working environment and configuration. An ongoing place to adjust the tools I use every day, including the [shell-startup audit](/articles/2026/05/how-i-optimized-my-zsh-startup-time/).
-- **[TIL](https://github.com/theskumar/til)** — Short learning notes and deeper references, published at [/til/](/til/). A record of discoveries, experiments, and references I want to return to.
+- **[Pi Pocket Blackhole](https://github.com/theskumar/pi-pocket-blackhole)** — A [Pi Pocket](https://github.com/TannerMidd/pi-pocket) extension that compacts long agent sessions without a model call. It summarizes with [pi-blackhole](https://github.com/k0valik/pi-blackhole)'s deterministic extraction, and a recall tool reads the original messages back from refs in the summary.
 
 ### Ongoing work
 
