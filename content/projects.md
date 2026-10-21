@@ -31,7 +31,7 @@ See [/now/](/now/) for more on what I'm working on.
 - **[South Pole](https://www.southpole.com/)** — Two AI projects on their Quality Management Framework: Q&A with source citations (RAG), then a multi-agent system that assesses and generates sustainability reports against their standards. Both shipped with evals to measure output quality.
 - **[Apple](https://fueled.com/work/apple/)** — Gamification engine and a multilingual, multi-region CMS behind an Android training app for Apple's EMEA carrier retail staff.
 - **[Victoria's Secret Community](https://fueled.com/work/victorias-secret/)** — Scaling a real-time community feed inside their mobile app for a mass-market retail audience.
-- **[The Motley Fool](https://www.fool.com/)** — Premium subscription platform: Vue-to-Next.js migration, the Jester design system, and a GraphQL layer over legacy, distributed backends.
+- **[The Motley Fool](https://www.fool.com/)** — Premium subscription platform: Vue-to-Next.js migration, a shared design system, and a GraphQL layer over legacy, distributed backends.
 - **[Tony Robbins RPM Planner](https://rpmplanner.com/)** — Web and iOS planner with built-in AI voice coaching.
 - **[Tony Robbins Breakthrough](https://www.tonyrobbins.com/breakthrough-app)** — Video and audio distribution at scale for the mobile app.
 - **[Public.com](https://public.com/)** — Initial architecture of the investing platform.
