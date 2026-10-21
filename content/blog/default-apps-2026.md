@@ -75,6 +75,9 @@ Important enough to include here, ordered roughly by how often I rely on each.
 - Screenshots: [CleanShot X](https://cleanshot.com/)
 - Mac Cleanup: [Mole](https://mole.fit/), a CLI that cleans caches, uninstalls apps, and frees up disk
 - AI Usage Tracking: [UsagePal](https://github.com/Halloweedev/usagepal), a menu bar app that tracks my AI subscription limits
+- Menu Bar: [Thaw](https://github.com/thaw-app/Thaw) to hide the clutter
+- Keep Awake: [Amphetamine](https://apps.apple.com/app/amphetamine/id937984704)
+- Battery: [AlDente](https://apphousekitchen.com/) to limit charging
 - Local Dev: [OrbStack](https://orbstack.dev/), [Bruno](https://www.usebruno.com/) for APIs
 - Mastodon Client: [Mastonaut](https://www.mastonaut.app/)
 - Code Repositories: GitHub
