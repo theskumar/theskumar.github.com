@@ -74,6 +74,7 @@ Important enough to include here, ordered roughly by how often I rely on each.
 - Version Control: [lazygit](https://github.com/jesseduffield/lazygit) and [jj](https://github.com/jj-vcs/jj), trying [Hunk](https://github.com/modem-dev/hunk) for diffs. AI does most of it now.
 - Screenshots: [CleanShot X](https://cleanshot.com/)
 - Mac Cleanup: [Mole](https://mole.fit/), a CLI that cleans caches, uninstalls apps, and frees up disk
+- AI Usage Tracking: [UsagePal](https://github.com/Halloweedev/usagepal), a menu bar app that tracks my AI subscription limits
 - Local Dev: [OrbStack](https://orbstack.dev/), [Bruno](https://www.usebruno.com/) for APIs
 - Mastodon Client: [Mastonaut](https://www.mastonaut.app/)
 - Code Repositories: GitHub
