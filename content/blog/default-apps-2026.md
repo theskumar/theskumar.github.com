@@ -30,6 +30,8 @@ and catalogued by Robb Knight's [App Defaults](https://defaults.rknight.me/).
 - **Lightroom and Photoshop → [darktable]** and GIMP.
 - **New:** a tiling window manager ([OmniWM]) and voice dictation ([Wispr Flow]).
 - **Todoist joined**, and my Bullet Journal use has dropped a bit.
+- **Raindrop.io is gone.** My [TIL](/til/) and personal wiki replaced
+  bookmarks.
 
 ### The list
 
@@ -44,7 +46,7 @@ and catalogued by Robb Knight's [App Defaults](https://defaults.rknight.me/).
 - **Contacts**: Apple Contacts & Google Contacts
 - **Browser**: [Zen] for work, Safari for personal
 - **Chat**: Signal, WhatsApp, Telegram
-- **Bookmarks**: Raindrop.io
+- **Bookmarks**: none. My [TIL](/til/) and personal wiki replaced them
 - **Read It Later**: Safari Reading List
 - **Word Processing**: Apple Pages
 - **Spreadsheets**: Google Sheets
