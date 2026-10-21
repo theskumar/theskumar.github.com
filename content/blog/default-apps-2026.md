@@ -30,8 +30,6 @@ and catalogued by Robb Knight's [App Defaults](https://defaults.rknight.me/).
 - **Perplexity → [Hacker News](https://news.ycombinator.com/) and [Newsboat]**,
   next to NetNewsWire.
 - **Raindrop.io is gone.** My [TIL](/til/) and personal wiki replaced bookmarks.
-- **Signal, WhatsApp, and Telegram joined chat.** Messages and Slack stay,
-  Discord dropped off.
 - **New:** a tiling window manager ([OmniWM]), dictation ([Wispr Flow]), and
   [Tailscale](https://tailscale.com/) in place of Zscaler.
 - **More small Mac utilities:** Mole for cleanup, UsagePal for AI limits, Thaw,
@@ -50,7 +48,7 @@ and catalogued by Robb Knight's [App Defaults](https://defaults.rknight.me/).
 - **RSS**: [NetNewsWire], [Newsboat] in the terminal
 - **Contacts**: Apple Contacts & Google Contacts
 - **Browser**: [Zen] for work, Safari for personal
-- **Chat**: Apple Messages, Slack, Signal, WhatsApp, Telegram
+- **Chat**: Apple Messages, Slack, Discord, Signal, WhatsApp, Telegram
 - **Bookmarks**: none. My [TIL](/til/) and personal wiki replaced them
 - **Read It Later**: Safari Reading List
 - **Word Processing**: Google Docs
