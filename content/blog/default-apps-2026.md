@@ -19,7 +19,10 @@ and catalogued by Robb Knight's [App Defaults](https://defaults.rknight.me/).
   my version control work now goes through agents too.
 - **Arc → [Zen]** for work. Zen is very close to Arc, well maintained, and
   doesn't try to add too many features. Safari stays for personal browsing.
-- **iTerm2 → [Ghostty]**, kept minimal. zsh and [Starship] do the rest.
+- **iTerm2 → [Ghostty]**, kept as a thin layer over [herdr], a terminal
+  multiplexer built for AI coding agents. zsh and [Starship] do the rest. My
+  setup is in my [dotfiles]: the [Ghostty config], the [herdr config], and
+  [notes on how I use herdr].
 - **Edison Mail → Apple Mail**, plus Gmail on the web when I need it.
 - **Raycast → [Tinycast]**, a tiny native launcher. Alfred is gone too.
 - **Cursor is out.** Mostly [Zed] now.
@@ -63,7 +66,7 @@ Important enough to include here, ordered roughly by how often I rely on each.
 - Launcher: [Tinycast]
 - Window Manager: [OmniWM], trying out TrellisWM
 - Ad Blocking: [AdGuard]
-- Terminal: [Ghostty] with zsh and [Starship]
+- Terminal: [Ghostty] + [herdr] with zsh and [Starship]
 - Search Engine: DuckDuckGo and Google
 - Version Control: [lazygit](https://github.com/jesseduffield/lazygit) and [jj](https://github.com/jj-vcs/jj), trying Hunk for diffs. AI does most of it now.
 - Screenshots: CleanShot X
@@ -85,6 +88,11 @@ Important enough to include here, ordered roughly by how often I rely on each.
 [AdGuard]: https://adguard.com/en/welcome.html
 [Zen]: https://zen-browser.app/
 [Ghostty]: https://ghostty.org/
+[herdr]: https://herdr.dev/
+[dotfiles]: https://github.com/theskumar/dotfiles
+[Ghostty config]: https://github.com/theskumar/dotfiles/blob/master/ghostty/ghostty/config
+[herdr config]: https://github.com/theskumar/dotfiles/blob/master/herdr/herdr/config.toml
+[notes on how I use herdr]: https://github.com/theskumar/dotfiles/blob/master/docs/HERDR.md
 [Starship]: https://starship.rs/
 [Tinycast]: https://github.com/abue-ammar/tinycast
 [darktable]: https://www.darktable.org/
