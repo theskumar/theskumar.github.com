@@ -200,7 +200,7 @@ function layout(title, body, { canonical = "" } = {}) {
     <span>
       <a href="${BASE_URL}/rss.xml">RSS</a>
       &nbsp;&middot;&nbsp;
-      <a href="https://github.com/theskumar/til">Source</a>
+      <a href="https://github.com/theskumar/theskumar.github.com/tree/main/til">Source</a>
       &nbsp;&middot;&nbsp;
       <a href="${MAIN_SITE}/#contact">Say hello</a>
     </span>

@@ -8,6 +8,12 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+  # Pushes made with GITHUB_TOKEN don't trigger workflows, so redeploy after
+  # the Mastodon job commits its discuss links to til/til.md.
+  workflow_run:
+    workflows: ["Post TIL to Mastodon"]
+    types: [completed]
+
 # Default to bash
 defaults:
   run:
@@ -19,6 +25,10 @@ permissions:
   pages: write
   id-token: write
 
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
   # Build and deploy job
   build:
@@ -29,6 +39,9 @@ jobs:
         with:
           submodules: recursive
           fetch-depth: 0
+          # After the Mastodon job, build the commit it pushed, not the one
+          # that triggered it.
+          ref: main
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3.2.1
@@ -38,6 +51,19 @@ jobs:
 
       - name: Build
         run: hugo --minify
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: 20
+
+      - name: Build TIL into public/til
+        working-directory: til
+        run: |
+          npm ci
+          node build-site.js
+          rm -rf ../public/til
+          cp -R _site ../public/til
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

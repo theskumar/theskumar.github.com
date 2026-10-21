@@ -1,14 +1,15 @@
-# CLAUDE.md — AI Assistant Guide for theskumar/til
+# CLAUDE.md — AI Assistant Guide for til/
 
 ## Project Overview
 
-This is a personal **TIL (Things I Learned)** repository — a curated knowledge base of technical
-learnings with an automated static site and RSS feed. It is inspired by
+This folder holds Saurabh's **TIL (Things I Learned)** notes, a curated knowledge base of technical
+learnings with a static site and RSS feed. It lives in the saurabh-kumar.com repo
+(`theskumar/theskumar.github.com`). Until Oct 2026 it was the separate `theskumar/til` repo, now archived. It is inspired by
 [jakelazaroff/til](https://github.com/jakelazaroff/til/).
 
 - **Content language:** Markdown
 - **Automation language:** JavaScript (Node.js)
-- **CI/CD:** GitHub Actions (`.github/workflows/build.yml`)
+- **CI/CD:** the main site's `.github/workflows/hugo-deploy.yml` builds TIL into `public/til/`
 - **RSS:** Published at `https://saurabh-kumar.com/til/rss.xml`
 
 ---
@@ -21,9 +22,6 @@ til/
 ├── build-site.js           # Builds static HTML site into _site/
 ├── package.json            # NPM deps: marked (^17.0.3), he (^1.2.0)
 ├── README.md               # Short intro with links to the site and RSS
-├── .github/
-│   └── workflows/
-│       └── build.yml       # CI: builds site and deploys to GitHub Pages
 └── scripts/
     └── post-mastodon.py    # Posts new til.md entries to Mastodon
 ```
@@ -52,7 +50,7 @@ article URL.
 A note can carry a fenced code block. Indent every line of it by 2 spaces,
 and leave no blank lines inside the note.
 
-Push to `main` and CI automatically builds the site and deploys to GitHub Pages.
+Push to `main` and the main site's CI builds Hugo, then this site into `public/til/`, and deploys both to GitHub Pages.
 For local preview: `npm install && node build-site.js && npx http-server _site -p 8787`
 
 ### Parser details
@@ -74,18 +72,10 @@ Parses `til.md` and generates a full static site in `_site/`:
 - Redirect stubs for retired article URLs
 - RSS feed (`rss.xml`)
 
-### CI/CD Pipeline (`.github/workflows/build.yml`)
+### CI/CD (in the repo root `.github/workflows/`)
 
-Triggers:
-- Push to `main`
-- Weekly cron: every Sunday at 00:00 UTC
-- Manual `workflow_dispatch`
-
-Steps:
-1. **Checkout**
-2. **`npm install`** — install dependencies
-3. **`node build-site.js`** — generate static site
-4. **Deploy to GitHub Pages** via `upload-pages-artifact` + `deploy-pages`
+- `hugo-deploy.yml`: on push to `main`, runs `hugo --minify`, then `npm ci && node build-site.js` in `til/`, copies `til/_site` to `public/til`, and deploys. It also reruns after the Mastodon job, because pushes made with `GITHUB_TOKEN` don't trigger workflows.
+- `til-mastodon.yml`: on pushes that change `til/til.md`, runs `scripts/post-mastodon.py` from `til/` and commits the discuss links.
 
 ---
 

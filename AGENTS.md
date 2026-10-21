@@ -11,6 +11,7 @@ layouts/           # template overrides (_default/, partials/)
 themes/            # git submodules (hugo-bearblog, hugo-admonitions, typo)
 static/            # images, files
 public/            # build output (git-ignored)
+til/               # TIL notes (til.md) + its Node build (build-site.js) → public/til/
 ```
 
 ## Commands
@@ -40,7 +41,9 @@ draft = false  # optional
 
 ## Deploy
 
-Push to `main` → GitHub Actions → `hugo --minify` → GitHub Pages.
+Push to `main` → GitHub Actions (`hugo-deploy.yml`) → `hugo --minify`, then `node til/build-site.js` copied into `public/til/` → GitHub Pages.
+
+`til-mastodon.yml` posts new `til/til.md` entries to Mastodon and commits the discuss links. See `til/CLAUDE.md`.
 
 ## Notes
 
