@@ -14,24 +14,41 @@ and catalogued by Robb Knight's [App Defaults](https://defaults.rknight.me/).
 
 ### What changed since 2025
 
-- **AI took over a big chunk of my day.** [Pi] is my core harness and I live in
-  [Pi Web]. On the side I'm trying [Pi Pocket], which looks really cool. Most of
-  my version control work now goes through agents too.
-- **Arc → [Zen]** for work. Zen is very close to Arc, well maintained, and
-  doesn't try to add too many features. Safari stays for personal browsing.
-- **iTerm2 → [Ghostty]**, kept as a thin layer over [herdr], a terminal
-  multiplexer built for AI coding agents. zsh and [Starship] do the rest. My
-  setup is in my [dotfiles]: the [Ghostty config], the [herdr config], and
+The big shift: AI moved out of my editor and into a dedicated harness. [Pi] is
+my core harness, I live in [Pi Web], and I'm trying [Pi Pocket] on the side.
+Agents now handle most of my version control too.
+
+**Swapped**
+
+- Browser: Arc → [Zen] for work. Close to Arc, well maintained, no feature
+  bloat. Safari stays for personal.
+- Terminal: iTerm2 → [Ghostty], a thin layer over [herdr], a multiplexer built
+  for AI agents. Setup in my [dotfiles]: [Ghostty config], [herdr config],
   [notes on how I use herdr].
-- **Edison Mail → Apple Mail**, plus Gmail on the web when I need it.
-- **Raycast → [Tinycast]**, a tiny native launcher. Alfred is gone too.
-- **Cursor is out.** Mostly [Zed] now, with its AI features turned off. I
-  don't need AI in my editor; that work happens in [Pi].
-- **Lightroom and Photoshop → [darktable]** and GIMP.
-- **New:** a tiling window manager ([OmniWM]) and voice dictation ([Wispr Flow]).
-- **Todoist joined**, and my Bullet Journal use has dropped a bit.
-- **Raindrop.io is gone.** My [TIL](/til/) and personal wiki replaced
-  bookmarks.
+- Launcher: Raycast → [Tinycast]. Alfred is gone too.
+- Code editor: Zed + Cursor → [Zed] alone, with AI turned off.
+- Mail: Edison → Apple Mail.
+- Photo editing: Photoshop and Lightroom → [darktable].
+- Word processing: Pages → Google Docs.
+- Chat: Messages, Discord, Slack → Signal, WhatsApp, Telegram.
+- News: Perplexity → [Hacker News](https://news.ycombinator.com/) and [Newsboat].
+- VPN: Zscaler → [Tailscale](https://tailscale.com/).
+- Bookmarks: Raindrop.io → my [TIL](/til/) and personal wiki.
+
+**New**
+
+- Window manager: [OmniWM], trying TrellisWM.
+- Dictation: [Wispr Flow], Muesli for local transcription.
+- Local dev: OrbStack, Bruno.
+- Mac utilities: Mole, UsagePal, Thaw, Amphetamine, AlDente.
+- Audiobooks: Audible.
+
+**Expanded**
+
+- To-do: Todoist joined. Bullet Journal use dropped a bit.
+- Version control: lazygit + jj, trying Hunk.
+- RSS: NetNewsWire + Newsboat in the terminal.
+- Calendar: Notion Calendar + Google Calendar on the web.
 
 ### The list
 
