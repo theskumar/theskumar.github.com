@@ -25,7 +25,8 @@ and catalogued by Robb Knight's [App Defaults](https://defaults.rknight.me/).
   [notes on how I use herdr].
 - **Edison Mail → Apple Mail**, plus Gmail on the web when I need it.
 - **Raycast → [Tinycast]**, a tiny native launcher. Alfred is gone too.
-- **Cursor is out.** Mostly [Zed] now.
+- **Cursor is out.** Mostly [Zed] now, with its AI features turned off. I
+  don't need AI in my editor; that work happens in [Pi].
 - **Lightroom and Photoshop → [darktable]** and GIMP.
 - **New:** a tiling window manager ([OmniWM]) and voice dictation ([Wispr Flow]).
 - **Todoist joined**, and my Bullet Journal use has dropped a bit.
@@ -54,7 +55,7 @@ and catalogued by Robb Knight's [App Defaults](https://defaults.rknight.me/).
 - **Music**: YouTube Music on the web, not much
 - **Audiobooks**: Audible
 - **Password Management**: 1Password and Apple Passwords
-- **Code Editor**: [Zed], with T3 Code and others now and then
+- **Code Editor**: [Zed] with AI disabled, plus T3 Code and others now and then
 - **AI Harness**: [Pi], Pi Web, trying [Pi Pocket]
 - **Dictation**: [Wispr Flow], [Muesli](https://muesli.works/) for local transcription
 - **VPN**: [AdGuard], [Tailscale](https://tailscale.com/)
