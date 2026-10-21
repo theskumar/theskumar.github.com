@@ -15,7 +15,7 @@ and catalogued by Robb Knight's [App Defaults](https://defaults.rknight.me/).
 ### What changed since 2025
 
 - **AI took over a big chunk of my day.** [Pi] is my core harness and I live in
-  Pi Web. On the side I'm trying [Pi Pocket], which looks really cool. Most of
+  [Pi Web]. On the side I'm trying [Pi Pocket], which looks really cool. Most of
   my version control work now goes through agents too.
 - **Arc → [Zen]** for work. Zen is very close to Arc, well maintained, and
   doesn't try to add too many features. Safari stays for personal browsing.
@@ -36,13 +36,13 @@ and catalogued by Robb Knight's [App Defaults](https://defaults.rknight.me/).
 ### The list
 
 - **Mail Client**: Apple Mail, Gmail in browser
-- **Notes**: [Obsidian], Simplenote
+- **Notes**: [Obsidian], [Simplenote]
 - **To-Do**: [Todoist](https://todoist.com/), [Bullet Journal](https://bulletjournal.com/)
 - **Photo Shooting**: iPhone, Canon 6D
-- **Photo Editing**: [darktable], GIMP
+- **Photo Editing**: [darktable], [GIMP]
 - **Calendar**: [Notion Calendar](https://www.notion.com/product/calendar), Google Calendar on the web
 - **Cloud File Storage**: iCloud + Google Drive
-- **RSS**: [NetNewsWire], [Newsboat](https://newsboat.org/) in the terminal
+- **RSS**: [NetNewsWire], [Newsboat] in the terminal
 - **Contacts**: Apple Contacts & Google Contacts
 - **Browser**: [Zen] for work, Safari for personal
 - **Chat**: Signal, WhatsApp, Telegram
@@ -53,12 +53,12 @@ and catalogued by Robb Knight's [App Defaults](https://defaults.rknight.me/).
 - **Presentations**: Figma
 - **Shopping Lists**: Amazon
 - **Budgeting and Personal Finance**: [paisa](https://paisa.fyi/), with [ledger](https://ledger-cli.org/) underneath
-- **News**: [NetNewsWire], Newsboat, [Hacker News](https://news.ycombinator.com/)
+- **News**: [NetNewsWire], [Newsboat], [Hacker News](https://news.ycombinator.com/)
 - **Music**: YouTube Music on the web, not much
 - **Audiobooks**: Audible
 - **Password Management**: 1Password and Apple Passwords
-- **Code Editor**: [Zed] with AI disabled, plus T3 Code and others now and then
-- **AI Harness**: [Pi], Pi Web, trying [Pi Pocket]
+- **Code Editor**: [Zed] with AI disabled, plus [T3 Code](https://t3.codes/) and others now and then
+- **AI Harness**: [Pi], [Pi Web], trying [Pi Pocket]
 - **Dictation**: [Wispr Flow], [Muesli](https://muesli.works/) for local transcription
 - **VPN**: [AdGuard], [Tailscale](https://tailscale.com/)
 
@@ -67,18 +67,18 @@ and catalogued by Robb Knight's [App Defaults](https://defaults.rknight.me/).
 Important enough to include here, ordered roughly by how often I rely on each.
 
 - Launcher: [Tinycast]
-- Window Manager: [OmniWM], trying out TrellisWM
+- Window Manager: [OmniWM], trying out [TrellisWM](https://trelliswm.app/)
 - Ad Blocking: [AdGuard]
 - Terminal: [Ghostty] + [herdr] with zsh and [Starship]
 - Search Engine: DuckDuckGo and Google
-- Version Control: [lazygit](https://github.com/jesseduffield/lazygit) and [jj](https://github.com/jj-vcs/jj), trying Hunk for diffs. AI does most of it now.
-- Screenshots: CleanShot X
+- Version Control: [lazygit](https://github.com/jesseduffield/lazygit) and [jj](https://github.com/jj-vcs/jj), trying [Hunk](https://github.com/modem-dev/hunk) for diffs. AI does most of it now.
+- Screenshots: [CleanShot X](https://cleanshot.com/)
 - Local Dev: [OrbStack](https://orbstack.dev/), [Bruno](https://www.usebruno.com/) for APIs
 - Mastodon Client: [Mastonaut](https://www.mastonaut.app/)
 - Code Repositories: GitHub
 - Reading: Kindle
-- Writing: WriteText, [Obsidian], [Zed]
-- Design: Figma, GIMP
+- Writing: [WriteText](https://writetext.io/), [Obsidian], [Zed]
+- Design: Figma, [GIMP]
 - App + Server Monitoring: Sentry
 - Brainstorming: [Obsidian]
 - Video Calls: Meet, Zoom
@@ -101,5 +101,9 @@ Important enough to include here, ordered roughly by how often I rely on each.
 [darktable]: https://www.darktable.org/
 [OmniWM]: https://omniwm.app/
 [Wispr Flow]: https://wisprflow.ai/
-[Pi]: https://github.com/earendil-works/pi
+[Pi]: https://pi.dev/
+[Pi Web]: https://pi-web.dev/
+[Simplenote]: https://simplenote.com/
+[GIMP]: https://www.gimp.org/
+[Newsboat]: https://newsboat.org/
 [Pi Pocket]: https://tannermidd.github.io/pi-pocket/
