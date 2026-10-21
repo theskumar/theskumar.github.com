@@ -67,5 +67,11 @@
   },
   "golang": {
     "description": "Go language, runtime, ecosystem"
+  },
+  "research": {
+    "description": "AI research: papers, evals, benchmarks, how models work"
+  },
+  "product": {
+    "description": "Product thinking: problem framing, discovery, outcomes"
   }
 }

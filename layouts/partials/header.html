@@ -35,6 +35,7 @@
   {{ range .Site.Menus.main }}
     {{ $here := eq $current .URL }}
     {{ $within := and (ne .URL "/") (hasPrefix $current .URL) }}
+    {{ with .Params.match }}{{ if hasPrefix $current . }}{{ $within = true }}{{ end }}{{ end }}
     <a href="{{ .URL }}"{{ if or $here $within }} class="active"{{ end }}{{ if $here }} aria-current="page"{{ end }}>{{ .Name }}</a>
   {{ end }}
 </nav>

@@ -1,23 +1,9 @@
 +++
-# This title is used as the og:title on Hugo's internal
-# opengraph structured data template on the home page.
-# See https://ogp.me/ and https://gohugo.io/templates/internal#open-graph.
+# The home page is the Writing index (layouts/_default/writing.html).
+# This title is the og:title on the home page; the h1 says "Writing".
 title = "Saurabh Kumar"
-layout = "about"
-aliases = ["/about/", "/about"]
-
-[params]
-eyebrow = "Principal Engineer, Fueled"
-tagline = "I build backend systems and help teams put AI agents to work."
-
-[params.portrait]
-src = "images/portrait.webp"
+layout = "writing"
+aliases = ["/articles/", "/blog/"]
 +++
 
-I'm a Principal Engineer at Fueled. Over the past fourteen years, I've built backends for products ranging from patient portals and investing platforms to educational apps. Most of my work has been in backend architecture, infrastructure, and technical leadership.
-
-These days, I'm leading agentic transformation at Fueled, helping our teams and clients use AI agents in their everyday work. That includes building automations and working on [Rosey](https://meetrosey.ai).
-
-I also build tools for how I work: collecting useful context, trying agents on everyday tasks, and keeping track of what I learn. My [projects](/projects/) include the tools themselves; my [TIL notes](/til/) capture discoveries before they turn into longer write-ups. I'm interested in what helps in practice, and what still needs a human to check it.
-
-Off the clock, I'm on the outskirts of Delhi with my wife, my son Amay, and our dog [Hachi](https://instagram.com/hachi.softysingh), who all do a fine job of keeping me away from the keyboard.
+I write about AI agents and the research behind them, backend systems, and the tools I lean on. Shorter notes live in [TIL](/til/); more [about me](/about/).

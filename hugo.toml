@@ -38,8 +38,11 @@ rel = "alternate"
 
 [[menus.main]]
 name = "Writing"
-url = "/articles/"
+url = "/"
 weight = 1
+# Posts live under /articles/; keep Writing active there.
+[menus.main.params]
+match = "/articles/"
 
 [[menus.main]]
 name = "Projects"
@@ -58,14 +61,14 @@ weight = 4
 
 [[menus.main]]
 name = "About"
-url = "/"
+url = "/about/"
 weight = 5
 
 
 
 [params]
 # The "description" of your website. This is used in the meta data of your generated html.
-description = "Personal site and blog of Saurabh Kumar :heart:"
+description = "Saurabh Kumar writes about AI agents and research, backend systems, and building products."
 enablePostNavigator = false
 
 # Show the floating table of contents by default on pages that have headings.

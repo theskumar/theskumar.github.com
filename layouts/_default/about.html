@@ -36,14 +36,12 @@
       {{ .Content }}
     </div>
     <div class="hero-actions">
-      <a class="btn btn-primary" href="{{ "articles/" | relURL }}">Read the writing</a>
-      <a class="btn btn-ghost" href="#contact">Get in touch</a>
+      <a class="btn btn-primary" href="#contact">Get in touch</a>
+      <a class="btn btn-ghost" href="{{ "projects/" | relURL }}">See projects</a>
     </div>
   </div>
 
 </section>
-
-{{ $recent := first 4 (where .Site.RegularPages "Section" "blog").ByDate.Reverse }}
 
 {{ $stars := "8.8k" }}
 {{ with try (resources.GetRemote "https://api.github.com/repos/theskumar/python-dotenv") }}
@@ -62,27 +60,13 @@
     <p>A Python library for loading environment variables from <code>.env</code> files. I co-maintain it.</p>
   </a>
 
-  <a class="panel col-2" href="{{ "now/" | relURL }}">
-    <span class="anno anno--plain"><span class="idx" aria-hidden="true"></span>now</span>
-    <h3>Leading agentic transformation at Fueled</h3>
-    <p>Helping Fueled’s teams and clients use AI agents, including work on Rosey. And learning to keep up with a toddler.</p>
-  </a>
-
-  <div class="panel col-4">
-    <span class="anno anno--plain"><span class="idx" aria-hidden="true"></span>recent writing</span>
-    <ul class="post-list">
-      {{ range $recent }}
-      <li>
-        <a href="{{ .Permalink }}">
-          <span class="post-title">{{ .Title }}</span>
-          <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2006" }}</time>
-        </a>
-      </li>
-      {{ end }}
-    </ul>
+  <div class="panel col-2">
+    <span class="anno anno--plain"><span class="idx" aria-hidden="true"></span>working together</span>
+    <h3>Mentoring &amp; consulting</h3>
+    <p>Pro bono mentoring for early founders, and independent consulting on AI agents, backend systems, and product.</p>
   </div>
 
-  <div class="panel col-2">
+  <div class="panel col-4">
     <span class="anno anno--plain"><span class="idx" aria-hidden="true"></span>worked with</span>
     <div class="chip-row">
       <span class="chip">The Motley Fool</span>
@@ -96,18 +80,6 @@
       <span class="chip">South Pole</span>
     </div>
   </div>
-
-  <div class="panel col-2">
-    <span class="anno anno--plain"><span class="idx" aria-hidden="true"></span>working together</span>
-    <h3>Mentoring &amp; consulting</h3>
-    <p>Pro bono mentoring for early founders, and independent consulting on backend systems and AI.</p>
-  </div>
-
-  <a class="panel col-2" href="{{ "til/" | relURL }}">
-    <span class="anno anno--plain"><span class="idx" aria-hidden="true"></span>learning notes</span>
-    <h3>Things I’m working through</h3>
-    <p>Short notes on systems, tools, and agents: what caught my attention, what I’m trying, and what changes how I work.</p>
-  </a>
 
   <div class="panel col-2" id="contact">
     <span class="anno anno--plain"><span class="idx" aria-hidden="true"></span>get in touch</span>

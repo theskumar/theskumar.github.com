@@ -51,7 +51,7 @@
 <script type="module">
   /* The tattoo: hills into ocean. Three canvases share one noise field —
      #fx-hills crests at the very top of the browser, #fx-waves laps at the
-     very bottom, and on the home page #fx-field fills the viewport with
+     very bottom, and on the About page #fx-field fills the viewport with
      ridgelines that relax into swells as you scroll. simplex-noise does the
      organic work; a value-noise shim covers offline builds. Everything is
      theme-aware, 30fps-capped, paused offscreen, static under reduced motion.
@@ -193,7 +193,7 @@
     ctx.globalAlpha = 1;
   });
 
-  /* Field (home only): the transformation itself. Lines near the top fold
+  /* Field (About page only): the transformation itself. Lines near the top fold
      like ridges; scrolling — and simply sitting lower on the page — relaxes
      them into water. */
   scene(document.getElementById('fx-field'), (ctx, W, H, t, ink) => {

@@ -1,9 +1,12 @@
 +++
 title = "Projects"
-eyebrow = "Work and open source"
 tagline = "Projects"
-lede = "Open source, community work, and things I've built for clients."
+lede = "What I'm working on, open source, fourteen years of client projects, and community work."
 +++
+
+### Current
+
+Most of my time goes to [Rosey](https://meetrosey.ai), [Fueled](https://fueled.com)'s AI-native delivery platform, where I lead engineering. Alongside it, I do applied research on agents: memory and context ([Pi Pocket Blackhole](https://github.com/theskumar/pi-pocket-blackhole) came out of this), retrieval, and evals that measure what a human still has to fix. I'm also building up the product side, framing problems and measuring outcomes on client work. I maintain [python-dotenv](https://github.com/theskumar/python-dotenv) as time allows. More on [Now](/now/).
 
 ### Open source
 
@@ -13,18 +16,7 @@ lede = "Open source, community work, and things I've built for clients."
 - **[python-usernames](https://github.com/theskumar/python-usernames)** — A small Python library that checks usernames are URL-safe and not reserved or abusive.
 - **[junction](https://github.com/pythonindia/junction)** — Conference proposal management for PyCon India and PyDelhi (closed).
 
-### Community
-
-- **[PyDelhi](https://pydelhi.org)** — The Delhi Python meetup. I revived it and ran it from 2014 to 2018.
-- **[Two Scoops of Django](https://www.feldroy.com/products/two-scoops-of-django-3-x)** — Technical reviewer for the book.
-
-### Current work
-
-- **[Rosey](https://meetrosey.ai) at [Fueled](https://fueled.com)** — Engineering lead for Rosey, Fueled's AI-native delivery platform, and AI enablement across Fueled's teams and clients.
-
-See [/now/](/now/) for more on what I'm working on.
-
-### Past client work
+### Client work
 
 - **C. S. Lewis (unreleased)** — Technical lead for backend and infrastructure on a CMS and an interactive mobile app around his writing, not an e-book reader. Launching soon.
 - **Comoto (unreleased)** — Tech lead on the technical spike for a new mobile app for RevZilla, Cycle Gear and J&P Cycles.
@@ -46,6 +38,11 @@ See [/now/](/now/) for more on what I'm working on.
 - **[Urgent Action Fund](https://urgentactionfund.org/)** — Grants management platform, on a private fork of hypha.
 - **[Spoken Tutorials, IIT Bombay](https://github.com/Spoken-tutorial/spoken-website)** — Tech lead on the open-source Django platform for the Govt. of India's tech literacy initiative (2017–2018).
 - **[Raw Mango](https://rawmango.com)** — Fashion e-commerce site (since replaced).
+
+### Community
+
+- **[PyDelhi](https://pydelhi.org)** — The Delhi Python meetup. I revived it and ran it from 2014 to 2018.
+- **[Two Scoops of Django](https://www.feldroy.com/products/two-scoops-of-django-3-x)** — Technical reviewer for the book.
 
 ### Personal
 

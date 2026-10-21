@@ -18,7 +18,7 @@ Full brand spec: `docs/brand/BRAND.md`. Writing voice: `docs/STYLE-GUIDE.md`.
 
 ## Information architecture
 
-- `/` → About/home (`layouts/_default/about.html`, content `content/_index.md`)
+- `/about/` → About (`layouts/_default/about.html`, content `content/about.md`)
   Hero (eyebrow + tagline + lede, single column) over `#fx-field` — a fixed
   full-viewport canvas of faint lines that morph from hill folds to ocean
   swells with scroll (the tattoo: hills into waves). Then a 6-column
@@ -34,8 +34,8 @@ Full brand spec: `docs/brand/BRAND.md`. Writing voice: `docs/STYLE-GUIDE.md`.
   swells touching the bottom, behind the footer; `#fx-field` — home only.
   Module: `<script type="module">` in `layouts/partials/custom_body.html`,
   simplex-noise from jsDelivr with an inline value-noise fallback.
-- `/articles/` → Writing index (`layouts/_default/writing.html`, content
-  `content/articles.md`), grouped by year, entries via
+- `/` → home: the Writing index (`layouts/_default/writing.html`, content
+  `content/_index.md`; `/articles/` and `/blog/` redirect here), grouped by year, entries via
   `layouts/partials/post-entry.html`.
 - `/articles/YYYY/MM/slug/` → posts (`layouts/_default/single.html`, type `blog`).
   Serif prose (`[data-prose]`, header from `layouts/partials/post-header.html`), italic lede from `description`,
@@ -52,7 +52,7 @@ Full brand spec: `docs/brand/BRAND.md`. Writing voice: `docs/STYLE-GUIDE.md`.
 | `layouts/partials/custom_head.html` | Pre-paint theme boot, fonts (Newsreader var + Geist + Geist Mono), theme-color. |
 | `layouts/partials/custom_body.html` | Motion JS: scroll reveal, stagger, schematic draw-on, reading progress. |
 | `layouts/partials/header.html` | Node-graph K mark (inline SVG), nav, theme toggle. |
-| `layouts/_default/about.html` | Home; contains the hero schematic SVG (fig. 01). |
+| `layouts/_default/about.html` | About page; contains the hero schematic SVG (fig. 01). |
 | `static/images/brand/` + `static/images/favicon.svg` | Brand assets (see BRAND.md §7). |
 
 ## Conventions & gotchas
@@ -65,6 +65,10 @@ Full brand spec: `docs/brand/BRAND.md`. Writing voice: `docs/STYLE-GUIDE.md`.
   when arriving via VT (`html.vt-nav`) to avoid double animation.
 - All motion respects `prefers-reduced-motion` (static, fully drawn).
 - Ember accent is scarce: junction node, active nav, hovers, eyebrows, signals only.
+- Eyebrows carry navigation (a back link, section links, a breadcrumb) or a
+  fact (a date, a role), never a label that repeats the h1 or the active nav
+  item. Posts: "Writing" → `/`; TIL notes: "TIL" → `/til/`; TIL and Tags:
+  section links; Now: updated date; About: role. Home and Projects have none.
 - No new colors, no new fonts, no shadows heavier than the TOC panel's.
 - Homepage GitHub stars are fetched at build time (`resources.GetRemote`), with
   a hardcoded fallback in `about.html`.

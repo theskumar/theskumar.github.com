@@ -36,6 +36,7 @@ draft = false  # optional
 
 ## URLs
 
+- Home `/` is the Writing index (`content/_index.md`, `layouts/_default/writing.html`); `/articles/` and `/blog/` redirect to it. About is `/about/` (`content/about.md`).
 - Posts: `/articles/YYYY/MM/slug/`
 - Tags: `/tags/<tag>/`, index `/tags/`. One `tags` taxonomy covers Writing posts and TIL notes; use names from `data/tags.json`. Old tag URLs (`/articles/<tag>/`, `/til/tags/<tag>.html`) are redirects published by `layouts/partials/tags/legacy-redirects.html`
 - TIL notes: `/til/<unix-ts>/`. Week pages: `/til/weekly/YYYY-MM-DD.html` (for the feed; old toots link to `#anchor` there)
