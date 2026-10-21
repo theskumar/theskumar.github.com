@@ -25,7 +25,7 @@ and catalogued by Robb Knight's [App Defaults](https://defaults.rknight.me/).
 - **Raycast → [Tinycast]**, a tiny native launcher. Alfred is gone too.
 - **Cursor is out.** Mostly [Zed] now, with its AI turned off.
 - **Edison Mail → Apple Mail**, plus Gmail on the web when I need it.
-- **Photoshop and Lightroom → [darktable]**, with GIMP for quick edits.
+- **Photoshop and Lightroom → [darktable]** and GIMP.
 - **Pages → Google Docs.** I hardly open Pages anymore.
 - **Perplexity → [Hacker News](https://news.ycombinator.com/) and [Newsboat]**,
   next to NetNewsWire.
