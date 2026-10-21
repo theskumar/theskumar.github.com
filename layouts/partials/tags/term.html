@@ -1,0 +1,27 @@
+{{/* One tag across the site: Writing posts and TIL notes. */}}
+{{ $posts := where .Pages "Section" "blog" }}
+{{ $notes := (where .Pages "Section" "til").ByDate.Reverse }}
+{{ $about := (index (hugo.Data.tags | default dict) .Data.Term).description | default "" }}
+{{ $counts := slice }}
+{{ with $posts }}{{ $counts = $counts | append (printf "%d post%s" (len .) (cond (eq (len .) 1) "" "s")) }}{{ end }}
+{{ with $notes }}{{ $counts = $counts | append (printf "%d note%s" (len .) (cond (eq (len .) 1) "" "s")) }}{{ end }}
+<header class="page-head reveal">
+  <span class="crosshair" aria-hidden="true"></span>
+  <nav class="eyebrow sub-nav" aria-label="Breadcrumb"><a href="/tags/">Tags</a><span>{{ delimit $counts " · " }}</span></nav>
+  <h1>#{{ .Data.Term }}</h1>
+  {{ with $about }}<div class="sub"><p>{{ . }}</p></div>{{ end }}
+</header>
+<div class="list-body">
+  {{ with $posts }}
+  <section class="list-section">
+    <h2 class="list-label">Writing</h2>
+    <ul class="blog-posts">{{ range .ByDate.Reverse }}{{ partial "post-entry.html" . }}{{ end }}</ul>
+  </section>
+  {{ end }}
+  {{ with $notes }}
+  <section class="list-section">
+    <h2 class="list-label">TIL notes</h2>
+    <ul class="notes-list">{{ range . }}{{ partial "til/note.html" (dict "page" . "exclude" $.Data.Term) }}{{ end }}</ul>
+  </section>
+  {{ end }}
+</div>

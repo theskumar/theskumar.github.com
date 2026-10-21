@@ -3,13 +3,7 @@ title = "Django ORM: From sync_to_async Threads to Native psycopg3"
 date = "2026-06-13"
 slug = "django-orm-from-sync_to_async-threads-to-native-psycopg3"
 description = "A deep dive into how Django's ORM became truly async — how the old thread-pool approach worked, what changed in Django 6.0 with psycopg3 and ContextVar, and why asyncpg was left out."
-tags = [
-    "django",
-    "python",
-    "postgresql",
-    "async",
-    "performance"
-]
+tags = ["django", "python", "databases", "performance"]
 +++
 
 Django shipped async ORM methods back in 3.1. The `a`-prefixed methods, including
@@ -245,7 +239,7 @@ DATABASES = {
 }
 ```
 
-This is the same `pool` option I covered in [Django Native PostgreSQL Connection Pooling](/articles/2025/06/django-psycopg-native-pooling/), with one
+This is the same `pool` option I covered in [Django Native PostgreSQL Connection Pooling](./django-psycopg-native-pooling.md), with one
 difference that matters. In that post I warned against native pooling under ASGI —
 Django's own docs recommended PgBouncer instead — because the sync pool and the event
 loop did not cooperate. Django 6.0's `AsyncConnectionPool` is what closes that gap. The

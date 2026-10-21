@@ -1,0 +1,8 @@
+{{/* TIL page head: section links in the eyebrow row, then h1 and lede.
+     Context: dict "active" (Notes|Archive|Tags) "title" "lede" (markdown). */}}
+<header class="page-head reveal">
+  <span class="crosshair" aria-hidden="true"></span>
+  {{ partial "til/sub-nav.html" .active }}
+  <h1>{{ .title }}</h1>
+  {{ with .lede }}<div class="sub"><p>{{ . | markdownify }}</p></div>{{ end }}
+</header>

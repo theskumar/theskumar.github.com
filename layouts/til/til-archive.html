@@ -1,0 +1,24 @@
+{{ define "main" }}
+{{/* Every TIL note by year: date and title, like the Writing index. */}}
+{{ $notes := partial "til/notes.html" . }}
+{{ partial "til/head.html" (dict "active" "Archive" "title" .Title "lede" (printf "All %d notes, newest first." (len $notes))) }}
+<div class="index">
+  {{ range $notes.GroupByDate "2006" }}
+  <section class="index-year reveal">
+    <div class="year">{{ .Key }}</div>
+    <ul class="blog-posts">
+      {{ range .Pages }}
+      <li class="entry">
+        <a href="{{ .RelPermalink }}">
+          <div class="entry-row">
+            <span class="entry-title">{{ .Title }}</span>
+            <span class="entry-meta"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 02" }}</time></span>
+          </div>
+        </a>
+      </li>
+      {{ end }}
+    </ul>
+  </section>
+  {{ end }}
+</div>
+{{ end }}

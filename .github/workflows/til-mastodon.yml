@@ -1,10 +1,11 @@
-# Posts new til/til.md entries to Mastodon, then commits the discuss links.
+# Posts new TIL notes (content/til/<unix-ts>.md) to Mastodon, edits the toot
+# when a posted note changes, and commits the new status IDs.
 name: Post TIL to Mastodon
 
 on:
   push:
     branches: [main]
-    paths: [til/til.md]
+    paths: ["content/til/*.md"]
 
 permissions:
   contents: write
@@ -13,24 +14,21 @@ jobs:
   post:
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, 'chore: add mastodon discuss link')"
-    defaults:
-      run:
-        working-directory: til
     steps:
       - uses: actions/checkout@v6
         with:
           fetch-depth: 2
 
-      - name: Post new TIL entries to Mastodon
+      - name: Post or edit toots
         env:
           MASTODON_ACCESS_TOKEN: ${{ secrets.MASTODON_ACCESS_TOKEN }}
-        run: python3 scripts/post-mastodon.py
+        run: python3 scripts/til-mastodon.py
 
-      - name: Commit discuss links
+      - name: Commit status IDs
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add til.md
+          git add content/til
           if ! git diff --cached --quiet; then
             git commit -m "chore: add mastodon discuss link"
             git push

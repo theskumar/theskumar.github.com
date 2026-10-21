@@ -32,8 +32,10 @@
 </div>
 <nav class="site-nav">
   {{ $current := .RelPermalink }}
+  {{ $isTag := in (slice "term" "taxonomy") .Kind }}
   {{ range .Site.Menus.main }}
-    <a href="{{ .URL }}"{{ if or (eq $current .URL) (and (ne .URL "/") (hasPrefix $current .URL)) }} class="active"{{ end }}>{{ .Name }}</a>
+    {{/* Tag pages live under /articles/ but cover Writing and TIL alike. */}}
+    <a href="{{ .URL }}"{{ if and (not $isTag) (or (eq $current .URL) (and (ne .URL "/") (hasPrefix $current .URL))) }} class="active"{{ end }}>{{ .Name }}</a>
   {{ end }}
 </nav>
 

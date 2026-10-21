@@ -2,12 +2,7 @@
 title = "My Local LLM On A 32 GB M1 Pro"
 date = "2026-06-14"
 description = "How I adapted an M1 Max guide to half the machine by handing it to pi and letting it grill me first, plus the exact, reproducible steps that came out the other end."
-tags = [
-    "llm",
-    "macos",
-    "pi-agent",
-    "open-source"
-]
+tags = ["ai", "macos", "open-source"]
 toc = true
 +++
 

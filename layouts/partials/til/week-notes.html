@@ -1,0 +1,5 @@
+{{/* Notes in one week, newest first. Context: week YYYY-MM-DD. */}}
+{{ $wk := . }}
+{{ $out := slice }}
+{{ range partial "til/notes.html" . }}{{ if eq (partialCached "til/week-of.html" . .RelPermalink) $wk }}{{ $out = $out | append . }}{{ end }}{{ end }}
+{{ return $out }}

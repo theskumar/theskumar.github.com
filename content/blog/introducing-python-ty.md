@@ -2,11 +2,7 @@
 title = "ty: Astral's Take on Python Type Checking"
 date = "2025-05-09"
 description = "Notes on ty, the pre-alpha type checker from the team behind Ruff and uv, and what its speed, its missing plugin system, and its open business model actually mean."
-tags = [
-    "python",
-    "type-checking",
-    "tools"
-]
+tags = ["python", "tools"]
 +++
 
 Anyone who has run `mypy` on a real codebase knows the workarounds. You enable the daemon, you keep the incremental cache warm, you scope the check to the files you touched, and you still wait a few seconds for the editor to catch up after a rename. In CI it is worse, because the cache is cold and the full run can stretch into the minutes. None of this is broken, exactly. It is just the cost you learn to pay. So when a new checker says the wait can mostly go away, I pay attention, but I also want to know what it costs.

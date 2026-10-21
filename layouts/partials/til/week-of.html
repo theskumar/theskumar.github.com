@@ -1,0 +1,6 @@
+{{/* The week a note belongs to: the Sunday after its date, in UTC, as
+     YYYY-MM-DD. Matches content/til/weekly/_content.gotmpl. Context: page. */}}
+{{ $d := .Date.UTC }}
+{{ $days := mod (sub 7 (int $d.Weekday)) 7 }}
+{{ if eq $days 0 }}{{ $days = 7 }}{{ end }}
+{{ return ($d.AddDate 0 0 $days).Format "2006-01-02" }}

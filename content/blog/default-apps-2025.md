@@ -2,9 +2,7 @@
 title = "Default Apps 2025"
 date = "2025-11-05"
 description = "Here are my Default Apps of 2025."
-tags = [
-    "tools"
-]
+tags = ["tools"]
 +++
 
 **Update:** see my [Default Apps 2026]({{< ref "default-apps-2026.md" >}}) for this year's list.

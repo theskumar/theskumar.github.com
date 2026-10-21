@@ -1,0 +1,38 @@
+{{/*
+  Week pages for TIL: /til/weekly/YYYY-MM-DD.html, one per week that has
+  notes. A week ends on the Sunday after a note's date (UTC). The date comes
+  from the note's filename (content/til/<unix-ts>.md), so this adapter never
+  reads note contents. layouts/til/week.html lists the notes.
+*/}}
+{{ $weeks := dict }}
+{{ range os.ReadDir "content/til" }}
+  {{ with findRESubmatch `^(\d+)\.md$` .Name 1 }}
+    {{ $d := (time.AsTime (int (index (index . 0) 1))).UTC }}
+    {{ $days := mod (sub 7 (int $d.Weekday)) 7 }}
+    {{ if eq $days 0 }}{{ $days = 7 }}{{ end }}
+    {{ $wk := ($d.AddDate 0 0 $days).Format "2006-01-02" }}
+    {{/* Date a week page by its newest note, so the current, unfinished
+         week isn't a future-dated page that Hugo skips. */}}
+    {{ if gt ($d.Format "2006-01-02T15:04:05Z") (index $weeks $wk | default "") }}
+      {{ $weeks = merge $weeks (dict $wk ($d.Format "2006-01-02T15:04:05Z")) }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ $keys := slice }}
+{{ range $k, $_ := $weeks }}{{ $keys = $keys | append $k }}{{ end }}
+{{ $keys = sort $keys "value" "desc" }}
+{{ range $i, $wk := $keys }}
+  {{ $.AddPage (dict
+      "path" $wk
+      "url" (printf "/til/weekly/%s.html" $wk)
+      "kind" "page"
+      "layout" "week"
+      "title" ((time.AsTime (printf "%sT12:00:00Z" $wk)).Format "Mon, Jan 2, 2006")
+      "dates" (dict "date" (time.AsTime (index $weeks $wk)))
+      "params" (dict
+        "week" $wk
+        "prev" (cond (lt (add $i 1) (len $keys)) (index $keys (add $i 1)) "")
+        "next" (cond (gt $i 0) (index $keys (sub $i 1)) ""))
+  ) }}
+{{ end }}

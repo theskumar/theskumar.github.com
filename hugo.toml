@@ -14,13 +14,26 @@ locale = "en-US"
 # Generate a nice robots.txt for SEO
 enableRobotsTXT = true
 
-# Generate "Bearblog"-like URLs !only!, see https://bearblog.dev/.
-disableKinds = ["taxonomy"]
-ignoreErrors = ["error-disable-taxonomy"]
+# Keep tag names as written ("macos", not "Macos") in page titles.
+capitalizeListTitles = false
+
+# One taxonomy, shared by Writing posts and TIL notes.
+[taxonomies]
+tag = "tags"
 
 [permalinks]
 blog = "/articles/:year/:month/:slug/"
 tags = "/articles/:slug"
+
+[permalinks.taxonomy]
+tags = "/tags/"
+
+# TIL's feed lives at /til/rss.xml, as before the move into Hugo.
+[outputFormats.tilrss]
+mediaType = "application/rss+xml"
+baseName = "rss"
+isPlainText = false
+rel = "alternate"
 
 [[menus.main]]
 name = "Writing"
@@ -81,6 +94,9 @@ title = "Saurabh Kumar's Personal Site"
 # for details. An example TOML config that uses [ISO
 # 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
 # dateFormat = "2006-01-02"
+
+# Linked from each TIL note's "Discuss" link (front matter `mastodon` = status ID).
+mastodon = "https://mastodon.social/@theskumar"
 
 [markup]
 [markup.highlight]

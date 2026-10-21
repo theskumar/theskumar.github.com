@@ -1,0 +1,8 @@
++++
+title = "Things I Learned"
+layout = "til-home"
+outputs = ["html", "tilrss"]
+lede = "Short, dated notes on things I've learned. Longer write-ups live in [Writing](/articles/)."
+# Each note is a file here: <unix-ts>.md, published at /til/<unix-ts>/.
+# Week pages come from weekly/_content.gotmpl.
++++

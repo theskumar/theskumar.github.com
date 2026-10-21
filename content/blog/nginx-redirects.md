@@ -2,11 +2,7 @@
 title = "Efficiently Managing Mass URL Redirects with Nginx"
 date = "2017-09-25"
 description = "Manage URL redirects with Nginx's map directive and a separate configuration file"
-tags = [
-    "devops",
-    "nginx",
-    "configuration"
-]
+tags = ["devops"]
 +++
 
 I use Nginx's `map` directive to keep URL redirects in a separate configuration file. It creates hash tables for fast lookups.

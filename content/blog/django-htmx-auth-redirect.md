@@ -2,11 +2,7 @@
 title = "Handling Django Authentication Redirects in HTMX Applications"
 date = "2025-05-02"
 description = "A clean solution for handling Django authentication redirects in HTMX applications, preventing login forms from appearing in the wrong place when sessions expire."
-tags = [
-    "django",
-    "htmx",
-    "authentication"
-]
+tags = ["django", "security"]
 +++
 
 

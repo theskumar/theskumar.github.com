@@ -3,7 +3,7 @@ title = "How Prompt Caching Works"
 date = "2026-06-21"
 slug = "how-prompt-caching-works"
 description = "What LLM APIs cache, what breaks the cache, and why long agent loops get 5–10× cheaper with it."
-tags = ["llm", "performance"]
+tags = ["ai", "performance"]
 +++
 
 Today I learned how prompt caching actually works under the hood in LLM APIs

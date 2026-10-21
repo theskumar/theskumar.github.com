@@ -1,0 +1,17 @@
+{{ define "main" }}
+{{/* The TIL stream: full notes, newest first, 10 per page (/til/page/N/). */}}
+{{ $pager := .Paginate (partial "til/notes.html" .) 10 }}
+{{ partial "til/head.html" (dict "active" "Notes" "title" .Title "lede" .Params.lede) }}
+<div class="list-body">
+  <ul class="notes-list home-notes">
+    {{ range $pager.Pages }}{{ partial "til/note.html" (dict "page" . "exclude" "") }}{{ end }}
+  </ul>
+  {{ if gt $pager.TotalPages 1 }}
+  <nav class="week-nav pager" aria-label="More notes">
+    {{ with $pager.Prev }}<a href="{{ .URL }}" rel="prev">&larr; Newer notes</a>{{ else }}<span></span>{{ end }}
+    <span class="pager-pos">{{ $pager.PageNumber }} / {{ $pager.TotalPages }}</span>
+    {{ with $pager.Next }}<a href="{{ .URL }}" rel="next">Older notes &rarr;</a>{{ else }}<span></span>{{ end }}
+  </nav>
+  {{ end }}
+</div>
+{{ end }}

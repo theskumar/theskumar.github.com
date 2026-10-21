@@ -1,0 +1,13 @@
+{{ define "main" }}
+{{ $notes := partial "til/week-notes.html" .Params.week }}
+{{ partial "til/head.html" (dict "active" "Archive" "title" .Title "lede" (printf "%d note%s this week" (len $notes) (cond (eq (len $notes) 1) "" "s"))) }}
+<div class="list-body">
+<ul class="notes-list">
+  {{ range $notes }}{{ partial "til/note.html" (dict "page" . "exclude" "") }}{{ end }}
+</ul>
+<nav class="week-nav">
+  {{ with .Params.prev }}<a href="/til/weekly/{{ . }}.html">&larr; Previous week</a>{{ else }}<span></span>{{ end }}
+  {{ with .Params.next }}<a href="/til/weekly/{{ . }}.html">Next week &rarr;</a>{{ else }}<span></span>{{ end }}
+</nav>
+</div>
+{{ end }}

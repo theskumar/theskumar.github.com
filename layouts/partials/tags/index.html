@@ -1,0 +1,12 @@
+{{/* Every tag across Writing posts and TIL notes, most used first. */}}
+<header class="page-head reveal">
+  <span class="crosshair" aria-hidden="true"></span>
+  {{ partial "til/sub-nav.html" "Tags" }}
+  <h1>Tags</h1>
+  <div class="sub"><p>{{ len .Data.Terms }} tags across Writing and TIL notes.</p></div>
+</header>
+<div class="list-body">
+  <div class="tag-cloud">
+    {{ range .Data.Terms.ByCount }}<a href="{{ .Page.RelPermalink }}" class="tag">{{ .Term }}<span class="tag-count">{{ .Count }}</span></a>{{ end }}
+  </div>
+</div>

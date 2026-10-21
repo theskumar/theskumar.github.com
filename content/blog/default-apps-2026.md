@@ -2,9 +2,7 @@
 title = "Default Apps 2026"
 date = "2026-10-21"
 description = "Here are my Default Apps of 2026."
-tags = [
-    "tools"
-]
+tags = ["tools"]
 +++
 
 Apps I've been using regularly this year. This is my second year doing this.

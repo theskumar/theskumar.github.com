@@ -31,7 +31,7 @@
 {{ if $tags }}
   <p class="article-tags">
     Tagged
-    {{ range $tags }}<a href="{{ .Permalink }}">{{ .Data.Term }}</a>{{ end }}
+    {{ range $tags }}<a href="{{ .RelPermalink }}" class="tag">{{ .Data.Term }}</a>{{ end }}
   </p>
 {{ end }}
 </article>

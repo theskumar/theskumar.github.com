@@ -4,7 +4,8 @@
 <span>&copy; {{ now.Format "2006" }} Saurabh Kumar</span>
 <span>28.67°N&thinsp;/&thinsp;77.43°E — Ghaziabad, IN</span>
 <span>
-  <a href="{{ "index.xml" | relURL }}">RSS</a>
+  {{- /* TIL pages point at the TIL feed; everything else at the main one. */}}
+  <a href="{{ if eq .Section "til" }}/til/rss.xml{{ else }}{{ "index.xml" | relURL }}{{ end }}">RSS</a>
   &nbsp;·&nbsp;
   <a href="https://github.com/theskumar">GitHub</a>
   &nbsp;·&nbsp;

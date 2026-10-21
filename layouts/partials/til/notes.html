@@ -1,0 +1,2 @@
+{{/* All TIL notes (content/til/<unix-ts>.md), newest first. */}}
+{{ return (site.GetPage "/til").RegularPages.ByDate.Reverse }}
