@@ -1,7 +1,8 @@
 +++
 title = "Now"
 eyebrow = "Updated 6 Oct 2026 · Ghaziabad"
-tagline = "What I'm up to right now."
+tagline = "Now"
+lede = "What I'm up to right now."
 +++
 
 <details>

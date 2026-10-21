@@ -1,10 +1,9 @@
 +++
 title = "Projects"
+eyebrow = "Work and open source"
+tagline = "Projects"
+lede = "Things I've built for clients, the community, and myself."
 +++
-
-# Projects
-
-Client work, open source, and tools I build for my own workflow. Some are maintained libraries; others are personal setups and experiments, not finished products.
 
 ### Personal tools and learning
 

@@ -429,6 +429,10 @@
   .page-head .sub { color: var(--muted); font-size: 0.98rem; max-width: 34rem; }
   .page-head .sub p { margin: 0; }
   .page-head .crosshair { top: 2.8rem; right: 0; }
+  .page-head + article.page-prose { padding-top: 0; }
+  /* Match the Writing index: 56px from the head's text to the first content row. */
+  .page-head + article.page-prose content { display: block; padding-top: 2.5rem; }
+  .page-head + article.page-prose content > :first-child { margin-top: 0; }
 
   /* ---- Writing index ---- */
   .index { margin: 1.2rem 0 3rem; }
