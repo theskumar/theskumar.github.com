@@ -13,7 +13,7 @@ A snapshot of what's on my plate right now: work, learning, life. Inspired by [n
 
 </details>
 
-**Work:** Leading engineering on [Rosey](https://meetrosey.ai), [Fueled](https://fueled.com)'s AI-native delivery platform, and helping Fueled's teams and clients put AI agents to work. The current focus is shared project context: what an agent needs to know about a project to do useful work on it.
+**Work:** Leading engineering on [Rosey](https://meetrosey.ai), [Fueled](https://fueled.com)'s AI-native delivery platform, and helping Fueled's teams and clients put AI agents to work. The current focus is three things: workflow orchestration, persistent memory, and agent verification.
 
 Wrapped up as technical lead for backend and infrastructure on a C. S. Lewis project: a CMS and an interactive mobile app built around his writing, not an e-book reader. It's close to launch.
 
