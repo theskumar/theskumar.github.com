@@ -138,6 +138,8 @@
   a:hover { color: var(--accent); text-decoration-color: var(--accent); }
 
   strong, b { color: var(--heading); font-weight: 600; }
+  /* Themed highlight: the browser's yellow hides selected text in dark mode. */
+  mark { background: light-dark(rgba(180,73,31,0.16), rgba(224,139,84,0.2)); color: var(--heading); padding: 0 0.15em; border-radius: 2px; }
 
   img { max-width: 100%; height: auto; border-radius: 3px; }
 
@@ -346,7 +348,9 @@
   .btn-primary { background: var(--heading); color: var(--bg); border: 1px solid var(--heading); }
   .btn-primary:hover { background: var(--accent); border-color: var(--accent); color: light-dark(#F7F4ED, #171411); text-decoration: none; }
   .btn-primary:active { transform: scale(0.98); }
-  .btn-primary::selection { background: var(--accent); color: light-dark(#F7F4ED, #171411); }
+  /* Inverted fill: the default selection colors vanish on it. */
+  .btn-primary::selection { background: var(--accent); color: var(--bg); }
+  .btn-primary:hover::selection { background: var(--heading); color: var(--bg); }
   .btn-ghost { border: 1px solid var(--border-strong); color: var(--muted); }
   .btn-ghost:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
   .btn-ghost:active { transform: scale(0.98); }
