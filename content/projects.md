@@ -4,11 +4,11 @@ tagline = "Projects"
 lede = "What I'm working on, open source, fourteen years of client projects, and community work."
 +++
 
-### Current
+## Current
 
 Most of my time goes to [Rosey](https://meetrosey.ai), [Fueled](https://fueled.com)'s AI-native delivery platform, where I lead engineering. Alongside it, I do applied research on agents: memory and context ([Pi Pocket Blackhole](https://github.com/theskumar/pi-pocket-blackhole) came out of this), retrieval, and evals that measure what a human still has to fix. I'm also building up the product side, framing problems and measuring outcomes on client work. I maintain [python-dotenv](https://github.com/theskumar/python-dotenv) as time allows. More on [Now](/now/).
 
-### Open source
+## Open source
 
 - **[python-dotenv](https://github.com/theskumar/python-dotenv)** — A Python library for loading environment variables from `.env` files. I co-maintain it as time allows.
 - **[hypha](https://github.com/HyphaApp/hypha)** — The Open Technology Fund's open-source platform for managing open calls, grant applications and reviews. I was a core contributor through OTF from 2022 to 2025.
@@ -16,7 +16,7 @@ Most of my time goes to [Rosey](https://meetrosey.ai), [Fueled](https://fueled.c
 - **[python-usernames](https://github.com/theskumar/python-usernames)** — A small Python library that checks usernames are URL-safe and not reserved or abusive.
 - **[junction](https://github.com/pythonindia/junction)** — Conference proposal management for PyCon India and PyDelhi (closed).
 
-### Client work
+## Client work
 
 - **C. S. Lewis (unreleased)** — Technical lead for backend and infrastructure on a CMS and an interactive mobile app around his writing, not an e-book reader. Launching soon.
 - **Comoto (unreleased)** — Tech lead on the technical spike for a new mobile app for RevZilla, Cycle Gear and J&P Cycles.
@@ -39,12 +39,12 @@ Most of my time goes to [Rosey](https://meetrosey.ai), [Fueled](https://fueled.c
 - **[Spoken Tutorials, IIT Bombay](https://github.com/Spoken-tutorial/spoken-website)** — Tech lead on the open-source Django platform for the Govt. of India's tech literacy initiative (2017–2018).
 - **[Raw Mango](https://rawmango.com)** — Fashion e-commerce site (since replaced).
 
-### Community
+## Community
 
 - **[PyDelhi](https://pydelhi.org)** — The Delhi Python meetup. I revived it and ran it from 2014 to 2018.
 - **[Two Scoops of Django](https://www.feldroy.com/products/two-scoops-of-django-3-x)** — Technical reviewer for the book.
 
-### Personal
+## Personal
 
 These are my own setup, public so others can borrow from them. I don't maintain them for other people.
 

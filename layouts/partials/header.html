@@ -13,7 +13,7 @@
     </svg>
     <span class="brand">Saurabh Kumar</span>
   </a>
-  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+  <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Dark mode" aria-pressed="false" title="Toggle dark mode">
     <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <circle cx="12" cy="12" r="5"/>
       <line x1="12" y1="1" x2="12" y2="3"/>
@@ -48,6 +48,8 @@
     var btn = document.getElementById('theme-toggle');
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var timer;
+    // aria-pressed tells screen readers whether dark mode is on.
+    btn.setAttribute('aria-pressed', el.getAttribute('data-theme') === 'dark' ? 'true' : 'false');
     btn.addEventListener('click', function () {
       var next = el.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
       if (!reduce) {
@@ -56,6 +58,7 @@
         timer = window.setTimeout(function () { el.classList.remove('theme-anim'); }, 500);
       }
       el.setAttribute('data-theme', next);
+      btn.setAttribute('aria-pressed', next === 'dark' ? 'true' : 'false');
       localStorage.setItem('theme', next);
       var m = document.querySelector('meta[name="theme-color"]');
       if (m) m.setAttribute('content', next === 'dark' ? '#171411' : '#F7F4ED');

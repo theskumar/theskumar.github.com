@@ -24,7 +24,7 @@
     user-select: none;
     margin-right: 0.4em;
     padding: 0 0.4em;
-    color: light-dark(#8c8fa1, #838ba7);
+    color: light-dark(#65687c, #838ba7);
 }
 
 .chroma .hl { background-color: light-dark(#ccd0da, #51576d); }
@@ -32,34 +32,34 @@
 /* ---------- Keywords ---------- */
 
 .chroma .k   { color: light-dark(#8839ef, #ca9ee6); }
-.chroma .kc  { color: light-dark(#fe640b, #ef9f76); }
+.chroma .kc  { color: light-dark(#b74301, #ef9f76); }
 .chroma .kd  { color: light-dark(#d20f39, #e78284); }
-.chroma .kn  { color: light-dark(#179299, #81c8be); }
+.chroma .kn  { color: light-dark(#12747a, #81c8be); }
 .chroma .kp  { color: light-dark(#8839ef, #ca9ee6); }
 .chroma .kr  { color: light-dark(#8839ef, #ca9ee6); }
 .chroma .kt  { color: light-dark(#d20f39, #e78284); }
 
 /* ---------- Names ---------- */
 
-.chroma .bp  { color: light-dark(#04a5e5, #99d1db); }
-.chroma .nb  { color: light-dark(#04a5e5, #99d1db); }
-.chroma .nc  { color: light-dark(#df8e1d, #e5c890); }
-.chroma .no  { color: light-dark(#df8e1d, #e5c890); }
-.chroma .nd  { color: light-dark(#1e66f5, #8caaee); }
-.chroma .ne  { color: light-dark(#fe640b, #ef9f76); }
-.chroma .nf  { color: light-dark(#1e66f5, #8caaee); }
-.chroma .fm  { color: light-dark(#1e66f5, #8caaee); }
-.chroma .ni  { color: light-dark(#179299, #81c8be); }
-.chroma .nl  { color: light-dark(#04a5e5, #99d1db); }
-.chroma .nn  { color: light-dark(#fe640b, #ef9f76); }
+.chroma .bp  { color: light-dark(#03719c, #99d1db); }
+.chroma .nb  { color: light-dark(#03719c, #99d1db); }
+.chroma .nc  { color: light-dark(#925d13, #e5c890); }
+.chroma .no  { color: light-dark(#925d13, #e5c890); }
+.chroma .nd  { color: light-dark(#0f5cf4, #8caaee); }
+.chroma .ne  { color: light-dark(#b74301, #ef9f76); }
+.chroma .nf  { color: light-dark(#0f5cf4, #8caaee); }
+.chroma .fm  { color: light-dark(#0f5cf4, #8caaee); }
+.chroma .ni  { color: light-dark(#12747a, #81c8be); }
+.chroma .nl  { color: light-dark(#03719c, #99d1db); }
+.chroma .nn  { color: light-dark(#b74301, #ef9f76); }
 .chroma .nt  { color: light-dark(#8839ef, #ca9ee6); }
-.chroma .na  { color: light-dark(#1e66f5, #8caaee); }
-.chroma .py  { color: light-dark(#fe640b, #ef9f76); }
+.chroma .na  { color: light-dark(#0f5cf4, #8caaee); }
+.chroma .py  { color: light-dark(#b74301, #ef9f76); }
 .chroma .nv,
 .chroma .vc,
 .chroma .vg,
 .chroma .vi,
-.chroma .vm  { color: light-dark(#dc8a78, #f2d5cf); }
+.chroma .vm  { color: light-dark(#b3462e, #f2d5cf); }
 
 /* ---------- Numbers ---------- */
 
@@ -69,54 +69,54 @@
 .chroma .mf,
 .chroma .mh,
 .chroma .mi,
-.chroma .mo  { color: light-dark(#fe640b, #ef9f76); }
+.chroma .mo  { color: light-dark(#b74301, #ef9f76); }
 
 /* ---------- Operators ---------- */
 
-.chroma .o   { color: light-dark(#04a5e5, #99d1db); }
-.chroma .ow  { color: light-dark(#04a5e5, #99d1db); }
+.chroma .o   { color: light-dark(#03719c, #99d1db); }
+.chroma .ow  { color: light-dark(#03719c, #99d1db); }
 
 /* ---------- Strings ---------- */
 
-.chroma .dl  { color: light-dark(#1e66f5, #8caaee); }
+.chroma .dl  { color: light-dark(#0f5cf4, #8caaee); }
 .chroma .s,
 .chroma .s1,
 .chroma .s2,
 .chroma .sb,
-.chroma .sc  { color: light-dark(#40a02b, #a6d189); }
+.chroma .sc  { color: light-dark(#307820, #a6d189); }
 .chroma .sa  { color: light-dark(#d20f39, #e78284); }
-.chroma .sd  { color: light-dark(#7c7f93, #737994); font-style: italic; }
-.chroma .se  { color: light-dark(#1e66f5, #8caaee); }
-.chroma .sh  { color: light-dark(#7c7f93, #737994); }
-.chroma .si  { color: light-dark(#40a02b, #a6d189); }
-.chroma .ss  { color: light-dark(#40a02b, #a6d189); }
-.chroma .sx  { color: light-dark(#40a02b, #a6d189); }
-.chroma .sr  { color: light-dark(#179299, #81c8be); }
+.chroma .sd  { color: light-dark(#696a79, #80849b); font-style: italic; }
+.chroma .se  { color: light-dark(#0f5cf4, #8caaee); }
+.chroma .sh  { color: light-dark(#696a79, #80849b); }
+.chroma .si  { color: light-dark(#307820, #a6d189); }
+.chroma .ss  { color: light-dark(#307820, #a6d189); }
+.chroma .sx  { color: light-dark(#307820, #a6d189); }
+.chroma .sr  { color: light-dark(#12747a, #81c8be); }
 
 /* ---------- Comments ---------- */
 
 .chroma .c,
 .chroma .c1,
 .chroma .ch,
-.chroma .cm  { color: light-dark(#7c7f93, #737994); font-style: italic; }
+.chroma .cm  { color: light-dark(#696a79, #80849b); font-style: italic; }
 .chroma .cp,
-.chroma .cpf { color: light-dark(#7c7f93, #737994); font-style: italic; }
-.chroma .cs  { color: light-dark(#7c7f93, #737994); font-style: italic; }
+.chroma .cpf { color: light-dark(#696a79, #80849b); font-style: italic; }
+.chroma .cs  { color: light-dark(#696a79, #80849b); font-style: italic; }
 
 /* ---------- Generic (diff / output) ---------- */
 
 .chroma .gd  { color: light-dark(#d20f39, #e78284);
                background-color: light-dark(#fce4ec, #414559); }
-.chroma .gi  { color: light-dark(#40a02b, #a6d189);
+.chroma .gi  { color: light-dark(#307820, #a6d189);
                background-color: light-dark(#e6f4ea, #414559); }
 .chroma .ge  { font-style: italic; }
-.chroma .gh  { color: light-dark(#fe640b, #ef9f76); }
+.chroma .gh  { color: light-dark(#b74301, #ef9f76); }
 .chroma .gp  { color: light-dark(#6c6f85, currentColor); }
 .chroma .go  { color: light-dark(#6c6f85, currentColor); }
 .chroma .gr  { color: light-dark(#d20f39, #e78284); }
 .chroma .gs  { font-style: italic; }
 .chroma .gt  { color: light-dark(#d20f39, #e78284); }
-.chroma .gu  { color: light-dark(#fe640b, #ef9f76); }
+.chroma .gu  { color: light-dark(#b74301, #ef9f76); }
 .chroma .gl  { text-decoration: underline; }
 
 .chroma .err { color: light-dark(#d20f39, #e78284); }

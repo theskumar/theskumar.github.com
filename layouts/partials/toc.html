@@ -17,7 +17,7 @@
 {{- $showTitle := and (eq .Type "blog") (not .Params.menu) -}}
 {{- /* Only worth showing once a page has a few sections. */ -}}
 {{- if and $headings (ge (len .Fragments.Identifiers) 4) }}
-<aside class="toc-float">
+<div class="toc-float">
   <div class="toc-rail" aria-hidden="true" inert>
     <nav class="toc-nav toc-nav--rail">
       {{ if $showTitle }}<ul><li><a href="#" class="toc-top">{{ .Title }}</a></li></ul>{{ end }}
@@ -30,7 +30,7 @@
       {{ partial "toc-nodes.html" $headings }}
     </nav>
   </div>
-</aside>
+</div>
 <script>
 (function () {
   function init() {

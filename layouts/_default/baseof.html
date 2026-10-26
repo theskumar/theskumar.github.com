@@ -15,8 +15,9 @@
   {{- partial "custom_head.html" . -}}
 </head>
 <body class="page-{{ .Type }}{{ if .IsHome }} page-home{{ end }}">
+  <a class="skip-link" href="#main">Skip to content</a>
   <header>{{- partial "header.html" . -}}</header>
-  <main>{{- block "main" . }}{{- end }}</main>
+  <main id="main">{{- block "main" . }}{{- end }}</main>
   <footer class="site-footer">{{- partial "footer.html" . -}}</footer>
   {{- partial "custom_body.html" . -}}
 </body>
