@@ -4,7 +4,7 @@
   Call it with partialCached and .RelPermalink as the variant.
 
   assets/og/background.png (source: docs/brand/og-background.html) holds the
-  grid, corner ticks, site name and mark. This partial draws the per-page
+  grid, corner ticks, mark and name. This partial draws the per-page
   parts on top: eyebrow, title, tags, and the hairlines between them.
   Positions come from that HTML at 1200x630.
 
@@ -30,7 +30,7 @@
   {{- $step := 14.06 }}
   {{- $filters := slice }}
 
-  {{- /* Top row: eyebrow, then a hairline up to the site name (x 865). */}}
+  {{- /* Top row: eyebrow, then a hairline to the right margin. */}}
   {{- $eyebrow := printf "%s · %s" (cond $isNote "TIL" "Writing") ($p.Date.UTC.Format "2 Jan 2006") | upper }}
   {{- range $i, $c := split $eyebrow "" }}
     {{- if ne $c " " }}
@@ -39,7 +39,7 @@
     {{- end }}
   {{- end }}
   {{- $x1 := int (math.Round (add (add $left (mul (strings.RuneCount $eyebrow) $step)) 20)) }}
-  {{- $filters = $filters | append (images.Overlay ($hair.Crop (printf "%dx1 TopLeft" (sub 845 $x1))) $x1 104) }}
+  {{- $filters = $filters | append (images.Overlay ($hair.Crop (printf "%dx1 TopLeft" (sub $right $x1))) $x1 104) }}
 
   {{- /* Title. Long titles get a smaller size; 150+ characters are cut. */}}
   {{- $title := $p.Title | plainify | htmlUnescape | truncate 150 "…" | htmlUnescape }}
