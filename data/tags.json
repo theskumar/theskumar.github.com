@@ -6,7 +6,13 @@
     "description": "Django framework, libraries, patterns"
   },
   "ai": {
-    "description": "LLMs, agents, AI coding, prompt engineering"
+    "description": "Working with AI: practice, review, opinion, AI products, general ML"
+  },
+  "harness": {
+    "description": "Agent harnesses: Claude Code, Pi, subagents, sandboxes, workflows, skills"
+  },
+  "llm": {
+    "description": "Models themselves: releases, inference, caching, local models, classifiers"
   },
   "tools": {
     "description": "CLI tools, dev utilities, productivity"
