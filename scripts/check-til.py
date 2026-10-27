@@ -29,7 +29,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 NOTES = ROOT / "content/til"
 BLOG = ROOT / "content/blog"
-NOTE_KEYS = {"title", "date", "tags", "series", "toot", "mastodon", "anchor", "aliases"}
+NOTE_KEYS = {"title", "date", "tags", "series", "mastodon", "anchor", "aliases"}
 SERIES = ROOT / "content/series"
 
 

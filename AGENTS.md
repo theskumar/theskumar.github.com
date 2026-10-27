@@ -12,7 +12,7 @@ themes/            # git submodules (hugo-bearblog, hugo-admonitions, typo)
 static/            # images, files
 public/            # build output (git-ignored)
 data/tags.json     # tag vocabulary (with descriptions), shared by Writing and TIL
-scripts/           # check-til.py (CI + pre-commit), til-mastodon.py (CI)
+scripts/           # check-til.py (CI + pre-commit)
 ```
 
 ## Commands
@@ -50,8 +50,7 @@ One file per note: `content/til/<unix-ts>.md`, published at `/til/<unix-ts>/`. T
 title = "EmbeddingGemma 2"           # page title only; safe to change
 date = 2026-10-19T12:00:00Z          # UTC; must match the filename's timestamp
 tags = ["ai", "rag"]                 # from data/tags.json
-toot = "..."                         # optional Mastodon short form
-mastodon = "117465622405124446"      # set by CI after posting
+mastodon = "117465622405124446"      # optional: status ID of a hand-made post; shows a "Discuss" link
 anchor = "embeddinggemma-2"          # migrated notes only: keeps old week-page links
 +++
 Markdown body.
@@ -75,7 +74,7 @@ Markdown body.
 
 Push to `main` → GitHub Actions (`hugo-deploy.yml`) → `scripts/check-til.py` → `hugo --minify` (Hugo pinned to 0.168.0) → GitHub Pages.
 
-`til-mastodon.yml` runs `scripts/til-mastodon.py` on every note changed by the push: it posts new notes, edits the toot when a posted note's toot text changes, commits the status IDs, then starts `hugo-deploy.yml` again. It needs the `MASTODON_ACCESS_TOKEN` secret. Notes dated more than 14 days back are not posted.
+Nothing posts to social media automatically. Saurabh posts by hand (X, Mastodon, LinkedIn). To link a note to its Mastodon thread, set `mastodon` to the status ID in the note's front matter.
 
 ## Notes
 

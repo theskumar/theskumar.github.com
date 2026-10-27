@@ -5,8 +5,7 @@ on:
   push:
     branches: ["main"]
 
-  # Manual runs, and the Mastodon job after it commits status IDs (its
-  # pushes use GITHUB_TOKEN, which doesn't trigger the push event).
+  # Manual runs.
   workflow_dispatch:
 
 # Default to bash

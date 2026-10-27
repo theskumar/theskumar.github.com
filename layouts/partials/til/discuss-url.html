@@ -1,4 +1,4 @@
-{{/* URL of a note's Mastodon thread, or "" if it was never tooted.
+{{/* URL of a note's Mastodon thread, or "" if it has none. The ID is set by hand.
      Context: the note. */}}
 {{ $url := "" }}
 {{ with .Params.mastodon }}{{ $url = printf "%s/%s" site.Params.mastodon . }}{{ end }}
