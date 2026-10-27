@@ -12,7 +12,7 @@
     "description": "Agent harnesses: Claude Code, Pi, subagents, sandboxes, workflows, skills"
   },
   "llm": {
-    "description": "Models themselves: releases, inference, caching, local models, classifiers"
+    "description": "Model releases and internals: LLMs, embedding, OCR and classifier models, inference, caching, local models"
   },
   "tools": {
     "description": "Tool roundups and utilities with no narrower topic"
