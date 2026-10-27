@@ -2,7 +2,7 @@
 title = "How I Optimized My Zsh Startup Time"
 date = "2026-05-11"
 description = "An audit of my zsh config turned up shell forks, redundant plugins, and eager evals. Here are the eight fixes that shaved an estimated 400-700 ms off cold start."
-tags = ["shell", "performance", "tools", "macos"]
+tags = ["shell", "performance", "macos"]
 +++
 
 My zsh prompt was taking close to a second to appear on a fresh terminal. Not catastrophic. But you feel it every time tmux spawns a new pane, and for me that is constantly. The config had grown for years, one `eval` and one plugin at a time, and nobody had been auditing it, least of all me.

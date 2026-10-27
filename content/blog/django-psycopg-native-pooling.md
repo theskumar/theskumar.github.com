@@ -2,7 +2,7 @@
 title = "Django Native PostgreSQL Connection Pooling"
 date = "2025-06-18"
 description = "Configure Django’s native PostgreSQL connection pool with psycopg, handle connection cleanup, and measure performance before and after."
-tags = ["django", "databases", "performance", "python"]
+tags = ["django", "databases", "performance"]
 +++
 
 Opening PostgreSQL connections adds overhead. Django 5.1 (released August 7, 2024) added native connection pooling[^1], which lets an application reuse connections. Measure connection overhead and response times before and after enabling it; the benefit depends on your workload.

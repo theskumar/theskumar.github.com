@@ -3,7 +3,7 @@ title = "How Prompt Caching Works"
 date = "2026-06-21"
 slug = "how-prompt-caching-works"
 description = "What LLM APIs cache, what breaks the cache, and why long agent loops get 5–10× cheaper with it."
-tags = ["llm", "research", "performance"]
+tags = ["llm", "performance"]
 # Was a TIL article until Oct 2026.
 aliases = ["/til/llm/prompt-caching.html"]
 

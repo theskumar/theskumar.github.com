@@ -3,7 +3,7 @@ title = "Django ORM: From sync_to_async Threads to Native psycopg3"
 date = "2026-06-13"
 slug = "django-orm-from-sync_to_async-threads-to-native-psycopg3"
 description = "A deep dive into how Django's ORM became truly async — how the old thread-pool approach worked, what changed in Django 6.0 with psycopg3 and ContextVar, and why asyncpg was left out."
-tags = ["django", "python", "databases", "performance"]
+tags = ["django", "databases", "performance"]
 +++
 
 Django shipped async ORM methods back in 3.1. The `a`-prefixed methods, including

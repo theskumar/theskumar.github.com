@@ -6,7 +6,7 @@ Each note is a file, content/til/<unix-ts>.md, with TOML front matter:
     +++
     title = "EmbeddingGemma 2"
     date = 2026-10-19T12:00:00Z
-    tags = ["ai", "rag"]
+    tags = ["llm", "search"]
     mastodon = "117465622405124446"   # set by this script after posting
     toot = "optional hand-written short form"
     +++

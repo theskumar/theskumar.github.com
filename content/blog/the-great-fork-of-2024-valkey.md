@@ -2,7 +2,7 @@
 title = "Redis’s License Change and the Valkey Fork"
 date = "2026-01-12"
 description = "The story of Redis's controversial license change in March 2024 and how the open-source community responded by creating Valkey—a fork that's now outperforming the original on speed and efficiency."
-tags = ["open-source", "databases", "performance"]
+tags = ["open-source", "databases"]
 +++
 
 ## The License Change

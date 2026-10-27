@@ -3,7 +3,7 @@ title = "BM25 Ranking in PostgreSQL with pg_textsearch"
 date = "2025-12-19"
 slug = "bm25-ranking-in-postgresql-with-pg-textsearch"
 description = "pg_textsearch brings BM25 relevance ranking to Postgres. How it compares with built-in full-text search, and when to use each."
-tags = ["databases"]
+tags = ["databases", "search"]
 # Was a TIL article until Oct 2026.
 aliases = ["/til/fts/pg_textsearch.html"]
 

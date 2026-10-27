@@ -15,13 +15,13 @@
     "description": "Models themselves: releases, inference, caching, local models, classifiers"
   },
   "tools": {
-    "description": "CLI tools, dev utilities, productivity"
+    "description": "Tool roundups and utilities with no narrower topic"
   },
   "devops": {
     "description": "CI/CD, infrastructure, deployment, containers"
   },
   "databases": {
-    "description": "Databases, key-value stores, data storage"
+    "description": "Databases, storage engines, data formats, data sync"
   },
   "performance": {
     "description": "Optimization, benchmarks, speed"
@@ -33,13 +33,7 @@
     "description": "macOS apps, utilities, system tools"
   },
   "architecture": {
-    "description": "Design principles, system design, patterns"
-  },
-  "rag": {
-    "description": "RAG, embeddings, vector search, semantic retrieval"
-  },
-  "blockchain": {
-    "description": "Web3, cross-chain, crypto protocols"
+    "description": "Software and system design, patterns, APIs"
   },
   "css": {
     "description": "CSS, frontend styling, web design"
@@ -54,30 +48,21 @@
     "description": "Code editors, IDE tools, vim motions"
   },
   "open-source": {
-    "description": "OSS projects, licensing, community"
-  },
-  "react": {
-    "description": "React ecosystem, hooks, patterns"
+    "description": "Licensing, forks, OSS community"
   },
   "search": {
-    "description": "Full-text search, code search, indexing"
-  },
-  "book": {
-    "description": "Book notes, reviews, reading"
+    "description": "Search and retrieval: BM25, vector search, embeddings, RAG, code search"
   },
   "markdown": {
     "description": "Markdown tools, editors, rendering"
   },
-  "data": {
-    "description": "Data formats, pipelines, ETL, sync"
-  },
   "golang": {
     "description": "Go language, runtime, ecosystem"
   },
-  "research": {
-    "description": "AI research: papers, evals, benchmarks, how models work"
+  "code-review": {
+    "description": "Code review practice, human and AI"
   },
-  "product": {
-    "description": "Product thinking: problem framing, discovery, outcomes"
+  "speech-to-text": {
+    "description": "Dictation and speech-to-text apps"
   }
 }
