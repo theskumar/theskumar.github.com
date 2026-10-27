@@ -1,0 +1,26 @@
+{{/* One series: an ordered thread of notes and posts, oldest first, so it
+     reads as a story. Title and description come from
+     content/series/<slug>/_index.md. */}}
+{{ $items := sort .Pages "Date" "asc" }}
+<header class="page-head reveal">
+  <span class="crosshair" aria-hidden="true"></span>
+  <nav class="eyebrow breadcrumb" aria-label="Breadcrumb"><a href="/series/">Series</a><span>{{ len $items }} part{{ if ne (len $items) 1 }}s{{ end }}</span></nav>
+  <h1>{{ .Title }}</h1>
+  {{ with .Description }}<div class="sub"><p>{{ . }}</p></div>{{ end }}
+</header>
+<div class="list-body">
+  {{ $posts := where $items "Section" "blog" }}
+  {{ $notes := where $items "Section" "til" }}
+  {{ with $posts }}
+  <section class="list-section">
+    <h2 class="list-label">Writing</h2>
+    <ul class="blog-posts">{{ range . }}{{ partial "post-entry.html" . }}{{ end }}</ul>
+  </section>
+  {{ end }}
+  {{ with $notes }}
+  <section class="list-section">
+    <h2 class="list-label">TIL notes</h2>
+    <ul class="notes-list">{{ range . }}{{ partial "til/note.html" (dict "page" . "exclude" "") }}{{ end }}</ul>
+  </section>
+  {{ end }}
+</div>

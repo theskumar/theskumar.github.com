@@ -20,6 +20,8 @@ capitalizeListTitles = false
 # One taxonomy, shared by Writing posts and TIL notes.
 [taxonomies]
 tag = "tags"
+# Ordered threads of notes and posts; content/series/<slug>/_index.md holds the title.
+series = "series"
 
 [permalinks.page]
 blog = "/articles/:year/:month/:slug/"
@@ -28,6 +30,7 @@ blog = "/articles/:year/:month/:slug/"
 # layouts/partials/tags/legacy-redirects.html keeps those URLs working.
 [permalinks.term]
 tags = "/tags/:slug/"
+series = "/series/:slug/"
 
 # TIL's feed lives at /til/rss.xml, as before the move into Hugo.
 [outputFormats.tilrss]

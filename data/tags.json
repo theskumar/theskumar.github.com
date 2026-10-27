@@ -3,16 +3,27 @@
     "description": "Python ecosystem, packaging, runtime"
   },
   "django": {
-    "description": "Django framework, libraries, patterns"
+    "description": "Django framework, libraries, patterns",
+    "parent": "python"
   },
   "ai": {
     "description": "Working with AI: practice, review, opinion, AI products, general ML"
   },
   "harness": {
-    "description": "Agent harnesses: Claude Code, Pi, subagents, sandboxes, workflows, skills"
+    "description": "Agent harnesses: Claude Code, Pi, subagents, sandboxes, workflows, skills",
+    "parent": "ai"
+  },
+  "pi-agent": {
+    "description": "Pi, the coding agent harness: extensions, subagents, setups",
+    "parent": "harness"
+  },
+  "claude-code": {
+    "description": "Claude Code features and how its team works",
+    "parent": "harness"
   },
   "llm": {
-    "description": "Model releases and internals: LLMs, embedding, OCR and classifier models, inference, caching, local models"
+    "description": "Model releases and internals: LLMs, embedding, OCR and classifier models, inference, caching, local models",
+    "parent": "ai"
   },
   "tools": {
     "description": "Tool roundups and utilities with no narrower topic"

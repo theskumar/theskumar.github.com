@@ -1,6 +1,7 @@
 {{/* One tag across the site: Writing posts and TIL notes. */}}
-{{ $posts := where .Pages "Section" "blog" }}
-{{ $notes := (where .Pages "Section" "til").ByDate.Reverse }}
+{{ $all := partial "tags/pages.html" .Data.Term }}
+{{ $posts := where $all.pages "Section" "blog" }}
+{{ $notes := where $all.pages "Section" "til" }}
 {{ $vocab := index hugo.Data.tags .Data.Term }}
 {{ if not $vocab }}{{ warnf "tag %q isn't in data/tags.json" .Data.Term }}{{ end }}
 {{ $about := $vocab.description | default "" }}
@@ -12,12 +13,13 @@
   <nav class="eyebrow breadcrumb" aria-label="Breadcrumb"><a href="/tags/">Tags</a><span>{{ delimit $counts " · " }}</span></nav>
   <h1>#{{ .Data.Term }}</h1>
   {{ with $about }}<div class="sub"><p>{{ . }}</p></div>{{ end }}
+  {{ with $all.children }}<p class="tag-children">Includes{{ range . }}<a href="{{ (site.GetPage (printf "/tags/%s" .)).RelPermalink }}" class="tag">{{ . }}</a>{{ end }}</p>{{ end }}
 </header>
 <div class="list-body">
   {{ with $posts }}
   <section class="list-section">
     <h2 class="list-label">Writing</h2>
-    <ul class="blog-posts">{{ range .ByDate.Reverse }}{{ partial "post-entry.html" . }}{{ end }}</ul>
+    <ul class="blog-posts">{{ range . }}{{ partial "post-entry.html" . }}{{ end }}</ul>
   </section>
   {{ end }}
   {{ with $notes }}

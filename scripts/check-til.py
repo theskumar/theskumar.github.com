@@ -8,7 +8,9 @@ Rules (see AGENTS.md, "TIL"):
   The week pages are built from the filename, the note page from `date`;
   if they differ, the note drops out of its week and the feed.
 - `title` is set; only known keys are used.
-- Every tag, on notes and on Writing posts, is in data/tags.json.
+- Every tag, on notes and on Writing posts, is in data/tags.json, and no
+  item carries a tag next to its own parent (the tag page rolls children up).
+- Every series has a content/series/<slug>/_index.md.
 
 Run by the deploy workflow and the pre-commit hook. Exit 0 if clean, 1 with
 one line per problem otherwise.
@@ -27,7 +29,25 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 NOTES = ROOT / "content/til"
 BLOG = ROOT / "content/blog"
-NOTE_KEYS = {"title", "date", "tags", "toot", "mastodon", "anchor", "aliases"}
+NOTE_KEYS = {"title", "date", "tags", "series", "toot", "mastodon", "anchor", "aliases"}
+SERIES = ROOT / "content/series"
+
+
+def tag_problems(fm: dict, vocab: dict) -> list[str]:
+    """Unknown tags, a tag next to its own ancestor, unknown series."""
+    tags = fm.get("tags", [])
+    errors = []
+    if bad := [t for t in tags if t not in vocab]:
+        errors.append(f"tags not in data/tags.json: {bad}")
+    for t in tags:
+        parent = vocab.get(t, {}).get("parent")
+        while parent:
+            if parent in tags:
+                errors.append(f"drop {parent!r}: {t!r} already rolls up to it")
+            parent = vocab.get(parent, {}).get("parent")
+    if bad := [s for s in fm.get("series", []) if not (SERIES / s / "_index.md").exists()]:
+        errors.append(f"series without content/series/<slug>/_index.md: {bad}")
+    return errors
 
 
 def front_matter(path: Path) -> dict:
@@ -51,14 +71,14 @@ def check_note(path: Path, vocab: set[str]) -> list[str]:
                       f"(expected {datetime.fromtimestamp(int(path.stem), timezone.utc):%Y-%m-%dT%H:%M:%SZ})")
     if unknown := set(fm) - NOTE_KEYS:
         errors.append(f"unknown keys: {sorted(unknown)}")
-    if bad := [t for t in fm.get("tags", []) if t not in vocab]:
-        errors.append(f"tags not in data/tags.json: {bad}")
+    errors += tag_problems(fm, vocab)
     return errors
 
 
 def main() -> int:
-    vocab = set(json.loads((ROOT / "data/tags.json").read_text(encoding="utf-8")))
-    problems = []
+    vocab = json.loads((ROOT / "data/tags.json").read_text(encoding="utf-8"))
+    problems = [f"data/tags.json: {t}: unknown parent {v['parent']!r}"
+                for t, v in vocab.items() if v.get("parent") and v["parent"] not in vocab]
     for path in sorted(NOTES.glob("*.md")):
         if path.name == "_index.md":
             continue
@@ -74,12 +94,11 @@ def main() -> int:
         if path.name == "_index.md":
             continue
         try:
-            tags = front_matter(path).get("tags", [])
+            fm = front_matter(path)
         except (ValueError, tomllib.TOMLDecodeError) as e:
             problems.append(f"{path.relative_to(ROOT)}: {e}")
             continue
-        if bad := [t for t in tags if t not in vocab]:
-            problems.append(f"{path.relative_to(ROOT)}: tags not in data/tags.json: {bad}")
+        problems += [f"{path.relative_to(ROOT)}: {e}" for e in tag_problems(fm, vocab)]
     for p in problems:
         print(p, file=sys.stderr)
     return 1 if problems else 0

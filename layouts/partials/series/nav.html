@@ -1,0 +1,11 @@
+{{/* "Part n of m" box on a note or post that belongs to a series.
+     Context: the page. */}}
+{{ $page := . }}
+{{ range .GetTerms "series" }}
+{{ $items := sort .Pages "Date" "asc" }}
+{{ $idx := 0 }}{{ range $i, $p := $items }}{{ if eq $p $page }}{{ $idx = $i }}{{ end }}{{ end }}
+<aside class="series-nav" aria-label="Series">
+  <p class="eyebrow">Series · <a href="{{ .RelPermalink }}">{{ .Title }}</a> · part {{ add $idx 1 }} of {{ len $items }}</p>
+  <ol>{{ range $items }}<li>{{ if eq . $page }}<span aria-current="page">{{ .Title }}</span>{{ else }}<a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ end }}</li>{{ end }}</ol>
+</aside>
+{{ end }}

@@ -1,0 +1,14 @@
+{{/* Pages for one tag plus every tag below it. A tag's "parent" in
+     data/tags.json makes it a child: the ai page shows harness and llm
+     notes, harness shows pi-agent and claude-code. Front matter carries
+     only the narrowest tag; this rolls it up.
+     Context: the tag name. Returns dict "pages" (newest first) "children". */}}
+{{ $terms := slice . }}
+{{ range seq 4 }}
+  {{ range $name, $v := hugo.Data.tags }}
+    {{ if and $v.parent (in $terms $v.parent) (not (in $terms $name)) }}{{ $terms = $terms | append $name }}{{ end }}
+  {{ end }}
+{{ end }}
+{{ $pages := slice }}
+{{ range $terms }}{{ with index site.Taxonomies.tags . }}{{ range .Pages }}{{ $pages = $pages | append . }}{{ end }}{{ end }}{{ end }}
+{{ return dict "pages" (sort ($pages | uniq) "Date" "desc") "children" (after 1 $terms) }}

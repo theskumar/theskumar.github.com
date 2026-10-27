@@ -1,0 +1,16 @@
+{{/* Every series, most recently updated first. */}}
+{{ $list := slice }}
+{{ range .Pages }}{{ $list = $list | append (dict "page" . "last" (index (sort .Pages "Date" "desc") 0).Date) }}{{ end }}
+<header class="page-head reveal">
+  <span class="crosshair" aria-hidden="true"></span>
+  {{ partial "til/sub-nav.html" "Series" }}
+  <h1>Series</h1>
+  <div class="sub"><p>Ordered threads: notes and posts that read better in sequence than by tag.</p></div>
+</header>
+<div class="list-body">
+  <ul class="blog-posts series-list">
+  {{ range sort $list "last" "desc" }}{{ with .page }}
+    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a> <span class="tag-count">{{ len .Pages }} parts</span>{{ with .Description }}<p>{{ . }}</p>{{ end }}</li>
+  {{ end }}{{ end }}
+  </ul>
+</div>

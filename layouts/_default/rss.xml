@@ -10,6 +10,8 @@
 {{- $pages = $pctx.Pages -}}
 {{- end -}}
 {{- if .IsHome }}{{ $pages = where $pages "Section" "!=" "til" }}{{ end -}}
+{{- /* Tag feeds roll up child tags, like the tag pages. */ -}}
+{{- if and (eq .Kind "term") (eq .Data.Plural "tags") }}{{ $pages = (partial "tags/pages.html" .Data.Term).pages }}{{ end -}}
 {{- $limit := .Site.Config.Services.RSS.Limit -}}
 {{- if ge $limit 1 -}}
 {{- $pages = $pages | first $limit -}}
@@ -23,7 +25,7 @@
     <generator>Hugo</generator>
     <language>{{ site.Language.Locale }}</language>{{ with .Site.Copyright }}
     <copyright>{{ . }}</copyright>{{ end }}{{ if and (not .Date.IsZero) $pages }}
-    <lastBuildDate>{{ (index $pages.ByLastmod.Reverse 0).Lastmod.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</lastBuildDate>{{ end }}
+    <lastBuildDate>{{ (index (sort $pages "Lastmod" "desc") 0).Lastmod.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</lastBuildDate>{{ end }}
     {{- with .OutputFormats.Get "RSS" }}
     {{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType | safeHTML }}
     {{- end }}

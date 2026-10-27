@@ -25,5 +25,6 @@
     {{ range $tags }}<a href="{{ .RelPermalink }}" class="tag">{{ .Data.Term }}</a>{{ end }}
   </p>
 {{ end }}
+{{ partial "series/nav.html" . }}
 </article>
 {{ end }}

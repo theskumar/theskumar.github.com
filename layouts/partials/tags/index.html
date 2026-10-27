@@ -1,12 +1,17 @@
-{{/* Every tag across Writing posts and TIL notes, most used first. */}}
+{{/* Every tag across Writing posts and TIL notes, most used first.
+     Counts include child tags, matching the tag page. */}}
+{{ $list := slice }}
+{{ range $name, $wp := .Data.Terms }}
+  {{ $list = $list | append (dict "name" $name "url" $wp.Page.RelPermalink "count" (len (partial "tags/pages.html" $name).pages)) }}
+{{ end }}
 <header class="page-head reveal">
   <span class="crosshair" aria-hidden="true"></span>
   {{ partial "til/sub-nav.html" "Tags" }}
   <h1>Tags</h1>
-  <div class="sub"><p>{{ len .Data.Terms }} tags across Writing and TIL notes.</p></div>
+  <div class="sub"><p>{{ len .Data.Terms }} tags across Writing and TIL notes. Longer threads are collected as <a href="/series/">series</a>.</p></div>
 </header>
 <div class="list-body">
   <div class="tag-cloud">
-    {{ range .Data.Terms.ByCount }}<a href="{{ .Page.RelPermalink }}" class="tag">{{ .Term }}<span class="tag-count">{{ .Count }}</span></a>{{ end }}
+    {{ range sort $list "count" "desc" }}<a href="{{ .url }}" class="tag">{{ .name }}<span class="tag-count">{{ .count }}</span></a>{{ end }}
   </div>
 </div>

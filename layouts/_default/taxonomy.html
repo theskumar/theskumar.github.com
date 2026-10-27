@@ -1,6 +1,8 @@
 {{ define "main" }}
-{{- /* /tags/ (kind taxonomy) and /tags/<tag>/ (kind term). */ -}}
-{{ if eq .Kind "term" }}
+{{- /* /tags/ and /series/ (kind taxonomy), /tags/<tag>/ and /series/<s>/ (kind term). */ -}}
+{{ if eq .Data.Plural "series" }}
+  {{ if eq .Kind "term" }}{{ partial "series/term.html" . }}{{ else }}{{ partial "series/index.html" . }}{{ end }}
+{{ else if eq .Kind "term" }}
   {{ partial "tags/term.html" . }}
   {{ partial "tags/legacy-redirects.html" . }}
 {{ else }}

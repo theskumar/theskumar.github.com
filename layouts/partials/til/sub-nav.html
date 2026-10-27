@@ -1,6 +1,6 @@
 {{/* TIL section links. Context: the active label. */}}
 <nav class="eyebrow sub-nav" aria-label="TIL sections">
-  {{- range slice (slice "Notes" "/til/") (slice "Archive" "/til/archive/") (slice "Tags" "/tags/") -}}
+  {{- range slice (slice "Notes" "/til/") (slice "Archive" "/til/archive/") (slice "Tags" "/tags/") (slice "Series" "/series/") -}}
   <a href="{{ index . 1 }}"{{ if eq (index . 0) $ }} class="active" aria-current="page"{{ end }}>{{ index . 0 }}</a>
   {{- end -}}
 </nav>
