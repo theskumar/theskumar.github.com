@@ -10,6 +10,7 @@ content/           # markdown content (blog/, _index.md, now.md)
 layouts/           # template overrides (_default/, partials/)
 themes/            # git submodules (hugo-bearblog, hugo-admonitions, typo)
 static/            # images, files
+assets/            # social card background and fonts (og/, fonts/)
 public/            # build output (git-ignored)
 data/tags.json     # tag vocabulary (with descriptions), shared by Writing and TIL
 scripts/           # check-til.py (CI + pre-commit)
@@ -63,6 +64,10 @@ Markdown body.
 - Newer/older links use `layouts/partials/pager.html` everywhere: newer on the left, older on the right.
 - `scripts/check-til.py` enforces the rules above (date = filename, known keys and tags). CI runs it before the build; so does the local pre-commit hook.
 - Add notes with cowork-kb's `scripts/til_add.py` (the `/til` skill), or by hand with a fresh timestamp.
+
+## Social cards
+
+Each post and TIL note gets its own 1200×630 card at `<page URL>og.png`, drawn by Hugo at build time. `layouts/partials/og/card.html` draws the eyebrow, title and tags on `assets/og/background.png`. `layouts/partials/_funcs/get-page-images.html` (a copy of Hugo's embedded one, plus one block) feeds the card to Hugo's OG and Twitter templates. Other pages use `static/images/og.png`. To use a hand-made image, set `images = ["/images/x.png"]` in front matter.
 
 ## Naming
 

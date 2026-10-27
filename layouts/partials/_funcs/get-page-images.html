@@ -1,0 +1,64 @@
+{{/* Copy of Hugo 0.168.0's embedded _partials/_funcs/get-page-images.html, used by its opengraph and twitter_cards templates, with one added block. */}}
+{{- $imgs := slice }}
+{{- $imgParams := .Params.images }}
+{{- $resources := .Resources.ByType "image" -}}
+{{/* Find featured image resources if the images parameter is empty. */}}
+{{- if not $imgParams }}
+	{{- $featured := $resources.GetMatch "*feature*" -}}
+	{{- if not $featured }}{{ $featured = $resources.GetMatch "{*cover*,*thumbnail*}" }}{{ end -}}
+	{{- with $featured }}
+		{{- $imgs = $imgs | append (dict
+			"Image" .
+			"RelPermalink" .RelPermalink
+			"Permalink" .Permalink
+		)
+		}}
+	{{- end }}
+{{- end }}
+{{/* Use the first one of site images as the fallback. */}}
+{{/* Site change: posts and TIL notes without their own image get a generated card (partials/og/card.html). */}}
+{{- if and (not $imgParams) (not $imgs) }}
+	{{- with partialCached "og/card.html" . .RelPermalink }}
+		{{- $imgs = $imgs | append (dict
+			"Image" .
+			"RelPermalink" .RelPermalink
+			"Permalink" .Permalink
+		)
+		}}
+	{{- end }}
+{{- end }}
+{{- if and (not $imgParams) (not $imgs) }}
+	{{- with site.Params.images }}
+		{{- $imgParams = first 1 . }}
+	{{- end }}
+{{- end }}
+{{/* Parse page's images parameter. */}}
+{{- range $imgParams }}
+	{{- $img := . }}
+	{{- $url := urls.Parse $img }}
+	{{- if eq $url.Scheme "" }}
+		{{/* Internal image: check page resources first, then global resources. */}}
+		{{- with or ($resources.GetMatch $img) (resources.GetMatch $img) -}}
+			{{- $imgs = $imgs | append (dict
+				"Image" .
+				"RelPermalink" .RelPermalink
+				"Permalink" .Permalink
+			)
+			}}
+		{{- else }}
+			{{- $imgs = $imgs | append (dict
+				"RelPermalink" (relURL $img)
+				"Permalink" (absURL $img)
+			)
+			}}
+		{{- end }}
+	{{- else }}
+		{{/* External image */}}
+		{{- $imgs = $imgs | append (dict
+			"RelPermalink" $img
+			"Permalink" $img
+		)
+		}}
+	{{- end }}
+{{- end }}
+{{- return $imgs }}

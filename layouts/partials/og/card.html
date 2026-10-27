@@ -1,0 +1,74 @@
+{{- /*
+  Social card for a post or TIL note: a 1200x630 PNG published at
+  <page URL>og.png. Returns the image resource, or false for other pages.
+  Call it with partialCached and .RelPermalink as the variant.
+
+  assets/og/background.png (source: docs/brand/og-background.html) holds the
+  grid, corner ticks, site name and mark. This partial draws the per-page
+  parts on top: eyebrow, title, tags, and the hairlines between them.
+  Positions come from that HTML at 1200x630.
+
+  Two limits of images.Text shape the code:
+  - It has no letter-spacing. The mono rows are drawn one character at a
+    time. Geist Mono is monospaced (0.6em), so their widths are exact.
+  - Lines advance by the font's ascent plus linespacing, and text wraps 20px
+    from the image's right edge. The title goes on a transparent canvas as
+    wide as the text column, with linespacing set from Newsreader's metrics
+    (ascent 0.735em) for a 1.12 line height.
+*/ -}}
+{{- $p := . }}
+{{- $out := false }}
+{{- $isPost := and $p.IsPage (eq $p.Type "blog") }}
+{{- $isNote := and $p.IsPage (eq $p.Section "til") (not $p.Params.notes) }}
+{{- if or $isPost $isNote }}
+  {{- $serif := resources.Get "fonts/Newsreader-Medium-72.ttf" }}
+  {{- $mono := resources.Get "fonts/GeistMono-Medium.ttf" }}
+  {{- $hair := resources.Get "og/hairline.png" }}
+  {{- $left := 96 }}
+  {{- $right := 1104 }}
+  {{- /* Mono rows: 19px, 0.6em advance plus 0.14em tracking. */}}
+  {{- $step := 14.06 }}
+  {{- $filters := slice }}
+
+  {{- /* Top row: eyebrow, then a hairline up to the site name (x 865). */}}
+  {{- $eyebrow := printf "%s · %s" (cond $isNote "TIL" "Writing") ($p.Date.UTC.Format "2 Jan 2006") | upper }}
+  {{- range $i, $c := split $eyebrow "" }}
+    {{- if ne $c " " }}
+      {{- $x := int (math.Round (add $left (mul $i $step))) }}
+      {{- $filters = $filters | append (images.Text $c (dict "font" $mono "size" 19 "color" "#B4491F" "x" $x "y" 91)) }}
+    {{- end }}
+  {{- end }}
+  {{- $x1 := int (math.Round (add (add $left (mul (strings.RuneCount $eyebrow) $step)) 20)) }}
+  {{- $filters = $filters | append (images.Overlay ($hair.Crop (printf "%dx1 TopLeft" (sub 845 $x1))) $x1 104) }}
+
+  {{- /* Title. Long titles get a smaller size; 150+ characters are cut. */}}
+  {{- $title := $p.Title | plainify | htmlUnescape | truncate 150 "…" | htmlUnescape }}
+  {{- $size := 68 }}{{ $y := 24 }}{{ $ls := 26 }}
+  {{- if gt (strings.RuneCount $title) 90 }}{{ $size = 56 }}{{ $y = 23 }}{{ $ls = 21 }}{{ end }}
+  {{- $canvas := (resources.Get "og/title-canvas.png").Filter (images.Text $title (dict "font" $serif "size" $size "color" "#1D1810" "x" 0 "y" $y "linespacing" $ls)) }}
+  {{- $filters = $filters | append (images.Overlay $canvas $left 150) }}
+
+  {{- /* Bottom row: mark and name (to x 336), hairline, then up to 40 characters of tags, right-aligned. */}}
+  {{- $tags := "" }}
+  {{- range first 3 ($p.Params.tags | default slice) }}
+    {{- $next := printf "#%s" . }}
+    {{- if $tags }}{{ $next = printf "%s · %s" $tags $next }}{{ end }}
+    {{- if le (strings.RuneCount $next) 40 }}{{ $tags = $next }}{{ end }}
+  {{- end }}
+  {{- $tagsX := $right }}
+  {{- with $tags | upper }}
+    {{- $tagsX = int (math.Round (sub $right (mul (strings.RuneCount .) $step))) }}
+    {{- range $i, $c := split . "" }}
+      {{- if ne $c " " }}
+        {{- $x := int (math.Round (add $tagsX (mul $i $step))) }}
+        {{- $filters = $filters | append (images.Text $c (dict "font" $mono "size" 19 "color" "#736B5A" "x" $x "y" 505)) }}
+      {{- end }}
+    {{- end }}
+    {{- $tagsX = sub $tagsX 20 }}
+  {{- end }}
+  {{- $filters = $filters | append (images.Overlay ($hair.Crop (printf "%dx1 TopLeft" (sub $tagsX 356))) 356 518) }}
+
+  {{- $img := (resources.Get "og/background.png").Filter $filters }}
+  {{- $out = $img | resources.Copy (printf "%sog.png" (strings.TrimPrefix "/" $p.RelPermalink)) }}
+{{- end }}
+{{- return $out }}

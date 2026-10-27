@@ -120,9 +120,11 @@ Plain, specific, first-person. The judgment is the product; state it.
 | Mark (SVG master) | `static/images/brand/mark.svg` |
 | Favicon (SVG, theme-aware) | `static/images/favicon.svg` |
 | Favicon PNGs / ICO / touch icons | `static/favicon-*.png`, `static/favicon.ico`, `static/apple-touch-icon.png`, `static/android-chrome-*.png` |
-| Social / OG card (1200×630) | `static/images/og.png` (source: `docs/brand/og-card.html`, screenshot at 1200×630) |
+| Social / OG card, site-wide (1200×630) | `static/images/og.png` (source: `docs/brand/og-card.html`, screenshot at 1200×630) |
+| Social card per post and TIL note | Drawn at build time by `layouts/partials/og/card.html` on `assets/og/background.png` (source: `docs/brand/og-background.html`, screenshot at 1200×630), with fonts in `assets/fonts/` |
 | Live design system | `layouts/partials/style.html` (tokens at top) |
 | TIL | Part of this site since Oct 2026: `layouts/til/`, notes in `content/til/` → saurabh-kumar.com/til/ |
 
 Regenerate icons: `rsvg-convert -w <size> -h <size> static/images/favicon.svg > out.png`;
 ICO: `magick favicon-32x32.png favicon-16x16.png favicon.ico`.
+Card fonts are static instances of the Google Fonts variable fonts: `uvx --from fonttools fonttools varLib.instancer Newsreader[opsz,wght].ttf wght=500 opsz=72` and `... GeistMono[wght].ttf wght=500`.

@@ -1,0 +1,23 @@
+<!doctype html><html><head>
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..500&display=block" rel="stylesheet">
+<style>
+*{box-sizing:border-box}html,body{margin:0}
+body{width:1200px;height:630px;background:#F7F4ED;color:#1D1810;position:relative;overflow:hidden;
+ background-image:linear-gradient(rgba(30,25,16,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(30,25,16,.045) 1px,transparent 1px);background-size:48px 48px}
+.tick{position:absolute;width:18px;height:18px;border-color:#1D1810;border-style:solid;opacity:.75}
+.tl{top:32px;left:32px;border-width:2px 0 0 2px}.br{bottom:32px;right:32px;border-width:0 2px 2px 0}
+.row{position:absolute;left:96px;right:96px;display:flex;align-items:center;gap:20px;font:500 19px 'Geist Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#7C7462}
+.row i{flex:1;height:1px;background:rgba(30,25,16,.18)}
+.top{top:92px}.bot{bottom:92px}.acc{color:#B4491F}
+.lock{position:absolute;left:96px;top:190px;display:flex;align-items:center;gap:30px}
+.lock h1{margin:0;font:500 92px/1 'Newsreader',serif;letter-spacing:-.02em}
+.tag{position:absolute;left:96px;top:330px;width:1008px;font:italic 400 40px/1.3 'Newsreader',serif;color:#7C7462}
+.by{display:flex;align-items:center;gap:14px;color:#1D1810;letter-spacing:.04em;text-transform:none;font:500 26px 'Newsreader',serif}
+</style></head><body>
+<!-- Background for per-page social cards (assets/og/background.png).
+     layouts/partials/og/card.html draws the eyebrow, title, tags and hairlines on top.
+     Screenshot at 1200x630, as for og-card.html. -->
+<span class="tick tl"></span><span class="tick br"></span>
+<div class="row top"><i style="visibility:hidden"></i><span>saurabh-kumar.com</span></div>
+<div class="row bot"><span class="by"><svg width="40" height="40" viewBox="0 0 32 32" fill="none"><g stroke="#1D1810" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="miter"><path d="M2 23c4-.6 5-8 10.4-8C13.3 15 13.6 15.6 12.9 16 11.8 16.7 10.5 17.4 10.5 19c0 2.4 1 4 4 4L19.5 12.26 24.5 23"/><path d="M21.5 16.55 25.5 8.5 30.5 19.6"/></g><circle cx="8" cy="8.5" r="2.1" fill="#B4491F"/></svg>Saurabh Kumar</span></div>
+</body></html>
