@@ -72,6 +72,22 @@ This is a selection. Smaller things live on [GitHub](https://github.com/theskuma
 Also
 : the CRM data layer for [Goosehead Insurance](https://www.goosehead.com)'s app (2025), game backends for [EverFi](https://everfi.com) (2022), a patient portal for [Beacon Health System](https://www.beaconhealthsystem.org/) (2021), backends for [Alpas Wellness Centers](https://alpaswellnesscenters.org/) and [Omstars](https://omstars.com/) (2017), and Raw Mango.
 
+## Early work
+
+These came before Fueled, from school and college.
+
+2010–2011
+: **National Informatics Centre** — two internships. First, a module that takes photos securely from a web page's webcam. Then, in a team of three, a web-based fingerprint enrollment and matching SDK in C# and Matlab, which NIC used in its Prisons Management System.
+
+2009–2012
+: **Shri Mata Vaishno Devi University** — lead programmer and designer on the university's new website, built on Joomla by a team of eight, and I kept working on it part-time through college. I also designed the print and web identity for Manthan 2012, a national management conclave.
+
+2008
+: **Grievance management system** — for the office of the Chief Commissioner for Persons with Disabilities, Government of India. I was on the requirements team and built the first data collection and validation modules.
+
+2006–2007
+: **Future Cities India** — at school, I led our team's plan for traffic during the Delhi Commonwealth Games. We were runners-up, and won first prize for the 3D computer simulation.
+
 ## Community
 
 2014–2018
