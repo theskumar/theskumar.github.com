@@ -31,7 +31,7 @@
   {{- $filters := slice }}
 
   {{- /* Top row: eyebrow, then a hairline to the right margin. */}}
-  {{- $eyebrow := printf "%s · %s" (cond $isNote "TIL" "Writing") ($p.Date.UTC.Format "2 Jan 2006") | upper }}
+  {{- $eyebrow := printf "%s · %s" (cond $isNote "TIL" "Writing") ($p.Date.UTC.Format "Jan 2, 2006") | upper }}
   {{- range $i, $c := split $eyebrow "" }}
     {{- if ne $c " " }}
       {{- $x := int (math.Round (add $left (mul $i $step))) }}

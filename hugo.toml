@@ -121,6 +121,8 @@ title = "Saurabh Kumar's Personal Site"
 # for details. An example TOML config that uses [ISO
 # 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
 # dateFormat = "2006-01-02"
+# Dates read "Oct 28, 2026" everywhere; lists grouped by year show "Oct 28".
+dateFormat = "Jan 2, 2006"
 
 # Linked from each TIL note's "Discuss" link (front matter `mastodon` = status ID).
 mastodon = "https://mastodon.social/@theskumar"

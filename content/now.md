@@ -1,6 +1,6 @@
 +++
 title = "Now"
-eyebrow = "Updated 28 Oct 2026 · Ghaziabad"
+eyebrow = "Updated Oct 28, 2026 · Ghaziabad"
 tagline = "Now"
 lede = "What I'm up to right now."
 +++

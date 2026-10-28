@@ -5,7 +5,7 @@
   <h1>{{ .page.Title }}</h1>
   {{ with .page.Description }}<p class="post-lede">{{ . }}</p>{{ end }}
   <div class="post-meta">
-    <time datetime="{{ .page.Date.Format "2006-01-02" }}">{{ .page.Date.Format "02 Jan 2006" }}</time>
+    <time datetime="{{ .page.Date.Format "2006-01-02" }}">{{ .page.Date.Format "Jan 2, 2006" }}</time>
     {{ range .meta }}<span>·</span>{{ . }}{{ end }}
   </div>
 </header>

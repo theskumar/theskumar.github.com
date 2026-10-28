@@ -5,8 +5,8 @@
        /llms.txt point here. */ -}}
 {{- $base := strings.TrimSuffix "/" site.BaseURL -}}
 {{- $meta := slice "By Saurabh Kumar" -}}
-{{- if eq .Section "blog" }}{{ $meta = $meta | append (.Date.Format "January 2, 2006") }}
-{{- else if eq .Section "til" }}{{ $meta = $meta | append (printf "TIL note, %s" (.Date.Format "January 2, 2006")) }}
+{{- if eq .Section "blog" }}{{ $meta = $meta | append (.Date.Format "Jan 2, 2006") }}
+{{- else if eq .Section "til" }}{{ $meta = $meta | append (printf "TIL note, %s" (.Date.Format "Jan 2, 2006")) }}
 {{- else }}{{ with .Params.eyebrow }}{{ $meta = $meta | append . }}{{ end }}{{ end -}}
 {{- with .GetTerms "tags" }}{{ $t := slice }}{{ range . }}{{ $t = $t | append .Data.Term }}{{ end }}{{ $meta = $meta | append (printf "Tags: %s" (delimit $t ", ")) }}{{ end -}}
 {{- $sub := .Description | default .Params.lede | default (cond (ne .Params.tagline .Title) .Params.tagline "") -}}
