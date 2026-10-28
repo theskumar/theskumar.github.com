@@ -123,6 +123,7 @@ Plain, specific, first-person. The judgment is the product; state it.
 | Social / OG card, site-wide (1200×630) | `static/images/og.png` (source: `docs/brand/og-card.html`, screenshot at 1200×630) |
 | Social card per post and TIL note | Drawn at build time by `layouts/partials/og/card.html` on `assets/og/background.png` (source: `docs/brand/og-background.html`, screenshot at 1200×630), with fonts in `assets/fonts/` |
 | Live design system | `layouts/partials/style.html` (tokens at top) |
+| Profile headers | X and Mastodon 1500×500 from `docs/brand/x-header.html`; LinkedIn 1584×396 from `docs/brand/linkedin-banner.html`. Screenshot at those sizes. The avatar covers the bottom left, so type sits top right. |
 | TIL | Part of this site since Oct 2026: `layouts/til/`, notes in `content/til/` → saurabh-kumar.com/til/ |
 
 Regenerate icons: `rsvg-convert -w <size> -h <size> static/images/favicon.svg > out.png`;
