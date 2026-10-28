@@ -39,6 +39,26 @@ baseName = "rss"
 isPlainText = false
 rel = "alternate"
 
+# Each page also has a Markdown copy at <page URL>index.md, for readers
+# who paste pages into an LLM and for agents
+# (layouts/_default/single.markdown.md). /llms.txt lists them
+# (layouts/index.llms.txt).
+[outputFormats.markdown]
+mediaType = "text/markdown"
+baseName = "index"
+isPlainText = true
+rel = "alternate"
+
+[outputFormats.llms]
+mediaType = "text/plain"
+baseName = "llms"
+isPlainText = true
+notAlternative = true
+
+[outputs]
+page = ["html", "markdown"]
+home = ["html", "rss", "llms"]
+
 [[menus.main]]
 name = "Writing"
 url = "/"

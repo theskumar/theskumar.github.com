@@ -35,6 +35,7 @@
       "title" ((time.AsTime (printf "%sT12:00:00Z" $wk)).Format "Mon, Jan 2, 2006")
       "dates" (dict "date" (time.AsTime (int (index $ids 0))))
       "sitemap" (dict "disable" true)
+      "outputs" (slice "html")
       "params" (dict
         "week" $wk
         "notes" $ids

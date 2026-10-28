@@ -20,6 +20,7 @@
 {{ with .GetTerms "tags" }}
 <p class="article-tags">Tagged{{ range . }}<a href="{{ .RelPermalink }}" class="tag">{{ .Data.Term }}</a>{{ end }}</p>
 {{ end }}
+{{ partial "page-markdown.html" . }}
 {{ partial "series/nav.html" . }}
 {{ partial "pager.html" (dict "label" "More notes" "newer" $newer "older" $older) }}
 </article>

@@ -69,6 +69,15 @@ Markdown body.
 
 Each post and TIL note gets its own 1200×630 card at `<page URL>og.png`, drawn by Hugo at build time. `layouts/partials/og/card.html` draws the eyebrow, title and tags on `assets/og/background.png`. `layouts/partials/_funcs/get-page-images.html` (a copy of Hugo's embedded one, plus one block) feeds the card to Hugo's OG and Twitter templates. Other pages use `static/images/og.png`. To use a hand-made image, set `images = ["/images/x.png"]` in front matter.
 
+## Markdown copies and llms.txt
+
+Every regular page (posts, TIL notes, About, Now, Projects) also renders `<page URL>index.md`: output format `markdown` in `hugo.toml`, template `layouts/_default/single.markdown.md`. The copy is the page's source with shortcodes rendered and site-relative links made absolute, under a short header.
+
+- `custom_head.html` links it with `rel="alternate" type="text/markdown"`.
+- `layouts/partials/page-markdown.html` draws the "Markdown Copy · View" row on posts, notes and prose pages. The Copy script is in `custom_body.html`.
+- `/llms.txt` (`layouts/index.llms.txt`, output format `llms`) lists About, Projects, Now, every post and every note, pointing at the Markdown copies.
+- Week pages set `outputs` to HTML only in the content adapter.
+
 ## Naming
 
 - **Writing**: long posts. Section `content/blog/`, URLs `/articles/…`, eyebrow "Writing". Say "post".

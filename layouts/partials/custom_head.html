@@ -23,6 +23,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..500&display=swap" rel="stylesheet">
+{{- with .OutputFormats.Get "markdown" }}
+<link rel="alternate" type="text/markdown" href="{{ .RelPermalink }}" title="Markdown">
+{{- end }}
 {{- if eq .Section "til" }}
 <link rel="alternate" type="application/rss+xml" href="{{ "/til/rss.xml" | absURL }}" title="TIL — Saurabh Kumar">
 {{- end }}

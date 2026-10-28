@@ -1,0 +1,11 @@
+{{- /* "Markdown: Copy · View" row at the end of a page that has a Markdown
+       copy (output format "markdown"). Copy puts the Markdown on the
+       clipboard (script in custom_body.html); View opens the file. */ -}}
+{{- with .OutputFormats.Get "markdown" }}
+<p class="page-md">
+  <span>Markdown</span>
+  <button type="button" class="page-md-copy" data-src="{{ .RelPermalink }}">Copy</button>
+  <a href="{{ .RelPermalink }}">View</a>
+  <span class="page-md-status" role="status"></span>
+</p>
+{{- end }}

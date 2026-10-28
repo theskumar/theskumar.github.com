@@ -25,6 +25,23 @@
     });
   })();
 
+  /* "Copy" in the Markdown row (partials/page-markdown.html). The clipboard
+     item takes a promise, so Safari keeps the click's permission while the
+     file loads; browsers without ClipboardItem fall back to writeText. */
+  (function () {
+    var btn = document.querySelector('.page-md-copy');
+    if (!btn || !navigator.clipboard) return;
+    var status = btn.parentNode.querySelector('.page-md-status');
+    var text = function () { return fetch(btn.dataset.src).then(function (r) { if (!r.ok) throw r; return r.text(); }); };
+    btn.addEventListener('click', function () {
+      var done = window.ClipboardItem
+        ? navigator.clipboard.write([new ClipboardItem({ 'text/plain': text().then(function (t) { return new Blob([t], { type: 'text/plain' }); }) })])
+        : text().then(function (t) { return navigator.clipboard.writeText(t); });
+      done.then(function () { status.textContent = 'Copied'; }, function () { status.textContent = 'Copy failed; use View'; });
+      setTimeout(function () { status.textContent = ''; }, 2500);
+    });
+  })();
+
   /* Reading progress hairline on long-form posts. */
   (function () {
     var prose = document.querySelector('article.post [data-prose]');

@@ -1,0 +1,25 @@
+{{- /* /llms.txt (https://llmstxt.org): a plain index of the site for
+       agents, pointing at each page's Markdown copy. Output format "llms"
+       in hugo.toml. */ -}}
+{{- define "md" }}{{ with .OutputFormats.Get "markdown" }}{{ .Permalink }}{{ end }}{{ end -}}
+# {{ site.Title }}
+
+> {{ site.Params.description }}
+
+Saurabh Kumar is a Principal Engineer at Fueled. The site has long posts (Writing) and short dated notes (TIL notes). Every page below has a Markdown copy: add `index.md` to its URL.
+
+## About
+
+{{ range slice "/about" "/projects" "/now" }}{{ with site.GetPage . -}}
+- [{{ .Title }}]({{ template "md" . }}): {{ .Params.lede | default .Params.tagline }}
+{{ end }}{{ end }}
+## Writing
+
+{{ range where site.RegularPages "Section" "blog" -}}
+- [{{ .Title }}]({{ template "md" . }}){{ with .Description }}: {{ . }}{{ end }}
+{{ end }}
+## TIL notes
+
+{{ range where (where site.RegularPages "Section" "til") "Params.week" "eq" nil -}}
+- [{{ .Title }}]({{ template "md" . }}): {{ .Date.Format "Jan 2, 2006" }}
+{{ end -}}

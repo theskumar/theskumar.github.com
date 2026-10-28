@@ -536,6 +536,18 @@
 
   .article-tags { margin-top: 2.2rem; font-family: var(--font-mono); font-size: 0.76rem; letter-spacing: 0.06em; color: var(--muted); }
   .article-tags .tag { margin-left: 0.45em; }
+  /* "Markdown: Copy · View" row (partials/page-markdown.html), styled like
+     the "Tagged" row above it. */
+  .page-md { margin: 1rem 0 0; font-family: var(--font-mono); font-size: 0.76rem; letter-spacing: 0.06em; color: var(--muted); display: flex; align-items: baseline; gap: 0.9em; flex-wrap: wrap; }
+  .article-tags + .page-md { margin-top: 0.6rem; }
+  .post-body + .page-md { margin-top: 2.6rem; }
+  .page-md-copy + a::before { content: "·"; margin-right: 0.9em; color: var(--muted); display: inline-block; }
+  .page-md-copy {
+      font: inherit; letter-spacing: inherit; color: var(--heading); background: none; border: 0; padding: 0; cursor: pointer;
+      text-decoration: underline; text-decoration-color: var(--border-strong); text-underline-offset: 3px;
+  }
+  .page-md-copy:hover { color: var(--accent); text-decoration-color: var(--accent); }
+  .page-md-status { color: var(--accent); }
   .tag-children { margin-top: 0.8rem; font-family: var(--font-mono); font-size: 0.76rem; letter-spacing: 0.06em; color: var(--muted); }
   .tag-children .tag { margin-left: 0.45em; }
   .series-nav { margin-top: 2.2rem; padding: 1rem 1.2rem; border: 1px solid var(--hairline); }
