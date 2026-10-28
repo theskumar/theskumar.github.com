@@ -13,7 +13,7 @@ static/            # images, files
 assets/            # social card background and fonts (og/, fonts/)
 public/            # build output (git-ignored)
 data/tags.json     # tag vocabulary (with descriptions), shared by Writing and TIL
-scripts/           # check-til.py (CI + pre-commit)
+scripts/           # check-til.py, check-tokens.py (CI + pre-commit)
 ```
 
 ## Commands
@@ -90,7 +90,7 @@ Every regular page (posts, TIL notes, About, Now, Projects) also renders `<page 
 
 ## Deploy
 
-Push to `main` → GitHub Actions (`hugo-deploy.yml`) → `scripts/check-til.py` → `hugo --minify` (Hugo pinned to 0.168.0) → GitHub Pages.
+Push to `main` → GitHub Actions (`hugo-deploy.yml`) → `scripts/check-til.py` → `scripts/check-tokens.py` → `hugo --minify` (Hugo pinned to 0.168.0) → GitHub Pages.
 
 Nothing posts to social media automatically. Saurabh posts by hand (X, Mastodon, LinkedIn). To link a note to its Mastodon thread, set `mastodon` to the status ID in the note's front matter.
 
@@ -98,5 +98,5 @@ Nothing posts to social media automatically. Saurabh posts by hand (X, Mastodon,
 
 - Hugo extended required (SCSS)
 - Clone with `--recursive` for submodules
-- Custom styles: `layouts/partials/style.html`
+- Custom styles: `layouts/partials/style.html`. Sizes, colors, line heights and tracking come from the tokens in its `:root`; `docs/brand/design-tokens.md` documents them and its rules (serif for display only, one body style). `scripts/check-tokens.py` (CI and pre-commit) fails when the two disagree or a component sets a literal font size.
 - Syntax highlighting: `syntax-dark.css`, `syntax-light.css`

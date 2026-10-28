@@ -45,6 +45,9 @@ jobs:
       - name: Check TIL notes and tags
         run: python3 scripts/check-til.py
 
+      - name: Check design tokens
+        run: python3 scripts/check-tokens.py
+
       - name: Build
         run: hugo --minify
 

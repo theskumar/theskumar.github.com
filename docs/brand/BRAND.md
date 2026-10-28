@@ -61,14 +61,16 @@ Three faces, three jobs:
 
 | Face | Role | Notes |
 |---|---|---|
-| **Newsreader** (variable, opsz) | Display + long-form prose | 500 for display, 400 for prose, italic for ledes/asides |
-| **Geist** | UI, short copy | 400/500/600 |
-| **Geist Mono** | Annotations, labels, code, dates | 400/500; labels: 0.72–0.78 rem, +0.12–0.14 em tracking, uppercase |
+| **Newsreader** (variable, opsz) | Display only: titles, headings, list item titles, the italic post summary | 500; italic 400 for the summary |
+| **Geist** | Everything people read (posts, notes, pages) and UI | 400/500/600 |
+| **Geist Mono** | Annotations, labels, code, dates | 400/500; uppercase labels with wide tracking |
 
-Scale (site): hero `clamp(1.95rem→2.55rem)`; page titles ~2.2–2.5 rem; prose
-1.13 rem / 1.75; UI 1.0625 rem / 1.62; annotations 0.72 rem.
-Negative tracking on display (−0.02 em), positive on mono labels. Sentence case
-everywhere; uppercase is reserved for mono annotations.
+Since Oct 2026 posts read in sans like the rest of the site: one body style
+(17 px, line height 1.7) on every page. Sizes, line heights, tracking and colors
+are tokens: see [`design-tokens.md`](design-tokens.md), which
+`scripts/check-tokens.py` keeps in step with the CSS. Negative tracking on
+display, positive on mono labels. Sentence case everywhere; uppercase is
+reserved for mono annotations.
 
 ## 4. Graphic language
 
@@ -122,7 +124,7 @@ Plain, specific, first-person. The judgment is the product; state it.
 | Favicon PNGs / ICO / touch icons | `static/favicon-*.png`, `static/favicon.ico`, `static/apple-touch-icon.png`, `static/android-chrome-*.png` |
 | Social / OG card, site-wide (1200×630) | `static/images/og.png` (source: `docs/brand/og-card.html`, screenshot at 1200×630) |
 | Social card per post and TIL note | Drawn at build time by `layouts/partials/og/card.html` on `assets/og/background.png` (source: `docs/brand/og-background.html`, screenshot at 1200×630), with fonts in `assets/fonts/` |
-| Live design system | `layouts/partials/style.html` (tokens at top) |
+| Live design system | `layouts/partials/style.html` (tokens at top), documented in `docs/brand/design-tokens.md` |
 | Profile headers | X and Mastodon 1500×500 from `docs/brand/x-header.html`; LinkedIn 1584×396 from `docs/brand/linkedin-banner.html`. Screenshot at those sizes. The avatar covers the bottom left, so type sits top right. |
 | TIL | Part of this site since Oct 2026: `layouts/til/`, notes in `content/til/` → saurabh-kumar.com/til/ |
 
