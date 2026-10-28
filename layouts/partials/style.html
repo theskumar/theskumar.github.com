@@ -646,6 +646,26 @@
      do not rely on color alone (WCAG 1.4.1). */
   .page-prose .post-body ul { list-style: none; padding: 0; margin: 0 0 1.6em; }
   .page-prose .post-body ul li { padding: 0.5em 0; margin: 0; font-size: 0.96rem; }
+  /* Project rows (content/projects.md) are a definition list: the term is
+     the year range, the description the entry. Wide screens put the years
+     in a mono left margin, as the TIL stream does with dates; narrow
+     screens stack them above the entry. */
+  .page-prose .post-body dl { margin: 1.1rem 0 1.6em; }
+  .page-prose .post-body dt {
+      margin: 1.5em 0 0.25em;
+      font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted);
+      text-transform: uppercase; letter-spacing: 0.08em; white-space: nowrap;
+  }
+  .page-prose .post-body dl > dt:first-child { margin-top: 0; }
+  .page-prose .post-body dd { margin: 0; }
+  @media (min-width: 760px) {
+      .page-prose .post-body dl {
+          display: grid; grid-template-columns: 7.5rem minmax(0, 1fr);
+          column-gap: 2.2rem; row-gap: 1.3rem; align-items: baseline;
+      }
+      .page-prose .post-body dt { margin: 0; grid-column: 1; }
+      .page-prose .post-body dd { grid-column: 2; }
+  }
 
   /* ---- Footer ---- */
   footer.site-footer {

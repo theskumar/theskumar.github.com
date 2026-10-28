@@ -78,6 +78,10 @@ Every regular page (posts, TIL notes, About, Now, Projects) also renders `<page 
 - `/llms.txt` (`layouts/index.llms.txt`, output format `llms`) lists About, Projects, Now, every post and every note, pointing at the Markdown copies.
 - Week pages set `outputs` to HTML only in the content adapter.
 
+## Projects page
+
+`content/projects.md` entries are a Markdown definition list: the year range is the term, the entry is the description. `style.html` puts the years in a mono left margin on wide screens. Keep client work newest first, and say what you did on each entry.
+
 ## Naming
 
 - **Writing**: long posts. Section `content/blog/`, URLs `/articles/…`, eyebrow "Writing". Say "post".
