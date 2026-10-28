@@ -33,6 +33,8 @@ This is a selection. Smaller things live on [GitHub](https://github.com/theskuma
 
 ## Client work
 
+Most of this was at Fueled. The Motley Fool and Urgent Action Fund were independent work.
+
 2026
 : **C. S. Lewis (unreleased)** — a CMS and an interactive mobile app built around his writing, not an e-book reader. The CMS, on Wagtail, links his works through the themes they share. I was technical lead for backend and infrastructure. It launches soon.
 
@@ -52,7 +54,7 @@ This is a selection. Smaller things live on [GitHub](https://github.com/theskuma
 : **[IrisMD](https://www.irismd.com/)** — an AI-assisted medical scribe that turns live patient conversations into EHR notes. I started the codebase and researched transcription. Self-hosted Whisper cost more and transcribed worse than OpenAI's API, so we used OpenAI under a HIPAA business associate agreement.
 
 2023–2026
-: **[The Motley Fool](https://www.fool.com/)** — their premium subscription platform: a Vue-to-Next.js migration, a shared design system, and a GraphQL layer over legacy, distributed backends. I worked on it as a contract engineer in their team.
+: **[The Motley Fool](https://www.fool.com/)** — their premium subscription platform: a Vue-to-Next.js migration, a shared design system, and a GraphQL layer over legacy, distributed backends. I worked on it as an independent contract engineer in their team.
 
 2022–2023
 : **[NationsBenefits](https://www.nationsbenefits.com/)** — the experience API behind their member apps: a GraphQL layer with its infrastructure, schema, developer docs and mock servers. I started it and set up its architecture.

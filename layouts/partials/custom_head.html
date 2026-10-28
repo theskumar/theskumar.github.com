@@ -23,6 +23,28 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..500&display=swap" rel="stylesheet">
+{{- /* About page: who the site is about, for search engines. Keep in step
+       with content/about.md and the profiles it links. */}}
+{{- if eq .Layout "about" }}
+<script type="application/ld+json">
+{{ dict
+  "@context" "https://schema.org"
+  "@type" "ProfilePage"
+  "url" .Permalink
+  "mainEntity" (dict
+    "@type" "Person"
+    "name" "Saurabh Kumar"
+    "url" site.BaseURL
+    "image" ("images/portrait.webp" | absURL)
+    "jobTitle" "Principal Engineer"
+    "worksFor" (dict "@type" "Organization" "name" "Fueled" "url" "https://fueled.com")
+    "alumniOf" (dict "@type" "CollegeOrUniversity" "name" "Shri Mata Vaishno Devi University")
+    "homeLocation" (dict "@type" "Place" "name" "Ghaziabad, India")
+    "knowsAbout" (slice "AI agents" "Evals" "Python" "Django" "Backend architecture")
+    "sameAs" (slice "https://github.com/theskumar" "https://www.linkedin.com/in/theskumar/" "https://x.com/_theskumar" "https://mastodon.social/@theskumar")
+  ) | jsonify | safeJS }}
+</script>
+{{- end }}
 {{- with .OutputFormats.Get "markdown" }}
 <link rel="alternate" type="text/markdown" href="{{ .RelPermalink }}" title="Markdown">
 {{- end }}

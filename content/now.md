@@ -1,6 +1,6 @@
 +++
 title = "Now"
-eyebrow = "Updated 21 Oct 2026 · Ghaziabad"
+eyebrow = "Updated 28 Oct 2026 · Ghaziabad"
 tagline = "Now"
 lede = "What I'm up to right now."
 +++
@@ -13,7 +13,7 @@ A snapshot of what's on my plate right now: work, learning, life. Inspired by [n
 
 </details>
 
-**Work:** Leading engineering on [Rosey](https://meetrosey.ai), [Fueled](https://fueled.com)'s AI-native delivery platform, and helping Fueled's teams and clients put AI agents to work. The work spans workflow orchestration, persistent memory, agent verification, shared skills, and cloud-native agent infrastructure.
+**Work:** Leading engineering on [Rosey](https://meetrosey.ai), [Fueled](https://fueled.com)'s AI-native delivery platform, and helping Fueled's teams and clients put AI agents to work. Since March I'm a Principal Engineer: hands-on architecture in a small AI-native team, plus technical sales and engineering foundations such as RFCs. The work spans workflow orchestration, persistent memory, agent verification, shared skills, and cloud-native agent infrastructure.
 
 Wrapped up as technical lead for backend and infrastructure on a C. S. Lewis project: a CMS and an interactive mobile app built around his writing, not an e-book reader. It's close to launch.
 
