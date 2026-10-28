@@ -271,7 +271,7 @@
       letter-spacing: -0.022em;
       margin: 0 0 1.2rem;
   }
-  .hero-lead { color: var(--muted); font-size: 0.99rem; line-height: 1.68; max-width: 34rem; }
+  .hero-lead { color: var(--text); font-size: 0.99rem; line-height: 1.68; max-width: 34rem; }
   .hero-lead p { margin-bottom: 0.9em; }
   .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-top: 1.6rem; }
 
@@ -386,6 +386,7 @@
 
   .col-2 { grid-column: span 2; }
   .col-4 { grid-column: span 4; }
+  .col-6 { grid-column: span 6; }
 
   .panel .anno { margin-bottom: 1rem; }
   .panel h2 { font-size: 1.14rem; margin: 0 0 0.4rem; }
@@ -825,7 +826,7 @@
   @media (max-width: 720px) {
       .sheet { grid-template-columns: 1fr 1fr; }
       .hero-portrait { float: none; shape-outside: none; width: 100%; max-width: 170px; margin: 0.2rem auto 1.6rem; }
-      .col-2, .col-4 { grid-column: span 2; }
+      .col-2, .col-4, .col-6 { grid-column: span 2; }
       .index-year { grid-template-columns: 1fr; gap: 0; }
       .index-year .year { padding: 0 0 0.5rem; }
       .entry-row { flex-direction: column; gap: 0.15rem; }

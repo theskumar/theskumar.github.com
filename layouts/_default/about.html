@@ -43,7 +43,9 @@
 
 </section>
 
-{{ $stars := "8.8k" }}
+{{/* python-dotenv numbers, fetched at build time; the defaults are the
+     last known values, used when a fetch fails. */}}
+{{ $stars := "8.9k" }}
 {{ with try (resources.GetRemote "https://api.github.com/repos/theskumar/python-dotenv") }}
   {{ with .Err }}
     {{ warnf "python-dotenv stars fetch failed: %s" . }}
@@ -51,43 +53,51 @@
     {{ $stars = printf "%.1fk" (div (index (. | transform.Unmarshal) "stargazers_count") 1000.0) }}
   {{ end }}
 {{ end }}
+{{ $downloads := "580M" }}
+{{ with try (resources.GetRemote "https://pypistats.org/api/packages/python-dotenv/recent") }}
+  {{ with .Err }}
+    {{ warnf "python-dotenv downloads fetch failed: %s" . }}
+  {{ else with .Value }}
+    {{ with index (. | transform.Unmarshal) "data" }}
+      {{ $downloads = printf "%.0fM" (div (index . "last_month") 1000000.0) }}
+    {{ end }}
+  {{ end }}
+{{ end }}
 
 <section class="sheet reveal" data-stagger>
   <a class="panel col-4" href="https://github.com/theskumar/python-dotenv">
     <span class="anno anno--plain"><span class="idx" aria-hidden="true"></span>open source</span>
-    <div class="metric">{{ $stars }} <small>stars on GitHub</small></div>
+    <div class="metric">{{ $downloads }} <small>downloads a month</small></div>
     <h2 style="margin-top:0.7rem">python-dotenv</h2>
-    <p>A Python library for loading environment variables from <code>.env</code> files. I co-maintain it.</p>
+    <p>Loads environment variables from <code>.env</code> files. I started it in 2014 and still maintain it. {{ $stars }} stars on GitHub.</p>
   </a>
-
-  <div class="panel col-2">
-    <span class="anno anno--plain"><span class="idx" aria-hidden="true"></span>working together</span>
-    <h2>Mentoring &amp; consulting</h2>
-    <p>Pro bono mentoring for early founders, and independent consulting on AI agents, backend systems, and product.</p>
-  </div>
-
-  <div class="panel col-4">
-    <span class="anno anno--plain"><span class="idx" aria-hidden="true"></span>worked with</span>
-    <div class="chip-row">
-      <span class="chip">The Motley Fool</span>
-      <span class="chip">Apple</span>
-      <span class="chip">Revzilla</span>
-      <span class="chip">Goosehead Insurance</span>
-      <span class="chip">Victoria's Secret</span>
-      <span class="chip">NationsBenefits</span>
-      <span class="chip">2NDFLOOR</span>
-      <span class="chip">EverFi</span>
-      <span class="chip">South Pole</span>
-    </div>
-  </div>
 
   <div class="panel col-2" id="contact">
     <span class="anno anno--plain"><span class="idx" aria-hidden="true"></span>get in touch</span>
     <h2><a href="mailto:hello@saurabh-kumar.com">hello@saurabh-kumar.com</a></h2>
     <div class="social-row" style="margin-top:0.9rem">
+      <a href="https://x.com/_theskumar">X (Twitter)</a>
       <a href="https://github.com/theskumar">GitHub</a>
       <a href="https://www.linkedin.com/in/theskumar/">LinkedIn</a>
       <a href="https://mastodon.social/@theskumar" rel="me">Mastodon</a>
+    </div>
+  </div>
+
+  <div class="panel col-6">
+    <span class="anno anno--plain"><span class="idx" aria-hidden="true"></span>worked with</span>
+    <div class="chip-row">
+      <span class="chip">Apple</span>
+      <span class="chip">The Motley Fool</span>
+      <span class="chip">Victoria's Secret</span>
+      <span class="chip">Tony Robbins</span>
+      <span class="chip">Christianity Today</span>
+      <span class="chip">NationsBenefits</span>
+      <span class="chip">Goosehead Insurance</span>
+      <span class="chip">South Pole</span>
+      <span class="chip">Open Technology Fund</span>
+      <span class="chip">IIT Bombay</span>
+      <span class="chip">2NDFLOOR</span>
+      <span class="chip">EverFi</span>
     </div>
   </div>
 </section>
