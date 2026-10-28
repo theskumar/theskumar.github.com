@@ -20,7 +20,7 @@
   {{ with $notes }}
   <section class="list-section">
     <h2 class="list-label">TIL notes</h2>
-    <ul class="notes-list">{{ range . }}{{ partial "til/note.html" (dict "page" . "exclude" "") }}{{ end }}</ul>
+    <ul class="notes-list">{{ range . }}{{ partial "til/note.html" (dict "page" . "exclude" "" "h" 3) }}{{ end }}</ul>
   </section>
   {{ end }}
 </div>

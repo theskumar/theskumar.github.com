@@ -732,16 +732,41 @@
   .list-section + .list-section .list-label { margin-top: 2rem; }
 
   .notes-list { list-style: none; margin: 0; padding: 0; }
-  .notes-list > li { padding: 1.1rem 0; line-height: 1.7; }
-  .notes-list > li > :last-child { margin-bottom: 0; }
+  /* A note in a list (partials/til/note.html). Narrow screens stack date,
+     title, body, tags. Wide screens move date and tags to a left margin,
+     so the body keeps a reading-width line. */
+  .notes-list > .note {
+      display: grid; grid-template-columns: minmax(0, 1fr);
+      grid-template-areas: "date" "title" "body" "tags";
+      padding: 2.2rem 0; border-bottom: 1px solid var(--hairline); line-height: 1.7;
+  }
+  .notes-list > .note:first-child { padding-top: 0.4rem; }
+  .notes-list > .note:last-child { border-bottom: 0; }
+  .note-title { grid-area: title; font-size: 1.42rem; margin: 0 0 0.6rem; }
+  .note-title a { color: var(--heading); text-decoration: none; }
+  .note-title a:hover { color: var(--accent); }
   .note-date {
-      display: block; margin-bottom: 0.35rem; text-decoration: none;
-      font-family: var(--font-mono); font-size: 0.76rem; color: var(--muted);
+      grid-area: date; margin-bottom: 0.45rem;
+      font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted);
       text-transform: uppercase; letter-spacing: 0.08em;
   }
-  .note-date:hover { color: var(--accent); }
-  .home-notes > li { padding: 1rem 0 1.2rem; border-bottom: 1px solid var(--hairline); }
-  .home-notes > li:last-child { border-bottom: 0; }
+  .note-body { grid-area: body; min-width: 0; }
+  .note-body > :last-child { margin-bottom: 0; }
+  .note > .note-tags { grid-area: tags; margin-top: 1rem; }
+  @media (min-width: 760px) {
+      .notes-list > .note {
+          grid-template-columns: 7.5rem minmax(0, var(--measure));
+          grid-template-areas: "date title" "tags body";
+          grid-template-rows: auto 1fr;
+          column-gap: 2.2rem;
+      }
+      .note-date, .note-title { align-self: baseline; }
+      .note-date { margin: 0; }
+      .note > .note-tags {
+          margin-top: 0.35rem; flex-direction: column; align-items: flex-start; align-self: start; gap: 6px;
+      }
+      .note > .note-tags .note-discuss { margin: 0.2rem 0 0; }
+  }
   .note-discuss { font-family: var(--font-mono); font-size: 0.68rem; color: var(--muted); margin-left: 0.4rem; text-decoration: none; }
   .note-discuss:hover { color: var(--accent); }
   /* Newer/older links (partials/pager.html): newer left, older right. */
