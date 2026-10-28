@@ -42,6 +42,9 @@ This is a selection. Smaller things live on [GitHub](https://github.com/theskuma
 2026
 : **[Christianity Today](https://www.christianitytoday.com/)** — a backend for their new mobile app that turns WordPress content into clean, fast APIs. I built it.
 
+2026
+: **Comoto (unreleased)** — a new React Native app for RevZilla, Cycle Gear and J&P Cycles that embeds their website through a web view and a JavaScript bridge. I led the technical spike that set its architecture, and the team now builds on it.
+
 2024–now
 : **[2NDFLOOR](https://www.2ndfloor.org)** — an anonymous support community for youth mental health. I rebuilt the backend and APIs for their Flutter app, and community engagement rose 6× after launch.
 
@@ -67,7 +70,7 @@ This is a selection. Smaller things live on [GitHub](https://github.com/theskuma
 : **[Apple](https://fueled.com/work/apple/)** — Junction, a learning platform for Apple's EMEA carrier retail staff: a gamification engine and a multilingual, multi-region CMS behind an Android training app. I was one of its two main backend engineers.
 
 Also
-: a mobile app spike for Comoto (RevZilla, Cycle Gear, J&P Cycles, 2026), the CRM data layer for [Goosehead Insurance](https://www.goosehead.com)'s app (2025), game backends for [EverFi](https://everfi.com) (2022), a patient portal for [Beacon Health System](https://www.beaconhealthsystem.org/) (2021), backends for [Alpas Wellness Centers](https://alpaswellnesscenters.org/) and [Omstars](https://omstars.com/) (2017), and Raw Mango.
+: the CRM data layer for [Goosehead Insurance](https://www.goosehead.com)'s app (2025), game backends for [EverFi](https://everfi.com) (2022), a patient portal for [Beacon Health System](https://www.beaconhealthsystem.org/) (2021), backends for [Alpas Wellness Centers](https://alpaswellnesscenters.org/) and [Omstars](https://omstars.com/) (2017), and Raw Mango.
 
 ## Community
 
