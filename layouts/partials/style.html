@@ -15,7 +15,7 @@
       /* Layout */
       --width: 880px;          /* page chrome: header, nav rule, footer */
       --measure: 720px;        /* reading column */
-      --margin-col: 7.5rem;    /* mono date/year column beside notes and projects */
+      --margin-col: 7.5rem;    /* mono date column beside notes */
       --margin-gap: 2.2rem;    /* gap between that column and the text */
 
       /* Spacing: margin, padding and gap in rem use these steps. Spacing in em
@@ -676,25 +676,35 @@
      do not rely on color alone (WCAG 1.4.1). */
   .page-prose .post-body ul { list-style: none; padding: 0; margin: 0 0 1.6em; }
   .page-prose .post-body ul li { padding: 0.5em 0; margin: 0; }
-  /* Project rows (content/projects.md) are a definition list: the term is
-     the year range, the description the entry. Wide screens put the years
-     in a mono left margin, as the TIL stream does with dates; narrow
-     screens stack them above the entry. */
-  .page-prose .post-body dl { margin: var(--space-4) 0 1.6em; }
-  .page-prose .post-body dt {
-      margin: 1.5em 0 0.25em;
-      font-family: var(--font-mono); font-size: var(--text-label); color: var(--muted);
-      text-transform: uppercase; letter-spacing: var(--tracking-meta); white-space: nowrap;
+  /* Projects page (layouts/_default/projects.html, data/projects.toml): one
+     section per theme. Wide screens put the theme heading in a sticky left
+     column; narrow screens stack it above the list. */
+  article.post.projects { max-width: none; }
+  .projects .post-body { max-width: var(--measure); }
+  .projects .theme { padding: var(--space-6) 0; border-top: 1px solid var(--hairline); }
+  .projects .post-body + .theme { margin-top: var(--space-5); }
+  .projects .theme-head h2 { font-size: var(--text-h2); line-height: var(--leading-heading); letter-spacing: var(--tracking-heading); margin: 0 0 var(--space-2); }
+  .projects .theme-head p { color: var(--muted); font-size: var(--text-small); line-height: var(--leading-body); margin: 0; }
+  .theme-items { list-style: none; margin: var(--space-4) 0 0; padding: 0; display: grid; gap: var(--space-5); }
+  .theme-items h3 { margin: 0; font-size: var(--text-title); font-weight: 500; line-height: var(--leading-heading); letter-spacing: var(--tracking-heading); }
+  .project-name { color: var(--heading); display: inline-block; padding-block: var(--space-1); }
+  a.project-name { text-decoration-color: var(--border-strong); text-underline-offset: 4px; }
+  .chip {
+      font-family: var(--font-mono); font-size: var(--text-tag); letter-spacing: var(--tracking-meta); text-transform: uppercase;
+      background: var(--tag-bg); color: var(--tag-text); padding: 0 var(--space-1); border-radius: var(--radius-sm);
+      white-space: nowrap; vertical-align: middle;
   }
-  .page-prose .post-body dl > dt:first-child { margin-top: 0; }
-  .page-prose .post-body dd { margin: 0; }
+  .project-text { margin: 0; max-width: var(--measure); font-size: var(--text-body); line-height: var(--leading-body); }
+  .project-more { color: var(--muted); }
+  .project-meta { margin: var(--space-1) 0 0; font-family: var(--font-mono); font-size: var(--text-label); letter-spacing: var(--tracking-mono); color: var(--muted); }
+  .project-outcome { color: var(--accent); }
+  .project-text p, .project-meta p { display: inline; margin: 0; }
+  .theme-also { margin: var(--space-5) 0 0; color: var(--muted); font-size: var(--text-small); line-height: var(--leading-body); }
+  .theme-also-label { font-family: var(--font-mono); font-size: var(--text-label); letter-spacing: var(--tracking-caps); text-transform: uppercase; margin-right: var(--space-2); }
   @media (min-width: 760px) {
-      .page-prose .post-body dl {
-          display: grid; grid-template-columns: var(--margin-col) minmax(0, 1fr);
-          column-gap: var(--margin-gap); row-gap: var(--space-5); align-items: baseline;
-      }
-      .page-prose .post-body dt { margin: 0; grid-column: 1; }
-      .page-prose .post-body dd { grid-column: 2; }
+      .projects .theme { display: grid; grid-template-columns: minmax(0, 15rem) minmax(0, 1fr); column-gap: var(--space-7); }
+      .projects .theme-head { position: sticky; top: var(--space-5); align-self: start; }
+      .theme-items { margin-top: 0; }
   }
 
   /* ---- Footer ---- */

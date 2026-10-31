@@ -1,0 +1,41 @@
+{{ define "main" }}
+{{/* /projects/: the intro from content/projects.md, then data/projects.toml
+     grouped by theme. Each project shows its name, one sentence (`one`, then
+     `short` muted), and a mono row: years, role, outcome. `detail` is kept in
+     the data for project pages later and is not shown here. */}}
+<header class="page-head reveal">
+  <span class="crosshair" aria-hidden="true"></span>
+  <h1>{{ .Params.tagline | default .Title }}</h1>
+  {{ with .Params.lede }}<div class="sub"><p>{{ . | markdownify }}</p></div>{{ end }}
+</header>
+<article class="post page-prose projects">
+  <div class="post-body reveal">{{ .Content }}</div>
+  {{ $kinds := dict "oss" "Open source" "community" "Community" "personal" "Personal" }}
+  {{ range site.Data.projects.themes }}
+  {{ $theme := .id }}
+  <section class="theme reveal" id="{{ .id }}">
+    <header class="theme-head">
+      <h2>{{ .title }}</h2>
+      <p>{{ .blurb | $.RenderString }}</p>
+    </header>
+    <div>
+      <ul class="theme-items">
+      {{ range where site.Data.projects.projects "theme" $theme }}
+        <li>
+          <h3>
+            {{- if .url }}<a class="project-name" href="{{ .url }}">{{ .name }}</a>{{ else }}<span class="project-name">{{ .name }}</span>{{ end }}
+            {{- if .unreleased }} <span class="chip">Unreleased</span>{{ end }}
+            {{- with index $kinds .kind }} <span class="chip">{{ . }}</span>{{ end -}}
+          </h3>
+          <p class="project-text">{{ .one | $.RenderString }}{{ with .short }} <span class="project-more">{{ . | $.RenderString }}</span>{{ end }}</p>
+          <p class="project-meta">{{ .years }} · {{ .role | $.RenderString }}{{ with .outcome }} · <span class="project-outcome">{{ . | $.RenderString }}</span>{{ end }}</p>
+        </li>
+      {{ end }}
+      </ul>
+      {{ with .also }}<p class="theme-also"><span class="theme-also-label">Also</span> {{ . | $.RenderString }}</p>{{ end }}
+    </div>
+  </section>
+  {{ end }}
+  {{ partial "page-markdown.html" . }}
+</article>
+{{ end }}

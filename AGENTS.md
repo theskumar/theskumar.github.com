@@ -13,6 +13,7 @@ static/            # images, files
 assets/            # social card background and fonts (og/, fonts/)
 public/            # build output (git-ignored)
 data/tags.json     # tag vocabulary (with descriptions), shared by Writing and TIL
+data/projects.toml # the Projects page, by theme
 scripts/           # check-til.py, check-tokens.py (CI + pre-commit)
 ```
 
@@ -79,7 +80,11 @@ Every regular page (posts, TIL notes, About, Now, Projects) also renders `<page 
 
 ## Projects page
 
-`content/projects.md` entries are a Markdown definition list: the year range is the term, the entry is the description. `style.html` puts the years in a mono left margin on wide screens. Keep client work newest first, and say what you did on each entry.
+`content/projects.md` holds only the title, lede and intro. The projects live in `data/projects.toml`, grouped by theme; `layouts/_default/projects.html` renders them and `layouts/partials/projects-markdown.md` writes the same list into `/projects/index.md`.
+
+- Themes, and the projects inside each theme, render in file order. Put ongoing work first.
+- Each project: `one` (what it is), optional `short` (about 12 words, shown muted), `role`, optional `outcome` (shown in the accent).
+- `detail` keeps the long story. The page does not show it; it is there for project pages later. Update it when a project changes.
 
 ## Naming
 

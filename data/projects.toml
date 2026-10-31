@@ -1,0 +1,352 @@
+# Projects page (/projects/, layouts/_default/projects.html).
+# Themes render in file order; projects render in file order within their theme.
+#
+# Fields: name, url (optional), years, kind (oss, client, community, personal, early),
+# unreleased (optional), one (what it is, one sentence), short (optional, about
+# 12 words, shown muted after `one`), role, outcome (optional, shown in the accent),
+# detail (the long story; not shown on the page, kept for project pages later).
+# Text fields are Markdown.
+
+[[themes]]
+id = "ai"
+title = "AI agents and research"
+blurb = "Where most of my time goes now: retrieval with citations, evals, and memory for long agent sessions."
+
+[[themes]]
+id = "tools"
+title = "Developer tools"
+blurb = "Small tools that do one thing well. python-dotenv is the one that took off."
+
+[[themes]]
+id = "products"
+title = "Products and platforms"
+blurb = "Backends, APIs and architecture for client products, mostly at Fueled. The Motley Fool was independent work."
+also = "The CRM data layer for [Goosehead Insurance](https://www.goosehead.com)'s app (2025), game backends for [EverFi](https://everfi.com) (2022), a patient portal for [Beacon Health System](https://www.beaconhealthsystem.org/) (2021), backends for [Alpas Wellness Centers](https://alpaswellnesscenters.org/) and [Omstars](https://omstars.com/) (2017), and Raw Mango."
+
+[[themes]]
+id = "good"
+title = "Health, education and civic tech"
+blurb = "Platforms for mental health, grant-making and tech literacy."
+
+[[themes]]
+id = "community"
+title = "Community"
+blurb = "The Python community in Delhi and India, and a Django book."
+
+[[themes]]
+id = "early"
+title = "Before Fueled"
+blurb = "From school and college."
+
+[[projects]]
+name = "Agent Stuff"
+url = "https://github.com/theskumar/agent-stuff"
+years = "2026–now"
+theme = "ai"
+kind = "personal"
+one = "My extensions, skills and prompts for Pi and Claude Code."
+short = "Including review and handoff workflows."
+role = "Personal setup, shared"
+detail = '''
+my extensions, skills and prompts for Pi and Claude Code, including review and handoff workflows. Sources for adapted pieces are credited in the repository.'''
+
+[[projects]]
+name = "Pi Pocket Blackhole"
+url = "https://github.com/theskumar/pi-pocket-blackhole"
+years = "2026"
+theme = "ai"
+kind = "oss"
+one = "Compacts long agent sessions in Pi Pocket without a model call."
+short = "It came out of my research on agent memory."
+role = "Author"
+detail = '''
+compacts long agent sessions in [Pi Pocket](https://github.com/TannerMidd/pi-pocket) without a model call. It came out of my research on agent memory. Summaries use [pi-blackhole](https://github.com/k0valik/pi-blackhole)'s deterministic extraction, and a recall tool reads the original messages back from refs in the summary.'''
+
+[[projects]]
+name = "South Pole"
+url = "https://www.southpole.com/"
+years = "2026"
+theme = "ai"
+kind = "client"
+one = "AI for South Pole's Quality Management Framework."
+short = "Answers registry questionnaires with page-level citations, then drafts the reports."
+role = "Research, architecture and working concepts"
+outcome = "Answers with page-level citations"
+detail = '''
+AI for South Pole's Quality Management Framework. It answers registry questionnaires from carbon-credit project documents (Verra, Gold Standard) with page-level citations, then drafts reports from those answers. Each answer is checked for missing citations, conflicting sources and confidence, and evals measure output quality. I did the research and architecture, and built the working concepts.'''
+
+[[projects]]
+name = "IrisMD"
+url = "https://www.irismd.com/"
+years = "2024–2025"
+theme = "ai"
+kind = "client"
+one = "An AI-assisted medical scribe that turns live patient conversations into EHR notes."
+short = "OpenAI's API beat self-hosted Whisper on cost and quality."
+role = "Started the codebase; transcription research"
+detail = '''
+an AI-assisted medical scribe that turns live patient conversations into EHR notes. I started the codebase and researched transcription. Self-hosted Whisper cost more and transcribed worse than OpenAI's API, so we used OpenAI under a HIPAA business associate agreement.'''
+
+[[projects]]
+name = "python-dotenv"
+url = "https://github.com/theskumar/python-dotenv"
+years = "2014–now"
+theme = "tools"
+kind = "oss"
+one = "Loads environment variables from `.env` files."
+short = "Written after a credentials leak. pydantic-settings and uvicorn depend on it."
+role = "Author and co-maintainer"
+outcome = "~580M downloads a month"
+detail = '''
+loads environment variables from `.env` files. I wrote it after credentials leaked from a codebase where I worked: secrets belong in the environment, not in git. It borrowed ideas from libraries around at the time, but I wanted something more focused that does one thing well, the Unix way. I think that's why it caught on: one `load_dotenv()` call and a file format with few surprises. It now gets about 580 million downloads a month, and libraries like pydantic-settings and uvicorn depend on it. I maintain it with Bertrand Bonnefoy-Claudet.'''
+
+[[projects]]
+name = "Dotfiles"
+url = "https://github.com/theskumar/dotfiles"
+years = "2013–now"
+theme = "tools"
+kind = "personal"
+one = "My working environment."
+short = "Including the [shell-startup audit](/articles/2026/05/how-i-optimized-my-zsh-startup-time/)."
+role = "Personal setup, shared"
+detail = '''
+my working environment, including the [shell-startup audit](/articles/2026/05/how-i-optimized-my-zsh-startup-time/).'''
+
+[[projects]]
+name = "django-init"
+url = "https://github.com/Fueled/django-init"
+years = "2014–2024"
+theme = "tools"
+kind = "oss"
+one = "Fueled's own, simpler take on cookiecutter-django."
+role = "Creator and main author"
+detail = '''
+a simpler take on cookiecutter-django for Fueled's own projects. I started it in 2014 and wrote most of it.'''
+
+[[projects]]
+name = "cookiecutter-django"
+url = "https://github.com/cookiecutter/cookiecutter-django"
+years = "2013–2016"
+theme = "tools"
+kind = "oss"
+one = "A production-ready template for new Django projects."
+short = "Started by Daniel Roy Greenfeld; I helped maintain it."
+role = "Contributor and co-maintainer"
+detail = '''
+a production-ready template for new Django projects, started by Daniel Roy Greenfeld. I contributed heavily and helped maintain it, reviewing and merging pull requests.'''
+
+[[projects]]
+name = "python-usernames"
+url = "https://github.com/theskumar/python-usernames"
+years = "2015"
+theme = "tools"
+kind = "oss"
+one = "Checks that usernames are URL-safe and not reserved or abusive."
+role = "Author"
+detail = '''
+checks that usernames are URL-safe and not reserved or abusive.'''
+
+[[projects]]
+name = "C. S. Lewis"
+years = "2026"
+theme = "products"
+kind = "client"
+unreleased = true
+one = "A CMS and an interactive mobile app built around his writing, not an e-book reader."
+short = "Its Wagtail CMS links his works through the themes they share."
+role = "Technical lead, backend and infrastructure"
+detail = '''
+a CMS and an interactive mobile app built around his writing, not an e-book reader. The CMS, on Wagtail, links his works through the themes they share. I was technical lead for backend and infrastructure. It launches soon.'''
+
+[[projects]]
+name = "Christianity Today"
+url = "https://www.christianitytoday.com/"
+years = "2026"
+theme = "products"
+kind = "client"
+one = "A backend that turns WordPress content into clean, fast APIs for their new mobile app."
+role = "Built it"
+detail = '''
+a backend for their new mobile app that turns WordPress content into clean, fast APIs. I built it.'''
+
+[[projects]]
+name = "Comoto"
+years = "2026"
+theme = "products"
+kind = "client"
+unreleased = true
+one = "A React Native app for RevZilla, Cycle Gear and J&P Cycles that embeds their website."
+short = "The team now builds on the architecture the spike set."
+role = "Led the technical spike"
+detail = '''
+a new React Native app for RevZilla, Cycle Gear and J&P Cycles that embeds their website through a web view and a JavaScript bridge. I led the technical spike that set its architecture, and the team now builds on it.'''
+
+[[projects]]
+name = "The Motley Fool"
+url = "https://www.fool.com/"
+years = "2023–2026"
+theme = "products"
+kind = "client"
+one = "Their premium subscription platform."
+short = "A Next.js migration, a design system, and GraphQL over legacy backends."
+role = "Independent contract engineer"
+detail = '''
+their premium subscription platform: a Vue-to-Next.js migration, a shared design system, and a GraphQL layer over legacy, distributed backends. I worked on it as an independent contract engineer in their team.'''
+
+[[projects]]
+name = "Tony Robbins"
+url = "https://www.tonyrobbins.com/"
+years = "2019–2024"
+theme = "products"
+kind = "client"
+one = "Two apps: Breakthrough, which streams video and audio, and the RPM Planner."
+short = "The planner coaches by voice, with AI."
+role = "Backend engineer, then backend lead"
+detail = '''
+two apps. I built the backend for [Breakthrough](https://www.tonyrobbins.com/breakthrough-app), which streams video and audio to a large audience, then led the backend for the [RPM Planner](https://rpmplanner.com/), a web and iOS planner with AI voice coaching. Another team built the voice coach, and I worked on integrating it.'''
+
+[[projects]]
+name = "NationsBenefits"
+url = "https://www.nationsbenefits.com/"
+years = "2022–2023"
+theme = "products"
+kind = "client"
+one = "The experience API behind their member apps."
+short = "A GraphQL layer with its schema, docs and mock servers."
+role = "Started it and set the architecture"
+detail = '''
+the experience API behind their member apps: a GraphQL layer with its infrastructure, schema, developer docs and mock servers. I started it and set up its architecture.'''
+
+[[projects]]
+name = "Victoria's Secret Community"
+url = "https://fueled.com/work/victorias-secret/"
+years = "2022"
+theme = "products"
+kind = "client"
+one = "A real-time community feed inside their mobile app."
+role = "Initial architecture and solution design"
+detail = '''
+a real-time community feed inside their mobile app, built for a mass-market retail audience. I did the initial architecture and solution design.'''
+
+[[projects]]
+name = "Apple"
+url = "https://fueled.com/work/apple/"
+years = "2015–2017"
+theme = "products"
+kind = "client"
+one = "Junction, a learning platform for Apple's EMEA carrier retail staff."
+short = "A gamification engine and a multilingual CMS behind an Android app."
+role = "One of two main backend engineers"
+detail = '''
+Junction, a learning platform for Apple's EMEA carrier retail staff: a gamification engine and a multilingual, multi-region CMS behind an Android training app. I was one of its two main backend engineers.'''
+
+[[projects]]
+name = "2NDFLOOR"
+url = "https://www.2ndfloor.org"
+years = "2024–now"
+theme = "good"
+kind = "client"
+one = "An anonymous support community for youth mental health."
+role = "Rebuilt the backend and APIs"
+outcome = "6× community engagement after launch"
+detail = '''
+an anonymous support community for youth mental health. I rebuilt the backend and APIs for their Flutter app, and community engagement rose 6× after launch.'''
+
+[[projects]]
+name = "hypha"
+url = "https://github.com/HyphaApp/hypha"
+years = "2022–2025"
+theme = "good"
+kind = "oss"
+one = "The Open Technology Fund's platform for open calls, grant applications and reviews."
+short = "Later the base for Urgent Action Fund's grants platform."
+role = "Core contributor"
+detail = '''
+the Open Technology Fund's platform for open calls, grant applications and reviews. I was a core contributor through OTF, and later built [Urgent Action Fund](https://urgentactionfund.org/)'s grants platform on a private fork of it.'''
+
+[[projects]]
+name = "Spoken Tutorials, IIT Bombay"
+url = "https://github.com/Spoken-tutorial/spoken-website"
+years = "2016–2018"
+theme = "good"
+kind = "client"
+one = "The open-source Django platform for the Government of India's tech literacy initiative."
+role = "Tech lead, then technical program manager"
+detail = '''
+the open-source Django platform for the Government of India's tech literacy initiative. I started as tech lead, and in later phases managed their engineers as technical program manager.'''
+
+[[projects]]
+name = "PyDelhi"
+url = "https://pydelhi.org"
+years = "2014–2018"
+theme = "community"
+kind = "community"
+one = "The Delhi Python meetup."
+role = "Revived it and ran it for four years"
+detail = '''
+the Delhi Python meetup. I revived it and ran it for four years.'''
+
+[[projects]]
+name = "junction"
+url = "https://github.com/pythonindia/junction"
+years = "2015–2016"
+theme = "community"
+kind = "oss"
+one = "Proposal management for PyCon India and PyDelhi."
+short = "The project is closed now."
+role = "Contributor"
+detail = '''
+proposal management for PyCon India and PyDelhi. I was one of its contributors. The project is closed now.'''
+
+[[projects]]
+name = "Two Scoops of Django"
+url = "https://www.feldroy.com/products/two-scoops-of-django-3-x"
+years = "2015"
+theme = "community"
+kind = "community"
+one = "The Django best-practices book by Daniel and Audrey Roy Greenfeld."
+role = "Technical reviewer, 1.8 edition"
+detail = '''
+I was a technical reviewer for the 1.8 edition, written by Daniel and Audrey Roy Greenfeld.'''
+
+[[projects]]
+name = "Shri Mata Vaishno Devi University"
+years = "2009–2012"
+theme = "early"
+kind = "early"
+one = "The university's new website, built on Joomla by a team of eight."
+role = "Lead programmer and designer"
+detail = '''
+lead programmer and designer on the university's new website, built on Joomla by a team of eight, and I kept working on it part-time through college. I also designed the print and web identity for Manthan 2012, a national management conclave.'''
+
+[[projects]]
+name = "National Informatics Centre"
+years = "2010–2011"
+theme = "early"
+kind = "early"
+one = "A web-based fingerprint enrollment and matching SDK, used in NIC's Prisons Management System."
+short = "In C# and Matlab, in a team of three."
+role = "Two internships"
+detail = '''
+two internships. First, a module that takes photos securely from a web page's webcam. Then, in a team of three, a web-based fingerprint enrollment and matching SDK in C# and Matlab, which NIC used in its Prisons Management System.'''
+
+[[projects]]
+name = "Grievance management system"
+years = "2008"
+theme = "early"
+kind = "early"
+one = "For the office of the Chief Commissioner for Persons with Disabilities."
+role = "Requirements; first data modules"
+detail = '''
+for the office of the Chief Commissioner for Persons with Disabilities, Government of India. I was on the requirements team and built the first data collection and validation modules.'''
+
+[[projects]]
+name = "Future Cities India"
+years = "2006–2007"
+theme = "early"
+kind = "early"
+one = "A school team's plan for traffic during the Delhi Commonwealth Games."
+role = "Team lead"
+outcome = "Runners-up; first prize for the 3D simulation"
+detail = '''
+at school, I led our team's plan for traffic during the Delhi Commonwealth Games. We were runners-up, and won first prize for the 3D computer simulation.'''

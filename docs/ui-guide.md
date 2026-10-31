@@ -40,7 +40,9 @@ Full brand spec: `docs/brand/BRAND.md`. Writing voice: `docs/STYLE-GUIDE.md`.
 - `/articles/YYYY/MM/slug/` → posts (`layouts/_default/single.html`, type `blog`).
   Serif prose (`[data-prose]`, header from `layouts/partials/post-header.html`), italic lede from `description`,
   reading-progress hairline, floating TOC (`layouts/partials/toc.html`).
-- `/projects/`, `/now/` → markdown pages; `page-prose` styling turns `###`
+- `/projects/` → `layouts/_default/projects.html` from `data/projects.toml`: one
+  section per theme, the theme heading in a sticky left column on wide screens.
+- `/now/` → a markdown page; `page-prose` styling turns `###`
   headings into mono annotations and `- [link] - desc` lists into ruled rows.
 - 404 → `layouts/404.html` (“node unreachable”).
 
