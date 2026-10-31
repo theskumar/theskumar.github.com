@@ -1,0 +1,7 @@
+{{- /* A page's body as HTML. A TIL quote note (front matter [quote]) renders
+       as a quote; everything else is .Content. Used by the note stream, the
+       note page and the feeds. */ -}}
+{{- with .Params.quote -}}
+  {{- return partial "quote.html" (dict "author" .author "url" .url "context" .context "html" $.Content "page" $) -}}
+{{- end -}}
+{{- return .Content -}}

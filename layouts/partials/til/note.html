@@ -3,12 +3,18 @@
      date and tags sit in a left margin. The id keeps old
      /til/weekly/…html#anchor links working.
      Context: dict "page" "exclude" (tag to leave out) "h" (title heading
-     level: 2 by default, 3 under a section heading). */}}
+     level: 2 by default, 3 under a section heading).
+     A quote note ([quote] in front matter) has no title row: the quote
+     carries it, and the date links to the note's page instead. */}}
 {{ $p := .page }}
 {{ $h := .h | default 2 }}
-<li id="{{ $p.Params.anchor | default $p.File.ContentBaseName }}" class="note">
+<li id="{{ $p.Params.anchor | default $p.File.ContentBaseName }}" class="note{{ if $p.Params.quote }} is-quote{{ end }}">
+  {{- if $p.Params.quote }}
+  <a class="note-date" href="{{ $p.RelPermalink }}" aria-label="{{ $p.Title }}, {{ $p.Date.Format "Jan 2, 2006" }}"><time datetime="{{ $p.Date.Format "2006-01-02" }}">{{ $p.Date.Format "Jan 2, 2006" }}</time></a>
+  {{- else }}
   <h{{ $h }} class="note-title"><a href="{{ $p.RelPermalink }}">{{ $p.Title }}</a></h{{ $h }}>
   <time class="note-date" datetime="{{ $p.Date.Format "2006-01-02" }}">{{ $p.Date.Format "Jan 2, 2006" }}</time>
-  <div class="note-body">{{ $p.Content }}</div>
+  {{- end }}
+  <div class="note-body">{{ partial "note-content.html" $p }}</div>
   {{ partial "til/note-tags.html" (dict "page" $p "exclude" .exclude) }}
 </li>

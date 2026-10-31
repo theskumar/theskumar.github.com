@@ -15,7 +15,7 @@
 <article class="post til-note">
 {{ partial "post-header.html" (dict "page" . "eyebrow" (`<a href="/til/">TIL</a>` | safeHTML) "meta" (apply $meta "safeHTML" ".")) }}
 <div class="note-body reveal">
-  {{ .Content }}
+  {{ partial "note-content.html" . }}
 </div>
 {{ with .GetTerms "tags" }}
 <p class="article-tags">Tagged{{ range . }}<a href="{{ .RelPermalink }}" class="tag">{{ .Data.Term }}</a>{{ end }}</p>

@@ -68,6 +68,7 @@ Full brand spec: `docs/brand/BRAND.md`. Writing voice: `docs/STYLE-GUIDE.md`.
 - All motion respects `prefers-reduced-motion` (static, fully drawn).
 - Ember accent is scarce: junction node, active nav, hovers, eyebrows, signals only.
 - Typography details: paragraphs and list items use `text-wrap: pretty` (no lone last word); tables use tabular figures, and a number column aligns right with `|---:|` in Markdown; posts and TIL note pages end with a faint crosshair (`[data-prose]::after`, `.til-note > .note-body::after`). Links to other sites carry no mark: the underline is enough.
+- Quotes (`layouts/partials/quote.html`): upright body text with one ember “ hanging in the margin (inside on phones), then "— **Name**, context" with the name linking to the exact source. Used by TIL quote notes and the `quote` shortcode. Plain Markdown `>` blockquotes keep the italic aside style.
 - Every standalone control has a hit area of at least 44 px (`--tap`), drawn as an invisible `::after` box so nothing visible moves; dense rows use `--tap-dense` (24 px). New standalone controls join the "Tap targets" selector list in `style.html`. Rule 7 in `docs/brand/design-tokens.md`.
 - Eyebrows carry navigation (a back link, section links, a breadcrumb) or a
   fact (a date, a role), never a label that repeats the h1 or the active nav

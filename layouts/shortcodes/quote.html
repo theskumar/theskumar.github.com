@@ -1,0 +1,7 @@
+{{- /* Quote someone in a post or note, linking to the exact source:
+       {{< quote author="Carson Gross" url="https://htmx.org/essays/yes-and/" context="Yes, and…" >}}
+       Computer programming is, fundamentally, about two things: …
+       {{< /quote >}}
+       The inner text is Markdown, word for word. */ -}}
+{{- $html := .Inner | strings.TrimSpace | .Page.RenderString (dict "display" "block") -}}
+{{- partial "quote.html" (dict "author" (.Get "author") "url" (.Get "url") "context" (.Get "context") "html" $html "page" .Page) -}}

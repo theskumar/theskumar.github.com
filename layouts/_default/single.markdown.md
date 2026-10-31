@@ -11,6 +11,7 @@
 {{- with .GetTerms "tags" }}{{ $t := slice }}{{ range . }}{{ $t = $t | append .Data.Term }}{{ end }}{{ $meta = $meta | append (printf "Tags: %s" (delimit $t ", ")) }}{{ end -}}
 {{- $sub := .Description | default .Params.lede | default (cond (ne .Params.tagline .Title) .Params.tagline "") -}}
 {{- $body := .RenderShortcodes | string -}}
+{{- with .Params.quote }}{{ $q := slice }}{{ range split (trim $body "\n") "\n" }}{{ $q = $q | append (trim (printf "> %s" .) " ") }}{{ end }}{{ $body = printf "%s\n>\n> — %s%s" (delimit $q "\n") (cond (ne .url nil) (printf "[%s](%s)" .author .url) .author) (cond (ne .context nil) (printf ", %s" .context) "") }}{{ end -}}
 {{- if eq .Layout "projects" }}{{ $body = printf "%s%s" (strings.TrimRight "\n" $body) (partial "projects-markdown.md" .) }}{{ end -}}
 {{- $body = replaceRE `\]\(/` (printf "](%s/" $base) $body -}}
 {{- $body = replaceRE `(?m)^(\[[^\]]+\]:\s*)/` (printf "${1}%s/" $base) $body -}}

@@ -7,7 +7,7 @@
   <link>{{ "/til/" | absURL }}</link>
 {{- range first 5 (sort (site.GetPage "/til/weekly").RegularPages "Params.week" "desc") }}
   {{- $html := "" }}
-  {{- range partial "til/week-notes.html" . }}{{ $html = printf "%s<li>%s<p><a href=\"%s\">Permalink</a></p></li>" $html .Content .Permalink }}{{ end }}
+  {{- range partial "til/week-notes.html" . }}{{ $html = printf "%s<li>%s<p><a href=\"%s\">Permalink</a></p></li>" $html (partial "note-content.html" .) .Permalink }}{{ end }}
 <item>
   <guid>{{ .Permalink }}</guid>
   <link>{{ .Permalink }}</link>

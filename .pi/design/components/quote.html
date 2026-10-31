@@ -1,0 +1,17 @@
+<script type="application/json" id="pocket-component">{"name":"Quote","states":["default","with-list","link-hover"]}</script>
+<style>
+.quote { margin: 0; max-width: var(--size-measure); padding-left: var(--space-6); font-family: var(--font-family-sans); font-size: var(--font-size-body); letter-spacing: var(--font-tracking-body); }
+.quote blockquote { position: relative; margin: 0; padding: 0; border: 0; font-style: normal; color: var(--color-text-primary); line-height: var(--font-leading-body); }
+.quote blockquote::before { content: "\201C" / ""; position: absolute; right: 100%; top: 0; margin-right: var(--space-1); font-family: var(--font-family-serif); font-size: var(--font-size-display); line-height: 1; color: var(--color-accent-default); transform: translateY(-0.12em); }
+.quote blockquote > :first-child { margin-top: 0; }
+.quote blockquote > :last-child { margin-bottom: 0; }
+.quote blockquote p { margin: 0 0 var(--space-4); }
+.quote blockquote ul { margin: 0 0 var(--space-4); padding-left: var(--space-5); }
+.quote figcaption { margin-top: var(--space-3); font-size: var(--font-size-small); color: var(--color-text-muted); line-height: var(--font-leading-body); }
+.quote figcaption cite { font-style: normal; font-weight: var(--font-weight-semibold); }
+.quote figcaption a { color: var(--color-text-heading); text-decoration: underline; text-decoration-color: var(--color-border-strong); text-underline-offset: 3px; }
+.quote figcaption a:hover, .quote figcaption a.is-hover { color: var(--color-accent-default); text-decoration-color: var(--color-accent-default); }
+</style>
+<template data-state="default"><figure class="quote"><blockquote cite="https://twitter.com/benhylak/status/2115172657910120740"><p>every product i use should just be a headless mcp, that feeds into an agent, where i never have to think about anything underneath.</p><p>except for our product, of course.</p></blockquote><figcaption>&mdash; <cite><a href="https://twitter.com/benhylak/status/2115172657910120740">Ben Hylak</a></cite>, on X</figcaption></figure></template>
+<template data-state="with-list"><figure class="quote"><blockquote cite="https://htmx.org/essays/yes-and/"><p>Computer programming is, fundamentally, about two things:</p><ul><li>Problem-solving using computers</li><li>Learning to control complexity while solving these problems</li></ul></blockquote><figcaption>&mdash; <cite><a href="https://htmx.org/essays/yes-and/">Carson Gross</a></cite>, <a href="https://htmx.org/essays/yes-and/">Yes, and…</a></figcaption></figure></template>
+<template data-state="link-hover"><figure class="quote"><blockquote cite="https://ghuntley.com/agency/"><p>Boom: fail the commit, inject a prompt telling the agent to use the diagnostics library. All of a sudden it&rsquo;s ten out of ten.</p></blockquote><figcaption>&mdash; <cite><a class="is-hover" href="https://ghuntley.com/agency/">Geoffrey Huntley</a></cite>, nobody should type code by hand anymore</figcaption></figure></template>

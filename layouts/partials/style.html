@@ -600,6 +600,31 @@
   blockquote > :first-child { margin-top: 0; }
   blockquote > :last-child { margin-bottom: 0; }
 
+  /* A quote (partials/quote.html): TIL quote notes and the quote shortcode.
+     Someone's actual words, so upright body text, not the italic aside
+     above. One ember opening mark hangs in the margin; the attribution
+     line closes it. Phones move the mark inside so it stays on screen. */
+  .quote { margin: 0; }
+  .post-body .quote, [data-prose] .quote { margin: var(--space-6) 0; }
+  .quote blockquote {
+      position: relative; margin: 0; padding: 0; border: 0;
+      font-style: normal; color: var(--text); line-height: var(--leading-body);
+  }
+  .quote blockquote::before {
+      content: "\201C" / ""; position: absolute; right: 100%; top: 0; margin-right: var(--space-1);
+      font-family: var(--font-serif); font-size: var(--text-display); line-height: 1;
+      color: var(--accent); transform: translateY(-0.12em);
+  }
+  .quote blockquote > :first-child { margin-top: 0; }
+  .quote blockquote > :last-child { margin-bottom: 0; }
+  .quote figcaption { margin-top: var(--space-3); font-size: var(--text-small); color: var(--muted); line-height: var(--leading-body); }
+  .quote figcaption cite { font-style: normal; font-weight: 600; }
+  .quote figcaption cite a { color: var(--heading); }
+  @media (max-width: 759px) {
+      .quote blockquote, .quote figcaption { padding-left: var(--space-5); }
+      .quote blockquote::before { right: auto; left: 0; margin: 0; font-size: var(--text-h2); transform: translateY(-0.05em); }
+  }
+
   details {
       border: 1px solid var(--border);
       border-radius: var(--radius);
@@ -784,14 +809,14 @@
   :is(nav.site-nav a, a.title, .theme-toggle, .eyebrow a, .post-meta a, .page-md a, .page-md-copy,
       footer.site-footer a, .panel h2 a, .pager-nav a, .btn,
       .note-title a, .post-body details > summary),
-  :is(.note-tags .tag, .note-discuss, .social-row a) { position: relative; }
+  :is(.note-tags .tag, .note-discuss, .social-row a, a.note-date, .quote figcaption a) { position: relative; }
   :is(nav.site-nav a, a.title, .theme-toggle, .eyebrow a, .post-meta a, .page-md a, .page-md-copy,
       footer.site-footer a, .panel h2 a, .pager-nav a, .btn,
       .note-title a, .post-body details > summary)::after {
       content: ""; position: absolute; left: 50%; top: 50%;
       width: max(100%, var(--tap)); height: max(100%, var(--tap)); transform: translate(-50%, -50%);
   }
-  :is(.note-tags .tag, .note-discuss, .social-row a)::after {
+  :is(.note-tags .tag, .note-discuss, .social-row a, a.note-date, .quote figcaption a)::after {
       content: ""; position: absolute; left: 50%; top: 50%;
       width: max(100%, var(--tap-dense)); height: max(100%, var(--tap-dense)); transform: translate(-50%, -50%);
   }
@@ -855,6 +880,9 @@
       text-transform: uppercase; letter-spacing: var(--tracking-meta);
   }
   .note-body { grid-area: body; min-width: 0; }
+  /* A quote note has no title row; its date links to the note's page. */
+  a.note-date { text-decoration: none; justify-self: start; }
+  a.note-date:hover { color: var(--accent); }
   .note-body > :last-child { margin-bottom: 0; }
   .note > .note-tags { grid-area: tags; margin-top: var(--space-4); }
   @media (min-width: 760px) {
@@ -864,6 +892,8 @@
           grid-template-rows: auto 1fr;
           column-gap: var(--margin-gap);
       }
+      /* The quote starts on the date's line. */
+      .notes-list > .note.is-quote { grid-template-areas: "date body" "tags body"; }
       .note-date, .note-title { align-self: baseline; }
       .note-date { margin: 0; }
       .note > .note-tags {

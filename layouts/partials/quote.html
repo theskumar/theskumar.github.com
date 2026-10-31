@@ -1,0 +1,12 @@
+{{- /* A quote: the words, then "— Author, context", the name linking to the
+       exact source. Used by TIL quote notes (front matter [quote]) and the
+       quote shortcode in posts. Context: dict "author" "url" "context"
+       (Markdown, one line, optional) "html" (the quoted text, rendered) "page". */ -}}
+<figure class="quote">
+  <blockquote{{ with .url }} cite="{{ . }}"{{ end }}>
+    {{ .html }}
+  </blockquote>
+  <figcaption>&mdash; <cite>{{ with .url }}<a href="{{ . }}">{{ $.author }}</a>{{ else }}{{ $.author }}{{ end }}</cite>
+    {{- with .context }}, {{ $.page.RenderString . }}{{ end }}</figcaption>
+</figure>
+{{- /**/ -}}

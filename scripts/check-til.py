@@ -8,6 +8,8 @@ Rules (see AGENTS.md, "TIL"):
   The week pages are built from the filename, the note page from `date`;
   if they differ, the note drops out of its week and the feed.
 - `title` is set; only known keys are used.
+- A quote note's [quote] table has an author, an http(s) url and, optionally,
+  a one-line context.
 - Every tag, on notes and on Writing posts, is in data/tags.json, and no
   item carries a tag next to its own parent (the tag page rolls children up).
 - Every series has a content/series/<slug>/_index.md.
@@ -29,7 +31,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 NOTES = ROOT / "content/til"
 BLOG = ROOT / "content/blog"
-NOTE_KEYS = {"title", "date", "tags", "series", "mastodon", "anchor", "aliases"}
+NOTE_KEYS = {"title", "date", "tags", "series", "mastodon", "anchor", "aliases", "quote"}
+QUOTE_KEYS = {"author", "url", "context"}
 SERIES = ROOT / "content/series"
 
 
@@ -71,6 +74,19 @@ def check_note(path: Path, vocab: set[str]) -> list[str]:
                       f"(expected {datetime.fromtimestamp(int(path.stem), timezone.utc):%Y-%m-%dT%H:%M:%SZ})")
     if unknown := set(fm) - NOTE_KEYS:
         errors.append(f"unknown keys: {sorted(unknown)}")
+    if "quote" in fm:
+        q = fm["quote"]
+        if not isinstance(q, dict):
+            errors.append("quote must be a table: [quote] with author, url, context")
+        else:
+            if unknown := set(q) - QUOTE_KEYS:
+                errors.append(f"unknown [quote] keys: {sorted(unknown)}")
+            if not str(q.get("author", "")).strip():
+                errors.append("[quote] needs an author")
+            if not re.match(r"https?://", str(q.get("url", ""))):
+                errors.append("[quote] needs a url to the exact source (http or https)")
+            if "\n" in str(q.get("context", "")):
+                errors.append("[quote] context must be one line")
     errors += tag_problems(fm, vocab)
     return errors
 

@@ -57,12 +57,22 @@ anchor = "embeddinggemma-2"          # migrated notes only: keeps old week-page 
 Markdown body.
 ```
 
+- Quote notes quote someone and link to the exact source (after Simon Willison's quotations). Add a `[quote]` table after the other keys; the body is the quoted text only, word for word. The title is "Quoting <author>". The stream shows a quote note without a title row; its date links to the note page.
+
+  ```toml
+  [quote]
+  author = "Ben Hylak"
+  url = "https://x.com/benhylak/status/2115172657910120740"   # the exact source
+  context = "on X"                                             # optional, one line
+  ```
+
+  `layouts/partials/quote.html` draws every quote. `layouts/partials/note-content.html` picks it for quote notes in the stream, the note page and the feeds; `single.markdown.md` writes a `>` quote into the Markdown copy. In a post, use the shortcode: `{{< quote author="…" url="…" context="…" >}}text{{< /quote >}}` (`layouts/shortcodes/quote.html`, and `quote.markdown.md` for the Markdown copy).
 - Reader navigation (eyebrow row): Notes `/til/` (full notes, 10 per page) · Archive `/til/archive/` (titles by year) · Tags `/tags/`.
 - `layouts/til/single.html` renders a note; `til-home.html` the stream; `til-archive.html` the archive; `til-home.tilrss.xml` the feed at `/til/rss.xml` (one item per week).
 - `content/til/weekly/_content.gotmpl` creates a page per week from note filenames, for the feed and old toot links (not in the nav; `/til/weekly/` forwards to the archive). A week ends on the Sunday after the note's date (UTC); the adapter is the only place that computes this and gives each week page `params.notes`.
 - Retired URLs redirect through `aliases` in the front matter of the page they now point to (notes, posts, `content/tags/<tag>/_index.md`). Don't add static redirect stubs.
 - Newer/older links use `layouts/partials/pager.html` everywhere: newer on the left, older on the right.
-- `scripts/check-til.py` enforces the rules above (date = filename, known keys and tags). CI runs it before the build; so does the local pre-commit hook.
+- `scripts/check-til.py` enforces the rules above (date = filename, known keys and tags, a quote's author and url). CI runs it before the build; so does the local pre-commit hook.
 - Add notes with cowork-kb's `scripts/til_add.py` (the `/til` skill), or by hand with a fresh timestamp.
 
 ## Social cards
