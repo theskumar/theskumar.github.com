@@ -17,6 +17,8 @@
       --measure: 720px;        /* reading column */
       --margin-col: 7.5rem;    /* mono date column beside notes */
       --margin-gap: 2.2rem;    /* gap between that column and the text */
+      --tap: 44px;             /* smallest hit area for a control on its own */
+      --tap-dense: 24px;       /* hit area in dense rows, where --tap would overlap (WCAG AA minimum) */
 
       /* Spacing: margin, padding and gap in rem use these steps. Spacing in em
          stays em, so it scales with the text it belongs to. */
@@ -780,6 +782,28 @@
       transform: translateY(-300%);
   }
   .skip-link:focus { transform: none; }
+  .skip-link { display: inline-flex; align-items: center; min-height: var(--tap); }
+
+  /* ---- Tap targets (WCAG 2.5.8) ----
+     Small controls that stand on their own get an invisible hit area of at
+     least --tap, centred on them, so nothing visible moves. Rows where a
+     --tap box would cover a neighbour (the tags under a note) get
+     --tap-dense instead. Links inside sentences are exempt and unchanged.
+     These elements must not use ::after for anything else. */
+  :is(nav.site-nav a, a.title, .theme-toggle, .eyebrow a, .post-meta a, .page-md a, .page-md-copy,
+      footer.site-footer a, .panel h2 a, .pager-nav a, .btn,
+      .note-title a, .post-body details > summary),
+  :is(.note-tags .tag, .note-discuss, .social-row a) { position: relative; }
+  :is(nav.site-nav a, a.title, .theme-toggle, .eyebrow a, .post-meta a, .page-md a, .page-md-copy,
+      footer.site-footer a, .panel h2 a, .pager-nav a, .btn,
+      .note-title a, .post-body details > summary)::after {
+      content: ""; position: absolute; left: 50%; top: 50%;
+      width: max(100%, var(--tap)); height: max(100%, var(--tap)); transform: translate(-50%, -50%);
+  }
+  :is(.note-tags .tag, .note-discuss, .social-row a)::after {
+      content: ""; position: absolute; left: 50%; top: 50%;
+      width: max(100%, var(--tap-dense)); height: max(100%, var(--tap-dense)); transform: translate(-50%, -50%);
+  }
   .skip-link::selection { background: var(--accent); color: var(--bg); }
 
   a:focus-visible, button:focus-visible {

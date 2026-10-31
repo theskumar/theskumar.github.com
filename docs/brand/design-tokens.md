@@ -13,6 +13,7 @@ Brand concept, logo, motion and voice are in [`BRAND.md`](BRAND.md).
 5. **No literal sizes in components.** Use a `--text-*` token for font size, a `--space-*` step for new spacing in `rem` or `px`, and a `--radius*` token for corners. A genuine one-off font size (the wordmark, the panel number) carries a `/* one-off: reason */` comment on the same line; the check allows it. Relative sizes (`em`, `inherit`) are fine inside a token-sized parent.
 6. **Text colors pass WCAG AA.** `--muted` is the lightest color for text. `--faint` is for lines, ticks and drawings only.
 7. **Links that leave the site end in ↗.** The Markdown link render hook adds it to every `http` or `https` link, and `layouts/_default/projects.html` adds it to project names; both go through `layouts/partials/ext-tail.html`, which keeps the last word and the mark on one line. Internal links, `mailto:` links, the About social row, the footer and the TIL "Discuss" link stay plain: their text already names the place. The mark is decoration, so screen readers skip it.
+8. **Every control is easy to hit.** A link or button that stands on its own has a hit area of at least `--tap` (44 px), drawn as an invisible `::after` box in the "Tap targets" block of `style.html`, so nothing visible moves. Dense rows (the tags under a TIL note, the About social row) use `--tap-dense`, the WCAG AA minimum. Links inside sentences are exempt (WCAG 2.5.8). Add a new standalone control to that block's selector list.
 
 ## Layout
 
@@ -22,6 +23,8 @@ Brand concept, logo, motion and voice are in [`BRAND.md`](BRAND.md).
 | `--measure` | `720px` | Reading column |
 | `--margin-col` | `7.5rem` | Mono date column beside TIL notes |
 | `--margin-gap` | `2.2rem` | Gap between that column and the text |
+| `--tap` | `44px` | Smallest hit area for a control on its own (rule 8) |
+| `--tap-dense` | `24px` | Hit area in dense rows, where `--tap` would overlap a neighbour |
 | `--radius-sm` | `2px` | Corners on buttons, chips and highlighted text |
 | `--radius` | `3px` | Corners on code, tags, panels and images |
 | `--radius-lg` | `4px` | Corners on floating panels (the TOC panel) |
