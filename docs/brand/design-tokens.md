@@ -10,7 +10,7 @@ Brand concept, logo, motion and voice are in [`BRAND.md`](BRAND.md).
 2. **Serif is for display.** Newsreader sets titles, headings, list item titles, the wordmark, the big panel number and the italic post summary. It never sets a paragraph.
 3. **Mono is for labels and code.** Geist Mono sets eyebrows, section labels, dates, meta rows, nav, buttons, tags and code. Uppercase is reserved for mono labels; everything else uses sentence case.
 4. **Ember is a signal, not paint.** `--accent` marks the active nav item, eyebrows, hover states and the sun in the mark. If more than about 5% of a screen is ember, there is too much. Links stay ink with an underline.
-5. **No literal sizes in components.** Use a `--text-*` token. A genuine one-off (the wordmark, the panel number) carries a `/* one-off: reason */` comment on the same line; the check allows it. Relative sizes (`em`, `inherit`) are fine inside a token-sized parent.
+5. **No literal sizes in components.** Use a `--text-*` token for font size, a `--space-*` step for new spacing in `rem` or `px`, and a `--radius*` token for corners. A genuine one-off font size (the wordmark, the panel number) carries a `/* one-off: reason */` comment on the same line; the check allows it. Relative sizes (`em`, `inherit`) are fine inside a token-sized parent.
 6. **Text colors pass WCAG AA.** `--muted` is the lightest color for text. `--faint` is for lines, ticks and drawings only.
 
 ## Layout
@@ -21,7 +21,23 @@ Brand concept, logo, motion and voice are in [`BRAND.md`](BRAND.md).
 | `--measure` | `720px` | Reading column |
 | `--margin-col` | `7.5rem` | Mono date or year column beside TIL notes and project rows |
 | `--margin-gap` | `2.2rem` | Gap between that column and the text |
+| `--radius-sm` | `2px` | Corners on buttons, chips and highlighted text |
 | `--radius` | `3px` | Corners on code, tags, panels and images |
+| `--radius-lg` | `4px` | Corners on floating panels (the TOC panel) |
+
+## Spacing
+
+New margin, padding and gap in `rem` or `px` use a step. Spacing set in `em` stays `em`, so it scales with the text it belongs to (button padding, list indents, space around a blockquote). Older values more than 2px from a step (`1.2rem`, `1.6rem`, `10px`, `2.6rem` and a few others) are still literal; move one to a step when you next touch its rule and check the page.
+
+| Token | Value | Use |
+|---|---|---|
+| `--space-1` | `0.25rem` | Hairline gaps: a tag's count, small nudges |
+| `--space-2` | `0.5rem` | Gaps inside a row: chips, icon and label |
+| `--space-3` | `0.75rem` | Gaps between small items |
+| `--space-4` | `1rem` | Default gap between blocks in a component |
+| `--space-5` | `1.4rem` | Panel padding, gaps between rows and items |
+| `--space-6` | `2.2rem` | Between blocks |
+| `--space-7` | `3rem` | Between page sections |
 
 ## Type
 

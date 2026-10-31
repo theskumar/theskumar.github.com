@@ -2,3 +2,6 @@ public/
 *.lock
 themes/typo
 resources/
+
+# Pi Pocket design system: commit the sources, not the compiled output
+.pi/design/dist/

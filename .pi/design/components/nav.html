@@ -1,0 +1,11 @@
+<script type="application/json" id="pocket-component">{"name":"Site nav","states":["default","hover","focus"]}</script>
+<style>
+.site-nav { display: flex; flex-wrap: wrap; gap: var(--space-5); border-bottom: 1px solid var(--color-border-hairline); font-family: var(--font-family-mono); font-size: var(--font-size-meta); letter-spacing: var(--font-tracking-caps); text-transform: uppercase; }
+.site-nav a { color: var(--color-text-muted); text-decoration: none; padding: var(--space-3) 0; margin-bottom: -1px; border-bottom: 1px solid transparent; transition: color var(--duration-hover) var(--easing-standard), border-color var(--duration-hover) var(--easing-standard); }
+.site-nav a:hover, .site-nav a.is-hover { color: var(--color-text-heading); border-bottom-color: var(--color-border-strong); }
+.site-nav a[aria-current="page"] { color: var(--color-accent-default); border-bottom-color: var(--color-accent-default); }
+.site-nav a:focus-visible, .site-nav a.is-focus { outline: var(--size-focus-ring) solid var(--color-accent-default); outline-offset: var(--size-focus-offset); }
+</style>
+<template data-state="default"><nav class="site-nav" aria-label="Main"><a href="/" aria-current="page">Writing</a><a href="/projects/">Projects</a><a href="/til/">TIL</a><a href="/now/">Now</a><a href="/about/">About</a></nav></template>
+<template data-state="hover"><nav class="site-nav" aria-label="Main"><a href="/" aria-current="page">Writing</a><a href="/projects/" class="is-hover">Projects</a><a href="/til/">TIL</a><a href="/now/">Now</a><a href="/about/">About</a></nav></template>
+<template data-state="focus"><nav class="site-nav" aria-label="Main"><a href="/" aria-current="page">Writing</a><a href="/projects/" class="is-focus">Projects</a><a href="/til/">TIL</a><a href="/now/">Now</a><a href="/about/">About</a></nav></template>

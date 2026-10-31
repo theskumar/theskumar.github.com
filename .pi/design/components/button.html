@@ -1,0 +1,18 @@
+<script type="application/json" id="pocket-component">{"name":"Button","states":["default","hover","focus","active","disabled"]}</script>
+<style>
+.btn { display: inline-flex; align-items: center; gap: var(--space-2); min-height: var(--size-tap); padding: 0 var(--space-5); font-family: var(--font-family-mono); font-size: var(--font-size-meta); letter-spacing: var(--font-tracking-caps); text-transform: uppercase; border-radius: var(--radius-sm); text-decoration: none; cursor: pointer; transition: transform var(--duration-press) var(--easing-standard), background-color var(--duration-hover) var(--easing-standard), color var(--duration-hover) var(--easing-standard), border-color var(--duration-hover) var(--easing-standard); }
+.btn-primary { background: var(--color-bg-ink); color: var(--color-text-on-ink); border: 1px solid var(--color-bg-ink); }
+.btn-primary:hover, .btn-primary.is-hover { background: var(--color-accent-default); border-color: var(--color-accent-default); color: var(--color-text-on-accent); }
+.btn-ghost { background: transparent; color: var(--color-text-muted); border: 1px solid var(--color-border-strong); }
+.btn-ghost:hover, .btn-ghost.is-hover { border-color: var(--color-accent-default); color: var(--color-accent-default); }
+.btn:focus-visible, .btn.is-focus { outline: var(--size-focus-ring) solid var(--color-accent-default); outline-offset: var(--size-focus-offset); }
+.btn:active, .btn.is-active { transform: scale(var(--motion-press-scale)); }
+.btn[aria-disabled="true"] { opacity: 0.45; cursor: not-allowed; pointer-events: none; }
+.btn-row { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+@media (prefers-reduced-motion: reduce) { .btn { transition: none; } }
+</style>
+<template data-state="default"><div class="btn-row"><a class="btn btn-primary" href="#contact">Get in touch</a><a class="btn btn-ghost" href="/projects/">See projects</a></div></template>
+<template data-state="hover"><div class="btn-row"><a class="btn btn-primary is-hover" href="#contact">Get in touch</a><a class="btn btn-ghost is-hover" href="/projects/">See projects</a></div></template>
+<template data-state="focus"><div class="btn-row"><a class="btn btn-primary is-focus" href="#contact">Get in touch</a><a class="btn btn-ghost is-focus" href="/projects/">See projects</a></div></template>
+<template data-state="active"><div class="btn-row"><a class="btn btn-primary is-hover is-active" href="#contact">Get in touch</a><a class="btn btn-ghost is-hover is-active" href="/projects/">See projects</a></div></template>
+<template data-state="disabled"><div class="btn-row"><a class="btn btn-primary" aria-disabled="true">Get in touch</a><a class="btn btn-ghost" aria-disabled="true">See projects</a></div></template>

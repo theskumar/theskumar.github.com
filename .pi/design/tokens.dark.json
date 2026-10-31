@@ -1,0 +1,122 @@
+{
+  "$extensions": {
+    "com.pi-pocket": {
+      "colorScheme": "dark"
+    }
+  },
+  "color": {
+    "bg": {
+      "page": {
+        "$value": "{color.night.900}"
+      },
+      "tint": {
+        "$value": "{color.night.850}"
+      },
+      "surface": {
+        "$value": "{color.night.800}"
+      },
+      "surface-2": {
+        "$value": "{color.night.700}"
+      },
+      "code": {
+        "$value": "{color.night.750}"
+      },
+      "tag": {
+        "$value": "{color.night.650}"
+      },
+      "ink": {
+        "$value": "{color.night.100}"
+      }
+    },
+    "text": {
+      "heading": {
+        "$value": "{color.night.100}"
+      },
+      "primary": {
+        "$value": "{color.night.200}"
+      },
+      "muted": {
+        "$value": "{color.night.400}"
+      },
+      "tag": {
+        "$value": "{color.night.300}"
+      },
+      "code": {
+        "$value": "{color.night.150}"
+      },
+      "on-ink": {
+        "$value": "{color.night.900}"
+      },
+      "on-accent": {
+        "$value": "{color.night.900}"
+      }
+    },
+    "border": {
+      "default": {
+        "$value": "{color.cream.a11}"
+      },
+      "hairline": {
+        "$value": "{color.cream.a14}"
+      },
+      "strong": {
+        "$value": "{color.cream.a20}"
+      }
+    },
+    "decor": {
+      "faint": {
+        "$value": "{color.night.500}"
+      }
+    },
+    "accent": {
+      "default": {
+        "$value": "{color.ember.300}"
+      },
+      "soft": {
+        "$value": "{color.ember.300-a10}"
+      }
+    },
+    "success": {
+      "default": {
+        "$value": "{color.moss.300}"
+      },
+      "soft": {
+        "$value": "{color.moss.300-a12}"
+      }
+    },
+    "info": {
+      "default": {
+        "$value": "{color.slate.300}"
+      },
+      "soft": {
+        "$value": "{color.slate.300-a12}"
+      }
+    },
+    "warning": {
+      "default": {
+        "$value": "{color.ochre.300}"
+      },
+      "soft": {
+        "$value": "{color.ochre.300-a12}"
+      }
+    },
+    "danger": {
+      "default": {
+        "$value": "{color.brick.300}"
+      },
+      "soft": {
+        "$value": "{color.brick.300-a12}"
+      }
+    }
+  },
+  "shadow": {
+    "overlay": {
+      "$value": {
+        "color": "rgba(0,0,0,0.4)",
+        "offsetX": "0px",
+        "offsetY": "10px",
+        "blur": "34px",
+        "spread": "0px"
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+<script type="application/json" id="pocket-component">{"name":"Tag","states":["default","hover","focus"]}</script>
+<style>
+.tag-row { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.tag { font-family: var(--font-family-mono); font-size: var(--font-size-tag); letter-spacing: var(--font-tracking-mono); background: var(--color-bg-tag); color: var(--color-text-tag); padding: var(--space-1) var(--space-2); border-radius: var(--radius-md); text-decoration: none; transition: background-color var(--duration-hover) var(--easing-standard), color var(--duration-hover) var(--easing-standard); }
+a.tag:hover, a.tag.is-hover { background: var(--color-border-strong); color: var(--color-text-heading); }
+a.tag:focus-visible, a.tag.is-focus { outline: var(--size-focus-ring) solid var(--color-accent-default); outline-offset: var(--size-focus-offset); }
+.tag-count { margin-left: var(--space-1); font-size: var(--font-size-label); }
+</style>
+<template data-state="default"><div class="tag-row"><a class="tag" href="/tags/ai/">ai<span class="tag-count">41</span></a><a class="tag" href="/tags/research/">research<span class="tag-count">2</span></a><a class="tag" href="/tags/python/">python<span class="tag-count">18</span></a></div></template>
+<template data-state="hover"><div class="tag-row"><a class="tag is-hover" href="/tags/ai/">ai<span class="tag-count">41</span></a><a class="tag" href="/tags/research/">research<span class="tag-count">2</span></a><a class="tag" href="/tags/python/">python<span class="tag-count">18</span></a></div></template>
+<template data-state="focus"><div class="tag-row"><a class="tag is-focus" href="/tags/ai/">ai<span class="tag-count">41</span></a><a class="tag" href="/tags/research/">research<span class="tag-count">2</span></a><a class="tag" href="/tags/python/">python<span class="tag-count">18</span></a></div></template>

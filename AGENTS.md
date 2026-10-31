@@ -100,3 +100,4 @@ Nothing posts to social media automatically. Saurabh posts by hand (X, Mastodon,
 - Clone with `--recursive` for submodules
 - Custom styles: `layouts/partials/style.html`. Sizes, colors, line heights and tracking come from the tokens in its `:root`; `docs/brand/design-tokens.md` documents them and its rules (serif for display only, one body style). `scripts/check-tokens.py` (CI and pre-commit) fails when the two disagree or a component sets a literal font size.
 - Syntax highlighting: `syntax-dark.css`, `syntax-light.css`
+- `.pi/design/` is a copy of the tokens for Pi Pocket's Design canvas (DTCG tokens, a dark mode, component specimens). `style.html` stays the source of truth: when a token changes there, update it with Pi Pocket's `design_system` tool too. `dist/` is generated and git-ignored.
