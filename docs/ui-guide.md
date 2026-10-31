@@ -67,6 +67,7 @@ Full brand spec: `docs/brand/BRAND.md`. Writing voice: `docs/STYLE-GUIDE.md`.
   when arriving via VT (`html.vt-nav`) to avoid double animation.
 - All motion respects `prefers-reduced-motion` (static, fully drawn).
 - Ember accent is scarce: junction node, active nav, hovers, eyebrows, signals only.
+- Links that leave the site end in a small muted ↗ (`layouts/partials/ext-tail.html`, tokens `--link-ext-*`). Internal links, `mailto:`, the About social row, the footer and TIL's "Discuss" link stay plain. Rule 7 in `docs/brand/design-tokens.md` has the details.
 - Eyebrows carry navigation (a back link, section links, a breadcrumb) or a
   fact (a date, a role), never a label that repeats the h1 or the active nav
   item. Posts: "Writing" → `/`; TIL notes: "TIL" → `/til/`; TIL and Tags:

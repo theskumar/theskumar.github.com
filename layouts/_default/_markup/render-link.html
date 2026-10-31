@@ -6,7 +6,8 @@
   Destination for absolute URLs, anchors, and external links.
 
   Behavior:
-  - External (http/https/mailto/tel/#anchor): passthrough.
+  - External (http/https): passthrough, plus the ↗ mark from partials/ext-tail.html.
+  - mailto/tel/#anchor: passthrough, no mark.
   - `.md` / `.markdown` destinations: looked up with .Page.GetPage; if found,
     we emit the resolved RelPermalink. If not found, we warn at build time
     and fall back to the raw destination so the build still succeeds.
@@ -25,5 +26,5 @@
     <a href="{{ $u | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }}>{{ .Text | safeHTML }}</a>
   {{- end -}}
 {{- else -}}
-  <a href="{{ $u | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if $isExternal }} rel="noopener external"{{ end }}>{{ .Text | safeHTML }}</a>
+  <a href="{{ $u | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if $isExternal }} rel="noopener external"{{ end }}>{{ if $isExternal }}{{ partial "ext-tail.html" .Text }}{{ else }}{{ .Text | safeHTML }}{{ end }}</a>
 {{- end -}}

@@ -1,0 +1,11 @@
+{{- /* Link text for a link that leaves the site: the last word goes in
+       .ext-tail, which draws the ↗ mark (style.html, --link-ext-*) and keeps
+       the two on one line. Takes the link text as HTML. Text with tags
+       (code, emphasis) gets an empty tail at the end instead of a split. */ -}}
+{{- $t := . | string -}}
+{{- if strings.Contains $t "<" -}}
+  {{- printf "%s<span class=\"ext-tail\"></span>" $t | safeHTML -}}
+{{- else -}}
+  {{- $m := findRESubmatch `^([\s\S]*\s)?(\S+)$` (strings.TrimRight " " $t) 1 -}}
+  {{- with $m }}{{ $p := index . 0 }}{{ printf "%s<span class=\"ext-tail\">%s</span>" (index $p 1) (index $p 2) | safeHTML }}{{ else }}{{ $t | safeHTML }}{{ end -}}
+{{- end -}}

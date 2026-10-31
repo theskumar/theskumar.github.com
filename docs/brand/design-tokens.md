@@ -12,6 +12,7 @@ Brand concept, logo, motion and voice are in [`BRAND.md`](BRAND.md).
 4. **Ember is a signal, not paint.** `--accent` marks the active nav item, eyebrows, hover states and the sun in the mark. If more than about 5% of a screen is ember, there is too much. Links stay ink with an underline.
 5. **No literal sizes in components.** Use a `--text-*` token for font size, a `--space-*` step for new spacing in `rem` or `px`, and a `--radius*` token for corners. A genuine one-off font size (the wordmark, the panel number) carries a `/* one-off: reason */` comment on the same line; the check allows it. Relative sizes (`em`, `inherit`) are fine inside a token-sized parent.
 6. **Text colors pass WCAG AA.** `--muted` is the lightest color for text. `--faint` is for lines, ticks and drawings only.
+7. **Links that leave the site end in ↗.** The Markdown link render hook adds it to every `http` or `https` link, and `layouts/_default/projects.html` adds it to project names; both go through `layouts/partials/ext-tail.html`, which keeps the last word and the mark on one line. Internal links, `mailto:` links, the About social row, the footer and the TIL "Discuss" link stay plain: their text already names the place. The mark is decoration, so screen readers skip it.
 
 ## Layout
 
@@ -19,7 +20,7 @@ Brand concept, logo, motion and voice are in [`BRAND.md`](BRAND.md).
 |---|---|---|
 | `--width` | `880px` | Page chrome: header, nav rule, footer |
 | `--measure` | `720px` | Reading column |
-| `--margin-col` | `7.5rem` | Mono date or year column beside TIL notes and project rows |
+| `--margin-col` | `7.5rem` | Mono date column beside TIL notes |
 | `--margin-gap` | `2.2rem` | Gap between that column and the text |
 | `--radius-sm` | `2px` | Corners on buttons, chips and highlighted text |
 | `--radius` | `3px` | Corners on code, tags, panels and images |
@@ -91,6 +92,14 @@ Each color token holds a light and a dark value, through `light-dark()`.
 | `--code-color` | `light-dark(#1D1810, #E7E1D2)` | Code text |
 | `--tag-bg` | `light-dark(#EEEADF, #29251D)` | Tag and chip background |
 | `--tag-text` | `light-dark(#5D584B, #B4AC99)` | Tag and chip text |
+
+## Links
+
+| Token | Value | Use |
+|---|---|---|
+| `--link-ext-mark` | `"↗"` | The mark after a link that leaves the site (rule 7) |
+| `--link-ext-size` | `0.72em` | Its size, relative to the link text |
+| `--link-ext-color` | `var(--muted)` | Its color at rest; it turns `--accent` on hover |
 
 Syntax colors for code blocks are in `layouts/partials/syntax.css`, outside the token set; each passes 4.5:1 on `--code-bg`.
 

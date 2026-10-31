@@ -86,6 +86,11 @@
 
       --tag-bg:           light-dark(#EEEADF,            #29251D);
       --tag-text:         light-dark(#5D584B,            #B4AC99);
+
+      /* Links that leave the site end in a small mark (partials/ext-tail.html). */
+      --link-ext-mark: "↗";
+      --link-ext-size: 0.72em;     /* relative to the link text */
+      --link-ext-color: var(--muted); /* at rest; --accent on hover */
   }
 
   [data-theme="light"] { color-scheme: light; }
@@ -182,6 +187,17 @@
 
   a { color: var(--heading); text-decoration: underline; text-decoration-color: var(--border-strong); text-underline-offset: 3px; transition: color 0.18s ease, text-decoration-color 0.18s ease; }
   a:hover { color: var(--accent); text-decoration-color: var(--accent); }
+  /* External links: the last word and the mark never wrap apart. The mark is
+     decoration (empty alt text); the link text already says where it goes. */
+  .ext-tail { white-space: nowrap; }
+  .ext-tail::after {
+      content: var(--link-ext-mark) / "";
+      display: inline-block; margin-left: 0.12em; vertical-align: 0.42em; line-height: 0;
+      font-family: var(--font-sans); font-size: var(--link-ext-size); font-style: normal; font-weight: 400;
+      color: var(--link-ext-color);
+      transition: color 0.18s ease, transform 0.18s ease;
+  }
+  a:hover .ext-tail::after { color: var(--accent); transform: translate(1px, -1px); }
 
   strong, b { color: var(--heading); font-weight: 600; }
   /* Themed highlight: the browser's yellow hides selected text in dark mode. */

@@ -1,10 +1,15 @@
-<script type="application/json" id="pocket-component">{"name":"Text link","states":["default","hover","focus"]}</script>
+<script type="application/json" id="pocket-component">{"name":"Text link","states":["default","hover","focus","external","external-hover"]}</script>
 <style>
 .prose-sample { font-family: var(--font-family-sans); font-size: var(--font-size-body); line-height: var(--font-leading-body); letter-spacing: var(--font-tracking-body); color: var(--color-text-primary); max-width: var(--size-measure); margin: 0; }
 .prose-sample a { color: var(--color-text-heading); text-decoration: underline; text-decoration-color: var(--color-border-strong); text-underline-offset: 3px; transition: color var(--duration-hover) var(--easing-standard), text-decoration-color var(--duration-hover) var(--easing-standard); }
 .prose-sample a:hover, .prose-sample a.is-hover { color: var(--color-accent-default); text-decoration-color: var(--color-accent-default); }
 .prose-sample a:focus-visible, .prose-sample a.is-focus { outline: var(--size-focus-ring) solid var(--color-accent-default); outline-offset: var(--size-focus-offset); }
+.prose-sample .ext-tail { white-space: nowrap; }
+.prose-sample .ext-tail::after { content: "↗" / ""; display: inline-block; margin-left: 0.12em; vertical-align: 0.42em; line-height: 0; font-family: var(--font-family-sans); font-size: var(--font-size-link-ext); color: var(--color-text-link-ext); transition: color var(--duration-hover) var(--easing-standard), transform var(--duration-hover) var(--easing-standard); }
+.prose-sample a:hover .ext-tail::after, .prose-sample a.is-hover .ext-tail::after { color: var(--color-accent-default); transform: translate(1px, -1px); }
 </style>
 <template data-state="default"><p class="prose-sample">Shorter notes live in <a href="/til/">TIL</a>; more <a href="/about/">about me</a>.</p></template>
 <template data-state="hover"><p class="prose-sample">Shorter notes live in <a class="is-hover" href="/til/">TIL</a>; more <a href="/about/">about me</a>.</p></template>
 <template data-state="focus"><p class="prose-sample">Shorter notes live in <a class="is-focus" href="/til/">TIL</a>; more <a href="/about/">about me</a>.</p></template>
+<template data-state="external"><p class="prose-sample">Leading engineering on <a href="https://meetrosey.ai" rel="noopener external"><span class="ext-tail">Rosey</span></a>; it became <a href="https://github.com/theskumar/pi-pocket-blackhole" rel="noopener external">Pi Pocket <span class="ext-tail">Blackhole</span></a>. Shorter findings land in <a href="/til/">TIL</a>.</p></template>
+<template data-state="external-hover"><p class="prose-sample">Leading engineering on <a class="is-hover" href="https://meetrosey.ai" rel="noopener external"><span class="ext-tail">Rosey</span></a>; it became <a href="https://github.com/theskumar/pi-pocket-blackhole" rel="noopener external">Pi Pocket <span class="ext-tail">Blackhole</span></a>.</p></template>

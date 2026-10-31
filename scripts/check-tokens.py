@@ -7,7 +7,8 @@ Fails (exit 1) when:
 - a token has a different value in the two places;
 - a component outside :root sets font-family to anything but var(--font-*);
 - a component sets a literal font-size without a "/* one-off: ... */" comment
-  on the same line. var(--text-*), inherit and em units are allowed.
+  on the same line. var(--text-*), var(--link-ext-size), inherit and em units
+  are allowed.
 
 Run from the repository root. CI runs it before the build.
 """
@@ -63,7 +64,7 @@ def main():
                 errors.append(f"{CSS}:{lineno}: font-family `{value.strip()}` must be var(--font-*)")
         for value in re.findall(r"font-size\s*:\s*([^;]+);", line):
             value = value.strip()
-            if re.fullmatch(r"var\(--text-[a-z0-9-]+\)|inherit|[0-9.]+em", value):
+            if re.fullmatch(r"var\(--text-[a-z0-9-]+\)|var\(--link-ext-size\)|inherit|[0-9.]+em", value):
                 continue
             if "/* one-off:" in line:
                 continue
