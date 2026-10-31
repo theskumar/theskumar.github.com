@@ -685,14 +685,15 @@
   .projects .post-body + .theme { margin-top: var(--space-5); }
   .projects .theme-head h2 { font-size: var(--text-h2); line-height: var(--leading-heading); letter-spacing: var(--tracking-heading); margin: 0 0 var(--space-2); }
   .projects .theme-head p { color: var(--muted); font-size: var(--text-small); line-height: var(--leading-body); margin: 0; }
-  .theme-items { list-style: none; margin: var(--space-4) 0 0; padding: 0; display: grid; gap: var(--space-5); }
-  .theme-items h3 { margin: 0; font-size: var(--text-title); font-weight: 500; line-height: var(--leading-heading); letter-spacing: var(--tracking-heading); }
+  .theme-items { list-style: none; margin: var(--space-6) 0 0; padding: 0; display: grid; gap: var(--space-5); }
+  .theme-items h3 { margin: 0; font-size: var(--text-title); font-weight: 500; line-height: var(--leading-heading); letter-spacing: var(--tracking-heading);
+      display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1) var(--space-3); }
   .project-name { color: var(--heading); display: inline-block; padding-block: var(--space-1); }
   a.project-name { text-decoration-color: var(--border-strong); text-underline-offset: 4px; }
   .chip {
       font-family: var(--font-mono); font-size: var(--text-tag); letter-spacing: var(--tracking-meta); text-transform: uppercase;
       background: var(--tag-bg); color: var(--tag-text); padding: 0 var(--space-1); border-radius: var(--radius-sm);
-      white-space: nowrap; vertical-align: middle;
+      white-space: nowrap; line-height: var(--leading-ui);
   }
   .project-text { margin: 0; max-width: var(--measure); font-size: var(--text-body); line-height: var(--leading-body); }
   .project-more { color: var(--muted); }
