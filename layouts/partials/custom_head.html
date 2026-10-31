@@ -53,7 +53,8 @@
 {{- end }}
 {{- /* Social image size and alt text. The image tags come from Hugo's templates via _funcs/get-page-images. */}}
 {{- if not .Params.images }}
-{{- $alt := "Saurabh Kumar: I build backend systems and help teams put AI agents to work." }}
+{{- /* The default image (static/images/og.png) shows About's tagline; redraw it when the tagline changes. */}}
+{{- $alt := printf "Saurabh Kumar: %s" ((site.GetPage "/about").Params.tagline | default "") }}
 {{- with partialCached "og/card.html" . .RelPermalink }}
 {{- $alt = printf "%s by Saurabh Kumar: %s" (cond (eq $.Type "blog") "Post" "TIL note") ($.Title | plainify) }}
 {{- end }}
