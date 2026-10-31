@@ -67,8 +67,8 @@ Full brand spec: `docs/brand/BRAND.md`. Writing voice: `docs/STYLE-GUIDE.md`.
   when arriving via VT (`html.vt-nav`) to avoid double animation.
 - All motion respects `prefers-reduced-motion` (static, fully drawn).
 - Ember accent is scarce: junction node, active nav, hovers, eyebrows, signals only.
-- Every standalone control has a hit area of at least 44 px (`--tap`), drawn as an invisible `::after` box so nothing visible moves; dense rows use `--tap-dense` (24 px). New standalone controls join the "Tap targets" selector list in `style.html`. Rule 8 in `docs/brand/design-tokens.md`.
-- Links that leave the site end in a small muted ↗ (`layouts/partials/ext-tail.html`, tokens `--link-ext-*`). Internal links, `mailto:`, the About social row, the footer and TIL's "Discuss" link stay plain. Rule 7 in `docs/brand/design-tokens.md` has the details.
+- Typography details: paragraphs and list items use `text-wrap: pretty` (no lone last word); tables use tabular figures, and a number column aligns right with `|---:|` in Markdown; posts and TIL note pages end with a faint crosshair (`[data-prose]::after`, `.til-note > .note-body::after`). Links to other sites carry no mark: the underline is enough.
+- Every standalone control has a hit area of at least 44 px (`--tap`), drawn as an invisible `::after` box so nothing visible moves; dense rows use `--tap-dense` (24 px). New standalone controls join the "Tap targets" selector list in `style.html`. Rule 7 in `docs/brand/design-tokens.md`.
 - Eyebrows carry navigation (a back link, section links, a breadcrumb) or a
   fact (a date, a role), never a label that repeats the h1 or the active nav
   item. Posts: "Writing" → `/`; TIL notes: "TIL" → `/til/`; TIL and Tags:

@@ -23,7 +23,7 @@
       {{ range where site.Data.projects.projects "theme" $theme }}
         <li>
           <h3>
-            {{- if .url }}<a class="project-name" href="{{ .url }}">{{ partial "ext-tail.html" .name }}</a>{{ else }}<span class="project-name">{{ .name }}</span>{{ end }}
+            {{- if .url }}<a class="project-name" href="{{ .url }}">{{ .name }}</a>{{ else }}<span class="project-name">{{ .name }}</span>{{ end }}
             {{- if .unreleased }} <span class="chip">Unreleased</span>{{ end }}
             {{- with index $kinds .kind }} <span class="chip">{{ . }}</span>{{ end -}}
           </h3>

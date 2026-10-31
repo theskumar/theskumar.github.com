@@ -197,13 +197,13 @@ And keep environment variables in `.zshenv`, not `.zshrc`. Future-you, debugging
 ## Estimated total
 
 | Change | Savings |
-| --- | --- |
+| --- | ---: |
 | Stop forking `brew --prefix` × 5 | ~180 ms |
-| Defer plugins with `zinit wait` | 100-300 ms |
-| Cache remaining `eval`s | 50-100 ms |
-| Compile `.zcompdump` | 30-80 ms |
-| Drop `fnm` (mise covers it) | 30-80 ms |
-| **Total** | **~400-700 ms** |
+| Defer plugins with `zinit wait` | 100–300 ms |
+| Cache remaining `eval`s | 50–100 ms |
+| Compile `.zcompdump` | 30–80 ms |
+| Drop `fnm` (mise covers it) | 30–80 ms |
+| **Total** | **~400–700 ms** |
 
 These are estimates, not measurements. Your actual numbers depend on your hardware, your plugin set, and how much cruft you had accumulated over the years. Under 200 ms on Apple Silicon is doable with stock zsh and a small, well-deferred plugin set.
 

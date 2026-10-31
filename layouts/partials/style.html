@@ -88,11 +88,6 @@
 
       --tag-bg:           light-dark(#EEEADF,            #29251D);
       --tag-text:         light-dark(#5D584B,            #B4AC99);
-
-      /* Links that leave the site end in a small mark (partials/ext-tail.html). */
-      --link-ext-mark: "↗";
-      --link-ext-size: 0.72em;     /* relative to the link text */
-      --link-ext-color: var(--muted); /* at rest; --accent on hover */
   }
 
   [data-theme="light"] { color-scheme: light; }
@@ -189,17 +184,6 @@
 
   a { color: var(--heading); text-decoration: underline; text-decoration-color: var(--border-strong); text-underline-offset: 3px; transition: color 0.18s ease, text-decoration-color 0.18s ease; }
   a:hover { color: var(--accent); text-decoration-color: var(--accent); }
-  /* External links: the last word and the mark never wrap apart. The mark is
-     decoration (empty alt text); the link text already says where it goes. */
-  .ext-tail { white-space: nowrap; }
-  .ext-tail::after {
-      content: var(--link-ext-mark) / "";
-      display: inline-block; margin-left: 0.12em; vertical-align: 0.42em; line-height: 0;
-      font-family: var(--font-sans); font-size: var(--link-ext-size); font-style: normal; font-weight: 400;
-      color: var(--link-ext-color);
-      transition: color 0.18s ease, transform 0.18s ease;
-  }
-  a:hover .ext-tail::after { color: var(--accent); transform: translate(1px, -1px); }
 
   strong, b { color: var(--heading); font-weight: 600; }
   /* Themed highlight: the browser's yellow hides selected text in dark mode. */
@@ -564,14 +548,17 @@
       font-size: var(--text-body);
       line-height: var(--leading-body);
   }
+  /* No paragraph ends on one short word: the browser rebalances its last lines. */
+  p, li, dd, blockquote { text-wrap: pretty; }
   .post-body > h1:first-child { margin-top: 0.6em; }
   .post-body h2 { padding-top: 0.3em; }
   .post-body ul, .post-body ol { padding-left: 1.35em; margin: 0 0 1.1em; }
   .post-body li { margin: 0.3em 0; }
   .post-body li::marker { color: var(--faint); }
 
-  /* End mark. */
-  article.post [data-prose]::after {
+  /* End mark: a faint crosshair under the last block of a post or a TIL
+     note page (not the note stream, where it would repeat). */
+  article.post [data-prose]::after, article.til-note > .note-body::after {
       content: "";
       display: block;
       width: 15px; height: 15px;
@@ -672,6 +659,10 @@
       padding: 0.5em 1em 0.5em 0;
   }
   td { border-bottom: 1px solid var(--border); padding: 0.55em 1em 0.55em 0; }
+  /* Tabular figures line digits up in a column. Align a number column right
+     in Markdown with |---:|. */
+  th, td { font-variant-numeric: tabular-nums; }
+  :is(th, td):last-child { padding-right: 0; }
   td code { white-space: nowrap; }
 
   /* ---- Projects / prose pages: ruled link lists ---- */
