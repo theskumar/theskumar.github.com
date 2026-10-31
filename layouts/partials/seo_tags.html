@@ -1,0 +1,7 @@
+{{/* Description, Open Graph, Twitter and schema.org tags. Copied from
+     hugo-bearblog when the theme was removed; the card images come from
+     partials/_funcs/get-page-images.html. */}}
+<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ if .IsPage }}{{ .Summary | plainify | htmlUnescape | truncate 160 }}{{ else }}{{ site.Params.description }}{{ end }}{{ end }}" />
+{{ template "_internal/opengraph.html" . }}
+{{ template "_internal/twitter_cards.html" . }}
+{{ template "_internal/schema.html" . }}

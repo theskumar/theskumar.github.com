@@ -2,16 +2,13 @@
 # Set to the URL for your site
 baseURL = "https://saurabh-kumar.com"
 
-# The name of this wonderful theme ;-).
-theme = 'hugo-bearblog'
-
 # Basic metadata configuration for your blog.
 title = "Saurabh Kumar"
 author = "Saurabh Kumar"
 copyright = "Copyright © 2025, Saurabh Kumar."
 locale = "en-US"
 
-# Generate a nice robots.txt for SEO
+# Publish layouts/robots.txt
 enableRobotsTXT = true
 
 # Keep tag names as written ("macos", not "Macos") in page titles.
@@ -87,42 +84,17 @@ name = "About"
 url = "/about/"
 weight = 5
 
-
-
 [params]
-# The "description" of your website. This is used in the meta data of your generated html.
+# Meta description for pages without their own (layouts/partials/seo_tags.html).
 description = "Saurabh Kumar writes about AI agents and research, backend systems, and building products."
-enablePostNavigator = false
 
 # Show the floating table of contents by default on pages that have headings.
 # Individual pages can opt out with `toc = false` in their front matter.
 # (The TOC partial itself only renders when the page actually has headings.)
 toc = true
 
-
-# These "images" are used for the structured data templates. This will show up, when
-# services like Twitter or Slack want to generate a preview of a link to your site.
-# See https://gohugo.io/templates/internal#twitter-cards and
-# https://gohugo.io/templates/internal#open-graph.
+# Share image for pages without their own card (posts and TIL notes draw one).
 images = ["/images/og.png"]
-
-# Another "title" :-). This one is used as the site_name on the Hugo's internal
-# opengraph structured data template.
-# See https://ogp.me/ and https://gohugo.io/templates/internal#open-graph.
-title = "Saurabh Kumar's Personal Site"
-
-# This theme will, by default, inject a made-with-line at the bottom of the page.
-# You can turn it off, but we would really appreciate if you don’t :-).
-# hideMadeWithLine = true
-
-# By default, this theme displays dates with a format like "02 Jan, 2006", but
-# you can customize it by setting the `dateFormat` param in your site's config
-# file. See [Hugo's Format function docs](https://gohugo.io/functions/format/)
-# for details. An example TOML config that uses [ISO
-# 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
-# dateFormat = "2006-01-02"
-# Dates read "Oct 28, 2026" everywhere; lists grouped by year show "Oct 28".
-dateFormat = "Jan 2, 2006"
 
 # Linked from each TIL note's "Discuss" link (front matter `mastodon` = status ID).
 mastodon = "https://mastodon.social/@theskumar"

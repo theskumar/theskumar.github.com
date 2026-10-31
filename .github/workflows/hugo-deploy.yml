@@ -31,7 +31,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
         with:
-          submodules: recursive
           fetch-depth: 0
 
       - name: Setup Hugo
@@ -40,7 +39,6 @@ jobs:
           # Pinned: the site relies on content adapters and resources.Publish.
           # Bump deliberately, after a local build with the new version.
           hugo-version: "0.168.0"
-          extended: true
 
       - name: Check TIL notes and tags
         run: python3 scripts/check-til.py

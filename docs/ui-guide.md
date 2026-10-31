@@ -72,6 +72,5 @@ Full brand spec: `docs/brand/BRAND.md`. Writing voice: `docs/STYLE-GUIDE.md`.
 - No new colors, no new fonts, no shadows heavier than the TOC panel's.
 - Homepage GitHub stars are fetched at build time (`resources.GetRemote`), with
   a hardcoded fallback in `about.html`.
-- Hugo bearblog theme is still the base (submodule); nearly everything visible
-  is overridden locally. `hugo server -D` to develop; screenshots may catch
+- There is no theme: every template is in `layouts/`. `hugo server -D` to develop; screenshots may catch
   paused view-transition fades in a background tab — nudge with a scroll first.

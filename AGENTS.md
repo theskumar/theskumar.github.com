@@ -1,6 +1,6 @@
 # agents.md
 
-Hugo static site → GitHub Pages. Theme: `hugo-bearblog` (git submodule).
+Hugo static site → GitHub Pages. No theme: every template is in `layouts/` (it began as `hugo-bearblog`, removed Oct 2026).
 
 ## Structure
 
@@ -8,7 +8,7 @@ Hugo static site → GitHub Pages. Theme: `hugo-bearblog` (git submodule).
 hugo.toml          # site config, permalinks, build settings
 content/           # markdown content (blog/, _index.md, now.md)
 layouts/           # template overrides (_default/, partials/)
-themes/            # git submodules (hugo-bearblog, hugo-admonitions, typo)
+archetypes/        # front matter for `hugo new content/blog/…`
 static/            # images, files
 assets/            # social card background and fonts (og/, fonts/)
 public/            # build output (git-ignored)
@@ -22,7 +22,6 @@ scripts/           # check-til.py, check-tokens.py (CI + pre-commit)
 hugo server -D --openBrowser   # dev server (drafts enabled)
 hugo --minify                  # production build
 hugo new content/blog/post.md  # new post
-git submodule update --init --recursive  # init themes after clone
 ```
 
 ## Blog Post Front Matter (TOML)
@@ -96,8 +95,6 @@ Nothing posts to social media automatically. Saurabh posts by hand (X, Mastodon,
 
 ## Notes
 
-- Hugo extended required (SCSS)
-- Clone with `--recursive` for submodules
 - Custom styles: `layouts/partials/style.html`. Sizes, colors, line heights and tracking come from the tokens in its `:root`; `docs/brand/design-tokens.md` documents them and its rules (serif for display only, one body style). `scripts/check-tokens.py` (CI and pre-commit) fails when the two disagree or a component sets a literal font size.
 - Syntax highlighting: `syntax-dark.css`, `syntax-light.css`
 - `.pi/design/` is a copy of the tokens for Pi Pocket's Design canvas (DTCG tokens, a dark mode, component specimens). `style.html` stays the source of truth: when a token changes there, update it with Pi Pocket's `design_system` tool too. `dist/` is generated and git-ignored.
