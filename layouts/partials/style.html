@@ -266,19 +266,55 @@
   .theme-toggle {
       appearance: none;
       background: transparent;
-      border: 1px solid transparent;
+      border: 0;
       border-radius: var(--radius);
       color: var(--muted);
       width: 44px; height: 44px; margin: -6px; /* 44px touch target; the negative margin keeps the 32px footprint */
       display: inline-flex; align-items: center; justify-content: center;
       cursor: pointer;
-      transition: color 0.18s ease, border-color 0.18s ease;
+      transition: color 0.18s ease;
   }
-  .theme-toggle:hover { color: var(--heading); border-color: var(--border-strong); }
-  .theme-toggle svg { transition: opacity 0.25s ease; }
+  /* Hover is colour plus the icon's motion (below); no box. */
+  .theme-toggle:hover { color: var(--heading); }
+  .theme-toggle svg { display: block; overflow: visible; }
+  .theme-toggle svg * { transform-box: fill-box; transform-origin: center; }
+  /* The icon shows the current theme. */
   .theme-toggle .moon-icon { display: none; }
   [data-theme="dark"] .theme-toggle .sun-icon { display: none; }
   [data-theme="dark"] .theme-toggle .moon-icon { display: block; }
+
+  /* Theme switch motion, after dropday.ai. header.html sets the classes.
+     1. The new theme grows as a circle from the click: a same-page view
+        transition (html.theme-vt, with --vt-x, --vt-y and --vt-r).
+     2. The new icon pops in with it (.is-popping).
+     3. Then the icon settles (.is-settling): the sun's rays spin in and its
+        core pulses; the moon rocks. Hover with a mouse plays the same. */
+  @keyframes toggle-pop { 0% { opacity: 0; transform: scale(0.5); } 70% { transform: scale(1.12); } 100% { opacity: 1; transform: scale(1); } }
+  @keyframes sun-spin-in { 0% { opacity: 0.4; transform: rotate(-90deg) scale(0.8); } 100% { opacity: 1; transform: none; } }
+  @keyframes sun-pulse { 0%, 100% { transform: none; } 45% { transform: scale(1.15); } }
+  @keyframes moon-rock { 0%, 100% { transform: rotate(0); } 30% { transform: rotate(-18deg) scale(1.04); } 65% { transform: rotate(8deg); } }
+  @keyframes theme-reveal {
+      from { clip-path: circle(0 at var(--vt-x) var(--vt-y)); }
+      to { clip-path: circle(var(--vt-r) at var(--vt-x) var(--vt-y)); }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+      .theme-toggle.is-popping svg { animation: toggle-pop 0.45s cubic-bezier(0.16, 1, 0.3, 1) both; }
+      .theme-toggle.is-settling .sun-rays { animation: sun-spin-in 0.65s cubic-bezier(0.16, 1, 0.3, 1); }
+      .theme-toggle.is-settling .sun-core { animation: sun-pulse 0.65s cubic-bezier(0.16, 1, 0.3, 1); }
+      .theme-toggle.is-settling .moon-face { animation: moon-rock 0.65s cubic-bezier(0.6, 0, 0.3, 1); }
+      @media (hover: hover) and (pointer: fine) {
+          .theme-toggle:hover .sun-rays { animation: sun-spin-in 0.65s cubic-bezier(0.16, 1, 0.3, 1); }
+          .theme-toggle:hover .sun-core { animation: sun-pulse 0.65s cubic-bezier(0.16, 1, 0.3, 1); }
+          .theme-toggle:hover .moon-face { animation: moon-rock 0.65s cubic-bezier(0.6, 0, 0.3, 1); }
+      }
+      html.theme-vt::view-transition-old(root) { animation: none; }
+      html.theme-vt::view-transition-new(root) { animation: theme-reveal 0.4s cubic-bezier(0.6, 0, 0.3, 1); }
+      /* Let the circle cover the header too: drop its page-load transition name. */
+      html.theme-vt body > header { view-transition-name: none; }
+      /* The page inside the circle is live: show the new colours at once. */
+      html.theme-vt *, html.theme-vt *::before, html.theme-vt *::after { transition: none !important; }
+  }
+  /* Browsers without view transitions: a colour cross-fade instead of the circle. */
   html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *::after {
       transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, fill 0.4s ease, stroke 0.4s ease !important;
   }
@@ -944,7 +980,6 @@
       .js .reveal { opacity: 1; transform: none; transition: none; }
       .entry > a:hover { transform: none; }
       .toc-rail, .toc-panel, .toc-rail .toc-nav a { transition: none; }
-      .theme-toggle svg { transition: opacity 0.01ms; }
       .hero-portrait .blob-outline { transition: none; }
       html.theme-anim, html.theme-anim *,
       html.theme-anim *::before, html.theme-anim *::after { transition: none !important; }

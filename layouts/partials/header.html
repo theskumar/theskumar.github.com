@@ -14,19 +14,13 @@
     <span class="brand">Saurabh Kumar</span>
   </a>
   <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Dark mode" aria-pressed="false" title="Toggle dark mode">
-    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="12" cy="12" r="5"/>
-      <line x1="12" y1="1" x2="12" y2="3"/>
-      <line x1="12" y1="21" x2="12" y2="23"/>
-      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-      <line x1="1" y1="12" x2="3" y2="12"/>
-      <line x1="21" y1="12" x2="23" y2="12"/>
-      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+    {{/* Lucide sun and moon. The classes drive the motion in style.html. */}}
+    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle class="sun-core" cx="12" cy="12" r="4"/>
+      <g class="sun-rays"><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></g>
     </svg>
-    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path class="moon-face" d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/>
     </svg>
   </button>
 </div>
@@ -42,26 +36,70 @@
 
 <script>
   // Theme is initialised in <head> (custom_head.html) before paint. Here we only
-  // handle the click: flip data-theme + persist, and briefly enable a colour cross-fade.
+  // handle the click: flip data-theme + persist, with the motion in style.html:
+  // a circle reveal from the click, the new icon popping in, then settling.
   document.addEventListener('DOMContentLoaded', function () {
     var el = document.documentElement;
     var btn = document.getElementById('theme-toggle');
-    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var timer;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var timer, active;
     // aria-pressed tells screen readers whether dark mode is on.
     btn.setAttribute('aria-pressed', el.getAttribute('data-theme') === 'dark' ? 'true' : 'false');
-    btn.addEventListener('click', function () {
-      var next = el.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      if (!reduce) {
-        el.classList.add('theme-anim');
-        clearTimeout(timer);
-        timer = window.setTimeout(function () { el.classList.remove('theme-anim'); }, 500);
-      }
+
+    function apply(next, pop) {
+      // The pop class goes on with the new theme, so only the icon that becomes visible pops.
+      if (pop) btn.classList.add('is-popping');
       el.setAttribute('data-theme', next);
       btn.setAttribute('aria-pressed', next === 'dark' ? 'true' : 'false');
       localStorage.setItem('theme', next);
       var m = document.querySelector('meta[name="theme-color"]');
       if (m) m.setAttribute('content', next === 'dark' ? '#171411' : '#F7F4ED');
+    }
+    // Resolves when the new icon's pop ends.
+    function popEnd() {
+      return new Promise(function (resolve) {
+        btn.addEventListener('animationend', function done(e) {
+          if (e.animationName !== 'toggle-pop') return;
+          btn.removeEventListener('animationend', done);
+          resolve();
+        });
+      });
+    }
+    function settle() {
+      btn.classList.remove('is-settling');
+      void btn.offsetWidth; // restart after a quick second click
+      btn.classList.add('is-settling');
+    }
+
+    btn.addEventListener('click', function (event) {
+      var next = el.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      if (reduce.matches) return apply(next, false);
+      var popped = popEnd();
+      if (!document.startViewTransition) {
+        // No view transitions: cross-fade the colours instead of the circle.
+        el.classList.add('theme-anim');
+        clearTimeout(timer);
+        timer = window.setTimeout(function () { el.classList.remove('theme-anim'); }, 500);
+        apply(next, true);
+        popped.then(settle);
+        return;
+      }
+      // The circle starts at the pointer; a key press (detail 0) starts it at the button.
+      var r = btn.getBoundingClientRect();
+      var x = event.detail > 0 ? event.clientX : r.left + r.width / 2;
+      var y = event.detail > 0 ? event.clientY : r.top + r.height / 2;
+      el.style.setProperty('--vt-x', x + 'px');
+      el.style.setProperty('--vt-y', y + 'px');
+      el.style.setProperty('--vt-r', Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y)) + 'px');
+      el.classList.add('theme-vt');
+      var t = active = document.startViewTransition(function () { apply(next, true); });
+      t.finished.finally(function () { if (active === t) el.classList.remove('theme-vt'); });
+      // Settle once the circle has covered the page and the pop has ended.
+      Promise.all([t.finished.catch(function () {}), popped]).then(settle);
+    });
+    btn.addEventListener('animationend', function (e) {
+      if (e.animationName === 'toggle-pop') btn.classList.remove('is-popping');
+      if (e.animationName === 'sun-spin-in' || e.animationName === 'moon-rock') btn.classList.remove('is-settling');
     });
   });
 </script>
