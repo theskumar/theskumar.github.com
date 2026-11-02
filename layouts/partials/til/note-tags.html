@@ -1,11 +1,9 @@
-{{/* Footer of a note in a list: tag chips, then the Mastodon thread.
+{{/* Tag chips of a note in a list.
      Context: dict "page" "exclude" (tag to leave out). */}}
 {{ $tags := slice }}
 {{ range .page.GetTerms "tags" }}{{ if ne .Data.Term $.exclude }}{{ $tags = $tags | append . }}{{ end }}{{ end }}
-{{ $discuss := partial "til/discuss-url.html" .page }}
-{{ if or $tags $discuss }}
+{{ with $tags }}
 <div class="note-tags">
-  {{- range $tags }}<a href="{{ .RelPermalink }}" class="tag">{{ .Data.Term }}</a>{{ end -}}
-  {{- with $discuss }}<a href="{{ . }}" class="note-discuss">Discuss</a>{{ end -}}
+  {{- range . }}<a href="{{ .RelPermalink }}" class="tag">{{ .Data.Term }}</a>{{ end -}}
 </div>
 {{ end }}

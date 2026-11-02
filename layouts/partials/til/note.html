@@ -1,5 +1,6 @@
 {{/* A note in a list (home, week, tag and series pages), shown in full:
-     title (links to the note's page), date, body, tags. On wide screens the
+     title (links to the note's page), date, body, a Discuss link to the
+     Mastodon thread (if any), tags. On wide screens the
      date and tags sit in a left margin. The id keeps old
      /til/weekly/…html#anchor links working.
      Context: dict "page" "exclude" (tag to leave out) "h" (title heading
@@ -16,5 +17,8 @@
   <time class="note-date" datetime="{{ $p.Date.Format "2006-01-02" }}">{{ $p.Date.Format "Jan 2, 2006" }}</time>
   {{- end }}
   <div class="note-body">{{ partial "note-content.html" $p }}</div>
+  {{- with partial "til/discuss-url.html" $p }}
+  <p class="note-discuss"><a href="{{ . }}">Discuss on Mastodon <span aria-hidden="true">→</span></a></p>
+  {{- end }}
   {{ partial "til/note-tags.html" (dict "page" $p "exclude" .exclude) }}
 </li>

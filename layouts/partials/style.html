@@ -851,14 +851,14 @@
   :is(nav.site-nav a, a.title, .theme-toggle, .eyebrow a, .post-meta a, .page-md a, .page-md-copy,
       footer.site-footer a, .panel h2 a, .pager-nav a, .btn,
       .note-title a, .post-body details > summary),
-  :is(.note-tags .tag, .note-discuss, .social-row a, a.note-date, .quote figcaption a) { position: relative; }
+  :is(.note-tags .tag, .note-discuss a, .social-row a, a.note-date, .quote figcaption a) { position: relative; }
   :is(nav.site-nav a, a.title, .theme-toggle, .eyebrow a, .post-meta a, .page-md a, .page-md-copy,
       footer.site-footer a, .panel h2 a, .pager-nav a, .btn,
       .note-title a, .post-body details > summary)::after {
       content: ""; position: absolute; left: 50%; top: 50%;
       width: max(100%, var(--tap)); height: max(100%, var(--tap)); transform: translate(-50%, -50%);
   }
-  :is(.note-tags .tag, .note-discuss, .social-row a, a.note-date, .quote figcaption a)::after {
+  :is(.note-tags .tag, .note-discuss a, .social-row a, a.note-date, .quote figcaption a)::after {
       content: ""; position: absolute; left: 50%; top: 50%;
       width: max(100%, var(--tap-dense)); height: max(100%, var(--tap-dense)); transform: translate(-50%, -50%);
   }
@@ -904,11 +904,11 @@
 
   .notes-list { list-style: none; margin: 0; padding: 0; }
   /* A note in a list (partials/til/note.html). Narrow screens stack date,
-     title, body, tags. Wide screens move date and tags to a left margin,
-     so the body keeps a reading-width line. */
+     title, body, Discuss link, tags. Wide screens move date and tags to a
+     left margin, so the body keeps a reading-width line. */
   .notes-list > .note {
       display: grid; grid-template-columns: minmax(0, 1fr);
-      grid-template-areas: "date" "title" "body" "tags";
+      grid-template-areas: "date" "title" "body" "discuss" "tags";
       padding: var(--space-6) 0; border-bottom: 1px solid var(--hairline);
   }
   .notes-list > .note:first-child { padding-top: var(--space-2); }
@@ -930,21 +930,25 @@
   @media (min-width: 760px) {
       .notes-list > .note {
           grid-template-columns: var(--margin-col) minmax(0, var(--measure));
-          grid-template-areas: "date title" "tags body";
-          grid-template-rows: auto 1fr;
+          grid-template-areas: "date title" "tags body" "tags discuss";
+          grid-template-rows: auto auto 1fr;
           column-gap: var(--margin-gap);
       }
       /* The quote starts on the date's line. */
-      .notes-list > .note.is-quote { grid-template-areas: "date body" "tags body"; }
+      .notes-list > .note.is-quote { grid-template-areas: "date body" "tags body" "tags discuss"; }
       .note-date, .note-title { align-self: baseline; }
       .note-date { margin: 0; }
       .note > .note-tags {
           margin-top: 0.35rem; flex-direction: column; align-items: flex-start; align-self: start; gap: 6px;
       }
-      .note > .note-tags .note-discuss { margin: var(--space-1) 0 0; }
   }
-  .note-discuss { font-family: var(--font-mono); font-size: var(--text-tag); color: var(--muted); margin-left: var(--space-2); text-decoration: none; }
-  .note-discuss:hover { color: var(--accent); }
+  /* Link to the note's Mastodon thread, under the body. */
+  .note-discuss {
+      grid-area: discuss; align-self: start; margin: var(--space-4) 0 0;
+      font-family: var(--font-mono); font-size: var(--text-label); letter-spacing: var(--tracking-mono);
+  }
+  .note-discuss a { color: var(--muted); text-decoration: none; }
+  .note-discuss a:hover { color: var(--accent); }
   /* Newer/older links (partials/pager.html): newer left, older right. */
   .pager-nav {
       display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin-top: var(--space-7); padding-top: var(--space-5);
