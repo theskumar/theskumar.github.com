@@ -284,8 +284,8 @@
   [data-theme="dark"] .theme-toggle .moon-icon { display: block; }
 
   /* Theme switch motion, after dropday.ai. header.html sets the classes.
-     1. The new theme grows as a circle from the click: a same-page view
-        transition (html.theme-vt, with --vt-x, --vt-y and --vt-r).
+     1. The new theme cross-fades over the old one: a same-page view
+        transition (html.theme-vt).
      2. The new icon pops in with it (.is-popping).
      3. Then the icon settles (.is-settling): the sun's rays spin in and its
         core pulses; the moon rocks. Hover with a mouse plays the same. */
@@ -293,10 +293,6 @@
   @keyframes sun-spin-in { 0% { opacity: 0.4; transform: rotate(-90deg) scale(0.8); } 100% { opacity: 1; transform: none; } }
   @keyframes sun-pulse { 0%, 100% { transform: none; } 45% { transform: scale(1.15); } }
   @keyframes moon-rock { 0%, 100% { transform: rotate(0); } 30% { transform: rotate(-18deg) scale(1.04); } 65% { transform: rotate(8deg); } }
-  @keyframes theme-reveal {
-      from { clip-path: circle(0 at var(--vt-x) var(--vt-y)); }
-      to { clip-path: circle(var(--vt-r) at var(--vt-x) var(--vt-y)); }
-  }
   @media (prefers-reduced-motion: no-preference) {
       .theme-toggle.is-popping svg { animation: toggle-pop 0.45s cubic-bezier(0.16, 1, 0.3, 1) both; }
       .theme-toggle.is-settling .sun-rays { animation: sun-spin-in 0.65s cubic-bezier(0.16, 1, 0.3, 1); }
@@ -307,16 +303,21 @@
           .theme-toggle:hover .sun-core { animation: sun-pulse 0.65s cubic-bezier(0.16, 1, 0.3, 1); }
           .theme-toggle:hover .moon-face { animation: moon-rock 0.65s cubic-bezier(0.6, 0, 0.3, 1); }
       }
+      /* The old page stays opaque underneath while the new one fades in on top:
+         no mid-fade dip. Normal blending, not the default plus-lighter, which
+         brightens the overlap into a flash. */
+      html.theme-vt::view-transition-old(root),
+      html.theme-vt::view-transition-new(root) { mix-blend-mode: normal; }
       html.theme-vt::view-transition-old(root) { animation: none; }
-      html.theme-vt::view-transition-new(root) { animation: theme-reveal 0.4s cubic-bezier(0.6, 0, 0.3, 1); }
-      /* Let the circle cover the header too: drop its page-load transition name. */
+      html.theme-vt::view-transition-new(root) { animation: vt-fade-in 0.6s cubic-bezier(0.4, 0, 0.2, 1) both; }
+      /* Fade the header with the page: drop its page-load transition name. */
       html.theme-vt body > header { view-transition-name: none; }
-      /* The page inside the circle is live: show the new colours at once. */
+      /* The new snapshot must show the final colours, not mid-transition ones. */
       html.theme-vt *, html.theme-vt *::before, html.theme-vt *::after { transition: none !important; }
   }
-  /* Browsers without view transitions: a colour cross-fade instead of the circle. */
+  /* Browsers without view transitions: a colour cross-fade. */
   html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *::after {
-      transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, fill 0.4s ease, stroke 0.4s ease !important;
+      transition: background-color 0.5s ease, color 0.4s ease, border-color 0.4s ease, fill 0.4s ease, stroke 0.4s ease !important;
   }
 
   main { flex: 1 0 auto; width: 100%; }
@@ -588,9 +589,14 @@
   p, li, dd, blockquote { text-wrap: pretty; }
   .post-body > h1:first-child { margin-top: 0.6em; }
   .post-body h2 { padding-top: 0.3em; }
-  .post-body ul, .post-body ol { padding-left: 1.35em; margin: 0 0 1.1em; }
-  .post-body li { margin: 0.3em 0; }
-  .post-body li::marker { color: var(--faint); }
+  /* .note-body too: in the stream a note sits inside ul.notes-list, so its
+     lists would get nested-list defaults (no margin, hollow markers). */
+  :is(.post-body, .note-body) ul, :is(.post-body, .note-body) ol { padding-left: 1.35em; margin: 0 0 1.1em; }
+  :is(.post-body, .note-body) ul { list-style-type: disc; }
+  :is(.post-body, .note-body) :is(ul, ol) :is(ul, ol) { margin: 0.3em 0 0; }
+  :is(.post-body, .note-body) :is(ul, ol) ul { list-style-type: circle; }
+  :is(.post-body, .note-body) li { margin: 0.3em 0; }
+  :is(.post-body, .note-body) li::marker { color: var(--faint); }
 
   /* End mark: a faint crosshair under the last block of a post or a TIL
      note page (not the note stream, where it would repeat). */

@@ -37,7 +37,7 @@
 <script>
   // Theme is initialised in <head> (custom_head.html) before paint. Here we only
   // handle the click: flip data-theme + persist, with the motion in style.html:
-  // a circle reveal from the click, the new icon popping in, then settling.
+  // a cross-fade to the new theme, the new icon popping in, then settling.
   document.addEventListener('DOMContentLoaded', function () {
     var el = document.documentElement;
     var btn = document.getElementById('theme-toggle');
@@ -71,30 +71,23 @@
       btn.classList.add('is-settling');
     }
 
-    btn.addEventListener('click', function (event) {
+    btn.addEventListener('click', function () {
       var next = el.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
       if (reduce.matches) return apply(next, false);
       var popped = popEnd();
       if (!document.startViewTransition) {
-        // No view transitions: cross-fade the colours instead of the circle.
+        // No view transitions: cross-fade the colours instead.
         el.classList.add('theme-anim');
         clearTimeout(timer);
-        timer = window.setTimeout(function () { el.classList.remove('theme-anim'); }, 500);
+        timer = window.setTimeout(function () { el.classList.remove('theme-anim'); }, 600);
         apply(next, true);
         popped.then(settle);
         return;
       }
-      // The circle starts at the pointer; a key press (detail 0) starts it at the button.
-      var r = btn.getBoundingClientRect();
-      var x = event.detail > 0 ? event.clientX : r.left + r.width / 2;
-      var y = event.detail > 0 ? event.clientY : r.top + r.height / 2;
-      el.style.setProperty('--vt-x', x + 'px');
-      el.style.setProperty('--vt-y', y + 'px');
-      el.style.setProperty('--vt-r', Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y)) + 'px');
       el.classList.add('theme-vt');
       var t = active = document.startViewTransition(function () { apply(next, true); });
       t.finished.finally(function () { if (active === t) el.classList.remove('theme-vt'); });
-      // Settle once the circle has covered the page and the pop has ended.
+      // Settle once the fade has ended and the pop has ended.
       Promise.all([t.finished.catch(function () {}), popped]).then(settle);
     });
     btn.addEventListener('animationend', function (e) {
