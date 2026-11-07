@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 176">
+  <rect class="line" x="8" y="24" width="132" height="44" rx="3"/>
+  <text class="label" x="20" y="51">shell starts</text>
+  <path class="line" d="M140 46H172M166 42L172 46L166 50"/>
+  <rect class="line" x="172" y="24" width="132" height="44" rx="3"/>
+  <text class="label" x="184" y="51">cache fresh?</text>
+  <path class="line" d="M304 46H392M386 42L392 46L386 50"/>
+  <text class="label" x="336" y="38">yes</text>
+  <rect class="line" x="392" y="24" width="80" height="44" rx="3"/>
+  <text class="label" x="404" y="51">source</text>
+  <path class="signal" d="M238 68V116M234 110L238 116L242 110"/>
+  <text class="label-signal" x="250" y="98">no</text>
+  <rect class="tint" x="172" y="116" width="100" height="44" rx="3"/>
+  <text class="label-signal" x="184" y="143">run tool</text>
+  <path class="signal" d="M272 138H304M298 134L304 138L298 142"/>
+  <rect class="tint" x="304" y="116" width="124" height="44" rx="3"/>
+  <text class="label-signal" x="316" y="143">write cache</text>
+  <path class="signal" d="M420 116V68M416 74L420 68L424 74"/>
+</svg>

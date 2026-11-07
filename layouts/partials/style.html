@@ -667,6 +667,68 @@
       .quote blockquote::before { right: auto; left: 0; margin: 0; font-size: var(--text-h2); transform: translateY(-0.05em); }
   }
 
+  /* A diagram (shortcodes/diagram.html): an SVG from assets/diagrams/,
+     inlined so these classes reach it and it follows the theme. The SVG
+     carries no colors of its own. .agents/skills/diagram/SKILL.md has the
+     vocabulary; scripts/diagrams.py checks it. Max width = the viewBox
+     width (480), so a diagram never scales up and labels stay label-sized. */
+  .diagram { margin: var(--space-6) 0; }
+  .diagram-art { max-width: 480px; margin: 0 auto; }
+  .diagram-art svg { display: block; width: 100%; height: auto; overflow: visible; }
+  .diagram-art svg * { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-art .line   { stroke: var(--heading); stroke-width: 1.5; }
+  .diagram-art .guide  { stroke: var(--faint); stroke-width: 1; }
+  .diagram-art .signal { stroke: var(--accent); stroke-width: 1.75; }
+  .diagram-art .tint   { stroke: var(--accent); stroke-width: 1.75; fill: var(--accent-soft); }
+  .diagram-art .ink    { stroke: none; fill: var(--heading); }
+  .diagram-art .ember  { stroke: none; fill: var(--accent); }
+  .diagram-art .dash   { stroke-dasharray: 5 4; }
+  .diagram-art .label, .diagram-art .label-signal {
+      stroke: none; fill: var(--text);
+      font-family: var(--font-mono); font-size: var(--text-small);
+  }
+  .diagram-art .label-signal { fill: var(--accent); }
+  .diagram figcaption {
+      max-width: 480px; margin: var(--space-3) auto 0;
+      font-size: var(--text-small); color: var(--muted); line-height: var(--leading-ui);
+  }
+  .diagram figcaption > :first-child { margin-top: 0; }
+  .diagram figcaption > :last-child { margin-bottom: 0; }
+
+  /* Diagram motion (BRAND.md §5: things are drawn, not bounced). The SVG
+     file is the finished drawing; motion only decides how it appears.
+     custom_body.html adds .is-armed (JS on, motion allowed), .is-playing
+     (scrolled into view) and .is-visible (on screen, for loops).
+     step-N: groups appear in order. draw: a stroke draws on (pathLength="1").
+     flow: dashes move along a path, while on screen. */
+  .diagram-art .step-2 { --diagram-delay: 0.8s; }
+  .diagram-art .step-3 { --diagram-delay: 1.6s; }
+  .diagram-art .step-4 { --diagram-delay: 2.4s; }
+  @keyframes diagram-step { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes diagram-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+  @keyframes diagram-flow { to { stroke-dashoffset: -18; } }
+  @media (prefers-reduced-motion: no-preference) {
+      .diagram.is-armed:not(.is-playing) :is(.step-1, .step-2, .step-3, .step-4) { opacity: 0; }
+      .diagram.is-armed:not(.is-playing) .draw { stroke-dasharray: 1; stroke-dashoffset: 1; }
+      .diagram.is-playing :is(.step-1, .step-2, .step-3, .step-4) {
+          animation: diagram-step 0.5s cubic-bezier(0.16, 1, 0.3, 1) var(--diagram-delay, 0s) both;
+      }
+      .diagram.is-playing .draw {
+          stroke-dasharray: 1;
+          animation: diagram-draw 1.1s cubic-bezier(0.6, 0, 0.3, 1) var(--diagram-delay, 0s) both;
+      }
+      .diagram.is-visible .flow { stroke-dasharray: 6 12; animation: diagram-flow 1.2s linear infinite; }
+  }
+  .diagram-replay {
+      display: block; margin: var(--space-2) auto 0; padding: 0 var(--space-2);
+      background: none; border: 0; cursor: pointer;
+      font-family: var(--font-mono); font-size: var(--text-label); letter-spacing: var(--tracking-caps);
+      text-transform: uppercase; color: var(--muted);
+      transition: color 0.18s ease;
+  }
+  .diagram-replay:hover { color: var(--accent); }
+  .diagram-replay:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: var(--radius-sm); }
+
   details {
       border: 1px solid var(--border);
       border-radius: var(--radius);
@@ -850,11 +912,11 @@
      These elements must not use ::after for anything else. */
   :is(nav.site-nav a, a.title, .theme-toggle, .eyebrow a, .post-meta a, .page-md a, .page-md-copy,
       footer.site-footer a, .panel h2 a, .pager-nav a, .btn,
-      .note-title a, .post-body details > summary),
+      .note-title a, .post-body details > summary, .diagram-replay),
   :is(.note-tags .tag, .note-discuss a, .social-row a, a.note-date, .quote figcaption a) { position: relative; }
   :is(nav.site-nav a, a.title, .theme-toggle, .eyebrow a, .post-meta a, .page-md a, .page-md-copy,
       footer.site-footer a, .panel h2 a, .pager-nav a, .btn,
-      .note-title a, .post-body details > summary)::after {
+      .note-title a, .post-body details > summary, .diagram-replay)::after {
       content: ""; position: absolute; left: 50%; top: 50%;
       width: max(100%, var(--tap)); height: max(100%, var(--tap)); transform: translate(-50%, -50%);
   }

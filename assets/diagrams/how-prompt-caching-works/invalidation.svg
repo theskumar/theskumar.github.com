@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 228">
+  <text class="label" x="8" y="22">Edit system</text>
+  <rect class="tint" x="8" y="32" width="88" height="36" rx="3"/>
+  <text class="label-signal" x="20" y="55">System</text>
+  <rect class="tint" x="102" y="32" width="88" height="36" rx="3"/>
+  <text class="label-signal" x="114" y="55">Tools</text>
+  <rect class="tint" x="196" y="32" width="88" height="36" rx="3"/>
+  <text class="label-signal" x="208" y="55">Turn 1</text>
+  <rect class="tint" x="290" y="32" width="88" height="36" rx="3"/>
+  <text class="label-signal" x="302" y="55">Turn 2</text>
+  <rect class="tint" x="384" y="32" width="88" height="36" rx="3"/>
+  <text class="label-signal" x="396" y="55">Turn 3</text>
+  <text class="label" x="8" y="98">Edit turn 1</text>
+  <rect class="line" x="8" y="108" width="88" height="36" rx="3"/>
+  <text class="label" x="20" y="131">System</text>
+  <rect class="line" x="102" y="108" width="88" height="36" rx="3"/>
+  <text class="label" x="114" y="131">Tools</text>
+  <rect class="tint" x="196" y="108" width="88" height="36" rx="3"/>
+  <text class="label-signal" x="208" y="131">Turn 1</text>
+  <rect class="tint" x="290" y="108" width="88" height="36" rx="3"/>
+  <text class="label-signal" x="302" y="131">Turn 2</text>
+  <rect class="tint" x="384" y="108" width="88" height="36" rx="3"/>
+  <text class="label-signal" x="396" y="131">Turn 3</text>
+  <text class="label" x="8" y="174">Only append</text>
+  <rect class="line" x="8" y="184" width="88" height="36" rx="3"/>
+  <text class="label" x="20" y="207">System</text>
+  <rect class="line" x="102" y="184" width="88" height="36" rx="3"/>
+  <text class="label" x="114" y="207">Tools</text>
+  <rect class="line" x="196" y="184" width="88" height="36" rx="3"/>
+  <text class="label" x="208" y="207">Turn 1</text>
+  <rect class="line" x="290" y="184" width="88" height="36" rx="3"/>
+  <text class="label" x="302" y="207">Turn 2</text>
+  <rect class="tint" x="384" y="184" width="88" height="36" rx="3"/>
+  <text class="label-signal" x="396" y="207">Turn 3</text>
+</svg>

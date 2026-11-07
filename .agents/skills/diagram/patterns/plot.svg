@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 240">
+  <path class="guide" d="M48 24V200H464"/>
+  <path class="guide" d="M42 30L48 24L54 30M458 194L464 200L458 206"/>
+  <text class="label" x="60" y="32">score</text>
+  <text class="label" x="384" y="228">mentions</text>
+  <path class="line dash" d="M48 200L128 56"/>
+  <text class="label" x="140" y="60">linear</text>
+  <path class="signal draw" pathLength="1" d="M48 200C100 106 180 64 456 52"/>
+  <text class="label-signal" x="280" y="100">saturating</text>
+</svg>

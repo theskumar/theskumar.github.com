@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 320">
+  <rect class="line" x="40" y="40" width="260" height="64" rx="3"/>
+  <path class="line" d="M300 72H324M316 66L324 72L316 78"/>
+  <rect class="line" x="324" y="40" width="136" height="64" rx="3"/>
+  <rect class="line" x="40" y="128" width="100" height="64" rx="3"/>
+  <path class="line" d="M140 160H324M316 154L324 160L316 166"/>
+  <rect class="line" x="324" y="128" width="136" height="64" rx="3"/>
+  <rect class="tint" x="40" y="216" width="260" height="64" rx="3"/>
+  <path class="signal" d="M300 248H324M316 242L324 248L316 254"/>
+  <rect class="tint" x="324" y="216" width="136" height="64" rx="3"/>
+</svg>

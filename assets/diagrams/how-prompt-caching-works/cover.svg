@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 320">
+  <rect class="tint" x="32" y="40" width="100" height="56" rx="3"/>
+  <rect class="tint" x="144" y="40" width="100" height="56" rx="3"/>
+  <rect class="tint" x="256" y="40" width="100" height="56" rx="3"/>
+  <rect class="tint" x="368" y="40" width="100" height="56" rx="3"/>
+  <rect class="line" x="32" y="132" width="100" height="56" rx="3"/>
+  <rect class="tint" x="144" y="132" width="100" height="56" rx="3"/>
+  <rect class="tint" x="256" y="132" width="100" height="56" rx="3"/>
+  <rect class="tint" x="368" y="132" width="100" height="56" rx="3"/>
+  <rect class="line" x="32" y="224" width="100" height="56" rx="3"/>
+  <rect class="line" x="144" y="224" width="100" height="56" rx="3"/>
+  <rect class="line" x="256" y="224" width="100" height="56" rx="3"/>
+  <rect class="tint" x="368" y="224" width="100" height="56" rx="3"/>
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 320">
+  <rect class="line" x="40" y="48" width="64" height="56" rx="3"/>
+  <path class="guide dash" d="M104 76H396"/>
+  <rect class="line" x="396" y="48" width="64" height="56" rx="3"/>
+  <rect class="tint" x="104" y="124" width="292" height="56" rx="3"/>
+  <rect class="line" x="40" y="220" width="64" height="56" rx="3"/>
+  <rect class="line" x="132" y="220" width="64" height="56" rx="3"/>
+  <rect class="line" x="224" y="220" width="64" height="56" rx="3"/>
+  <rect class="line" x="316" y="220" width="64" height="56" rx="3"/>
+  <rect class="line" x="408" y="220" width="52" height="56" rx="3"/>
+</svg>

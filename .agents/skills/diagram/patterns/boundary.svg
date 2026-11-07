@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 268">
+  <text class="label" x="8" y="20">Native</text>
+  <rect class="guide" x="8" y="32" width="300" height="92" rx="3"/>
+  <text class="label" x="20" y="54">app process</text>
+  <rect class="line" x="20" y="68" width="88" height="40" rx="3"/>
+  <text class="label" x="32" y="93">Django</text>
+  <path class="line" d="M108 88H140M134 84L140 88L134 92"/>
+  <rect class="tint" x="140" y="68" width="152" height="40" rx="3"/>
+  <text class="label-signal" x="152" y="93">psycopg pool</text>
+  <path class="line flow" d="M292 88H362"/>
+  <path class="line" d="M358 84L364 88L358 92"/>
+  <rect class="line" x="364" y="68" width="108" height="40" rx="3"/>
+  <text class="label" x="376" y="93">Postgres</text>
+  <text class="label" x="8" y="164">External</text>
+  <rect class="guide" x="8" y="176" width="124" height="84" rx="3"/>
+  <text class="label" x="20" y="198">app process</text>
+  <rect class="line" x="20" y="212" width="88" height="40" rx="3"/>
+  <text class="label" x="32" y="237">Django</text>
+  <path class="line" d="M108 232H172M166 228L172 232L166 236"/>
+  <rect class="tint" x="172" y="212" width="120" height="40" rx="3"/>
+  <text class="label-signal" x="184" y="237">PgBouncer</text>
+  <path class="line flow" d="M292 232H362"/>
+  <path class="line" d="M358 228L364 232L358 236"/>
+  <rect class="line" x="364" y="212" width="108" height="40" rx="3"/>
+  <text class="label" x="376" y="237">Postgres</text>
+</svg>

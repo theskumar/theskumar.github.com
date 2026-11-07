@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 240">
+  <text class="label" x="8" y="20">Django 5.x</text>
+  <text class="label" x="8" y="53">event loop</text>
+  <rect class="line" x="116" y="32" width="40" height="32" rx="3"/>
+  <path class="guide dash" d="M156 48H432"/>
+  <rect class="line" x="432" y="32" width="40" height="32" rx="3"/>
+  <text class="label" x="8" y="93">OS thread</text>
+  <rect class="tint" x="156" y="72" width="276" height="32" rx="3"/>
+  <text class="label-signal" x="168" y="93">blocked on socket</text>
+  <text class="label" x="8" y="140">Django 6.0</text>
+  <text class="label" x="8" y="173">event loop</text>
+  <rect class="line" x="116" y="152" width="40" height="32" rx="3"/>
+  <rect class="line" x="168" y="152" width="40" height="32" rx="3"/>
+  <rect class="line" x="220" y="152" width="40" height="32" rx="3"/>
+  <rect class="line" x="272" y="152" width="40" height="32" rx="3"/>
+  <rect class="line" x="324" y="152" width="40" height="32" rx="3"/>
+  <rect class="line" x="376" y="152" width="40" height="32" rx="3"/>
+  <rect class="line" x="432" y="152" width="40" height="32" rx="3"/>
+  <text class="label" x="8" y="213">OS thread</text>
+  <rect class="guide dash" x="156" y="192" width="276" height="32" rx="3"/>
+  <text class="label" x="168" y="213">none held</text>
+</svg>

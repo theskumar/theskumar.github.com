@@ -19,6 +19,10 @@ BM25 (Best Matching 25) is the industry-standard ranking algorithm used by searc
 - **Inverse Document Frequency (IDF)**: Rare terms get higher weight than common ones
 - **Document Length Normalization**: Short and long documents are compared fairly
 
+{{< diagram name="saturation" alt="As mentions of a word grow, a straight line keeps climbing while the BM25 score curve flattens." >}}
+The curve is a shape, not data: it shows saturation, with no real scores. The dashed line is a raw count.
+{{< /diagram >}}
+
 The formula uses two tunable parameters:
 
 - `k1` (default 1.2): Controls term frequency saturation

@@ -208,6 +208,10 @@ The event loop is no longer handing work off to a thread. It suspends the corout
 does other work, and resumes when the socket is readable. That is the entire reform,
 and it is enough.
 
+{{< diagram name="thread-held" alt="In Django 5.x an OS thread is blocked on the socket for the whole query; in Django 6.0 the event loop keeps working and no thread is held." >}}
+Not to scale. The 6.0 boxes show the loop running other tasks while the query waits.
+{{< /diagram >}}
+
 ## What This Means For Concurrency
 
 The practical payoff is in connection count. With the old thread approach, five hundred

@@ -1,0 +1,27 @@
+{{- /* An explanatory diagram, inlined so it follows the theme:
+       {{< diagram name="prefix" alt="What the drawing shows, in one sentence." >}}
+       Optional caption, in Markdown.
+       {{< /diagram >}}
+       The SVG lives at assets/diagrams/<content file name>/<name>.svg.
+       .agents/skills/diagram/SKILL.md says how to draw one. A diagram with
+       motion classes gets data-motion; one with steps also gets a Replay
+       button, shown by custom_body.html when motion runs. */ -}}
+{{- $name := .Get "name" -}}
+{{- $alt := .Get "alt" -}}
+{{- if not $alt }}{{ errorf "diagram %q in %s: alt is required" $name .Page.File.Path }}{{ end -}}
+{{- $path := printf "diagrams/%s/%s.svg" .Page.File.ContentBaseName $name -}}
+{{- $svg := resources.Get $path -}}
+{{- if not $svg }}{{ errorf "diagram: %s not found (from %s)" $path .Page.File.Path }}{{ end -}}
+{{- $src := $svg.Content | replaceRE `<\?xml[^>]*>\s*` "" -}}
+{{- $steps := findRE `class="[^"]*\bstep-[1-4]\b` $src 1 -}}
+{{- $motion := or $steps (findRE `class="[^"]*\b(draw|flow)\b` $src 1) -}}
+{{- $caption := .Inner | strings.TrimSpace -}}
+<figure class="diagram"{{ if $motion }} data-motion{{ end }}>
+  <div class="diagram-art" role="img" aria-label="{{ $alt }}">{{ $src | safeHTML }}</div>
+  {{- if $steps }}
+  <button type="button" class="diagram-replay" hidden>Replay</button>
+  {{- end }}
+  {{- with $caption }}
+  <figcaption>{{ . | $.Page.RenderString (dict "display" "block") }}</figcaption>
+  {{- end }}
+</figure>

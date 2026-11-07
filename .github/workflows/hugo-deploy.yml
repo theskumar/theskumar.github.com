@@ -46,6 +46,9 @@ jobs:
       - name: Check design tokens
         run: python3 scripts/check-tokens.py
 
+      - name: Check diagrams
+        run: python3 scripts/diagrams.py check
+
       - name: Build
         run: hugo --minify
 

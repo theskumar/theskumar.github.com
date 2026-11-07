@@ -120,6 +120,10 @@ _cache_eval uv     uv generate-shell-completion zsh
 
 The `$cache -nt ${commands[$1]:-/dev/null}` test compares mtimes. When brew or mise upgrades the binary, the cache invalidates on its own. No stale-cache surprises after a `brew upgrade`.
 
+{{< diagram name="eval-cache" alt="Shell 1 runs the tool and writes the cache; shell 2 only reads it; after the binary is upgraded, shell 3 runs the tool and writes the cache again." >}}
+Box widths are illustrative, not timings.
+{{< /diagram >}}
+
 Keep `starship init zsh` eager. You need it for the prompt anyway, and it is already fast.
 
 Saves 50-100 ms.

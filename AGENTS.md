@@ -10,11 +10,11 @@ content/           # markdown content (blog/, _index.md, now.md)
 layouts/           # template overrides (_default/, partials/)
 archetypes/        # front matter for `hugo new content/blog/…`
 static/            # images, files
-assets/            # social card background and fonts (og/, fonts/)
+assets/            # social card background and fonts (og/, fonts/), diagrams/
 public/            # build output (git-ignored)
 data/tags.json     # tag vocabulary (with descriptions), shared by Writing and TIL
 data/projects.toml # the Projects page, by theme
-scripts/           # check-til.py, check-tokens.py (CI + pre-commit)
+scripts/           # check-til.py, check-tokens.py, diagrams.py (CI + pre-commit)
 ```
 
 ## Commands
@@ -75,9 +75,13 @@ Markdown body.
 - `scripts/check-til.py` enforces the rules above (date = filename, known keys and tags, a quote's author and url). CI runs it before the build; so does the local pre-commit hook.
 - Add notes with cowork-kb's `scripts/til_add.py` (the `/til` skill), or by hand with a fresh timestamp.
 
+## Diagrams
+
+Explanatory figures in posts and notes, and social-card cover art. Draw them with the `diagram` skill (`.agents/skills/diagram/SKILL.md`); it holds the grammar. Files: `assets/diagrams/<content file name>/<name>.svg`, placed with the `diagram` shortcode and colored by the `.diagram` rules in `style.html`. `scripts/diagrams.py` checks them (CI and pre-commit), previews them, and renders `cover.svg` to the committed `cover.png`.
+
 ## Social cards
 
-Each post and TIL note gets its own 1200×630 card at `<page URL>og.png`, drawn by Hugo at build time. `layouts/partials/og/card.html` draws the eyebrow, title and tags on `assets/og/background.png`. `layouts/partials/_funcs/get-page-images.html` (a copy of Hugo's embedded one, plus one block) feeds the card to Hugo's OG and Twitter templates. Other pages use `static/images/og.png`. To use a hand-made image, set `images = ["/images/x.png"]` in front matter.
+Each post and TIL note gets its own 1200×630 card at `<page URL>og.png`, drawn by Hugo at build time. `layouts/partials/og/card.html` draws the eyebrow, title and tags on `assets/og/background.png`. `layouts/partials/_funcs/get-page-images.html` (a copy of Hugo's embedded one, plus one block) feeds the card to Hugo's OG and Twitter templates. Other pages use `static/images/og.png`. When `assets/diagrams/<content file name>/cover.png` exists, the card puts it right of a narrower title. To use a hand-made image, set `images = ["/images/x.png"]` in front matter.
 
 ## Markdown copies and llms.txt
 
@@ -104,7 +108,7 @@ Every regular page (posts, TIL notes, About, Now, Projects) also renders `<page 
 
 ## Deploy
 
-Push to `main` → GitHub Actions (`hugo-deploy.yml`) → `scripts/check-til.py` → `scripts/check-tokens.py` → `hugo --minify` (Hugo pinned to 0.168.0) → GitHub Pages.
+Push to `main` → GitHub Actions (`hugo-deploy.yml`) → `scripts/check-til.py` → `scripts/check-tokens.py` → `scripts/diagrams.py check` → `hugo --minify` (Hugo pinned to 0.168.0) → GitHub Pages.
 
 Nothing posts to social media automatically. Saurabh posts by hand (X, Mastodon, LinkedIn). To link a note to its Mastodon thread, set `mastodon` to the status ID in the note's front matter.
 

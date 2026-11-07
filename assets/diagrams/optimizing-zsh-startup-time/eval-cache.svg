@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 224">
+  <g class="step-1">
+    <text class="label" x="8" y="43">shell 1</text>
+    <rect class="line" x="88" y="16" width="120" height="44" rx="3"/>
+    <text class="label" x="100" y="43">run tool</text>
+    <path class="line" d="M208 38H224M218 34L224 38L218 42"/>
+    <rect class="line" x="224" y="16" width="84" height="44" rx="3"/>
+    <text class="label" x="236" y="43">write</text>
+    <path class="line" d="M308 38H324M318 34L324 38L318 42"/>
+    <rect class="line" x="324" y="16" width="88" height="44" rx="3"/>
+    <text class="label" x="336" y="43">source</text>
+
+  </g>
+  <g class="step-2">
+    <text class="label" x="8" y="103">shell 2</text>
+    <rect class="line" x="88" y="76" width="120" height="44" rx="3"/>
+    <text class="label" x="100" y="103">read file</text>
+    <path class="line" d="M208 98H324M318 94L324 98L318 102"/>
+    <rect class="line" x="324" y="76" width="88" height="44" rx="3"/>
+    <text class="label" x="336" y="103">source</text>
+
+  </g>
+  <g class="step-3">
+    <path class="guide dash" d="M8 150H472"/>
+    <text class="label-signal" x="8" y="140">binary upgraded</text>
+
+    <text class="label" x="8" y="191">shell 3</text>
+    <rect class="tint" x="88" y="164" width="120" height="44" rx="3"/>
+    <text class="label-signal" x="100" y="191">run tool</text>
+    <path class="signal" d="M208 186H224M218 182L224 186L218 190"/>
+    <rect class="tint" x="224" y="164" width="84" height="44" rx="3"/>
+    <text class="label-signal" x="236" y="191">write</text>
+    <path class="line" d="M308 186H324M318 182L324 186L318 190"/>
+    <rect class="line" x="324" y="164" width="88" height="44" rx="3"/>
+    <text class="label" x="336" y="191">source</text>
+  </g>
+</svg>

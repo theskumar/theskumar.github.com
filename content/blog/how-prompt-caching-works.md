@@ -71,6 +71,10 @@ those bytes forces a fresh `cache_write`:
 The corollary: to maximize hit rate, agents should **only append at the end**
 and keep system prompt and tools byte-stable across turns.
 
+{{< diagram name="invalidation" alt="The earlier the edit in the prompt, the more blocks are written to the cache again; appending rewrites only the new turn." >}}
+Blocks are conceptual, not token counts. The new turn is always written once.
+{{< /diagram >}}
+
 ## Reading the usage block
 
 Most providers return a usage object on every response with at least these

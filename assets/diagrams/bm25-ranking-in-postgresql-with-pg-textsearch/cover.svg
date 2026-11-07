@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 320">
+  <path class="guide" d="M60 40V272H460"/>
+  <path class="line dash" d="M60 272L220 48"/>
+  <path class="signal" d="M60 272C120 188 220 84 456 68"/>
+</svg>

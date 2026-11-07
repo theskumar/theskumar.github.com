@@ -41,11 +41,22 @@
   {{- $x1 := int (math.Round (add (add $left (mul (strings.RuneCount $eyebrow) $step)) 20)) }}
   {{- $filters = $filters | append (images.Overlay ($hair.Crop (printf "%dx1 TopLeft" (sub $right $x1))) $x1 104) }}
 
+  {{- /* Cover art: assets/diagrams/<content file name>/cover.png, made from
+         cover.svg by `scripts/diagrams.py covers`. With one, the title takes
+         the left column (96 to 576) and the art the right (604 to 1104). */}}
+  {{- $cover := resources.Get (printf "diagrams/%s/cover.png" $p.File.ContentBaseName) }}
+
   {{- /* Title. Long titles get a smaller size; 150+ characters are cut. */}}
   {{- $title := $p.Title | plainify | htmlUnescape | truncate 150 "…" | htmlUnescape }}
   {{- $size := 68 }}{{ $y := 24 }}{{ $ls := 26 }}
-  {{- if gt (strings.RuneCount $title) 90 }}{{ $size = 56 }}{{ $y = 23 }}{{ $ls = 21 }}{{ end }}
-  {{- $canvas := (resources.Get "og/title-canvas.png").Filter (images.Text $title (dict "font" $serif "size" $size "color" "#1D1810" "x" 0 "y" $y "linespacing" $ls)) }}
+  {{- if gt (strings.RuneCount $title) (cond (ne $cover nil) 28 90) }}{{ $size = 56 }}{{ $y = 23 }}{{ $ls = 21 }}{{ end }}
+  {{- /* Beside cover art, the column is narrow: very long titles go smaller still. */}}
+  {{- if and (ne $cover nil) (gt (strings.RuneCount $title) 44) }}{{ $size = 46 }}{{ $y = 19 }}{{ $ls = 17 }}{{ end }}
+  {{- $canvasFile := cond (ne $cover nil) "og/title-canvas-narrow.png" "og/title-canvas.png" }}
+  {{- with $cover }}
+    {{- $filters = $filters | append (images.Overlay . 604 (int (add 145 (div (sub 320 .Height) 2)))) }}
+  {{- end }}
+  {{- $canvas := (resources.Get $canvasFile).Filter (images.Text $title (dict "font" $serif "size" $size "color" "#1D1810" "x" 0 "y" $y "linespacing" $ls)) }}
   {{- $filters = $filters | append (images.Overlay $canvas $left 150) }}
 
   {{- /* Bottom row: mark and name (to x 336), hairline, then up to 40 characters of tags, right-aligned. */}}

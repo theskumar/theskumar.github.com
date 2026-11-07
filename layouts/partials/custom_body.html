@@ -16,6 +16,33 @@
     document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
   })();
 
+  /* Diagram motion (shortcodes/diagram.html, CSS in style.html). Without JS,
+     or with reduced motion, a diagram is simply the finished drawing. */
+  (function () {
+    var figs = document.querySelectorAll('.diagram[data-motion]');
+    if (!figs.length || !('IntersectionObserver' in window)) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        var fig = entry.target;
+        fig.classList.toggle('is-visible', entry.isIntersecting);
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.5) fig.classList.add('is-playing');
+      });
+    }, { threshold: [0, 0.5] });
+    figs.forEach(function (fig) {
+      fig.classList.add('is-armed');
+      io.observe(fig);
+      var replay = fig.querySelector('.diagram-replay');
+      if (!replay) return;
+      replay.hidden = false;
+      replay.addEventListener('click', function () {
+        fig.classList.remove('is-playing');
+        void fig.offsetWidth; /* restart the animations */
+        fig.classList.add('is-playing');
+      });
+    });
+  })();
+
   /* Stagger: children of [data-stagger] cascade in with per-item delays. */
   (function () {
     document.querySelectorAll('[data-stagger]').forEach(function (parent) {
