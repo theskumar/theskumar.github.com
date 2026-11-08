@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 320">
+  <path class="line" d="M48 160H200"/>
+  <circle class="ink" cx="48" cy="160" r="8"/>
+  <circle class="ink" cx="112" cy="160" r="8"/>
+  <circle class="ink" cx="200" cy="160" r="10"/>
+  <rect class="guide" x="272" y="48" width="200" height="80" rx="3"/>
+  <path class="line" d="M200 160C232 160 236 88 280 88H440"/>
+  <circle class="line" cx="340" cy="88" r="8"/>
+  <circle class="line" cx="404" cy="88" r="8"/>
+  <path class="signal" d="M200 160C232 160 236 232 280 232H492"/>
+  <circle class="ember" cx="312" cy="232" r="8"/>
+  <circle class="ember" cx="360" cy="232" r="8"/>
+  <circle class="ember" cx="408" cy="232" r="8"/>
+  <circle class="ember" cx="456" cy="232" r="8"/>
+</svg>
