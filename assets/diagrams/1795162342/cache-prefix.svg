@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 228">
+  <text class="label" x="8" y="22">Chat turn</text>
+  <rect class="line" x="8" y="32" width="88" height="36" rx="3"/>
+  <text class="label" x="20" y="55">Tools</text>
+  <rect class="line" x="102" y="32" width="88" height="36" rx="3"/>
+  <text class="label" x="114" y="55">System</text>
+  <rect class="line" x="196" y="32" width="176" height="36" rx="3"/>
+  <text class="label" x="208" y="55">History</text>
+  <text class="label" x="8" y="98">Read-only tool list</text>
+  <rect class="tint" x="8" y="108" width="88" height="36" rx="3"/>
+  <text class="label-signal" x="20" y="131">Tools</text>
+  <rect class="tint" x="102" y="108" width="88" height="36" rx="3"/>
+  <text class="label-signal" x="114" y="131">System</text>
+  <rect class="tint" x="196" y="108" width="176" height="36" rx="3"/>
+  <text class="label-signal" x="208" y="131">History</text>
+  <rect class="tint" x="378" y="108" width="94" height="36" rx="3"/>
+  <text class="label-signal" x="390" y="131">Task</text>
+  <text class="label" x="8" y="174">pi-better</text>
+  <rect class="line" x="8" y="184" width="88" height="36" rx="3"/>
+  <text class="label" x="20" y="207">Tools</text>
+  <rect class="line" x="102" y="184" width="88" height="36" rx="3"/>
+  <text class="label" x="114" y="207">System</text>
+  <rect class="line" x="196" y="184" width="176" height="36" rx="3"/>
+  <text class="label" x="208" y="207">History</text>
+  <rect class="tint" x="378" y="184" width="94" height="36" rx="3"/>
+  <text class="label-signal" x="390" y="207">Task</text>
+</svg>
